@@ -3,6 +3,7 @@ function SectionHeader({
   className = '',
   description,
   eyebrow,
+  id,
   title,
 }) {
   const alignment =
@@ -21,7 +22,10 @@ function SectionHeader({
       )}
 
       {title && (
-        <h2 className="text-balance-safe mt-2 max-w-full break-words text-2xl font-semibold leading-tight text-ice-50 sm:mt-3 sm:text-3xl lg:text-4xl">
+        <h2
+          className="text-balance-safe mt-2 max-w-full break-words text-2xl font-semibold leading-tight text-ice-50 sm:mt-3 sm:text-3xl lg:text-4xl"
+          id={id}
+        >
           {title}
         </h2>
       )}

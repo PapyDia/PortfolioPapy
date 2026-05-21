@@ -7,15 +7,26 @@ function ProjectsSection() {
   const { projects } = portfolioData
 
   return (
-    <section className="section-padding relative overflow-hidden" id="projects">
-      <div className="pointer-events-none absolute left-0 top-20 size-72 rounded-full bg-cyan-glow/10 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-10 right-0 size-72 rounded-full bg-violet-glow/10 blur-3xl" />
+    <section
+      aria-labelledby="projects-title"
+      className="section-padding relative overflow-hidden"
+      id="projects"
+    >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-0 top-20 size-72 rounded-full bg-cyan-glow/10 blur-3xl"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-10 right-0 size-72 rounded-full bg-violet-glow/10 blur-3xl"
+      />
 
       <Container>
         <SectionHeader
           align="center"
           description={projects.description}
           eyebrow={projects.eyebrow}
+          id="projects-title"
           title={projects.title}
         />
 

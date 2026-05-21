@@ -4,6 +4,7 @@ import HeroSection from './components/sections/HeroSection'
 import StackNebulaSection from './components/sections/StackNebulaSection'
 import AboutSection from './components/sections/AboutSection'
 import SkillsSection from './components/sections/SkillsSection'
+import LearningLanguagesSection from './components/sections/LearningLanguagesSection'
 import ProjectsSection from './components/sections/ProjectsSection'
 import ProcessSection from './components/sections/ProcessSection'
 import ContactSection from './components/sections/ContactSection'
@@ -11,12 +12,20 @@ import ContactSection from './components/sections/ContactSection'
 function App() {
   return (
     <div className="page-shell">
+      <a className="skip-link" href="#main-content">
+        Aller au contenu principal
+      </a>
       <Navbar />
-      <main className="relative">
+      <main
+        className="relative focus:outline-none"
+        id="main-content"
+        tabIndex={-1}
+      >
         <HeroSection />
         <StackNebulaSection />
         <AboutSection />
         <SkillsSection />
+        <LearningLanguagesSection />
         <ProjectsSection />
         <ProcessSection />
         <ContactSection />

@@ -7,13 +7,18 @@ function AboutSection() {
   const { about, identity } = portfolioData
 
   return (
-    <section className="section-padding border-t border-white/10" id="about">
+    <section
+      aria-labelledby="about-title"
+      className="section-padding border-t border-white/10"
+      id="about"
+    >
       <Container>
         <div className="grid min-w-0 gap-8 sm:gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <div className="min-w-0">
             <SectionHeader
               description={about.description}
               eyebrow={about.eyebrow}
+              id="about-title"
               title={about.title}
             />
 
@@ -27,8 +32,14 @@ function AboutSection() {
           </div>
 
           <GlassCard className="relative overflow-hidden text-center lg:text-left">
-            <div className="pointer-events-none absolute -right-16 -top-16 size-44 rounded-full bg-cyan-glow/15 blur-3xl" />
-            <div className="pointer-events-none absolute bottom-0 left-0 size-40 rounded-full bg-violet-glow/10 blur-3xl" />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-16 -top-16 size-44 rounded-full bg-cyan-glow/15 blur-3xl"
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute bottom-0 left-0 size-40 rounded-full bg-violet-glow/10 blur-3xl"
+            />
 
             <div className="relative min-w-0">
               <p className="max-w-full break-words text-sm font-semibold uppercase text-cyan-glow">
@@ -41,16 +52,19 @@ function AboutSection() {
                 {identity.title}
               </p>
 
-              <div className="mt-6 grid min-w-0 gap-2 sm:mt-8 sm:grid-cols-2 sm:gap-3">
+              <ul
+                aria-label="Points forts"
+                className="m-0 mt-6 grid min-w-0 list-none gap-2 p-0 sm:mt-8 sm:grid-cols-2 sm:gap-3"
+              >
                 {about.highlights.map((highlight) => (
-                  <span
+                  <li
                     className="max-w-full rounded-2xl border border-ice-300/15 bg-white/[0.04] px-3 py-2.5 text-center text-sm font-medium leading-snug break-words text-ice-100 sm:px-4 sm:py-3"
                     key={highlight}
                   >
                     {highlight}
-                  </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           </GlassCard>
         </div>

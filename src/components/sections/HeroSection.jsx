@@ -27,17 +27,27 @@ function HeroSection() {
 
   return (
     <section
-      className="relative isolate overflow-hidden pb-14 pt-10 sm:pb-20 sm:pt-20 xl:min-h-[calc(100vh-4rem)] xl:pb-24 xl:pt-24"
+      aria-labelledby="hero-title"
+      className="relative isolate overflow-hidden pb-16 pt-12 sm:pb-20 sm:pt-20 xl:min-h-[calc(100vh-4rem)] xl:pb-24 xl:pt-24"
       id="home"
     >
-      <div className="pointer-events-none absolute left-1/2 top-8 -z-10 size-60 -translate-x-1/2 rounded-full bg-cyan-glow/15 blur-3xl sm:size-96" />
-      <div className="pointer-events-none absolute right-0 top-1/4 -z-10 size-72 rounded-full bg-blue-glow/10 blur-3xl" />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-8 -z-10 size-60 -translate-x-1/2 rounded-full bg-cyan-glow/15 blur-3xl sm:size-96"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute right-0 top-1/4 -z-10 size-72 rounded-full bg-blue-glow/10 blur-3xl"
+      />
 
       <Container>
-        <div className="grid min-w-0 items-center gap-9 sm:gap-12 xl:grid-cols-[1.05fr_0.95fr]">
+        <div className="grid min-w-0 items-center gap-10 sm:gap-12 xl:grid-cols-[1.05fr_0.95fr]">
           <div className="mx-auto max-w-3xl min-w-0 text-center xl:mx-0 xl:text-left">
             <div className="mb-5 inline-flex max-w-full items-center justify-center gap-2 rounded-button border border-cyan-glow/25 bg-cyan-glow/10 px-3 py-1.5 text-center text-xs font-medium leading-snug break-words text-ice-100 backdrop-blur-md sm:mb-6 sm:px-4 sm:py-2 sm:text-sm">
-              <span className="size-2 shrink-0 rounded-full bg-cyan-glow shadow-glow-soft" />
+              <span
+                aria-hidden="true"
+                className="size-2 shrink-0 rounded-full bg-cyan-glow shadow-glow-soft"
+              />
               {hero.badge}
             </div>
 
@@ -45,7 +55,10 @@ function HeroSection() {
               {identity.name}
             </p>
 
-            <h1 className="text-balance-safe max-w-full break-words text-[2rem] font-semibold leading-tight text-ice-50 sm:text-5xl xl:text-6xl">
+            <h1
+              className="text-balance-safe max-w-full break-words text-[2rem] font-semibold leading-tight text-ice-50 sm:text-5xl xl:text-6xl"
+              id="hero-title"
+            >
               {hero.title}
             </h1>
 
@@ -53,7 +66,7 @@ function HeroSection() {
               {hero.subtitle}
             </p>
 
-            <div className="mt-7 flex min-w-0 flex-col justify-center gap-3 sm:mt-8 sm:flex-row xl:justify-start">
+            <div className="mt-8 flex min-w-0 flex-col justify-center gap-3 sm:flex-row xl:justify-start">
               <Button className="w-full sm:w-auto" href={hero.primaryCta.href}>
                 {hero.primaryCta.label}
               </Button>
@@ -66,14 +79,22 @@ function HeroSection() {
               </Button>
             </div>
 
-            <div className="mt-6 flex min-w-0 max-w-full flex-wrap justify-center gap-2 sm:mt-8 sm:gap-3 xl:justify-start">
+            <ul
+              aria-label="Technologies principales"
+              className="m-0 mt-6 flex min-w-0 max-w-full list-none flex-wrap justify-center gap-2 p-0 sm:mt-8 sm:gap-3 xl:justify-start"
+            >
               {quickStack.map((tech) => (
-                <TechBadge key={tech}>{tech}</TechBadge>
+                <li className="min-w-0 max-w-full" key={tech}>
+                  <TechBadge>{tech}</TechBadge>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
 
-          <div className="relative mx-auto w-full max-w-lg min-w-0">
+          <div
+            aria-hidden="true"
+            className="relative mx-auto w-full max-w-lg min-w-0"
+          >
             <div className="absolute inset-8 rounded-full bg-cyan-glow/15 blur-3xl" />
             <div className="glass-panel relative aspect-square min-w-0 max-w-full overflow-hidden p-4 sm:p-8">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(125,211,252,0.16),transparent_35%),radial-gradient(circle_at_80%_75%,rgba(139,92,246,0.14),transparent_32%)]" />

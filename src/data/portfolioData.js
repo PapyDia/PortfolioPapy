@@ -103,6 +103,46 @@ export const portfolioData = {
       },
     ],
   },
+  learningLanguages: {
+    eyebrow: 'Apprentissage',
+    title: 'Langages rencontrés pendant mon parcours.',
+    description:
+      'Au fil de mon apprentissage, j’ai exploré plusieurs langages et concepts qui m’ont aidé à mieux comprendre la programmation, les bases du web, les algorithmes et les bases de données.',
+    note:
+      'Mon stack principal reste JavaScript, React, Node.js et MongoDB. Ces langages représentent mon parcours d’apprentissage et les bases que j’ai rencontrées en progressant.',
+    items: [
+      {
+        name: 'Scratch',
+        category: 'Logique visuelle',
+        description:
+          'Découverte des bases de la programmation : événements, conditions, boucles, variables et logique algorithmique.',
+      },
+      {
+        name: 'C',
+        category: 'Fondamentaux',
+        description:
+          'Compréhension plus profonde de la mémoire, des types, des pointeurs, de la compilation et des bases de l’algorithmique.',
+      },
+      {
+        name: 'Python',
+        category: 'Programmation générale',
+        description:
+          'Pratique d’un langage clair pour manipuler des données, écrire des scripts et comprendre la logique de programmation.',
+      },
+      {
+        name: 'SQL',
+        category: 'Bases de données',
+        description:
+          'Apprentissage des requêtes, tables, relations, filtres et bases de la manipulation de données structurées.',
+      },
+      {
+        name: 'PHP',
+        category: 'Web backend',
+        description:
+          'Découverte des bases du développement web côté serveur et de la génération de pages dynamiques.',
+      },
+    ],
+  },
   projects: {
     eyebrow: 'Projets',
     title: 'Des projets concrets, pensés comme de vraies applications.',

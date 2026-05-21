@@ -109,6 +109,11 @@
     color: var(--color-ice-50);
   }
 
+  :focus-visible {
+    outline: 2px solid var(--color-cyan-glow);
+    outline-offset: 4px;
+  }
+
   #root {
     min-height: 100vh;
   }
@@ -156,6 +161,26 @@
   .text-pretty-safe {
     text-wrap: pretty;
     overflow-wrap: break-word;
+  }
+
+  .skip-link {
+    position: fixed;
+    left: 1rem;
+    top: 1rem;
+    z-index: 100;
+    max-width: calc(100vw - 2rem);
+    transform: translateY(-150%);
+    border-radius: var(--radius-button);
+    background: var(--color-ice-50);
+    color: var(--color-navy-950);
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .skip-link:focus-visible {
+    transform: translateY(0);
   }
 
   /* Global background: subtle static halos, with no dependency or costly animation. */

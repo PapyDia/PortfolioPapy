@@ -7,24 +7,41 @@ function ContactSection() {
   const { contact } = portfolioData
   // CTAs without an href are not rendered: no fake buttons or invented links.
   const contactCtas = [contact.primaryCta, contact.secondaryCta].filter(
-    (cta) => cta.href,
+    (cta) => cta.href?.trim(),
   )
 
   return (
-    <section className="section-padding relative overflow-hidden" id="contact">
-      <div className="pointer-events-none absolute left-1/2 top-16 size-72 -translate-x-1/2 rounded-full bg-cyan-glow/10 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-0 right-0 size-72 rounded-full bg-violet-glow/10 blur-3xl" />
+    <section
+      aria-labelledby="contact-title"
+      className="section-padding relative overflow-hidden"
+      id="contact"
+    >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-16 size-72 -translate-x-1/2 rounded-full bg-cyan-glow/10 blur-3xl"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-0 right-0 size-72 rounded-full bg-violet-glow/10 blur-3xl"
+      />
 
       <Container>
         <div className="glass-panel relative mx-auto max-w-6xl min-w-0 overflow-hidden p-4 text-center sm:p-8 lg:p-10">
-          <div className="pointer-events-none absolute -left-20 -top-20 size-56 rounded-full bg-blue-glow/10 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-24 right-10 size-56 rounded-full bg-cyan-glow/10 blur-3xl" />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -left-20 -top-20 size-56 rounded-full bg-blue-glow/10 blur-3xl"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -bottom-24 right-10 size-56 rounded-full bg-cyan-glow/10 blur-3xl"
+          />
 
           <div className="relative min-w-0">
             <SectionHeader
               align="center"
               description={contact.description}
               eyebrow={contact.eyebrow}
+              id="contact-title"
               title={contact.title}
             />
 
@@ -48,19 +65,27 @@ function ContactSection() {
             )}
 
             <div className="mt-8 grid min-w-0 gap-3 sm:mt-10 sm:gap-4 md:grid-cols-3">
-              {contact.cards.map((card) => (
-                <article
-                  className="premium-border min-w-0 rounded-card bg-white/[0.03] p-4 text-center sm:p-5 md:text-left"
-                  key={card.title}
-                >
-                  <h3 className="max-w-full break-words text-lg font-semibold leading-tight text-ice-50">
-                    {card.title}
-                  </h3>
-                  <p className="text-pretty-safe mt-2 max-w-full break-words leading-7 text-text-muted sm:mt-3">
-                    {card.description}
-                  </p>
-                </article>
-              ))}
+              {contact.cards.map((card, index) => {
+                const titleId = `contact-card-${index + 1}-title`
+
+                return (
+                  <article
+                    aria-labelledby={titleId}
+                    className="premium-border min-w-0 rounded-card bg-white/[0.03] p-4 text-center sm:p-5 md:text-left"
+                    key={card.title}
+                  >
+                    <h3
+                      className="max-w-full break-words text-lg font-semibold leading-tight text-ice-50"
+                      id={titleId}
+                    >
+                      {card.title}
+                    </h3>
+                    <p className="text-pretty-safe mt-2 max-w-full break-words leading-7 text-text-muted sm:mt-3">
+                      {card.description}
+                    </p>
+                  </article>
+                )
+              })}
             </div>
 
             <p className="text-pretty-safe mx-auto mt-6 max-w-2xl break-words text-sm leading-6 text-text-soft sm:mt-8">
