@@ -130,7 +130,7 @@ export const portfolioData = {
           live: '',
           code: '',
         },
-        note: 'Code privé ou disponible sur demande.',
+        note: 'Repo privé, disponible sur demande.',
       },
       {
         name: 'Sama Horaire',
@@ -164,7 +164,82 @@ export const portfolioData = {
           live: '',
           code: '',
         },
-        note: 'Projet en construction progressive.',
+        note: 'Repo privé, disponible sur demande.',
+      },
+    ],
+  },
+  process: {
+    eyebrow: 'Méthode',
+    title: 'Ma façon de construire une application.',
+    description:
+      "J’avance étape par étape pour transformer une idée en application claire, fonctionnelle et maintenable.",
+    steps: [
+      {
+        number: '01',
+        title: 'Comprendre le besoin',
+        description:
+          "Je commence par clarifier l’objectif du projet, les utilisateurs concernés et les fonctionnalités importantes.",
+      },
+      {
+        number: '02',
+        title: 'Structurer la solution',
+        description:
+          'Je prépare une architecture simple, lisible et évolutive avant de développer les fonctionnalités.',
+      },
+      {
+        number: '03',
+        title: 'Créer une interface responsive',
+        description:
+          "Je construis une interface propre, mobile-first, agréable à utiliser et cohérente avec l’identité du projet.",
+      },
+      {
+        number: '04',
+        title: 'Développer une API propre',
+        description:
+          'Je mets en place une API structurée avec validation, gestion des erreurs, sécurité et séparation des responsabilités.',
+      },
+      {
+        number: '05',
+        title: 'Tester et améliorer',
+        description:
+          "Je vérifie les comportements importants, les erreurs possibles, le responsive et l’expérience utilisateur.",
+      },
+      {
+        number: '06',
+        title: 'Déployer proprement',
+        description:
+          "Je prépare la mise en ligne avec une configuration claire, des variables d’environnement et un déploiement stable.",
+      },
+    ],
+  },
+  contact: {
+    eyebrow: 'Contact',
+    title: 'Vous avez une idée ou un projet web ?',
+    description:
+      "Je suis disponible pour discuter d’une collaboration, d’une opportunité ou d’un projet autour du développement web JavaScript.",
+    primaryCta: {
+      label: 'M’envoyer un email',
+      href: '',
+    },
+    secondaryCta: {
+      label: 'Voir mon GitHub',
+      href: '',
+    },
+    cards: [
+      {
+        title: 'Collaboration',
+        description:
+          'Discuter d’un projet web, d’une application ou d’une idée à transformer en produit.',
+      },
+      {
+        title: 'Opportunité',
+        description:
+          'Échanger autour d’un stage, d’une mission, d’un poste junior ou d’une collaboration technique.',
+      },
+      {
+        title: 'Projet local',
+        description:
+          'Construire une solution utile, adaptée aux besoins réels des utilisateurs au Sénégal.',
       },
     ],
   },
