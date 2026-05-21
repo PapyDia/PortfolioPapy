@@ -1,20 +1,45 @@
+import { portfolioData } from '../../data/portfolioData'
 import Container from '../ui/Container'
+import GlassCard from '../ui/GlassCard'
+import SectionHeader from '../ui/SectionHeader'
 
 function SkillsSection() {
+  const { skills } = portfolioData
+
   return (
     <section className="section-padding" id="skills">
       <Container>
-        <div className="glass-panel p-6 sm:p-8">
-          <p className="text-sm font-semibold uppercase text-cyan-glow">
-            Compétences
-          </p>
-          <h2 className="mt-3 text-3xl font-semibold text-ice-50">
-            Les compétences seront détaillées dans la prochaine étape.
-          </h2>
-          <p className="mt-4 max-w-3xl leading-7 text-text-muted">
-            Frontend, backend, bases de données, authentification et déploiement
-            seront présentés avec une structure claire et lisible.
-          </p>
+        <SectionHeader
+          align="center"
+          description={skills.description}
+          eyebrow={skills.eyebrow}
+          title={skills.title}
+        />
+
+        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          {skills.groups.map((group) => (
+            <GlassCard className="flex h-full flex-col" key={group.title}>
+              <div>
+                <h3 className="text-xl font-semibold text-ice-50">
+                  {group.title}
+                </h3>
+                <p className="mt-3 leading-7 text-text-muted">
+                  {group.description}
+                </p>
+              </div>
+
+              <div className="mt-6 flex flex-wrap gap-2">
+                {group.items.map((item) => (
+                  <span
+                    className="rounded-button border border-ice-300/15 bg-cyan-glow/5 px-3 py-1.5 text-sm font-medium text-ice-100"
+                    key={`${group.title}-${item}`}
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </GlassCard>
+          ))}
         </div>
       </Container>
     </section>

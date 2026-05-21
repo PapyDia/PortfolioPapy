@@ -14,7 +14,7 @@ function Navbar() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-navy-950/75 backdrop-blur-xl">
       <Container className="flex min-h-16 items-center justify-between">
         <a
-          className="group inline-flex items-center gap-3 rounded-button focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow"
+          className="group inline-flex items-center gap-3 rounded-button focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow"
           href="#home"
           onClick={closeMenu}
         >
@@ -32,7 +32,7 @@ function Navbar() {
         <nav aria-label="Navigation principale" className="hidden items-center gap-8 md:flex">
           {navigationItems.map((item) => (
             <a
-              className="text-sm font-medium text-text-muted transition hover:text-ice-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow"
+              className="text-sm font-medium text-text-muted transition hover:text-ice-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow"
               href={item.href}
               key={item.href}
             >
@@ -70,7 +70,7 @@ function Navbar() {
           >
             {navigationItems.map((item) => (
               <a
-                className="rounded-2xl px-4 py-3 text-sm font-medium text-text-muted transition hover:bg-cyan-glow/10 hover:text-ice-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-glow"
+                className="rounded-2xl px-4 py-3 text-sm font-medium text-text-muted transition hover:bg-cyan-glow/10 hover:text-ice-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-glow"
                 href={item.href}
                 key={item.href}
                 onClick={closeMenu}
