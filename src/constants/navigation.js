@@ -1,1 +1,8 @@
-export const navigationItems = []
+export const navigationItems = [
+  { label: 'Accueil', href: '#home' },
+  { label: 'À propos', href: '#about' },
+  { label: 'Compétences', href: '#skills' },
+  { label: 'Projets', href: '#projects' },
+  { label: 'Méthode', href: '#process' },
+  { label: 'Contact', href: '#contact' },
+]

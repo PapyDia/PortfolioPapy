@@ -1,6 +1,6 @@
 # Portfolio Papy Dia
 
-Base React + Vite pour le portfolio personnel de Papy Dia, developpeur full-stack JavaScript base au Senegal.
+Base React + Vite pour le portfolio personnel de Papy Dia, developpeur full-stack JavaScript.
 
 ## Scripts
 

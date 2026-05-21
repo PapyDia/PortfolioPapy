@@ -10,9 +10,9 @@ import ContactSection from './components/sections/ContactSection'
 
 function App() {
   return (
-    <div className="app">
+    <div className="page-shell">
       <Navbar />
-      <main>
+      <main className="relative">
         <HeroSection />
         <StackNebulaSection />
         <AboutSection />
