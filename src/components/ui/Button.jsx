@@ -12,7 +12,7 @@ function Button({
   variant = 'primary',
   ...props
 }) {
-  const classes = `inline-flex min-h-12 items-center justify-center rounded-button px-6 text-sm font-semibold transition duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow ${variants[variant] ?? variants.primary} ${className}`
+  const classes = `inline-flex min-h-11 max-w-full items-center justify-center rounded-button px-5 text-center text-sm font-semibold leading-snug break-words whitespace-normal transition duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow sm:min-h-12 sm:px-6 ${variants[variant] ?? variants.primary} ${className}`
 
   // An href turns the button into a link, useful for anchor or external CTAs.
   if (href) {

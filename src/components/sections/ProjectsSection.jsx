@@ -19,7 +19,7 @@ function ProjectsSection() {
           title={projects.title}
         />
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-2">
+        <div className="mt-8 grid min-w-0 gap-5 sm:mt-10 sm:gap-6 lg:grid-cols-2">
           {projects.items.map((project, index) => (
             <ProjectCard
               index={index}

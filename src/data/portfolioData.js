@@ -2,15 +2,14 @@
 // React sections can stay focused on layout and presentation.
 export const portfolioData = {
   identity: {
-    name: 'Papy Dia',
+    name: 'Cheikh Massamba Dia',
     title: 'Développeur Full-Stack JavaScript',
-    location: 'Sénégal',
   },
   hero: {
-    badge: 'Développeur Full-Stack JavaScript basé au Sénégal',
+    badge: 'Développeur Full-Stack JavaScript',
     title: 'Je crée des applications web modernes, rapides et élégantes.',
     subtitle:
-      "Je développe des interfaces premium avec React et Tailwind CSS, ainsi que des API robustes avec Node.js, Express et MongoDB. J'aime transformer des idées concrètes en applications web fiables, responsives et faciles à utiliser.",
+      "Je développe des interfaces premium avec React et Tailwind CSS, ainsi que des API robustes avec Node.js, Express, MongoDB et MySQL. J'aime transformer des idées concrètes en applications web fiables, responsives et faciles à utiliser.",
     primaryCta: {
       label: 'Voir mes projets',
       href: '#projects',
@@ -29,14 +28,13 @@ export const portfolioData = {
     eyebrow: 'À propos',
     title: 'Un développeur orienté projets réels.',
     description:
-      'Je suis Papy Dia, développeur web full-stack JavaScript en apprentissage avancé, basé au Sénégal.',
+      "Je m'appelle Cheikh Massamba, développeur web full-stack JavaScript en apprentissage avancé, basé au Sénégal.",
     paragraphs: [
       "Je construis des applications web modernes avec une attention particulière portée à l'expérience utilisateur, la performance, l'accessibilité et la qualité du code.",
       'Mes projets sont orientés vers des besoins concrets : commande en ligne, réservation, gestion admin, suivi de statut, tableaux de bord et API sécurisées.',
       "J'aime créer des interfaces propres, responsives et agréables à utiliser, tout en structurant le backend de manière claire, maintenable et évolutive.",
     ],
     highlights: [
-      'Basé au Sénégal',
       'Full-Stack JavaScript',
       'Projets concrets',
       'Mobile-first',
@@ -57,6 +55,7 @@ export const portfolioData = {
         items: [
           'React',
           'Vite',
+          'CSS',
           'Tailwind CSS',
           'Framer Motion',
           'Responsive Design',
@@ -67,7 +66,15 @@ export const portfolioData = {
         title: 'Backend',
         description:
           'Développement d’API REST propres, sécurisées et maintenables.',
-        items: ['Node.js', 'Express.js', 'MongoDB', 'Mongoose', 'JWT', 'Zod'],
+        items: [
+          'Node.js',
+          'Express.js',
+          'MongoDB',
+          'MySQL',
+          'Mongoose',
+          'JWT',
+          'Zod',
+        ],
       },
       {
         title: 'Architecture',
@@ -87,6 +94,8 @@ export const portfolioData = {
         items: [
           'Vercel',
           'Render',
+          'Docker',
+          'Git',
           'GitHub',
           'Variables d’environnement',
           'Configuration production',
@@ -130,8 +139,8 @@ export const portfolioData = {
         ],
         links: {
           // Keep empty until a reliable public link is available.
-          live: '',
-          code: '',
+          live: 'https://kaolack-kitchen-web.vercel.app/',
+          code: 'https://github.com/PapyDia',
         },
         note: 'Repo privé, disponible sur demande.',
       },
@@ -165,8 +174,8 @@ export const portfolioData = {
         ],
         links: {
           // ProjectCard automatically hides CTAs with an empty href.
-          live: '',
-          code: '',
+          live: 'https://ama-horaire-frontend.vercel.app/',
+          code: 'https://github.com/PapyDia',
         },
         note: 'Repo privé, disponible sur demande.',
       },
@@ -249,5 +258,5 @@ export const portfolioData = {
     ],
   },
   footer:
-    '© 2026 Papy Dia. Portfolio développé avec React, Tailwind CSS et Vite.',
+    '© 2026 Cheikh Massamba. Portfolio. Tous droits réservés.',
 }

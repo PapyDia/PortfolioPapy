@@ -19,10 +19,10 @@ function ProcessSection() {
           title={process.title}
         />
 
-        <div className="relative mt-12">
+        <div className="relative mt-8 min-w-0 sm:mt-12">
           <div className="pointer-events-none absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-cyan-glow/20 lg:block" />
 
-          <div className="grid gap-5 md:grid-cols-2 lg:gap-6">
+          <div className="grid min-w-0 gap-4 md:grid-cols-2 lg:gap-6">
             {process.steps.map((step, index) => (
               <ProcessStep
                 index={index}

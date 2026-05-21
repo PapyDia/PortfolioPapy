@@ -15,25 +15,30 @@ function Navbar() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-navy-950/75 backdrop-blur-xl">
       <Container className="flex min-h-16 items-center justify-between">
         <a
-          className="group inline-flex items-center gap-3 rounded-button focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow"
+          className="group inline-flex shrink-0 items-center gap-3 rounded-button focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow"
           href="#home"
           onClick={closeMenu}
         >
           <span className="grid size-9 place-items-center rounded-full border border-cyan-glow/30 bg-cyan-glow/10 text-sm font-bold text-ice-50 shadow-glow-soft">
-            PD
+            CM
           </span>
-          <span className="flex flex-col leading-tight">
-            <span className="text-sm font-semibold text-ice-50">
+          <span className="flex min-w-0 flex-col leading-tight">
+            <span className="max-w-full break-words text-sm font-semibold text-ice-50">
               {portfolioData.identity.name}
             </span>
-            <span className="text-xs text-text-soft">Full-Stack JS</span>
+            <span className="max-w-full break-words text-xs text-text-soft">
+              Full-Stack JS
+            </span>
           </span>
         </a>
 
-        <nav aria-label="Navigation principale" className="hidden items-center gap-8 md:flex">
+        <nav
+          aria-label="Navigation principale"
+          className="hidden items-center gap-5 lg:flex xl:gap-8"
+        >
           {navigationItems.map((item) => (
             <a
-              className="text-sm font-medium text-text-muted transition hover:text-ice-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow"
+              className="whitespace-nowrap text-sm font-medium text-text-muted transition hover:text-ice-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow"
               href={item.href}
               key={item.href}
             >
@@ -42,8 +47,12 @@ function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden md:block">
-          <Button className="min-h-10 px-5" href="#contact" variant="secondary">
+        <div className="hidden lg:block">
+          <Button
+            className="min-h-10 px-5 whitespace-nowrap"
+            href="#contact"
+            variant="secondary"
+          >
             Me contacter
           </Button>
         </div>
@@ -52,7 +61,7 @@ function Navbar() {
           aria-controls="mobile-navigation"
           aria-expanded={isOpen}
           aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
-          className="grid size-10 place-items-center rounded-full border border-ice-300/15 bg-white/5 text-ice-50 backdrop-blur-md transition hover:border-cyan-glow/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow md:hidden"
+          className="grid size-10 place-items-center rounded-full border border-ice-300/15 bg-white/5 text-ice-50 backdrop-blur-md transition hover:border-cyan-glow/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow lg:hidden"
           onClick={() => setIsOpen((current) => !current)}
           type="button"
         >
@@ -65,7 +74,7 @@ function Navbar() {
       </Container>
 
       {isOpen && (
-        <Container className="pb-4 md:hidden">
+        <Container className="pb-4 lg:hidden">
           <nav
             aria-label="Navigation mobile"
             className="glass-panel flex flex-col gap-1 rounded-2xl p-2"
