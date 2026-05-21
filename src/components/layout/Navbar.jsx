@@ -8,13 +8,14 @@ import Container from '../ui/Container'
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
+  // Close the mobile menu after an anchor click to keep navigation smooth.
   const closeMenu = () => setIsOpen(false)
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-navy-950/75 backdrop-blur-xl">
       <Container className="flex min-h-16 items-center justify-between">
         <a
-          className="group inline-flex items-center gap-3 rounded-button focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow"
+          className="group inline-flex items-center gap-3 rounded-button focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow"
           href="#home"
           onClick={closeMenu}
         >
@@ -32,7 +33,7 @@ function Navbar() {
         <nav aria-label="Navigation principale" className="hidden items-center gap-8 md:flex">
           {navigationItems.map((item) => (
             <a
-              className="text-sm font-medium text-text-muted transition hover:text-ice-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow"
+              className="text-sm font-medium text-text-muted transition hover:text-ice-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow"
               href={item.href}
               key={item.href}
             >
@@ -48,13 +49,14 @@ function Navbar() {
         </div>
 
         <button
+          aria-controls="mobile-navigation"
           aria-expanded={isOpen}
           aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
-          className="grid size-10 place-items-center rounded-full border border-ice-300/15 bg-white/5 text-ice-50 backdrop-blur-md transition hover:border-cyan-glow/40 md:hidden"
+          className="grid size-10 place-items-center rounded-full border border-ice-300/15 bg-white/5 text-ice-50 backdrop-blur-md transition hover:border-cyan-glow/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow md:hidden"
           onClick={() => setIsOpen((current) => !current)}
           type="button"
         >
-          <span className="flex w-4 flex-col gap-1.5">
+          <span aria-hidden="true" className="flex w-4 flex-col gap-1.5">
             <span className="h-0.5 rounded-full bg-current" />
             <span className="h-0.5 rounded-full bg-current" />
             <span className="h-0.5 rounded-full bg-current" />
@@ -67,10 +69,11 @@ function Navbar() {
           <nav
             aria-label="Navigation mobile"
             className="glass-panel flex flex-col gap-1 rounded-2xl p-2"
+            id="mobile-navigation"
           >
             {navigationItems.map((item) => (
               <a
-                className="rounded-2xl px-4 py-3 text-sm font-medium text-text-muted transition hover:bg-cyan-glow/10 hover:text-ice-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-glow"
+                className="rounded-2xl px-4 py-3 text-sm font-medium text-text-muted transition hover:bg-cyan-glow/10 hover:text-ice-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-glow"
                 href={item.href}
                 key={item.href}
                 onClick={closeMenu}

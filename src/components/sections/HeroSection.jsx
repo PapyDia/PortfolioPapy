@@ -5,6 +5,7 @@ import Container from '../ui/Container'
 import TechBadge from '../ui/TechBadge'
 
 const visualBadges = [
+  // Fixed positions compose the abstract visual without external imagery.
   { name: heroVisualStack[0], className: 'left-4 top-8 sm:left-8' },
   { name: heroVisualStack[1], className: 'right-4 top-16 sm:right-8' },
   { name: heroVisualStack[2], className: 'bottom-10 left-6 sm:left-10' },

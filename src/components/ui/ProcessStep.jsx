@@ -1,6 +1,7 @@
 import GlassCard from './GlassCard'
 
 function ProcessStep({ index = 0, step }) {
+  // Subtle desktop offset suggests a timeline without animation.
   const offsetClass = index % 2 === 0 ? '' : 'lg:translate-y-8'
 
   return (

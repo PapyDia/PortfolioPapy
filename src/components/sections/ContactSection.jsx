@@ -5,6 +5,7 @@ import SectionHeader from '../ui/SectionHeader'
 
 function ContactSection() {
   const { contact } = portfolioData
+  // CTAs without an href are not rendered: no fake buttons or invented links.
   const contactCtas = [contact.primaryCta, contact.secondaryCta].filter(
     (cta) => cta.href,
   )

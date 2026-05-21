@@ -1,3 +1,5 @@
+// Single source of truth for the portfolio content.
+// React sections can stay focused on layout and presentation.
 export const portfolioData = {
   identity: {
     name: 'Papy Dia',
@@ -127,6 +129,7 @@ export const portfolioData = {
           'Cloudinary',
         ],
         links: {
+          // Keep empty until a reliable public link is available.
           live: '',
           code: '',
         },
@@ -161,6 +164,7 @@ export const portfolioData = {
           'QR Code',
         ],
         links: {
+          // ProjectCard automatically hides CTAs with an empty href.
           live: '',
           code: '',
         },
@@ -218,6 +222,7 @@ export const portfolioData = {
     description:
       "Je suis disponible pour discuter d’une collaboration, d’une opportunité ou d’un projet autour du développement web JavaScript.",
     primaryCta: {
+      // Contact links are displayed only after their href is filled in.
       label: 'M’envoyer un email',
       href: '',
     },

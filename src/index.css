@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* Tokens Tailwind v4 exposes as utilities: bg-navy-950, rounded-card, shadow-glow-soft, etc. */
 @theme {
   --color-navy-950: #020617;
   --color-navy-900: #0f172a;
@@ -32,6 +33,7 @@
 }
 
 @layer base {
+  /* Minimal global reset to keep rendering stable across browsers. */
   *,
   *::before,
   *::after {
@@ -92,9 +94,21 @@
   #root {
     min-height: 100vh;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+    }
+  }
 }
 
 @layer utilities {
+  /* Portfolio visual primitives: they avoid repeating glass styles in each component. */
   .glass-panel {
     background: var(--color-glass-bg);
     border: 1px solid var(--color-glass-border);
@@ -116,6 +130,7 @@
     padding-block: clamp(4rem, 8vw, 7rem);
   }
 
+  /* Global background: subtle static halos, with no dependency or costly animation. */
   .page-shell {
     position: relative;
     min-height: 100vh;

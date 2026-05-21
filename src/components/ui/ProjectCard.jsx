@@ -1,6 +1,7 @@
 import GlassCard from './GlassCard'
 
 function ProjectPreview({ index = 0, name }) {
+  // Intentionally abstract preview: no fake screenshot or external image.
   const accentClass =
     index % 2 === 0
       ? 'bg-cyan-glow/15 text-cyan-glow'
@@ -17,7 +18,7 @@ function ProjectPreview({ index = 0, name }) {
           <span className="size-2.5 rounded-full bg-blue-glow/60" />
           <span className="size-2.5 rounded-full bg-violet-glow/60" />
         </div>
-        <span className="text-xs font-medium text-text-soft">Preview</span>
+        <span className="text-xs font-medium text-text-soft">Aperçu</span>
       </div>
 
       <div className="relative mt-5 grid gap-3">
@@ -42,6 +43,7 @@ function ProjectPreview({ index = 0, name }) {
 }
 
 function ProjectCard({ index = 0, project }) {
+  // Empty links stay hidden to avoid misleading CTAs.
   const projectLinks = [
     { href: project.links?.live, label: 'Voir le site' },
     { href: project.links?.code, label: 'Voir le code' },
