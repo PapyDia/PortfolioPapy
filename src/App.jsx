@@ -1,3 +1,5 @@
+import { MotionConfig } from 'framer-motion'
+
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import HeroSection from './components/sections/HeroSection'
@@ -11,27 +13,29 @@ import ContactSection from './components/sections/ContactSection'
 
 function App() {
   return (
-    <div className="page-shell">
-      <a className="skip-link" href="#main-content">
-        Aller au contenu principal
-      </a>
-      <Navbar />
-      <main
-        className="relative focus:outline-none"
-        id="main-content"
-        tabIndex={-1}
-      >
-        <HeroSection />
-        <StackNebulaSection />
-        <AboutSection />
-        <SkillsSection />
-        <LearningLanguagesSection />
-        <ProjectsSection />
-        <ProcessSection />
-        <ContactSection />
-      </main>
-      <Footer />
-    </div>
+    <MotionConfig reducedMotion="user">
+      <div className="page-shell">
+        <a className="skip-link" href="#main-content">
+          Aller au contenu principal
+        </a>
+        <Navbar />
+        <main
+          className="relative focus:outline-none"
+          id="main-content"
+          tabIndex={-1}
+        >
+          <HeroSection />
+          <StackNebulaSection />
+          <AboutSection />
+          <SkillsSection />
+          <LearningLanguagesSection />
+          <ProjectsSection />
+          <ProcessSection />
+          <ContactSection />
+        </main>
+        <Footer />
+      </div>
+    </MotionConfig>
   )
 }
 

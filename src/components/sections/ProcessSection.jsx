@@ -1,3 +1,10 @@
+import { motion } from 'framer-motion'
+
+import {
+  fadeUp,
+  staggerContainer,
+  viewportOnce,
+} from '../../constants/animations'
 import { portfolioData } from '../../data/portfolioData'
 import Container from '../ui/Container'
 import ProcessStep from '../ui/ProcessStep'
@@ -22,13 +29,20 @@ function ProcessSection() {
       />
 
       <Container>
-        <SectionHeader
-          align="center"
-          description={process.description}
-          eyebrow={process.eyebrow}
-          id="process-title"
-          title={process.title}
-        />
+        <motion.div
+          initial="hidden"
+          variants={fadeUp}
+          viewport={viewportOnce}
+          whileInView="visible"
+        >
+          <SectionHeader
+            align="center"
+            description={process.description}
+            eyebrow={process.eyebrow}
+            id="process-title"
+            title={process.title}
+          />
+        </motion.div>
 
         <div className="relative mt-8 min-w-0 sm:mt-12">
           <div
@@ -36,7 +50,13 @@ function ProcessSection() {
             className="pointer-events-none absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-cyan-glow/20 lg:block"
           />
 
-          <ol className="m-0 grid min-w-0 list-none gap-4 p-0 md:grid-cols-2 lg:gap-6">
+          <motion.ol
+            className="m-0 grid min-w-0 list-none gap-4 p-0 md:grid-cols-2 lg:gap-6"
+            initial="hidden"
+            variants={staggerContainer}
+            viewport={viewportOnce}
+            whileInView="visible"
+          >
             {process.steps.map((step, index) => (
               <ProcessStep
                 index={index}
@@ -44,7 +64,7 @@ function ProcessSection() {
                 step={step}
               />
             ))}
-          </ol>
+          </motion.ol>
         </div>
       </Container>
     </section>

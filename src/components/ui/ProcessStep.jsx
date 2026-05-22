@@ -1,3 +1,6 @@
+import { motion } from 'framer-motion'
+
+import { staggerItem } from '../../constants/animations'
 import GlassCard from './GlassCard'
 
 function ProcessStep({ index = 0, step }) {
@@ -6,8 +9,9 @@ function ProcessStep({ index = 0, step }) {
 
   return (
     <GlassCard
-      as="li"
+      as={motion.li}
       className={`relative min-w-0 overflow-hidden ${offsetClass}`}
+      variants={staggerItem}
     >
       <div
         aria-hidden="true"

@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 
+import { mobileMenuVariants } from '../../constants/animations'
 import { navigationItems } from '../../constants/navigation'
 import { portfolioData } from '../../data/portfolioData'
 import Button from '../ui/Button'
@@ -92,26 +94,36 @@ function Navbar() {
         </button>
       </Container>
 
-      {isOpen && (
-        <Container className="pb-4 lg:hidden">
-          <nav
-            aria-label="Navigation mobile"
-            className="glass-panel flex max-h-[calc(100vh-5rem)] flex-col gap-1 overflow-y-auto rounded-2xl p-2"
-            id="mobile-navigation"
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            animate="open"
+            className="lg:hidden"
+            exit="exit"
+            initial="closed"
+            variants={mobileMenuVariants}
           >
-            {navigationItems.map((item) => (
-              <a
-                className="flex min-h-11 touch-manipulation items-center rounded-2xl px-4 py-3 text-sm font-medium text-text-muted transition hover:bg-cyan-glow/10 hover:text-ice-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-glow"
-                href={item.href}
-                key={item.href}
-                onClick={closeMenu}
+            <Container className="pb-4">
+              <nav
+                aria-label="Navigation mobile"
+                className="glass-panel flex max-h-[calc(100vh-5rem)] flex-col gap-1 overflow-y-auto rounded-2xl p-2"
+                id="mobile-navigation"
               >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-        </Container>
-      )}
+                {navigationItems.map((item) => (
+                  <a
+                    className="flex min-h-11 touch-manipulation items-center rounded-2xl px-4 py-3 text-sm font-medium text-text-muted transition hover:bg-cyan-glow/10 hover:text-ice-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-glow"
+                    href={item.href}
+                    key={item.href}
+                    onClick={closeMenu}
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </nav>
+            </Container>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   )
 }

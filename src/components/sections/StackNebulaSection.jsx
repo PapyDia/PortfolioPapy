@@ -1,3 +1,11 @@
+import { motion } from 'framer-motion'
+
+import {
+  fadeUp,
+  staggerContainer,
+  staggerItem,
+  viewportOnce,
+} from '../../constants/animations'
 import { techStack } from '../../constants/techStack'
 import { portfolioData } from '../../data/portfolioData'
 import Container from '../ui/Container'
@@ -7,7 +15,13 @@ function StackNebulaSection() {
   return (
     <section aria-labelledby="stack-title" className="section-padding" id="stack">
       <Container>
-        <div className="glass-panel relative min-w-0 max-w-full overflow-hidden px-4 py-6 sm:px-8 sm:py-8 lg:px-10">
+        <motion.div
+          className="glass-panel relative min-w-0 max-w-full overflow-hidden px-4 py-6 sm:px-8 sm:py-8 lg:px-10"
+          initial="hidden"
+          variants={fadeUp}
+          viewport={viewportOnce}
+          whileInView="visible"
+        >
           <div
             aria-hidden="true"
             className="pointer-events-none absolute right-0 top-0 size-56 rounded-full bg-cyan-glow/10 blur-3xl"
@@ -28,18 +42,26 @@ function StackNebulaSection() {
               </p>
             </div>
 
-            <ul
+            <motion.ul
               aria-label="Stack technique"
               className="m-0 flex min-w-0 max-w-full list-none flex-wrap justify-center gap-2 p-0 sm:gap-3 xl:justify-start"
+              initial="hidden"
+              variants={staggerContainer}
+              viewport={viewportOnce}
+              whileInView="visible"
             >
               {techStack.map((tech) => (
-                <li className="min-w-0 max-w-full" key={tech}>
+                <motion.li
+                  className="min-w-0 max-w-full"
+                  key={tech}
+                  variants={staggerItem}
+                >
                   <TechBadge>{tech}</TechBadge>
-                </li>
+                </motion.li>
               ))}
-            </ul>
+            </motion.ul>
           </div>
-        </div>
+        </motion.div>
       </Container>
     </section>
   )

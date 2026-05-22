@@ -1,3 +1,11 @@
+import { motion } from 'framer-motion'
+
+import {
+  fadeUp,
+  staggerContainer,
+  staggerItem,
+  viewportOnce,
+} from '../../constants/animations'
 import { portfolioData } from '../../data/portfolioData'
 import Container from '../ui/Container'
 import ProjectCard from '../ui/ProjectCard'
@@ -22,23 +30,41 @@ function ProjectsSection() {
       />
 
       <Container>
-        <SectionHeader
-          align="center"
-          description={projects.description}
-          eyebrow={projects.eyebrow}
-          id="projects-title"
-          title={projects.title}
-        />
+        <motion.div
+          initial="hidden"
+          variants={fadeUp}
+          viewport={viewportOnce}
+          whileInView="visible"
+        >
+          <SectionHeader
+            align="center"
+            description={projects.description}
+            eyebrow={projects.eyebrow}
+            id="projects-title"
+            title={projects.title}
+          />
+        </motion.div>
 
-        <div className="mt-8 grid min-w-0 gap-5 sm:mt-10 sm:gap-6 lg:grid-cols-2">
+        <motion.div
+          className="mt-8 grid min-w-0 gap-5 sm:mt-10 sm:gap-6 lg:grid-cols-2"
+          initial="hidden"
+          variants={staggerContainer}
+          viewport={viewportOnce}
+          whileInView="visible"
+        >
           {projects.items.map((project, index) => (
-            <ProjectCard
-              index={index}
+            <motion.div
+              className="min-w-0"
               key={project.name}
-              project={project}
-            />
+              variants={staggerItem}
+            >
+              <ProjectCard
+                index={index}
+                project={project}
+              />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </Container>
     </section>
   )

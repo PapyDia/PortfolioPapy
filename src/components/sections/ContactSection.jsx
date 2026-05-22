@@ -1,3 +1,11 @@
+import { motion } from 'framer-motion'
+
+import {
+  scaleIn,
+  staggerContainer,
+  staggerItem,
+  viewportOnce,
+} from '../../constants/animations'
 import { portfolioData } from '../../data/portfolioData'
 import Button from '../ui/Button'
 import Container from '../ui/Container'
@@ -26,7 +34,13 @@ function ContactSection() {
       />
 
       <Container>
-        <div className="glass-panel relative mx-auto max-w-6xl min-w-0 overflow-hidden p-4 text-center sm:p-8 lg:p-10">
+        <motion.div
+          className="glass-panel relative mx-auto max-w-6xl min-w-0 overflow-hidden p-4 text-center sm:p-8 lg:p-10"
+          initial="hidden"
+          variants={scaleIn}
+          viewport={viewportOnce}
+          whileInView="visible"
+        >
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -left-20 -top-20 size-56 rounded-full bg-blue-glow/10 blur-3xl"
@@ -64,15 +78,22 @@ function ContactSection() {
               </p>
             )}
 
-            <div className="mt-8 grid min-w-0 gap-3 sm:mt-10 sm:gap-4 md:grid-cols-3">
+            <motion.div
+              className="mt-8 grid min-w-0 gap-3 sm:mt-10 sm:gap-4 md:grid-cols-3"
+              initial="hidden"
+              variants={staggerContainer}
+              viewport={viewportOnce}
+              whileInView="visible"
+            >
               {contact.cards.map((card, index) => {
                 const titleId = `contact-card-${index + 1}-title`
 
                 return (
-                  <article
+                  <motion.article
                     aria-labelledby={titleId}
                     className="premium-border min-w-0 rounded-card bg-white/[0.03] p-4 text-center sm:p-5 md:text-left"
                     key={card.title}
+                    variants={staggerItem}
                   >
                     <h3
                       className="max-w-full break-words text-lg font-semibold leading-tight text-ice-50"
@@ -83,17 +104,17 @@ function ContactSection() {
                     <p className="text-pretty-safe mt-2 max-w-full break-words leading-7 text-text-muted sm:mt-3">
                       {card.description}
                     </p>
-                  </article>
+                  </motion.article>
                 )
               })}
-            </div>
+            </motion.div>
 
             <p className="text-pretty-safe mx-auto mt-6 max-w-2xl break-words text-sm leading-6 text-text-soft sm:mt-8">
               Chaque échange commence par une idée claire, un besoin réel et
               une solution construite avec soin.
             </p>
           </div>
-        </div>
+        </motion.div>
       </Container>
     </section>
   )
