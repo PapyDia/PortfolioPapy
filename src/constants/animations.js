@@ -126,3 +126,41 @@ export const softFloat = {
     y: [0, -8, 0],
   },
 }
+
+export function createOrbitAnimation(
+  duration,
+  delay = 0,
+  direction = 1,
+  initialRotation = 0,
+) {
+  const rotation = direction === 1 ? 360 : -360
+
+  return {
+    rotate: [initialRotation, initialRotation + rotation],
+    transition: {
+      delay,
+      duration,
+      ease: 'linear',
+      repeat: Infinity,
+    },
+  }
+}
+
+export function createCounterOrbitAnimation(
+  duration,
+  delay = 0,
+  direction = 1,
+  initialRotation = 0,
+) {
+  const rotation = direction === 1 ? -360 : 360
+
+  return {
+    rotate: [-initialRotation, -initialRotation + rotation],
+    transition: {
+      delay,
+      duration,
+      ease: 'linear',
+      repeat: Infinity,
+    },
+  }
+}

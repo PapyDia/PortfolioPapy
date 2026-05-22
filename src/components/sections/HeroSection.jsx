@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion'
 
 import {
+  createCounterOrbitAnimation,
+  createOrbitAnimation,
   fadeUp,
   heroVisual,
-  softFloat,
   staggerContainer,
   staggerItem,
 } from '../../constants/animations'
@@ -121,27 +122,66 @@ function HeroSection() {
               <div className="absolute left-1/2 top-1/2 aspect-square w-[82%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-ice-300/10 sm:w-[86%]" />
               <div className="absolute left-1/2 top-1/2 aspect-square w-[64%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-cyan-glow/20 sm:w-[70%]" />
 
-              {heroTechLogos.map((tech) => {
-                const shouldFloat = !prefersReducedMotion
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 z-20 overflow-hidden"
+              >
+                {heroTechLogos.map((tech) => {
+                  const direction = tech.orbitDirection ?? 1
+                  const duration = tech.orbitDuration ?? 34
+                  const delay = tech.orbitDelay ?? 0
+                  const initialRotation = tech.initialRotation ?? 0
+                  const orbitRadius = tech.orbitRadius ?? 'clamp(5.9rem, 30vw, 9.75rem)'
 
-                return (
-                  <div className={tech.className} key={tech.label}>
+                  return (
                     <motion.div
-                      animate={shouldFloat ? 'animate' : undefined}
-                      className="will-change-transform"
-                      variants={shouldFloat ? softFloat : undefined}
+                      animate={
+                        prefersReducedMotion
+                          ? { rotate: initialRotation }
+                          : createOrbitAnimation(
+                              duration,
+                              delay,
+                              direction,
+                              initialRotation,
+                            )
+                      }
+                      className="absolute left-1/2 top-1/2 size-0 origin-center will-change-transform"
+                      initial={{ rotate: initialRotation }}
+                      key={tech.label}
                     >
-                      <TechLogo
-                        Icon={tech.Icon}
-                        iconClassName={tech.iconClassName}
-                        label={tech.label}
-                      />
+                      <div
+                        className="absolute left-0 top-0"
+                        style={{
+                          transform: `translateX(${orbitRadius}) translate(-50%, -50%)`,
+                        }}
+                      >
+                        <motion.div
+                          animate={
+                            prefersReducedMotion
+                              ? { rotate: -initialRotation }
+                              : createCounterOrbitAnimation(
+                                  duration,
+                                  delay,
+                                  direction,
+                                  initialRotation,
+                                )
+                          }
+                          className="origin-center will-change-transform"
+                          initial={{ rotate: -initialRotation }}
+                        >
+                          <TechLogo
+                            Icon={tech.Icon}
+                            iconClassName={tech.iconClassName}
+                            label={tech.label}
+                          />
+                        </motion.div>
+                      </div>
                     </motion.div>
-                  </div>
-                )
-              })}
+                  )
+                })}
+              </div>
 
-              <div className="relative z-10 grid h-full min-w-0 place-items-center">
+              <div className="relative z-30 grid h-full min-w-0 place-items-center">
                 <div className="grid aspect-square w-[48%] min-w-36 max-w-52 place-items-center rounded-full border border-cyan-glow/25 bg-navy-950/70 px-3 text-center shadow-glow-soft backdrop-blur-xl sm:px-5">
                   <div className="min-w-0 max-w-full">
                     <p className="max-w-full break-words text-[0.68rem] font-medium leading-snug text-text-soft min-[430px]:text-xs sm:text-sm">
