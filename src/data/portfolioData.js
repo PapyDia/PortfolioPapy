@@ -182,6 +182,7 @@ export const portfolioData = {
           live: 'https://kaolack-kitchen-web.vercel.app/',
           code: 'https://github.com/PapyDia',
         },
+        backendNotice: true,
         note: 'Repo privé, disponible sur demande.',
       },
       {
@@ -217,6 +218,7 @@ export const portfolioData = {
           live: 'https://ama-horaire-frontend.vercel.app/',
           code: 'https://github.com/PapyDia',
         },
+        backendNotice: true,
         note: 'Repo privé, disponible sur demande.',
       },
     ],

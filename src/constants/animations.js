@@ -93,24 +93,56 @@ export const heroVisual = {
 export const mobileMenuVariants = {
   closed: {
     opacity: 0,
-    scale: 0.98,
-    y: -8,
   },
   exit: {
     opacity: 0,
-    scale: 0.98,
     transition: {
-      duration: 0.18,
+      duration: 0.2,
       ease: 'easeInOut',
     },
-    y: -8,
   },
   open: {
     opacity: 1,
-    scale: 1,
     transition: {
-      duration: 0.22,
+      duration: 0.24,
       ease: 'easeOut',
+    },
+  },
+}
+
+export const mobileDrawerVariants = {
+  closed: {
+    opacity: 0,
+    x: '-105%',
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: 0.24,
+      ease: [0.4, 0, 1, 1],
+    },
+    x: '-105%',
+  },
+  open: {
+    opacity: 1,
+    transition: {
+      duration: 0.34,
+      ease: smoothEase,
+    },
+    x: 0,
+  },
+}
+
+export const mobileDrawerItemVariants = {
+  closed: {
+    opacity: 0,
+    y: 10,
+  },
+  open: {
+    opacity: 1,
+    transition: {
+      duration: 0.28,
+      ease: smoothEase,
     },
     y: 0,
   },

@@ -20,7 +20,7 @@ function App() {
         </a>
         <Navbar />
         <main
-          className="relative focus:outline-none"
+          className="relative pt-16 focus:outline-none"
           id="main-content"
           tabIndex={-1}
         >

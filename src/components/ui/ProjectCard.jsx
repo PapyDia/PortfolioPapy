@@ -1,3 +1,6 @@
+import { useState } from 'react'
+
+import BackendNoticeModal from './BackendNoticeModal'
 import GlassCard from './GlassCard'
 
 function ProjectPreview({ index = 0, name }) {
@@ -48,110 +51,163 @@ function ProjectPreview({ index = 0, name }) {
 }
 
 function ProjectCard({ index = 0, project }) {
+  const [isBackendNoticeOpen, setIsBackendNoticeOpen] = useState(false)
   // Empty links stay hidden to avoid misleading CTAs.
-  const projectLinks = [
-    { href: project.links?.live, label: 'Voir le site' },
-    { href: project.links?.code, label: 'Voir le code' },
-  ]
-    .map((link) => ({ ...link, href: link.href?.trim() ?? '' }))
-    .filter((link) => link.href)
+  const liveLink = project.links?.live?.trim() ?? ''
+  const codeLink = project.links?.code?.trim() ?? ''
+  const hasProjectLinks = Boolean(liveLink || codeLink)
+  const shouldShowBackendNotice = Boolean(liveLink && project.backendNotice)
 
   const titleId = `project-${index + 1}-title`
+  const ctaClassName =
+    'inline-flex min-h-11 max-w-full touch-manipulation items-center justify-center rounded-button border border-ice-300/20 px-4 py-2 text-center text-sm font-semibold leading-snug break-words text-ice-50 transition hover:border-cyan-glow/50 hover:bg-cyan-glow/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow'
+
+  function handleLiveClick(event) {
+    if (!shouldShowBackendNotice) {
+      return
+    }
+
+    event.preventDefault()
+    setIsBackendNoticeOpen(true)
+  }
+
+  function handleContinueToLiveSite() {
+    if (liveLink) {
+      window.open(liveLink, '_blank', 'noopener,noreferrer')
+    }
+
+    setIsBackendNoticeOpen(false)
+  }
 
   return (
-    <GlassCard
-      aria-labelledby={titleId}
-      as="article"
-      className="flex h-full min-w-0 flex-col gap-5 overflow-hidden sm:gap-6"
-    >
-      <ProjectPreview index={index} name={project.name} />
+    <>
+      <GlassCard
+        aria-labelledby={titleId}
+        as="article"
+        className="flex h-full min-w-0 flex-col gap-5 overflow-hidden sm:gap-6"
+      >
+        <ProjectPreview index={index} name={project.name} />
 
-      <div className="flex min-w-0 flex-1 flex-col">
-        <div className="min-w-0">
-          <div className="flex min-w-0 flex-wrap items-center gap-2 sm:gap-3">
-            <span className="max-w-full rounded-button border border-cyan-glow/25 bg-cyan-glow/10 px-3 py-1 text-center text-xs font-semibold leading-snug break-words uppercase text-cyan-glow">
-              {project.status}
-            </span>
-            <span className="max-w-full break-words text-sm font-medium leading-snug text-text-soft">
-              {project.type}
-            </span>
+        <div className="flex min-w-0 flex-1 flex-col">
+          <div className="min-w-0">
+            <div className="flex min-w-0 flex-wrap items-center gap-2 sm:gap-3">
+              <span className="max-w-full rounded-button border border-cyan-glow/25 bg-cyan-glow/10 px-3 py-1 text-center text-xs font-semibold leading-snug break-words uppercase text-cyan-glow">
+                {project.status}
+              </span>
+              <span className="max-w-full break-words text-sm font-medium leading-snug text-text-soft">
+                {project.type}
+              </span>
+            </div>
+
+            <h3
+              className="mt-3 max-w-full break-words text-xl font-semibold leading-tight text-ice-50 sm:mt-4 sm:text-2xl"
+              id={titleId}
+            >
+              {project.name}
+            </h3>
+
+            <p className="text-pretty-safe mt-3 max-w-full break-words leading-7 text-text-muted sm:mt-4">
+              {project.description}
+            </p>
           </div>
 
-          <h3
-            className="mt-3 max-w-full break-words text-xl font-semibold leading-tight text-ice-50 sm:mt-4 sm:text-2xl"
-            id={titleId}
+          <div className="mt-5 min-w-0 sm:mt-6">
+            <p className="max-w-full break-words text-sm font-semibold uppercase text-cyan-glow">
+              Points clés
+            </p>
+            <ul className="mt-3 grid min-w-0 gap-1.5 text-sm leading-6 text-text-muted sm:grid-cols-2 sm:gap-2">
+              {project.highlights.map((highlight) => (
+                <li className="flex min-w-0 gap-2" key={highlight}>
+                  <span
+                    aria-hidden="true"
+                    className="mt-2 size-1.5 shrink-0 rounded-full bg-cyan-glow"
+                  />
+                  <span className="min-w-0 max-w-full break-words">
+                    {highlight}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <ul
+            aria-label={`Stack du projet ${project.name}`}
+            className="m-0 mt-5 flex min-w-0 max-w-full list-none flex-wrap gap-1.5 p-0 sm:mt-6 sm:gap-2"
           >
-            {project.name}
-          </h3>
-
-          <p className="text-pretty-safe mt-3 max-w-full break-words leading-7 text-text-muted sm:mt-4">
-            {project.description}
-          </p>
-        </div>
-
-        <div className="mt-5 min-w-0 sm:mt-6">
-          <p className="max-w-full break-words text-sm font-semibold uppercase text-cyan-glow">
-            Points clés
-          </p>
-          <ul className="mt-3 grid min-w-0 gap-1.5 text-sm leading-6 text-text-muted sm:grid-cols-2 sm:gap-2">
-            {project.highlights.map((highlight) => (
-              <li className="flex min-w-0 gap-2" key={highlight}>
-                <span
-                  aria-hidden="true"
-                  className="mt-2 size-1.5 shrink-0 rounded-full bg-cyan-glow"
-                />
-                <span className="min-w-0 max-w-full break-words">
-                  {highlight}
-                </span>
+            {project.stack.map((tech) => (
+              <li
+                className="max-w-full rounded-button border border-ice-300/15 bg-white/[0.04] px-2.5 py-1 text-center text-xs font-medium leading-snug break-words text-ice-100 sm:px-3 sm:py-1.5"
+                key={`${project.name}-${tech}`}
+              >
+                {tech}
               </li>
             ))}
           </ul>
+
+          {(hasProjectLinks || project.note) && (
+            <div className="mt-5 min-w-0 border-t border-white/10 pt-4 sm:mt-6 sm:pt-5">
+              {hasProjectLinks && (
+                <div className="flex min-w-0 flex-wrap gap-3">
+                  {liveLink && (
+                    <>
+                      {shouldShowBackendNotice ? (
+                        <button
+                          aria-haspopup="dialog"
+                          aria-label={`Voir le site du projet ${project.name}`}
+                          className={ctaClassName}
+                          onClick={handleLiveClick}
+                          type="button"
+                        >
+                          Voir le site
+                        </button>
+                      ) : (
+                        <a
+                          aria-label={`Voir le site du projet ${project.name} dans un nouvel onglet`}
+                          className={ctaClassName}
+                          href={liveLink}
+                          rel="noopener noreferrer"
+                          target="_blank"
+                        >
+                          Voir le site
+                        </a>
+                      )}
+                    </>
+                  )}
+
+                  {codeLink && (
+                    <a
+                      aria-label={`Voir le code du projet ${project.name} dans un nouvel onglet`}
+                      className={ctaClassName}
+                      href={codeLink}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      Voir le code
+                    </a>
+                  )}
+                </div>
+              )}
+
+              {project.note && (
+                <p
+                  className={`${hasProjectLinks ? 'mt-4 ' : ''}inline-flex max-w-full rounded-button border border-ice-300/15 bg-white/[0.03] px-3 py-1.5 text-xs font-medium leading-snug break-words text-text-soft`}
+                >
+                  {project.note}
+                </p>
+              )}
+            </div>
+          )}
         </div>
+      </GlassCard>
 
-        <ul
-          aria-label={`Stack du projet ${project.name}`}
-          className="m-0 mt-5 flex min-w-0 max-w-full list-none flex-wrap gap-1.5 p-0 sm:mt-6 sm:gap-2"
-        >
-          {project.stack.map((tech) => (
-            <li
-              className="max-w-full rounded-button border border-ice-300/15 bg-white/[0.04] px-2.5 py-1 text-center text-xs font-medium leading-snug break-words text-ice-100 sm:px-3 sm:py-1.5"
-              key={`${project.name}-${tech}`}
-            >
-              {tech}
-            </li>
-          ))}
-        </ul>
-
-        {(projectLinks.length > 0 || project.note) && (
-          <div className="mt-5 min-w-0 border-t border-white/10 pt-4 sm:mt-6 sm:pt-5">
-            {projectLinks.length > 0 && (
-              <div className="flex min-w-0 flex-wrap gap-3">
-                {projectLinks.map((link) => (
-                  <a
-                    aria-label={`${link.label} du projet ${project.name} dans un nouvel onglet`}
-                    className="inline-flex min-h-11 max-w-full touch-manipulation items-center justify-center rounded-button border border-ice-300/20 px-4 py-2 text-center text-sm font-semibold leading-snug break-words text-ice-50 transition hover:border-cyan-glow/50 hover:bg-cyan-glow/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow"
-                    href={link.href}
-                    key={link.label}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-            )}
-
-            {project.note && (
-              <p
-                className={`${projectLinks.length > 0 ? 'mt-4 ' : ''}inline-flex max-w-full rounded-button border border-ice-300/15 bg-white/[0.03] px-3 py-1.5 text-xs font-medium leading-snug break-words text-text-soft`}
-              >
-                {project.note}
-              </p>
-            )}
-          </div>
-        )}
-      </div>
-    </GlassCard>
+      <BackendNoticeModal
+        isOpen={isBackendNoticeOpen}
+        onClose={() => setIsBackendNoticeOpen(false)}
+        onContinue={handleContinueToLiveSite}
+        projectName={project.name}
+        projectUrl={liveLink}
+      />
+    </>
   )
 }
 

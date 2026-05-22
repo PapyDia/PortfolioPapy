@@ -9,7 +9,7 @@ import {
 const innerOrbitRadius = 'clamp(5.65rem, 29vw, 9.25rem)'
 const mainOrbitRadius = 'clamp(5.9rem, 30vw, 9.75rem)'
 const outerOrbitRadius = 'clamp(6.1rem, 31vw, 10.1rem)'
-const orbitDuration = 38
+const orbitDuration = 72
 const orbitDelay = 0
 
 export const heroTechLogos = [
