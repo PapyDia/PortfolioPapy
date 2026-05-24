@@ -4,7 +4,7 @@ export const portfolioData = {
   identity: {
     name: 'Cheikh Massamba Dia',
     title: 'Développeur Full-Stack JavaScript',
-    imageAlt: 'Portrait de Papy Dia',
+    imageAlt: 'Portrait de Cheikh Massamba Dia',
   },
   hero: {
     badge: 'Développeur Full-Stack JavaScript',
@@ -29,7 +29,7 @@ export const portfolioData = {
     eyebrow: 'À propos',
     title: 'Un développeur orienté projets réels.',
     description:
-      "Je m'appelle Cheikh Massamba, développeur web full-stack JavaScript en apprentissage avancé, basé au Sénégal.",
+      "Je m'appelle Cheikh Massamba Dia, développeur web full-stack JavaScript en apprentissage avancé, basé au Sénégal.",
     paragraphs: [
       "Je construis des applications web modernes avec une attention particulière portée à l'expérience utilisateur, la performance, l'accessibilité et la qualité du code.",
       'Mes projets sont orientés vers des besoins concrets : commande en ligne, réservation, gestion admin, suivi de statut, tableaux de bord et API sécurisées.',
@@ -131,10 +131,10 @@ export const portfolioData = {
           'Pratique d’un langage clair pour manipuler des données, écrire des scripts et comprendre la logique de programmation.',
       },
       {
-        name: 'SQL',
-        category: 'Bases de données',
+        name: 'MySQL',
+        category: 'SQL / Bases de données',
         description:
-          'Apprentissage des requêtes, tables, relations, filtres et bases de la manipulation de données structurées.',
+          'Apprentissage des requêtes SQL, des tables, des relations, des filtres et de la manipulation de données structurées avec MySQL.',
       },
       {
         name: 'PHP',
@@ -272,33 +272,42 @@ export const portfolioData = {
   },
   contact: {
     eyebrow: 'Contact',
-    title: 'Vous avez une idée ou un projet web ?',
+    title: 'Travaillons ensemble sur votre prochain projet web.',
     description:
-      "Je suis disponible pour discuter d’une collaboration, d’une opportunité ou d’un projet autour du développement web JavaScript.",
-    primaryCta: {
-      // Contact links are displayed only after their href is filled in.
-      label: 'M’envoyer un email',
-      href: '',
-    },
-    secondaryCta: {
-      label: 'Voir mon GitHub',
-      href: '',
-    },
+      'Vous avez une idée, une opportunité ou un projet autour du développement web ? Je suis disponible pour échanger et voir comment je peux vous aider.',
+    email: '',
+    links: [
+      {
+        label: 'GitHub',
+        href: 'https://github.com/PapyDia',
+        description: 'Voir mes projets et mon code public.',
+      },
+      {
+        label: 'LinkedIn',
+        href: 'https://www.linkedin.com/in/cheikh-massamba-dia/',
+        description: 'Découvrir mon profil professionnel.',
+      },
+      {
+        label: 'WhatsApp',
+        href: '',
+        description: 'Discuter rapidement d’un projet.',
+      },
+    ],
     cards: [
       {
-        title: 'Collaboration',
+        title: 'Projet web 🌐',
         description:
-          'Discuter d’un projet web, d’une application ou d’une idée à transformer en produit.',
+          'Création ou amélioration d’une application web moderne, responsive et maintenable.',
       },
       {
-        title: 'Opportunité',
+        title: 'Collaboration 🤝',
         description:
-          'Échanger autour d’un stage, d’une mission, d’un poste junior ou d’une collaboration technique.',
+          'Échange autour d’une mission, d’un stage, d’un poste junior ou d’une collaboration technique.',
       },
       {
-        title: 'Projet local',
+        title: 'Conseil technique 👨‍💻',
         description:
-          'Construire une solution utile, adaptée aux besoins réels des utilisateurs au Sénégal.',
+          'Discussion sur une idée, une architecture ou une solution web à construire.',
       },
     ],
   },

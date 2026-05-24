@@ -79,7 +79,7 @@ function AboutSection() {
           >
             <ProfilePhoto
               className="relative z-10"
-              alt={identity.imageAlt ?? 'Portrait de Papy Dia'}
+              alt={identity.imageAlt ?? 'Portrait de Cheikh Massamba Dia'}
               src={profilePhoto}
             />
 

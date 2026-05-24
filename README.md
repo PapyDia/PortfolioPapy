@@ -1,6 +1,6 @@
-# Portfolio Papy Dia
+# Portfolio Cheikh Massamba Dia
 
-Base React + Vite pour le portfolio personnel de Papy Dia, developpeur full-stack JavaScript.
+Base React + Vite pour le portfolio personnel de Cheikh Massamba Dia, developpeur full-stack JavaScript.
 
 ## Scripts
 

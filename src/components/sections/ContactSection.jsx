@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 
 import {
@@ -9,14 +10,43 @@ import {
 import { portfolioData } from '../../data/portfolioData'
 import Button from '../ui/Button'
 import Container from '../ui/Container'
+import ContactLinkCard from '../ui/ContactLinkCard'
 import SectionHeader from '../ui/SectionHeader'
 
 function ContactSection() {
   const { contact } = portfolioData
-  // CTAs without an href are not rendered: no fake buttons or invented links.
-  const contactCtas = [contact.primaryCta, contact.secondaryCta].filter(
-    (cta) => cta.href?.trim(),
+  const [copied, setCopied] = useState(false)
+  const email = contact.email?.trim() ?? ''
+  const activeLinks = (contact.links ?? []).filter((link) =>
+    link.href?.trim(),
   )
+
+  useEffect(() => {
+    if (!copied) {
+      return undefined
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setCopied(false)
+    }, 2200)
+
+    return () => {
+      window.clearTimeout(timeoutId)
+    }
+  }, [copied])
+
+  const handleCopyEmail = async () => {
+    if (!email || !navigator.clipboard?.writeText) {
+      return
+    }
+
+    try {
+      await navigator.clipboard.writeText(email)
+      setCopied(true)
+    } catch {
+      setCopied(false)
+    }
+  }
 
   return (
     <section
@@ -59,24 +89,65 @@ function ContactSection() {
               title={contact.title}
             />
 
-            {contactCtas.length > 0 ? (
-              <div className="mt-8 flex min-w-0 flex-col justify-center gap-3 sm:flex-row">
-                {contactCtas.map((cta, index) => (
-                  <Button
-                    className="w-full sm:w-auto"
-                    href={cta.href}
-                    key={cta.label}
-                    variant={index === 0 ? 'primary' : 'secondary'}
-                  >
-                    {cta.label}
-                  </Button>
-                ))}
+            <div className="mt-8 grid min-w-0 gap-4 text-left sm:mt-10 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
+              <div className="premium-border relative min-w-0 overflow-hidden rounded-card bg-white/[0.04] p-4 sm:p-6">
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -right-16 -top-16 size-40 rounded-full bg-cyan-glow/10 blur-3xl"
+                />
+
+                <div className="relative min-w-0">
+                  <p className="max-w-full break-words text-sm font-semibold uppercase text-cyan-glow">
+                    Contact direct
+                  </p>
+                  <h3 className="mt-3 max-w-full break-words text-xl font-semibold leading-tight text-ice-50">
+                    Échanger avec Cheikh Massamba
+                  </h3>
+
+                  {email ? (
+                    <>
+                      <p className="mt-3 max-w-full break-all text-sm leading-6 text-text-muted">
+                        {email}
+                      </p>
+                      <div className="mt-5 flex min-w-0 flex-col gap-3 sm:flex-row">
+                        <Button
+                          aria-label={`Envoyer un email à Cheikh Massamba Dia à l’adresse ${email}`}
+                          className="w-full sm:w-auto"
+                          href={`mailto:${email}`}
+                        >
+                          M’envoyer un email
+                        </Button>
+                        <Button
+                          aria-live="polite"
+                          className="w-full sm:w-auto"
+                          onClick={handleCopyEmail}
+                          variant="secondary"
+                        >
+                          {copied ? 'Email copié !' : 'Copier l’email'}
+                        </Button>
+                      </div>
+                    </>
+                  ) : (
+                    <p className="text-pretty-safe mt-4 max-w-full break-words rounded-2xl border border-ice-300/15 bg-white/[0.04] px-4 py-3 text-sm leading-6 text-text-muted">
+                      Oups 😍! J'ai pas encore mis mon adresse mail. 
+                    </p>
+                  )}
+                </div>
               </div>
-            ) : (
-              <p className="mx-auto mt-7 max-w-full rounded-2xl border border-ice-300/15 bg-white/[0.04] px-4 py-3 text-center text-sm font-medium leading-6 break-words text-text-muted sm:mt-8 sm:max-w-xl sm:rounded-button sm:px-5">
-                Les liens de contact seront ajoutés prochainement.
-              </p>
-            )}
+
+              {activeLinks.length > 0 && (
+                <div className="grid w-full min-w-0 gap-3 sm:grid-cols-2 xl:grid-cols-1">
+                  {activeLinks.map((link) => (
+                    <ContactLinkCard
+                      description={link.description}
+                      href={link.href}
+                      key={link.label}
+                      label={link.label}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
 
             <motion.div
               className="mt-8 grid min-w-0 gap-3 sm:mt-10 sm:gap-4 md:grid-cols-3"
