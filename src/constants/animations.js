@@ -20,19 +20,6 @@ export const fadeUp = {
   },
 }
 
-export const fadeIn = {
-  hidden: {
-    opacity: 0,
-  },
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: smoothEase,
-    },
-  },
-}
-
 export const scaleIn = {
   hidden: {
     opacity: 0,
@@ -145,17 +132,6 @@ export const mobileDrawerItemVariants = {
       ease: smoothEase,
     },
     y: 0,
-  },
-}
-
-export const softFloat = {
-  animate: {
-    transition: {
-      duration: 6,
-      ease: 'easeInOut',
-      repeat: Infinity,
-    },
-    y: [0, -8, 0],
   },
 }
 

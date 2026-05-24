@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { useEffect, useId, useRef } from 'react'
+import { useId, useRef } from 'react'
 
+import useDialogLifecycle from '../../hooks/useDialogLifecycle'
 import { useReducedMotionPreference } from '../../hooks/useReducedMotionPreference'
 import Button from './Button'
 
@@ -9,51 +10,14 @@ function BackendNoticeModal({
   onClose,
   onContinue,
   projectName,
-  projectUrl,
 }) {
   const prefersReducedMotion = useReducedMotionPreference()
   const titleId = useId()
   const descriptionId = useId()
   const continueButtonRef = useRef(null)
+  const dialogRef = useRef(null)
 
-  useEffect(() => {
-    if (!isOpen) {
-      return undefined
-    }
-
-    function handleKeyDown(event) {
-      if (event.key === 'Escape') {
-        onClose()
-      }
-    }
-
-    document.addEventListener('keydown', handleKeyDown)
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [isOpen, onClose])
-
-  useEffect(() => {
-    if (!isOpen) {
-      return undefined
-    }
-
-    const previousOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-
-    return () => {
-      document.body.style.overflow = previousOverflow
-    }
-  }, [isOpen])
-
-  useEffect(() => {
-    if (!isOpen) {
-      return
-    }
-
-    continueButtonRef.current?.focus()
-  }, [isOpen])
+  useDialogLifecycle(isOpen, onClose, continueButtonRef, dialogRef)
 
   const overlayAnimation = prefersReducedMotion
     ? {}
@@ -87,7 +51,9 @@ function BackendNoticeModal({
             aria-modal="true"
             className="glass-panel relative w-full max-w-lg overflow-hidden border-ice-300/20 p-5 text-center shadow-[0_24px_90px_rgba(2,6,23,0.72),0_0_60px_rgba(56,189,248,0.16)] sm:p-7"
             onClick={(event) => event.stopPropagation()}
+            ref={dialogRef}
             role="dialog"
+            tabIndex={-1}
             {...modalAnimation}
           >
             <div
@@ -95,7 +61,10 @@ function BackendNoticeModal({
               className="pointer-events-none absolute inset-x-8 -top-20 h-32 rounded-full bg-cyan-glow/15 blur-3xl"
             />
 
-            <div className="relative mx-auto grid size-14 place-items-center rounded-full border border-cyan-glow/25 bg-cyan-glow/10 text-2xl shadow-glow-soft sm:size-16 sm:text-3xl">
+            <div
+              aria-hidden="true"
+              className="relative mx-auto grid size-14 place-items-center rounded-full border border-cyan-glow/25 bg-cyan-glow/10 text-2xl shadow-glow-soft sm:size-16 sm:text-3xl"
+            >
               ⏳
             </div>
 
@@ -129,11 +98,6 @@ function BackendNoticeModal({
 
             <div className="relative mt-6 flex min-w-0 flex-col gap-3 sm:flex-row sm:justify-center">
               <Button
-                aria-label={
-                  projectUrl
-                    ? `Continuer vers le site ${projectUrl}`
-                    : 'Continuer vers le site'
-                }
                 className="w-full sm:w-auto"
                 onClick={onContinue}
                 ref={continueButtonRef}

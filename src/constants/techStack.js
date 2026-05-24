@@ -1,5 +1,3 @@
-export const heroVisualStack = ['React', 'Node', 'MongoDB', 'Tailwind', 'Docker',]
-
 export const techStack = [
   'React',
   'Vite',

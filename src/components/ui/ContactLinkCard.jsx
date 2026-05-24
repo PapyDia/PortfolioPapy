@@ -8,8 +8,6 @@ const githubCodeLines = [
   'const deployTarget = { frontend: "Vercel", backend: "Render" };',
 ]
 
-const githubCodeTracks = [...githubCodeLines]
-
 function GitHubCodeDecor() {
   return (
     <div
@@ -24,7 +22,7 @@ function GitHubCodeDecor() {
         }}
       />
       <div className="absolute inset-0 flex flex-col justify-between py-3 font-mono text-[0.48rem] leading-none text-cyan-glow/20 opacity-70 sm:py-4 sm:text-[0.58rem] lg:text-[0.64rem]">
-        {githubCodeTracks.map((line, index) => (
+        {githubCodeLines.map((line, index) => (
           <p
             className={`w-[180%] max-w-none select-none whitespace-nowrap ${
               index % 4 === 0
@@ -114,7 +112,6 @@ function ContactLinkCard({ description, href, label }) {
 
   return (
     <a
-      aria-label={`${label} de Cheikh Massamba Dia`}
       className="premium-border group relative flex w-full min-w-0 flex-col overflow-hidden rounded-3xl bg-white/[0.04] p-4 text-left transition duration-300 hover:-translate-y-0.5 hover:border-cyan-glow/45 hover:bg-cyan-glow/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow sm:p-5"
       href={normalizedHref}
       rel={isExternal ? 'noopener noreferrer' : undefined}

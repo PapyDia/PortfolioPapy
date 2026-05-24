@@ -51,8 +51,9 @@ function ContactSection() {
   return (
     <section
       aria-labelledby="contact-title"
-      className="section-padding section-divider relative overflow-hidden"
+      className="section-padding section-divider relative overflow-hidden focus:outline-none"
       id="contact"
+      tabIndex={-1}
     >
       <div
         aria-hidden="true"

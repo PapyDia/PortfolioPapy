@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { useEffect, useId, useRef } from 'react'
+import { useId, useRef } from 'react'
 
+import useDialogLifecycle from '../../hooks/useDialogLifecycle'
 import { useReducedMotionPreference } from '../../hooks/useReducedMotionPreference'
 import Button from './Button'
 import CodingBearIllustration from './CodingBearIllustration'
@@ -10,54 +11,29 @@ function PrivateRepoModal({ isOpen, onClose, projectName }) {
   const titleId = useId()
   const descriptionId = useId()
   const understoodButtonRef = useRef(null)
+  const dialogRef = useRef(null)
+  const restoreFocusRef = useRef(true)
 
-  useEffect(() => {
-    if (!isOpen) {
-      return undefined
-    }
-
-    function handleKeyDown(event) {
-      if (event.key === 'Escape') {
-        onClose()
-      }
-    }
-
-    document.addEventListener('keydown', handleKeyDown)
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [isOpen, onClose])
-
-  useEffect(() => {
-    if (!isOpen) {
-      return undefined
-    }
-
-    const previousOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-
-    return () => {
-      document.body.style.overflow = previousOverflow
-    }
-  }, [isOpen])
-
-  useEffect(() => {
-    if (!isOpen) {
-      return
-    }
-
-    understoodButtonRef.current?.focus()
-  }, [isOpen])
+  useDialogLifecycle(
+    isOpen,
+    onClose,
+    understoodButtonRef,
+    dialogRef,
+    restoreFocusRef,
+  )
 
   function handleContactClick() {
+    restoreFocusRef.current = false
     onClose()
 
     window.setTimeout(() => {
-      document.getElementById('contact')?.scrollIntoView({
+      const contactSection = document.getElementById('contact')
+
+      contactSection?.scrollIntoView({
         behavior: prefersReducedMotion ? 'auto' : 'smooth',
         block: 'start',
       })
+      contactSection?.focus()
       window.history.replaceState(null, '', '#contact')
     }, 0)
   }
@@ -94,7 +70,9 @@ function PrivateRepoModal({ isOpen, onClose, projectName }) {
             aria-modal="true"
             className="glass-panel relative w-full max-w-xl overflow-hidden border-ice-300/20 p-5 text-center shadow-[0_24px_90px_rgba(2,6,23,0.72),0_0_70px_rgba(139,92,246,0.16)] sm:p-8"
             onClick={(event) => event.stopPropagation()}
+            ref={dialogRef}
             role="dialog"
+            tabIndex={-1}
             {...modalAnimation}
           >
             <div

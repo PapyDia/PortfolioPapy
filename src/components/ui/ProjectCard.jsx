@@ -65,12 +65,7 @@ function ProjectCard({ index = 0, project }) {
   const ctaClassName =
     'inline-flex min-h-11 max-w-full touch-manipulation items-center justify-center rounded-button border border-ice-300/20 px-4 py-2 text-center text-sm font-semibold leading-snug break-words text-ice-50 transition hover:border-cyan-glow/50 hover:bg-cyan-glow/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow'
 
-  function handleLiveClick(event) {
-    if (!shouldShowBackendNotice) {
-      return
-    }
-
-    event.preventDefault()
+  function handleLiveClick() {
     setIsBackendNoticeOpen(true)
   }
 
@@ -227,7 +222,6 @@ function ProjectCard({ index = 0, project }) {
         onClose={() => setIsBackendNoticeOpen(false)}
         onContinue={handleContinueToLiveSite}
         projectName={project.name}
-        projectUrl={liveLink}
       />
       <PrivateRepoModal
         isOpen={isPrivateRepoOpen}

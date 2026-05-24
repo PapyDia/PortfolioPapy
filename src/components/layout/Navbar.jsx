@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
 import profilePhoto from '../../assets/images/profile.jpg'
@@ -43,17 +43,26 @@ function NavbarAvatar({ className = '', hasImage, onImageError }) {
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [hasAvatarImage, setHasAvatarImage] = useState(true)
+  const menuButtonRef = useRef(null)
+  const firstMobileLinkRef = useRef(null)
   const activeSectionId = useScrollSpy(navigationSectionIds)
 
   // Close the mobile menu after an anchor click to keep navigation smooth.
   const closeMenu = () => setIsOpen(false)
+  const dismissMenu = () => {
+    setIsOpen(false)
+    menuButtonRef.current?.focus()
+  }
 
   useEffect(() => {
     if (!isOpen) return undefined
 
+    firstMobileLinkRef.current?.focus()
+
     const handleKeyDown = (event) => {
       if (event.key === 'Escape') {
         setIsOpen(false)
+        menuButtonRef.current?.focus()
       }
     }
 
@@ -72,6 +81,22 @@ function Navbar() {
       document.body.style.overflow = previousOverflow
     }
   }, [isOpen])
+
+  useEffect(() => {
+    const desktopQuery = window.matchMedia('(min-width: 80rem)')
+
+    const handleDesktopChange = (event) => {
+      if (event.matches) {
+        setIsOpen(false)
+      }
+    }
+
+    desktopQuery.addEventListener('change', handleDesktopChange)
+
+    return () => {
+      desktopQuery.removeEventListener('change', handleDesktopChange)
+    }
+  }, [])
 
   return (
     <>
@@ -98,55 +123,55 @@ function Navbar() {
             </span>
           </a>
 
-        <nav
-          aria-label="Navigation principale"
-          className="hidden items-center gap-0.5 lg:flex xl:gap-1"
-        >
-          {navigationItems.map((item) => {
-            const isActive = activeSectionId === item.href.replace('#', '')
-
-            return (
-              <a
-                aria-current={isActive ? 'page' : undefined}
-                className={`rounded-button border px-2 py-2 whitespace-nowrap text-sm font-medium transition xl:px-3 ${
-                  isActive
-                    ? 'border-cyan-glow/25 bg-cyan-glow/10 text-cyan-glow shadow-glow-soft'
-                    : 'border-transparent text-text-muted hover:border-ice-300/15 hover:bg-white/[0.04] hover:text-ice-50'
-                } focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow`}
-                href={item.href}
-                key={item.href}
-              >
-                {item.label}
-              </a>
-            )
-          })}
-        </nav>
-
-        <div className="hidden lg:block">
-          <Button
-            className="px-5 whitespace-nowrap"
-            href="#contact"
-            variant="secondary"
+          <nav
+            aria-label="Navigation principale"
+            className="hidden items-center gap-1 xl:flex"
           >
-            Me contacter
-          </Button>
-        </div>
+            {navigationItems.map((item) => {
+              const isActive = activeSectionId === item.href.replace('#', '')
 
-        <button
-          aria-controls="mobile-navigation"
-          aria-expanded={isOpen}
-          aria-haspopup="true"
-          aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
-          className="grid size-11 shrink-0 touch-manipulation place-items-center rounded-full border border-ice-300/15 bg-white/5 text-ice-50 backdrop-blur-md transition hover:border-cyan-glow/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow lg:hidden"
-          onClick={() => setIsOpen((current) => !current)}
-          type="button"
-        >
-          <span aria-hidden="true" className="flex w-4 flex-col gap-1.5">
-            <span className="h-0.5 rounded-full bg-current" />
-            <span className="h-0.5 rounded-full bg-current" />
-            <span className="h-0.5 rounded-full bg-current" />
-          </span>
-        </button>
+              return (
+                <a
+                  aria-current={isActive ? 'page' : undefined}
+                  className={`rounded-button border px-3 py-2 whitespace-nowrap text-sm font-medium transition ${
+                    isActive
+                      ? 'border-cyan-glow/25 bg-cyan-glow/10 text-cyan-glow shadow-glow-soft'
+                      : 'border-transparent text-text-muted hover:border-ice-300/15 hover:bg-white/[0.04] hover:text-ice-50'
+                  } focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow`}
+                  href={item.href}
+                  key={item.href}
+                >
+                  {item.label}
+                </a>
+              )
+            })}
+          </nav>
+
+          <div className="hidden xl:block">
+            <Button
+              className="px-5 whitespace-nowrap"
+              href="#contact"
+              variant="secondary"
+            >
+              Me contacter
+            </Button>
+          </div>
+
+          <button
+            aria-controls="mobile-navigation"
+            aria-expanded={isOpen}
+            aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+            className="grid size-11 shrink-0 touch-manipulation place-items-center rounded-full border border-ice-300/15 bg-white/5 text-ice-50 backdrop-blur-md transition hover:border-cyan-glow/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow xl:hidden"
+            onClick={() => setIsOpen((current) => !current)}
+            ref={menuButtonRef}
+            type="button"
+          >
+            <span aria-hidden="true" className="flex w-4 flex-col gap-1.5">
+              <span className="h-0.5 rounded-full bg-current" />
+              <span className="h-0.5 rounded-full bg-current" />
+              <span className="h-0.5 rounded-full bg-current" />
+            </span>
+          </button>
         </Container>
       </header>
 
@@ -154,16 +179,21 @@ function Navbar() {
         {isOpen && (
           <motion.div
             animate="open"
-            className="fixed inset-x-0 bottom-0 top-16 z-40 bg-navy-950/55 backdrop-blur-sm lg:hidden"
+            className="fixed inset-x-0 bottom-0 top-16 z-40 bg-navy-950/55 backdrop-blur-sm xl:hidden"
             exit="exit"
             initial="closed"
-            onClick={closeMenu}
+            onPointerDown={dismissMenu}
             variants={mobileMenuVariants}
           >
             <motion.aside
               aria-label="Menu mobile"
               className="relative h-full w-[min(21rem,calc(100vw-1rem))] overflow-hidden border-r border-ice-300/15 bg-navy-950/80 shadow-[24px_0_80px_rgba(2,6,23,0.58)] backdrop-blur-2xl"
-              onClick={(event) => event.stopPropagation()}
+              onBlurCapture={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget)) {
+                  closeMenu()
+                }
+              }}
+              onPointerDown={(event) => event.stopPropagation()}
               variants={mobileDrawerVariants}
             >
               <div
@@ -212,7 +242,7 @@ function Navbar() {
                     },
                   }}
                 >
-                  {navigationItems.map((item) => {
+                  {navigationItems.map((item, index) => {
                     const isActive =
                       activeSectionId === item.href.replace('#', '')
 
@@ -227,6 +257,7 @@ function Navbar() {
                         href={item.href}
                         key={item.href}
                         onClick={closeMenu}
+                        ref={index === 0 ? firstMobileLinkRef : undefined}
                         variants={mobileDrawerItemVariants}
                       >
                         <span>{item.label}</span>

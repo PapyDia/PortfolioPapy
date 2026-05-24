@@ -19,7 +19,10 @@ function ProcessStep({ index = 0, step }) {
       />
 
       <div className="relative flex min-w-0 gap-3 sm:gap-4">
-        <span className="grid size-9 shrink-0 place-items-center rounded-2xl border border-cyan-glow/25 bg-cyan-glow/10 text-xs font-semibold text-cyan-glow shadow-glow-soft sm:size-12 sm:text-sm">
+        <span
+          aria-hidden="true"
+          className="grid size-9 shrink-0 place-items-center rounded-2xl border border-cyan-glow/25 bg-cyan-glow/10 text-xs font-semibold text-cyan-glow shadow-glow-soft sm:size-12 sm:text-sm"
+        >
           {step.number}
         </span>
 

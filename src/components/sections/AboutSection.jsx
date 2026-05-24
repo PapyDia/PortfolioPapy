@@ -46,10 +46,7 @@ function AboutSection() {
           whileInView="visible"
         >
           <motion.div className="min-w-0" variants={staggerItem}>
-            <GlassCard
-              as="article"
-              className="relative overflow-hidden p-5 text-center sm:p-7 lg:p-8 lg:text-left"
-            >
+            <GlassCard className="relative overflow-hidden p-5 sm:p-7 lg:p-10">
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute -left-16 top-10 size-44 rounded-full bg-cyan-glow/10 blur-3xl"
@@ -59,7 +56,7 @@ function AboutSection() {
                 className="pointer-events-none absolute -bottom-20 right-0 size-48 rounded-full bg-violet-glow/10 blur-3xl"
               />
 
-              <div className="relative max-w-full space-y-4 text-base leading-7 text-text-muted sm:space-y-5 sm:leading-8">
+              <div className="relative mx-auto min-w-0 max-w-2xl space-y-5 text-left text-base leading-7 text-text-muted sm:space-y-6 sm:leading-8">
                 {about.paragraphs.map((paragraph) => (
                   <p
                     className="text-pretty-safe max-w-full break-words"

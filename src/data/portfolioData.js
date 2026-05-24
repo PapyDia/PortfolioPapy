@@ -106,6 +106,24 @@ export const portfolioData = {
           'Configuration production',
         ],
       },
+      {
+        title: 'Soft skills',
+        featured: true,
+        description:
+          'Des qualités humaines importantes pour collaborer, apprendre vite et construire des projets sérieux.',
+        items: [
+          'Flexibilité',
+          'Esprit d’équipe',
+          'Communication claire',
+          'Esprit d’analyse',
+          'Résolution de problèmes',
+          'Curiosité',
+          'Rigueur',
+          'Adaptabilité',
+          'Patience dans le debugging',
+          'Apprentissage continu',
+        ],
+      },
     ],
   },
   learningLanguages: {
