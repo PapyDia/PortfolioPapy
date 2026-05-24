@@ -4,6 +4,7 @@ export const portfolioData = {
   identity: {
     name: 'Cheikh Massamba Dia',
     title: 'Développeur Full-Stack JavaScript',
+    imageAlt: 'Portrait de Papy Dia',
   },
   hero: {
     badge: 'Développeur Full-Stack JavaScript',
@@ -180,9 +181,10 @@ export const portfolioData = {
         links: {
           // Keep empty until a reliable public link is available.
           live: 'https://kaolack-kitchen-web.vercel.app/',
-          code: 'https://github.com/PapyDia',
+          code: '',
         },
         backendNotice: true,
+        repoPrivate: true,
         note: 'Repo privé, disponible sur demande.',
       },
       {
@@ -216,9 +218,10 @@ export const portfolioData = {
         links: {
           // ProjectCard automatically hides CTAs with an empty href.
           live: 'https://ama-horaire-frontend.vercel.app/',
-          code: 'https://github.com/PapyDia',
+          code: '',
         },
         backendNotice: true,
+        repoPrivate: true,
         note: 'Repo privé, disponible sur demande.',
       },
     ],

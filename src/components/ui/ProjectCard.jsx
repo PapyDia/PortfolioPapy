@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import BackendNoticeModal from './BackendNoticeModal'
 import GlassCard from './GlassCard'
+import PrivateRepoModal from './PrivateRepoModal'
 
 function ProjectPreview({ index = 0, name }) {
   // Intentionally abstract preview: no fake screenshot or external image.
@@ -52,10 +53,12 @@ function ProjectPreview({ index = 0, name }) {
 
 function ProjectCard({ index = 0, project }) {
   const [isBackendNoticeOpen, setIsBackendNoticeOpen] = useState(false)
+  const [isPrivateRepoOpen, setIsPrivateRepoOpen] = useState(false)
   // Empty links stay hidden to avoid misleading CTAs.
   const liveLink = project.links?.live?.trim() ?? ''
   const codeLink = project.links?.code?.trim() ?? ''
-  const hasProjectLinks = Boolean(liveLink || codeLink)
+  const hasCodeAction = Boolean(codeLink || project.repoPrivate)
+  const hasProjectLinks = Boolean(liveLink || hasCodeAction)
   const shouldShowBackendNotice = Boolean(liveLink && project.backendNotice)
 
   const titleId = `project-${index + 1}-title`
@@ -77,6 +80,11 @@ function ProjectCard({ index = 0, project }) {
     }
 
     setIsBackendNoticeOpen(false)
+  }
+
+  function handlePrivateRepoClick() {
+    setIsBackendNoticeOpen(false)
+    setIsPrivateRepoOpen(true)
   }
 
   return (
@@ -174,16 +182,30 @@ function ProjectCard({ index = 0, project }) {
                     </>
                   )}
 
-                  {codeLink && (
-                    <a
-                      aria-label={`Voir le code du projet ${project.name} dans un nouvel onglet`}
-                      className={ctaClassName}
-                      href={codeLink}
-                      rel="noopener noreferrer"
-                      target="_blank"
-                    >
-                      Voir le code
-                    </a>
+                  {hasCodeAction && (
+                    <>
+                      {project.repoPrivate ? (
+                        <button
+                          aria-haspopup="dialog"
+                          aria-label={`Voir le code du projet ${project.name}`}
+                          className={ctaClassName}
+                          onClick={handlePrivateRepoClick}
+                          type="button"
+                        >
+                          Voir le code
+                        </button>
+                      ) : (
+                        <a
+                          aria-label={`Voir le code du projet ${project.name} dans un nouvel onglet`}
+                          className={ctaClassName}
+                          href={codeLink}
+                          rel="noopener noreferrer"
+                          target="_blank"
+                        >
+                          Voir le code
+                        </a>
+                      )}
+                    </>
                   )}
                 </div>
               )}
@@ -206,6 +228,11 @@ function ProjectCard({ index = 0, project }) {
         onContinue={handleContinueToLiveSite}
         projectName={project.name}
         projectUrl={liveLink}
+      />
+      <PrivateRepoModal
+        isOpen={isPrivateRepoOpen}
+        onClose={() => setIsPrivateRepoOpen(false)}
+        projectName={project.name}
       />
     </>
   )
