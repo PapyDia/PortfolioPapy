@@ -17,7 +17,7 @@ function ProjectsSection() {
   return (
     <section
       aria-labelledby="projects-title"
-      className="section-padding relative overflow-hidden"
+      className="section-padding section-divider relative overflow-hidden"
       id="projects"
     >
       <div

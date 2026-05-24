@@ -1,18 +1,9 @@
-export const quickStack = [
-  'React',
-  'Tailwind CSS',
-  'Node.js',
-  'MongoDB',
-  'MySQL',
-  'Git',
-  'Docker',
-]
-
-export const heroVisualStack = ['React', 'Node', 'MongoDB', 'Tailwind', 'Docker']
+export const heroVisualStack = ['React', 'Node', 'MongoDB', 'Tailwind', 'Docker',]
 
 export const techStack = [
   'React',
   'Vite',
+  'HTML',
   'CSS',
   'Tailwind CSS',
   'JavaScript',
@@ -29,4 +20,7 @@ export const techStack = [
   'Vercel',
   'Render',
   'Cloudinary',
+  'Postman',
+  'VS Code',
+  'Notion',
 ]

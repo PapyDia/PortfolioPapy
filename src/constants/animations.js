@@ -159,6 +159,29 @@ export const softFloat = {
   },
 }
 
+export function createPebbleFloat(index = 0) {
+  const direction = index % 2 === 0 ? 1 : -1
+  const amplitude = 4 + (index % 3)
+  const rotation = 0.8 + (index % 3) * 0.2
+
+  return {
+    rotate: [
+      0,
+      rotation * direction,
+      0,
+      -rotation * direction * 0.45,
+      0,
+    ],
+    transition: {
+      delay: -((index % 7) + 1) * 0.42,
+      duration: 4.4 + (index % 5) * 0.5,
+      ease: 'easeInOut',
+      repeat: Infinity,
+    },
+    y: [0, -amplitude, 0, amplitude * 0.35, 0],
+  }
+}
+
 export function createOrbitAnimation(
   duration,
   delay = 0,

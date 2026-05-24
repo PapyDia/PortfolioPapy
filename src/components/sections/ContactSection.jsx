@@ -51,7 +51,7 @@ function ContactSection() {
   return (
     <section
       aria-labelledby="contact-title"
-      className="section-padding relative overflow-hidden"
+      className="section-padding section-divider relative overflow-hidden"
       id="contact"
     >
       <div
@@ -101,7 +101,7 @@ function ContactSection() {
                     Contact direct
                   </p>
                   <h3 className="mt-3 max-w-full break-words text-xl font-semibold leading-tight text-ice-50">
-                    Échanger avec Cheikh Massamba
+                    Échanger avec moi.
                   </h3>
 
                   {email ? (
@@ -129,7 +129,7 @@ function ContactSection() {
                     </>
                   ) : (
                     <p className="text-pretty-safe mt-4 max-w-full break-words rounded-2xl border border-ice-300/15 bg-white/[0.04] px-4 py-3 text-sm leading-6 text-text-muted">
-                      Oups 😍! J'ai pas encore mis mon adresse mail. 
+                      Oups 😍! J'ai pas encore mis mon adresse e-mail. 
                     </p>
                   )}
                 </div>

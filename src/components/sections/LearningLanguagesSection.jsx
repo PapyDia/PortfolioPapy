@@ -17,7 +17,7 @@ function LearningLanguagesSection() {
   return (
     <section
       aria-labelledby="learning-title"
-      className="section-padding border-t border-white/10"
+      className="section-padding section-divider"
       id="learning"
     >
       <Container>

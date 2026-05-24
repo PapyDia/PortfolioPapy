@@ -16,7 +16,7 @@ function ProcessSection() {
   return (
     <section
       aria-labelledby="process-title"
-      className="section-padding relative overflow-hidden"
+      className="section-padding section-divider relative overflow-hidden"
       id="process"
     >
       <div

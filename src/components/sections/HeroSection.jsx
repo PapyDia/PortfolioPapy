@@ -6,15 +6,12 @@ import {
   fadeUp,
   heroVisual,
   staggerContainer,
-  staggerItem,
 } from '../../constants/animations'
 import { heroTechLogos } from '../../constants/techLogos'
-import { quickStack } from '../../constants/techStack'
 import { portfolioData } from '../../data/portfolioData'
 import { useReducedMotionPreference } from '../../hooks/useReducedMotionPreference'
 import Button from '../ui/Button'
 import Container from '../ui/Container'
-import TechBadge from '../ui/TechBadge'
 import TechLogo from '../ui/TechLogo'
 
 function HeroSection() {
@@ -24,7 +21,7 @@ function HeroSection() {
   return (
     <section
       aria-labelledby="hero-title"
-      className="relative isolate overflow-hidden pb-16 pt-12 sm:pb-20 sm:pt-20 xl:min-h-[calc(100vh-4rem)] xl:pb-24 xl:pt-24"
+      className="section-divider relative isolate overflow-hidden pb-16 pt-12 sm:pb-20 sm:pt-20 xl:min-h-[calc(100vh-4rem)] xl:pb-24 xl:pt-24"
       id="home"
     >
       <div
@@ -93,21 +90,6 @@ function HeroSection() {
               </Button>
             </motion.div>
 
-            <motion.ul
-              aria-label="Technologies principales"
-              className="m-0 mt-6 flex min-w-0 max-w-full list-none flex-wrap justify-center gap-2 p-0 sm:mt-8 sm:gap-3 xl:justify-start"
-              variants={staggerContainer}
-            >
-              {quickStack.map((tech) => (
-                <motion.li
-                  className="min-w-0 max-w-full"
-                  key={tech}
-                  variants={staggerItem}
-                >
-                  <TechBadge>{tech}</TechBadge>
-                </motion.li>
-              ))}
-            </motion.ul>
           </motion.div>
 
           <motion.div

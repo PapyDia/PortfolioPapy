@@ -15,7 +15,11 @@ function SkillsSection() {
   const { skills } = portfolioData
 
   return (
-    <section aria-labelledby="skills-title" className="section-padding" id="skills">
+    <section
+      aria-labelledby="skills-title"
+      className="section-padding section-divider"
+      id="skills"
+    >
       <Container>
         <motion.div
           initial="hidden"

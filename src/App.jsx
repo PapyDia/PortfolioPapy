@@ -25,8 +25,8 @@ function App() {
           tabIndex={-1}
         >
           <HeroSection />
-          <StackNebulaSection />
           <AboutSection />
+          <StackNebulaSection />
           <SkillsSection />
           <LearningLanguagesSection />
           <ProjectsSection />

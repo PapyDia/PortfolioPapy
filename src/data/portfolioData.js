@@ -27,9 +27,9 @@ export const portfolioData = {
   },
   about: {
     eyebrow: 'À propos',
-    title: 'Un développeur orienté projets réels.',
+    title: 'Je suis un développeur orienté projets réels.',
     description:
-      "Je m'appelle Cheikh Massamba Dia, développeur web full-stack JavaScript en apprentissage avancé, basé au Sénégal.",
+      "Je m'appelle Cheikh Massamba Dia, développeur web full-stack JavaScript en apprentissage avancé et qui prétend étendre ses horizons vers le mobile avec React Native et Flutter. ",
     paragraphs: [
       "Je construis des applications web modernes avec une attention particulière portée à l'expérience utilisateur, la performance, l'accessibilité et la qualité du code.",
       'Mes projets sont orientés vers des besoins concrets : commande en ligne, réservation, gestion admin, suivi de statut, tableaux de bord et API sécurisées.',
@@ -75,6 +75,8 @@ export const portfolioData = {
           'Mongoose',
           'JWT',
           'Zod',
+          'Helmet',
+          'CORS',
         ],
       },
       {
@@ -84,8 +86,9 @@ export const portfolioData = {
         items: [
           'Architecture modulaire',
           'Validation',
+          'Features',
           'Gestion des erreurs',
-          'Séparation des responsabilités',
+          'S.O.L.I.D',
         ],
       },
       {
@@ -98,6 +101,7 @@ export const portfolioData = {
           'Docker',
           'Git',
           'GitHub',
+          'CI/CD',
           'Variables d’environnement',
           'Configuration production',
         ],

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
+import profilePhoto from '../../assets/images/profile.jpg'
 import {
   mobileDrawerItemVariants,
   mobileDrawerVariants,
@@ -8,11 +9,41 @@ import {
 } from '../../constants/animations'
 import { navigationItems } from '../../constants/navigation'
 import { portfolioData } from '../../data/portfolioData'
+import useScrollSpy from '../../hooks/useScrollSpy'
 import Button from '../ui/Button'
 import Container from '../ui/Container'
 
+const navigationSectionIds = navigationItems.map((item) =>
+  item.href.replace('#', ''),
+)
+
+function NavbarAvatar({ className = '', hasImage, onImageError }) {
+  return (
+    <span
+      aria-hidden="true"
+      className={`relative grid shrink-0 place-items-center overflow-hidden rounded-full border border-cyan-glow/30 bg-cyan-glow/10 text-sm font-bold text-ice-50 shadow-glow-soft transition duration-300 group-hover:border-cyan-glow/50 ${className}`}
+    >
+      {hasImage ? (
+        <img
+          alt=""
+          aria-hidden="true"
+          className="h-full w-full object-cover object-top"
+          decoding="async"
+          loading="eager"
+          onError={onImageError}
+          src={profilePhoto}
+        />
+      ) : (
+        'CM'
+      )}
+    </span>
+  )
+}
+
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [hasAvatarImage, setHasAvatarImage] = useState(true)
+  const activeSectionId = useScrollSpy(navigationSectionIds)
 
   // Close the mobile menu after an anchor click to keep navigation smooth.
   const closeMenu = () => setIsOpen(false)
@@ -52,12 +83,11 @@ function Navbar() {
             href="#home"
             onClick={closeMenu}
           >
-            <span
-              aria-hidden="true"
-              className="grid size-9 shrink-0 place-items-center rounded-full border border-cyan-glow/30 bg-cyan-glow/10 text-sm font-bold text-ice-50 shadow-glow-soft"
-            >
-              CM
-            </span>
+            <NavbarAvatar
+              className="size-9"
+              hasImage={hasAvatarImage}
+              onImageError={() => setHasAvatarImage(false)}
+            />
             <span className="flex min-w-0 flex-col leading-tight">
               <span className="max-w-full break-words text-sm font-semibold text-ice-50">
                 {portfolioData.identity.name}
@@ -70,17 +100,26 @@ function Navbar() {
 
         <nav
           aria-label="Navigation principale"
-          className="hidden items-center gap-5 lg:flex xl:gap-8"
+          className="hidden items-center gap-0.5 lg:flex xl:gap-1"
         >
-          {navigationItems.map((item) => (
-            <a
-              className="rounded-button px-1 py-2 whitespace-nowrap text-sm font-medium text-text-muted transition hover:text-ice-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow"
-              href={item.href}
-              key={item.href}
-            >
-              {item.label}
-            </a>
-          ))}
+          {navigationItems.map((item) => {
+            const isActive = activeSectionId === item.href.replace('#', '')
+
+            return (
+              <a
+                aria-current={isActive ? 'page' : undefined}
+                className={`rounded-button border px-2 py-2 whitespace-nowrap text-sm font-medium transition xl:px-3 ${
+                  isActive
+                    ? 'border-cyan-glow/25 bg-cyan-glow/10 text-cyan-glow shadow-glow-soft'
+                    : 'border-transparent text-text-muted hover:border-ice-300/15 hover:bg-white/[0.04] hover:text-ice-50'
+                } focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow`}
+                href={item.href}
+                key={item.href}
+              >
+                {item.label}
+              </a>
+            )
+          })}
         </nav>
 
         <div className="hidden lg:block">
@@ -145,12 +184,11 @@ function Navbar() {
 
               <div className="relative flex h-full min-w-0 flex-col px-4 py-5">
                 <div className="mb-5 flex min-w-0 items-center gap-3 rounded-2xl border border-ice-300/15 bg-white/[0.04] p-3">
-                  <span
-                    aria-hidden="true"
-                    className="grid size-10 shrink-0 place-items-center rounded-full border border-cyan-glow/30 bg-cyan-glow/10 text-sm font-bold text-ice-50 shadow-glow-soft"
-                  >
-                    CM
-                  </span>
+                  <NavbarAvatar
+                    className="size-10"
+                    hasImage={hasAvatarImage}
+                    onImageError={() => setHasAvatarImage(false)}
+                  />
                   <span className="min-w-0">
                     <span className="block max-w-full break-words text-sm font-semibold text-ice-50">
                       {portfolioData.identity.name}
@@ -174,21 +212,35 @@ function Navbar() {
                     },
                   }}
                 >
-                  {navigationItems.map((item) => (
-                    <motion.a
-                      className="group flex min-h-12 touch-manipulation items-center justify-between rounded-2xl border border-transparent px-4 py-3 text-sm font-medium text-text-muted transition hover:border-cyan-glow/25 hover:bg-cyan-glow/10 hover:text-ice-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-glow"
-                      href={item.href}
-                      key={item.href}
-                      onClick={closeMenu}
-                      variants={mobileDrawerItemVariants}
-                    >
-                      <span>{item.label}</span>
-                      <span
-                        aria-hidden="true"
-                        className="size-1.5 rounded-full bg-cyan-glow/0 transition group-hover:bg-cyan-glow/80"
-                      />
-                    </motion.a>
-                  ))}
+                  {navigationItems.map((item) => {
+                    const isActive =
+                      activeSectionId === item.href.replace('#', '')
+
+                    return (
+                      <motion.a
+                        aria-current={isActive ? 'page' : undefined}
+                        className={`group flex min-h-12 touch-manipulation items-center justify-between rounded-2xl border px-4 py-3 text-sm font-medium transition ${
+                          isActive
+                            ? 'border-cyan-glow/25 bg-cyan-glow/10 text-cyan-glow shadow-glow-soft'
+                            : 'border-transparent text-text-muted hover:border-cyan-glow/25 hover:bg-cyan-glow/10 hover:text-ice-50'
+                        } focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-glow`}
+                        href={item.href}
+                        key={item.href}
+                        onClick={closeMenu}
+                        variants={mobileDrawerItemVariants}
+                      >
+                        <span>{item.label}</span>
+                        <span
+                          aria-hidden="true"
+                          className={`size-1.5 rounded-full transition ${
+                            isActive
+                              ? 'bg-cyan-glow shadow-glow-soft'
+                              : 'bg-cyan-glow/0 group-hover:bg-cyan-glow/80'
+                          }`}
+                        />
+                      </motion.a>
+                    )
+                  })}
                 </motion.nav>
 
                 <Button

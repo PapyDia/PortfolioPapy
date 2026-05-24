@@ -19,7 +19,7 @@ function AboutSection() {
   return (
     <section
       aria-labelledby="about-title"
-      className="section-padding border-t border-white/10"
+      className="section-padding section-divider"
       id="about"
     >
       <Container>
@@ -75,7 +75,10 @@ function AboutSection() {
           <motion.aside
             aria-label={`Profil de ${identity.name}`}
             className="relative flex min-w-0 flex-col items-center"
+            initial="hidden"
             variants={fadeUp}
+            viewport={viewportOnce}
+            whileInView="visible"
           >
             <ProfilePhoto
               className="relative z-10"

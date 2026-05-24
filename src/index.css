@@ -153,6 +153,28 @@
     padding-block: clamp(3.25rem, 8vw, 7rem);
   }
 
+  .section-divider {
+    position: relative;
+  }
+
+  .section-divider::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(125, 211, 252, 0.16),
+      rgba(248, 250, 252, 0.08),
+      rgba(139, 92, 246, 0.12),
+      transparent
+    );
+  }
+
   .text-balance-safe {
     text-wrap: balance;
     overflow-wrap: break-word;
