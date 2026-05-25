@@ -68,7 +68,7 @@ function PrivateRepoModal({ isOpen, onClose, projectName }) {
             aria-describedby={descriptionId}
             aria-labelledby={titleId}
             aria-modal="true"
-            className="glass-panel relative max-h-[calc(100dvh-2rem)] w-full max-w-xl overflow-x-hidden overflow-y-auto border-ice-300/20 p-5 text-center shadow-[0_24px_90px_rgba(2,6,23,0.72),0_0_70px_rgba(139,92,246,0.16)] sm:max-h-[calc(100dvh-3rem)] sm:p-8"
+            className="glass-panel relative w-full max-w-xl overflow-hidden border-ice-300/20 p-4 text-center shadow-[0_24px_90px_rgba(2,6,23,0.72),0_0_70px_rgba(139,92,246,0.16)] sm:p-7"
             onClick={(event) => event.stopPropagation()}
             ref={dialogRef}
             role="dialog"
@@ -88,7 +88,7 @@ function PrivateRepoModal({ isOpen, onClose, projectName }) {
               <CodingBearIllustration />
             </div>
 
-            <div className="relative mt-4 min-w-0">
+            <div className="relative mt-3 min-w-0">
               <p className="max-w-full break-words text-xs font-semibold uppercase text-cyan-glow">
                 {projectName ?? 'Projet'}
               </p>
@@ -101,24 +101,23 @@ function PrivateRepoModal({ isOpen, onClose, projectName }) {
               </h2>
 
               <div
-                className="mx-auto mt-4 max-w-lg space-y-3 text-sm leading-6 text-text-muted sm:text-base sm:leading-7"
+                className="mx-auto mt-3 max-w-lg space-y-2 text-sm leading-5 text-text-muted sm:text-base sm:leading-6"
                 id={descriptionId}
               >
                 <p className="max-w-full break-words">
                   Le code source de ce projet n’est pas public pour le moment.
                 </p>
                 <p className="max-w-full break-words text-text-soft">
-                  Je peux toutefois présenter l’architecture, les choix
-                  techniques et les fonctionnalités du projet sur demande.
+                  Je peux présenter l’architecture, les choix techniques et
+                  les fonctionnalités sur demande.
                 </p>
                 <p className="max-w-full break-words text-ice-100">
-                  Nouni 🐻 garde le repo au chaud pendant que je continue
-                  d’améliorer le projet.
+                  Nouni 🐻 garde le repo au chaud pendant que je peaufine encore le projet.
                 </p>
               </div>
             </div>
 
-            <div className="relative mt-6 flex min-w-0 flex-col gap-3 sm:flex-row sm:justify-center">
+            <div className="relative mt-5 flex min-w-0 flex-col gap-2.5 sm:flex-row sm:justify-center">
               <Button
                 className="w-full sm:w-auto"
                 onClick={onClose}

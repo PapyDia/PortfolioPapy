@@ -15,7 +15,7 @@ function CodingBearIllustration() {
   return (
     <div
       aria-hidden="true"
-      className="relative mx-auto w-full max-w-[15rem] sm:max-w-[17rem]"
+      className="relative mx-auto w-full max-w-[11rem] sm:max-w-[13.5rem] lg:max-w-[14rem]"
     >
       <div className="pointer-events-none absolute inset-6 rounded-full bg-cyan-glow/20 blur-3xl" />
       <div className="pointer-events-none absolute inset-x-10 bottom-6 h-20 rounded-full bg-violet-glow/20 blur-3xl" />

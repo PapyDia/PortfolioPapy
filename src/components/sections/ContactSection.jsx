@@ -198,8 +198,9 @@ function ContactSection() {
             </motion.div>
 
             <p className="text-pretty-safe mx-auto mt-6 max-w-2xl break-words text-sm leading-6 text-text-soft sm:mt-8">
-              Chaque échange commence par une idée claire, un besoin réel et une
-              solution construite avec soin.
+              Chaque échange est pour moi l’occasion de comprendre un contexte,
+              analyser un besoin et construire une réponse utile, claire et
+              durable.
             </p>
           </div>
         </motion.div>

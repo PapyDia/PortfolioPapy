@@ -11,6 +11,7 @@ import { techStack } from '../../constants/techStack'
 import { portfolioData } from '../../data/portfolioData'
 import { useReducedMotionPreference } from '../../hooks/useReducedMotionPreference'
 import Container from '../ui/Container'
+import SectionTransition from '../ui/SectionTransition'
 import StackLogoBadge from '../ui/StackLogoBadge'
 
 const gravelSizes = [
@@ -45,7 +46,7 @@ function StackNebulaSection() {
   return (
     <section
       aria-labelledby="stack-title"
-      className="section-padding section-divider"
+      className="section-padding section-divider relative overflow-hidden"
       id="stack"
     >
       <Container>
@@ -142,6 +143,7 @@ function StackNebulaSection() {
           </div>
         </motion.div>
       </Container>
+      <SectionTransition variant="violet" />
     </section>
   )
 }

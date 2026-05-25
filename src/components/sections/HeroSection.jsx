@@ -12,6 +12,7 @@ import { portfolioData } from '../../data/portfolioData'
 import { useReducedMotionPreference } from '../../hooks/useReducedMotionPreference'
 import Button from '../ui/Button'
 import Container from '../ui/Container'
+import SectionTransition from '../ui/SectionTransition'
 import TechLogo from '../ui/TechLogo'
 
 function HeroSection() {
@@ -182,6 +183,7 @@ function HeroSection() {
           </motion.div>
         </div>
       </Container>
+      <SectionTransition variant="cyan" />
     </section>
   )
 }

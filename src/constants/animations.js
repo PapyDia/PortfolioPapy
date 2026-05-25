@@ -80,18 +80,22 @@ export const heroVisual = {
 export const mobileMenuVariants = {
   closed: {
     opacity: 0,
+    transition: {
+      duration: 0.18,
+      ease: 'easeOut',
+    },
   },
   exit: {
     opacity: 0,
     transition: {
       duration: 0.2,
-      ease: 'easeInOut',
+      ease: 'easeIn',
     },
   },
   open: {
     opacity: 1,
     transition: {
-      duration: 0.24,
+      duration: 0.22,
       ease: 'easeOut',
     },
   },
@@ -100,38 +104,53 @@ export const mobileMenuVariants = {
 export const mobileDrawerVariants = {
   closed: {
     opacity: 0,
-    x: '105%',
+    scale: 0.985,
+    x: '100%',
   },
   exit: {
     opacity: 0,
+    scale: 0.985,
     transition: {
       duration: 0.24,
-      ease: [0.4, 0, 1, 1],
+      ease: [0.4, 0, 0.2, 1],
     },
-    x: '105%',
+    x: '100%',
   },
   open: {
     opacity: 1,
+    scale: 1,
     transition: {
-      duration: 0.34,
-      ease: smoothEase,
+      damping: 30,
+      mass: 0.8,
+      stiffness: 260,
+      type: 'spring',
     },
     x: 0,
+  },
+}
+
+export const mobileDrawerListVariants = {
+  closed: {},
+  open: {
+    transition: {
+      delayChildren: 0.08,
+      staggerChildren: 0.045,
+    },
   },
 }
 
 export const mobileDrawerItemVariants = {
   closed: {
     opacity: 0,
-    y: 10,
+    x: 14,
   },
   open: {
     opacity: 1,
     transition: {
-      duration: 0.28,
+      duration: 0.24,
       ease: smoothEase,
     },
-    y: 0,
+    x: 0,
   },
 }
 

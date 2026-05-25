@@ -163,12 +163,34 @@
     pointer-events: none;
     background: linear-gradient(
       90deg,
-      transparent,
-      rgba(125, 211, 252, 0.16),
-      rgba(248, 250, 252, 0.08),
-      rgba(139, 92, 246, 0.12),
-      transparent
+      transparent 4%,
+      rgba(56, 189, 248, 0.18) 30%,
+      rgba(248, 250, 252, 0.1) 50%,
+      rgba(139, 92, 246, 0.14) 70%,
+      transparent 96%
     );
+  }
+
+  .section-glow-transition {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: clamp(4.5rem, 10vw, 7.5rem);
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0.82;
+    background:
+      radial-gradient(
+        ellipse at 27% 100%,
+        rgba(56, 189, 248, 0.07),
+        transparent 47%
+      ),
+      radial-gradient(
+        ellipse at 76% 100%,
+        rgba(139, 92, 246, 0.065),
+        transparent 48%
+      );
   }
 
   .text-balance-safe {

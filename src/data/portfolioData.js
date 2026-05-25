@@ -92,6 +92,7 @@ export const portfolioData = {
           'Features',
           'Gestion des erreurs',
           'S.O.L.I.D',
+          'Système de paiements',
         ],
       },
       {
@@ -113,27 +114,29 @@ export const portfolioData = {
         title: 'Soft skills',
         featured: true,
         description:
-          'Des qualités humaines importantes pour collaborer, apprendre vite et construire des projets sérieux.',
+          'Au-delà du code, je développe une méthode de travail basée sur l’écoute, l’analyse et l’amélioration continue. Mon parcours m’a appris à comprendre un besoin avant de proposer une solution, à rester rigoureux face aux problèmes techniques et à m’adapter rapidement à de nouveaux contextes.',
         items: [
+          'Communication claire',
           'Flexibilité',
           'Esprit d’équipe',
-          'Communication claire',
-          'Esprit d’analyse',
-          'Résolution de problèmes',
+          'Autonomie',
           'Curiosité',
+          'Résolution de problèmes',
+          'Esprit d’analyse',
           'Rigueur',
           'Adaptabilité',
           'Patience dans le debugging',
           'Apprentissage continu',
+          'Sens du terrain',
         ],
       },
     ],
   },
   learningLanguages: {
     eyebrow: 'Apprentissage',
-    title: 'Langages rencontrés pendant mon parcours.',
+    title: 'Apprentissage continu',
     description:
-      'Au fil de mon apprentissage, j’ai exploré plusieurs langages et concepts qui m’ont aidé à mieux comprendre la programmation, les bases du web, les algorithmes et les bases de données.',
+      'Chaque langage rencontré pendant mon parcours m’a aidé à renforcer une base différente : la logique avec Scratch, la rigueur avec le C, la polyvalence avec Python, la manipulation de données avec MySQL et la compréhension du web côté serveur avec PHP. Même si mon stack principal est aujourd’hui centré sur JavaScript, React, Node.js et MongoDB, ces apprentissages m’ont permis de mieux comprendre les fondamentaux de la programmation, les structures de données, les requêtes, la logique serveur et l’importance d’apprendre rapidement de nouveaux outils.',
     note:
       'Mon stack principal reste JavaScript, React, Node.js et MongoDB. Ces langages représentent mon parcours d’apprentissage et les bases que j’ai rencontrées en progressant.',
     items: [
@@ -316,9 +319,9 @@ export const portfolioData = {
   },
   contact: {
     eyebrow: 'Contact',
-    title: 'Travaillons ensemble sur votre prochain projet web.',
+    title: 'Discutons d’un projet, d’une opportunité ou d’une idée à construire.',
     description:
-      'Vous avez une idée, une opportunité ou un projet autour du développement web ? Je suis disponible pour échanger et voir comment je peux vous aider.',
+      'Vous avez un projet web, une mission, une opportunité professionnelle ou simplement une idée à clarifier ? Je suis ouvert aux échanges sérieux autour du développement web, de la création d’applications modernes et de solutions adaptées à des besoins réels.',
     email: 'Cheikhmassamba53@gmail.com',
     links: [
       {
@@ -339,19 +342,19 @@ export const portfolioData = {
     ],
     cards: [
       {
-        title: 'Projet web 🌐',
+        title: 'Projet web',
         description:
-          'Création ou amélioration d’une application web moderne, responsive et maintenable.',
+          'Création ou amélioration d’une application web moderne, responsive, accessible et maintenable.',
       },
       {
-        title: 'Collaboration 🤝',
+        title: 'Collaboration',
         description:
           'Échange autour d’une mission, d’un stage, d’un poste junior ou d’une collaboration technique.',
       },
       {
-        title: 'Conseil technique 👨‍💻',
+        title: 'Conseil technique',
         description:
-          'Discussion sur une idée, une architecture ou une solution web à construire.',
+          'Discussion autour d’une idée, d’une architecture, d’un prototype ou d’une solution à construire.',
       },
     ],
   },

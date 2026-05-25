@@ -12,6 +12,7 @@ import Container from '../ui/Container'
 import GlassCard from '../ui/GlassCard'
 import ProfilePhoto from '../ui/ProfilePhoto'
 import SectionHeader from '../ui/SectionHeader'
+import SectionTransition from '../ui/SectionTransition'
 
 function AboutSection() {
   const { about, identity } = portfolioData
@@ -19,7 +20,7 @@ function AboutSection() {
   return (
     <section
       aria-labelledby="about-title"
-      className="section-padding section-divider"
+      className="section-padding section-divider relative overflow-hidden"
       id="about"
     >
       <Container>
@@ -122,6 +123,7 @@ function AboutSection() {
           </motion.aside>
         </motion.div>
       </Container>
+      <SectionTransition variant="mixed" />
     </section>
   )
 }

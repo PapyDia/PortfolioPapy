@@ -10,6 +10,7 @@ import { portfolioData } from '../../data/portfolioData'
 import Container from '../ui/Container'
 import ProjectCard from '../ui/ProjectCard'
 import SectionHeader from '../ui/SectionHeader'
+import SectionTransition from '../ui/SectionTransition'
 
 function ProjectsSection() {
   const { projects } = portfolioData
@@ -66,6 +67,7 @@ function ProjectsSection() {
           ))}
         </motion.div>
       </Container>
+      <SectionTransition variant="mixed" />
     </section>
   )
 }

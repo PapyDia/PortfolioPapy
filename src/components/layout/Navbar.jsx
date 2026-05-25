@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import profilePhoto from '../../assets/images/profile.jpg'
 import {
   mobileDrawerItemVariants,
+  mobileDrawerListVariants,
   mobileDrawerVariants,
   mobileMenuVariants,
 } from '../../constants/animations'
@@ -157,17 +158,17 @@ function Navbar() {
           >
             <span aria-hidden="true" className="relative block size-5">
               <span
-                className={`absolute left-0 top-1/2 h-0.5 w-5 rounded-full bg-current transition duration-300 ${
+                className={`absolute left-0 top-1/2 h-0.5 w-5 rounded-full bg-current transition duration-300 ease-out transform-gpu ${
                   isOpen ? 'translate-y-0 rotate-45' : '-translate-y-2 rotate-0'
                 }`}
               />
               <span
-                className={`absolute left-0 top-1/2 h-0.5 w-5 rounded-full bg-current transition duration-300 ${
+                className={`absolute left-0 top-1/2 h-0.5 w-5 rounded-full bg-current transition duration-300 ease-out transform-gpu ${
                   isOpen ? 'opacity-0' : 'opacity-100'
                 }`}
               />
               <span
-                className={`absolute left-0 top-1/2 h-0.5 w-5 rounded-full bg-current transition duration-300 ${
+                className={`absolute left-0 top-1/2 h-0.5 w-5 rounded-full bg-current transition duration-300 ease-out transform-gpu ${
                   isOpen ? 'translate-y-0 -rotate-45' : 'translate-y-2 rotate-0'
                 }`}
               />
@@ -229,14 +230,7 @@ function Navbar() {
                   aria-label="Navigation mobile"
                   className="flex min-w-0 flex-1 flex-col gap-1 overflow-y-auto rounded-2xl border border-ice-300/15 bg-white/[0.035] p-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
                   id="mobile-navigation"
-                  variants={{
-                    open: {
-                      transition: {
-                        delayChildren: 0.08,
-                        staggerChildren: 0.045,
-                      },
-                    },
-                  }}
+                  variants={mobileDrawerListVariants}
                 >
                   {navigationItems.map((item, index) => {
                     const isActive =
