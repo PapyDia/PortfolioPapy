@@ -141,7 +141,7 @@ export const portfolioData = {
         name: 'Scratch',
         category: 'Logique visuelle',
         description:
-          'Découverte des bases de la programmation : événements, conditions, boucles, variables et logique algorithmique.',
+          'Découverte des bases de la programmation: événements, conditions, boucles, variables et logique algorithmique.',
       },
       {
         name: 'C',
@@ -356,5 +356,5 @@ export const portfolioData = {
     ],
   },
   footer:
-    '© 2026 Cheikh Massamba Dia. Portfolio. Tous droits réservés.',
+    '© 2026 Cheikh Massamba. Portfolio. Tous droits réservés.',
 }

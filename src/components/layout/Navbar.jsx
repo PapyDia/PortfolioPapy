@@ -155,10 +155,22 @@ function Navbar() {
             ref={menuButtonRef}
             type="button"
           >
-            <span aria-hidden="true" className="flex w-4 flex-col gap-1.5">
-              <span className="h-0.5 rounded-full bg-current" />
-              <span className="h-0.5 rounded-full bg-current" />
-              <span className="h-0.5 rounded-full bg-current" />
+            <span aria-hidden="true" className="relative block size-5">
+              <span
+                className={`absolute left-0 top-1/2 h-0.5 w-5 rounded-full bg-current transition duration-300 ${
+                  isOpen ? 'translate-y-0 rotate-45' : '-translate-y-2 rotate-0'
+                }`}
+              />
+              <span
+                className={`absolute left-0 top-1/2 h-0.5 w-5 rounded-full bg-current transition duration-300 ${
+                  isOpen ? 'opacity-0' : 'opacity-100'
+                }`}
+              />
+              <span
+                className={`absolute left-0 top-1/2 h-0.5 w-5 rounded-full bg-current transition duration-300 ${
+                  isOpen ? 'translate-y-0 -rotate-45' : 'translate-y-2 rotate-0'
+                }`}
+              />
             </span>
           </button>
         </Container>
@@ -178,7 +190,10 @@ function Navbar() {
               aria-label="Menu mobile"
               className="relative ml-auto h-full w-[min(21rem,calc(100vw-1rem))] overflow-hidden border-l border-ice-300/15 bg-navy-950/80 shadow-[-24px_0_80px_rgba(2,6,23,0.58)] backdrop-blur-2xl"
               onBlurCapture={(event) => {
-                if (!event.currentTarget.contains(event.relatedTarget)) {
+                if (
+                  !event.currentTarget.contains(event.relatedTarget) &&
+                  event.relatedTarget !== menuButtonRef.current
+                ) {
                   closeMenu()
                 }
               }}
