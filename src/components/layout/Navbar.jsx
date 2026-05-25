@@ -189,14 +189,6 @@ function Navbar() {
             <motion.aside
               aria-label="Menu mobile"
               className="relative ml-auto h-full w-[min(21rem,calc(100vw-1rem))] overflow-hidden border-l border-ice-300/15 bg-navy-950/80 shadow-[-24px_0_80px_rgba(2,6,23,0.58)] backdrop-blur-2xl"
-              onBlurCapture={(event) => {
-                if (
-                  !event.currentTarget.contains(event.relatedTarget) &&
-                  event.relatedTarget !== menuButtonRef.current
-                ) {
-                  closeMenu()
-                }
-              }}
               onPointerDown={(event) => event.stopPropagation()}
               variants={mobileDrawerVariants}
             >
