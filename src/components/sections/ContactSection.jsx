@@ -1,52 +1,52 @@
-import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { MdOutlineMail } from "react-icons/md";
 
 import {
   scaleIn,
   staggerContainer,
   staggerItem,
   viewportOnce,
-} from '../../constants/animations'
-import { portfolioData } from '../../data/portfolioData'
-import Button from '../ui/Button'
-import Container from '../ui/Container'
-import ContactLinkCard from '../ui/ContactLinkCard'
-import SectionHeader from '../ui/SectionHeader'
+} from "../../constants/animations";
+import { portfolioData } from "../../data/portfolioData";
+import Button from "../ui/Button";
+import Container from "../ui/Container";
+import ContactLinkCard from "../ui/ContactLinkCard";
+import EmailContactDecor from "../ui/EmailContactDecor";
+import SectionHeader from "../ui/SectionHeader";
 
 function ContactSection() {
-  const { contact } = portfolioData
-  const [copied, setCopied] = useState(false)
-  const email = contact.email?.trim() ?? ''
-  const activeLinks = (contact.links ?? []).filter((link) =>
-    link.href?.trim(),
-  )
+  const { contact } = portfolioData;
+  const [copied, setCopied] = useState(false);
+  const email = contact.email?.trim() ?? "";
+  const activeLinks = (contact.links ?? []).filter((link) => link.href?.trim());
 
   useEffect(() => {
     if (!copied) {
-      return undefined
+      return undefined;
     }
 
     const timeoutId = window.setTimeout(() => {
-      setCopied(false)
-    }, 2200)
+      setCopied(false);
+    }, 2200);
 
     return () => {
-      window.clearTimeout(timeoutId)
-    }
-  }, [copied])
+      window.clearTimeout(timeoutId);
+    };
+  }, [copied]);
 
   const handleCopyEmail = async () => {
     if (!email || !navigator.clipboard?.writeText) {
-      return
+      return;
     }
 
     try {
-      await navigator.clipboard.writeText(email)
-      setCopied(true)
+      await navigator.clipboard.writeText(email);
+      setCopied(true);
     } catch {
-      setCopied(false)
+      setCopied(false);
     }
-  }
+  };
 
   return (
     <section
@@ -91,19 +91,34 @@ function ContactSection() {
             />
 
             <div className="mt-8 grid min-w-0 gap-4 text-left sm:mt-10 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] xl:items-start">
-              <div className="premium-border relative min-w-0 overflow-hidden rounded-card bg-white/[0.04] p-4 sm:p-6">
+              <div className="premium-border relative isolate min-w-0 overflow-hidden rounded-card bg-white/[0.04] p-4 sm:p-6">
                 <div
                   aria-hidden="true"
                   className="pointer-events-none absolute -right-16 -top-16 size-40 rounded-full bg-cyan-glow/10 blur-3xl"
                 />
+                <EmailContactDecor />
 
-                <div className="relative min-w-0">
-                  <p className="max-w-full break-words text-sm font-semibold uppercase text-cyan-glow">
-                    Contact direct
-                  </p>
-                  <h3 className="mt-3 max-w-full break-words text-xl font-semibold leading-tight text-ice-50">
-                    Échanger avec moi.
-                  </h3>
+                <div className="relative z-10 min-w-0">
+                  <div className="flex min-w-0 items-start justify-between gap-3">
+                    <div className="min-w-0">
+                      <p className="max-w-full break-words text-sm font-semibold uppercase text-cyan-glow">
+                        Contact direct
+                      </p>
+                      <h3 className="mt-3 max-w-full break-words text-xl font-semibold leading-tight text-ice-50">
+                        Échanger avec moi.
+                      </h3>
+                    </div>
+                    <span
+                      aria-hidden="true"
+                      className="grid size-11 shrink-0 place-items-center rounded-2xl border border-ice-300/15 bg-white/[0.06] text-ice-50 shadow-[0_0_28px_rgba(234,67,53,0.12)] backdrop-blur-md sm:size-12"
+                    >
+                      <MdOutlineMail
+                        aria-hidden="true"
+                        className="size-6"
+                        focusable="false"
+                      />
+                    </span>
+                  </div>
 
                   {email ? (
                     <>
@@ -124,13 +139,14 @@ function ContactSection() {
                           onClick={handleCopyEmail}
                           variant="secondary"
                         >
-                          {copied ? 'Email copié !' : 'Copier l’email'}
+                          {copied ? "Email copié !" : "Copier l’email"}
                         </Button>
                       </div>
                     </>
                   ) : (
                     <p className="text-pretty-safe mt-4 max-w-full break-words rounded-2xl border border-ice-300/15 bg-white/[0.04] px-4 py-3 text-sm leading-6 text-text-muted">
-                      Oups 😍! J'ai pas encore mis mon adresse e-mail. 
+                      Adresse e-mail bientôt disponible. Vous pouvez déjà me
+                      retrouver via mes liens professionnels.
                     </p>
                   )}
                 </div>
@@ -158,7 +174,7 @@ function ContactSection() {
               whileInView="visible"
             >
               {contact.cards.map((card, index) => {
-                const titleId = `contact-card-${index + 1}-title`
+                const titleId = `contact-card-${index + 1}-title`;
 
                 return (
                   <motion.article
@@ -177,19 +193,19 @@ function ContactSection() {
                       {card.description}
                     </p>
                   </motion.article>
-                )
+                );
               })}
             </motion.div>
 
             <p className="text-pretty-safe mx-auto mt-6 max-w-2xl break-words text-sm leading-6 text-text-soft sm:mt-8">
-              Chaque échange commence par une idée claire, un besoin réel et
-              une solution construite avec soin.
+              Chaque échange commence par une idée claire, un besoin réel et une
+              solution construite avec soin.
             </p>
           </div>
         </motion.div>
       </Container>
     </section>
-  )
+  );
 }
 
-export default ContactSection
+export default ContactSection;

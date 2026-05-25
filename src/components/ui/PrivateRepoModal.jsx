@@ -112,7 +112,7 @@ function PrivateRepoModal({ isOpen, onClose, projectName }) {
                   techniques et les fonctionnalités du projet sur demande.
                 </p>
                 <p className="max-w-full break-words text-ice-100">
-                  L’ours garde le repo au chaud pendant que je continue
+                  Nouni 🐻 garde le repo au chaud pendant que je continue
                   d’améliorer le projet.
                 </p>
               </div>

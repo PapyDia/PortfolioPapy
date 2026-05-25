@@ -21,25 +21,28 @@ export const portfolioData = {
     },
   },
   stack: {
-    title: 'Mon univers technique',
+    title: 'Un écosystème moderne pour construire des applications solides.',
     description:
-      "J'utilise un écosystème JavaScript moderne pour construire des applications complètes, de l'interface utilisateur jusqu'à l'API backend.",
+      'Je construis mes projets avec un écosystème JavaScript moderne, léger et cohérent, pensé pour créer des interfaces rapides, des API structurées et des applications faciles à faire évoluer. Mon stack principal s’articule autour de React, Tailwind CSS, Node.js, Express, MongoDB et des outils qui renforcent la qualité, la sécurité, le déploiement et la maintenabilité des projets.',
   },
   about: {
     eyebrow: 'À propos',
     title: 'Je suis un développeur orienté projets réels.',
     description:
-      "Je m'appelle Cheikh Massamba Dia, développeur web full-stack JavaScript en apprentissage avancé et qui prétend étendre ses horizons vers le mobile avec React Native et Flutter. ",
+      'Un profil hybride qui combine développement web, esprit d’analyse, apprentissage rapide et compréhension des besoins réels.',
     paragraphs: [
-      "Je construis des applications web modernes avec une attention particulière portée à l'expérience utilisateur, la performance, l'accessibilité et la qualité du code.",
-      'Mes projets sont orientés vers des besoins concrets : commande en ligne, réservation, gestion admin, suivi de statut, tableaux de bord et API sécurisées.',
-      "J'aime créer des interfaces propres, responsives et agréables à utiliser, tout en structurant le backend de manière claire, maintenable et évolutive.",
+      'Je suis Cheikh Massamba Dia, développeur Full-Stack JavaScript avec un profil hybride, à la croisée du développement web, de l’analyse de terrain et de la recherche. Mon parcours m’a appris à comprendre les besoins réels avant de penser solution, à observer les usages et à construire avec méthode.',
+      'Je développe aujourd’hui des applications web modernes avec React, Tailwind CSS, Node.js, Express et MongoDB, en accordant une attention particulière à la qualité du code, à l’expérience utilisateur, à la performance, au responsive et à l’accessibilité.',
+      'Ce qui me distingue, c’est ma capacité à m’adapter rapidement à de nouveaux environnements techniques ou professionnels. J’aime apprendre, explorer de nouveaux langages, comprendre de nouvelles technologies et les intégrer progressivement dans des projets concrets.',
+      'Mon ambition est de continuer à évoluer vers des applications toujours plus utiles, fiables et proches des besoins des utilisateurs, avec une ouverture forte vers le développement mobile et les expériences multiplateformes.',
     ],
     highlights: [
+      'Profil hybride',
       'Full-Stack JavaScript',
-      'Projets concrets',
-      'Mobile-first',
-      'Code maintenable',
+      'Adaptation rapide',
+      'Recherche & terrain',
+      'Apprentissage continu',
+      'Ambition mobile',
     ],
   },
   skills: {
@@ -165,6 +168,27 @@ export const portfolioData = {
           'Découverte des bases du développement web côté serveur et de la génération de pages dynamiques.',
       },
     ],
+    academicJourney: {
+      eyebrow: 'Parcours universitaire',
+      title: 'Je ne vous l’avais pas dit, mais...',
+      description:
+        'Avant de me consacrer sérieusement au développement web, j’ai suivi un parcours universitaire en géographie rurale jusqu’au niveau Master 2. Cette formation m’a appris à observer les territoires, analyser les dynamiques sociales et économiques, mener des enquêtes de terrain et rédiger des travaux scientifiques structurés.',
+      paragraphs: [
+        'J’ai notamment participé à une recherche à Poste Keur Ayib, à la frontière entre le Sénégal et la Gambie, autour du commerce formel et non formel. Cette expérience m’a confronté directement à la réalité du terrain : les échanges transfrontaliers, les pratiques économiques locales, les acteurs, les contraintes et les logiques d’organisation.',
+        'J’ai également travaillé à Kaolack sur une recherche liée à la santé animale et aux zoonoses présentes dans la zone. Ce travail m’a amené à collecter des informations, analyser des données de terrain et rédiger un rapport scientifique qui a contribué à valider mon Master 1.',
+        'Ce parcours m’a donné des compétences solides en enquête, observation, analyse, synthèse et rédaction scientifique. Aujourd’hui, je les considère comme un vrai avantage dans ma manière de concevoir des applications web : je ne pense pas seulement au code, mais aussi aux usages réels, aux besoins des utilisateurs et au contexte dans lequel une solution doit fonctionner.',
+      ],
+      skills: [
+        'Géographie rurale',
+        'Enquête de terrain',
+        'Analyse territoriale',
+        'Recherche qualitative',
+        'Rédaction scientifique',
+        'Observation du terrain',
+        'Synthèse',
+        'Compréhension des usages réels',
+      ],
+    },
   },
   projects: {
     eyebrow: 'Projets',
@@ -201,7 +225,6 @@ export const portfolioData = {
           'Cloudinary',
         ],
         links: {
-          // Keep empty until a reliable public link is available.
           live: 'https://kaolack-kitchen-web.vercel.app/',
           code: '',
         },
@@ -238,7 +261,6 @@ export const portfolioData = {
           'QR Code',
         ],
         links: {
-          // ProjectCard automatically hides CTAs with an empty href.
           live: 'https://ama-horaire-frontend.vercel.app/',
           code: '',
         },
@@ -297,7 +319,7 @@ export const portfolioData = {
     title: 'Travaillons ensemble sur votre prochain projet web.',
     description:
       'Vous avez une idée, une opportunité ou un projet autour du développement web ? Je suis disponible pour échanger et voir comment je peux vous aider.',
-    email: '',
+    email: 'Cheikhmassamba53@gmail.com',
     links: [
       {
         label: 'GitHub',
@@ -306,7 +328,7 @@ export const portfolioData = {
       },
       {
         label: 'LinkedIn',
-        href: 'https://www.linkedin.com/in/cheikh-massamba-dia/',
+        href: 'https://www.linkedin.com/in/cheikh-massamba-83a9a0256',
         description: 'Découvrir mon profil professionnel.',
       },
       {
@@ -334,5 +356,5 @@ export const portfolioData = {
     ],
   },
   footer:
-    '© 2026 Cheikh Massamba. Portfolio. Tous droits réservés.',
+    '© 2026 Cheikh Massamba Dia. Portfolio. Tous droits réservés.',
 }
