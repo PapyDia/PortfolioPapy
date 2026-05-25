@@ -14,29 +14,29 @@ import Container from '../ui/Container'
 import StackLogoBadge from '../ui/StackLogoBadge'
 
 const gravelSizes = [
-  'size-16 sm:size-[4.5rem] lg:size-20',
-  'size-[4.25rem] sm:size-20',
-  'size-[4.5rem] sm:size-[4.75rem] lg:size-20',
-  'size-16 sm:size-20',
+  'size-[3.75rem] sm:size-[4.5rem] lg:size-20',
+  'size-[4.5rem] sm:size-20',
+  'size-16 sm:size-[4.75rem] lg:size-20',
+  'size-[4.75rem] sm:size-20',
   'size-[4.25rem] sm:size-[4.75rem]',
 ]
 
 const gravelOffsets = [
-  '-translate-x-1 -translate-y-1 sm:-translate-y-2 lg:-translate-y-3',
-  'translate-x-1 translate-y-1 sm:translate-y-2',
-  'translate-x-0.5 translate-y-2 sm:-translate-y-1 lg:translate-y-2',
-  '-translate-x-1 translate-y-1 sm:translate-x-1 sm:translate-y-3',
-  'translate-x-1 -translate-y-2 sm:-translate-x-1 sm:-translate-y-1 lg:-translate-y-2',
+  '-translate-x-2 -translate-y-1 sm:-translate-x-1 sm:-translate-y-2 lg:-translate-y-3',
+  'translate-x-1 translate-y-2 sm:translate-y-2',
+  'translate-x-2 -translate-y-1 sm:translate-x-0.5 sm:-translate-y-1 lg:translate-y-2',
+  '-translate-x-2 translate-y-2 sm:translate-x-1 sm:translate-y-3',
+  'translate-x-2 -translate-y-2 sm:-translate-x-1 sm:-translate-y-1 lg:-translate-y-2',
   '-translate-x-0.5 translate-y-1 sm:translate-y-2 lg:translate-y-3',
-  'translate-x-1 -translate-y-1 sm:-translate-y-3',
-  '-translate-x-1 translate-y-2 sm:translate-y-1 lg:-translate-y-1',
-  'translate-x-0.5 -translate-y-1 sm:-translate-x-1 sm:-translate-y-2 lg:translate-y-1',
+  'translate-x-2 -translate-y-1 sm:translate-x-1 sm:-translate-y-3',
+  '-translate-x-2 translate-y-2 sm:-translate-x-1 sm:translate-y-1 lg:-translate-y-1',
+  'translate-x-1 -translate-y-2 sm:-translate-x-1 sm:-translate-y-2 lg:translate-y-1',
 ]
 
 const featuredGravelSizes = {
   Cloudinary: 'size-[4.75rem] sm:size-20 lg:size-24',
-  JavaScript: 'size-[4.75rem] sm:size-20 lg:size-24',
-  'Tailwind CSS': 'size-[4.75rem] sm:size-20 lg:size-24',
+  JavaScript: 'size-20 sm:size-20 lg:size-24',
+  'Tailwind CSS': 'size-20 sm:size-20 lg:size-24',
 }
 
 function StackNebulaSection() {
@@ -100,7 +100,7 @@ function StackNebulaSection() {
 
               <motion.ul
                 aria-label="Stack technique"
-                className="relative mx-auto my-0 flex w-full max-w-[19rem] min-w-0 list-none flex-wrap items-center justify-center gap-x-1.5 gap-y-4 px-2 py-1 sm:max-w-xl sm:gap-x-2 sm:gap-y-4 sm:px-3 lg:max-w-2xl lg:gap-x-2.5 lg:gap-y-5"
+                className="relative mx-auto my-0 flex w-full max-w-[19rem] min-w-0 list-none flex-wrap items-center justify-center gap-x-2.5 gap-y-4 px-2 py-1 sm:max-w-xl sm:gap-x-2 sm:gap-y-4 sm:px-3 lg:max-w-2xl lg:gap-x-2.5 lg:gap-y-5"
                 initial="hidden"
                 variants={staggerContainer}
                 viewport={viewportOnce}

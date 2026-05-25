@@ -100,7 +100,7 @@ export const mobileMenuVariants = {
 export const mobileDrawerVariants = {
   closed: {
     opacity: 0,
-    x: '-105%',
+    x: '105%',
   },
   exit: {
     opacity: 0,
@@ -108,7 +108,7 @@ export const mobileDrawerVariants = {
       duration: 0.24,
       ease: [0.4, 0, 1, 1],
     },
-    x: '-105%',
+    x: '105%',
   },
   open: {
     opacity: 1,

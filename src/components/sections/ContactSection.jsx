@@ -90,7 +90,7 @@ function ContactSection() {
               title={contact.title}
             />
 
-            <div className="mt-8 grid min-w-0 gap-4 text-left sm:mt-10 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
+            <div className="mt-8 grid min-w-0 gap-4 text-left sm:mt-10 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] xl:items-start">
               <div className="premium-border relative min-w-0 overflow-hidden rounded-card bg-white/[0.04] p-4 sm:p-6">
                 <div
                   aria-hidden="true"

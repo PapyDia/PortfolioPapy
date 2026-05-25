@@ -10,7 +10,6 @@ import {
 import { navigationItems } from '../../constants/navigation'
 import { portfolioData } from '../../data/portfolioData'
 import useScrollSpy from '../../hooks/useScrollSpy'
-import Button from '../ui/Button'
 import Container from '../ui/Container'
 
 const navigationSectionIds = navigationItems.map((item) =>
@@ -83,7 +82,7 @@ function Navbar() {
   }, [isOpen])
 
   useEffect(() => {
-    const desktopQuery = window.matchMedia('(min-width: 80rem)')
+    const desktopQuery = window.matchMedia('(min-width: 900px)')
 
     const handleDesktopChange = (event) => {
       if (event.matches) {
@@ -125,7 +124,7 @@ function Navbar() {
 
           <nav
             aria-label="Navigation principale"
-            className="hidden items-center gap-1 xl:flex"
+            className="hidden items-center gap-0.5 min-[900px]:flex min-[1100px]:gap-1"
           >
             {navigationItems.map((item) => {
               const isActive = activeSectionId === item.href.replace('#', '')
@@ -133,7 +132,7 @@ function Navbar() {
               return (
                 <a
                   aria-current={isActive ? 'page' : undefined}
-                  className={`rounded-button border px-3 py-2 whitespace-nowrap text-sm font-medium transition ${
+                  className={`rounded-button border px-2 py-2 whitespace-nowrap text-sm font-medium transition min-[1100px]:px-3 ${
                     isActive
                       ? 'border-cyan-glow/25 bg-cyan-glow/10 text-cyan-glow shadow-glow-soft'
                       : 'border-transparent text-text-muted hover:border-ice-300/15 hover:bg-white/[0.04] hover:text-ice-50'
@@ -147,21 +146,11 @@ function Navbar() {
             })}
           </nav>
 
-          <div className="hidden xl:block">
-            <Button
-              className="px-5 whitespace-nowrap"
-              href="#contact"
-              variant="secondary"
-            >
-              Me contacter
-            </Button>
-          </div>
-
           <button
             aria-controls="mobile-navigation"
             aria-expanded={isOpen}
             aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
-            className="grid size-11 shrink-0 touch-manipulation place-items-center rounded-full border border-ice-300/15 bg-white/5 text-ice-50 backdrop-blur-md transition hover:border-cyan-glow/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow xl:hidden"
+            className="grid size-11 shrink-0 touch-manipulation place-items-center rounded-full border border-ice-300/15 bg-white/5 text-ice-50 backdrop-blur-md transition hover:border-cyan-glow/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow min-[900px]:hidden"
             onClick={() => setIsOpen((current) => !current)}
             ref={menuButtonRef}
             type="button"
@@ -179,7 +168,7 @@ function Navbar() {
         {isOpen && (
           <motion.div
             animate="open"
-            className="fixed inset-x-0 bottom-0 top-16 z-40 bg-navy-950/55 backdrop-blur-sm xl:hidden"
+            className="fixed inset-x-0 bottom-0 top-16 z-40 bg-navy-950/55 backdrop-blur-sm min-[900px]:hidden"
             exit="exit"
             initial="closed"
             onPointerDown={dismissMenu}
@@ -187,7 +176,7 @@ function Navbar() {
           >
             <motion.aside
               aria-label="Menu mobile"
-              className="relative h-full w-[min(21rem,calc(100vw-1rem))] overflow-hidden border-r border-ice-300/15 bg-navy-950/80 shadow-[24px_0_80px_rgba(2,6,23,0.58)] backdrop-blur-2xl"
+              className="relative ml-auto h-full w-[min(21rem,calc(100vw-1rem))] overflow-hidden border-l border-ice-300/15 bg-navy-950/80 shadow-[-24px_0_80px_rgba(2,6,23,0.58)] backdrop-blur-2xl"
               onBlurCapture={(event) => {
                 if (!event.currentTarget.contains(event.relatedTarget)) {
                   closeMenu()
@@ -273,15 +262,6 @@ function Navbar() {
                     )
                   })}
                 </motion.nav>
-
-                <Button
-                  className="mt-4 w-full"
-                  href="#contact"
-                  onClick={closeMenu}
-                  variant="secondary"
-                >
-                  Me contacter
-                </Button>
               </div>
             </motion.aside>
           </motion.div>

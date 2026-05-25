@@ -60,7 +60,7 @@ function PrivateRepoModal({ isOpen, onClose, projectName }) {
     <AnimatePresence>
       {isOpen ? (
         <motion.div
-          className="fixed inset-0 z-[100] grid min-w-0 place-items-center overflow-y-auto bg-navy-950/80 px-4 py-6 backdrop-blur-md sm:px-6"
+          className="fixed inset-0 z-[100] grid min-w-0 place-items-center overflow-y-auto bg-navy-950/80 p-4 backdrop-blur-md sm:p-6"
           onClick={onClose}
           {...overlayAnimation}
         >
@@ -68,7 +68,7 @@ function PrivateRepoModal({ isOpen, onClose, projectName }) {
             aria-describedby={descriptionId}
             aria-labelledby={titleId}
             aria-modal="true"
-            className="glass-panel relative w-full max-w-xl overflow-hidden border-ice-300/20 p-5 text-center shadow-[0_24px_90px_rgba(2,6,23,0.72),0_0_70px_rgba(139,92,246,0.16)] sm:p-8"
+            className="glass-panel relative max-h-[calc(100dvh-2rem)] w-full max-w-xl overflow-x-hidden overflow-y-auto border-ice-300/20 p-5 text-center shadow-[0_24px_90px_rgba(2,6,23,0.72),0_0_70px_rgba(139,92,246,0.16)] sm:max-h-[calc(100dvh-3rem)] sm:p-8"
             onClick={(event) => event.stopPropagation()}
             ref={dialogRef}
             role="dialog"

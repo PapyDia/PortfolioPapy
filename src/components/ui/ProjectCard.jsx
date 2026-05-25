@@ -1,8 +1,178 @@
 import { useState } from 'react'
 
+import kaolackKitchenIcon from '../../assets/icons/favicon.svg'
+import samaHoraireIcon from '../../assets/icons/sama-horaire-icon.svg'
 import BackendNoticeModal from './BackendNoticeModal'
 import GlassCard from './GlassCard'
 import PrivateRepoModal from './PrivateRepoModal'
+
+const projectPreviewVisuals = {
+  'Kaolack Kitchen': {
+    imageClassName: 'size-10 rounded-xl object-contain sm:size-11',
+    src: kaolackKitchenIcon,
+    wrapperClassName: 'bg-white/95 p-0.5',
+  },
+  'Sama Horaire': {
+    imageClassName: 'size-8 rounded-xl object-contain sm:size-9',
+    src: samaHoraireIcon,
+    wrapperClassName: 'bg-white/90 p-1.5',
+  },
+}
+
+const ticketQrPattern = '1101110001011001011011011'
+
+function PreviewLogo({ accentClass, name, visual }) {
+  if (!visual) {
+    return (
+      <span
+        className={`grid size-11 max-w-full shrink-0 place-items-center rounded-2xl text-center text-sm font-bold leading-none break-words sm:size-12 ${accentClass}`}
+      >
+        {name.slice(0, 2).toUpperCase()}
+      </span>
+    )
+  }
+
+  return (
+    <span
+      className={`grid size-11 max-w-full shrink-0 place-items-center rounded-2xl border border-white/25 shadow-[0_10px_30px_rgba(2,6,23,0.24),0_0_20px_rgba(125,211,252,0.1)] sm:size-12 ${visual.wrapperClassName}`}
+    >
+      <img
+        alt=""
+        aria-hidden="true"
+        className={visual.imageClassName}
+        decoding="async"
+        loading="lazy"
+        src={visual.src}
+      />
+    </span>
+  )
+}
+
+function PreviewHeader({ accentClass, label, name, visual }) {
+  return (
+    <div className="relative flex min-w-0 items-center gap-2 border-b border-white/10 pb-2">
+      <div className="flex shrink-0 gap-1.5">
+        <span className="size-2.5 rounded-full bg-cyan-glow/70" />
+        <span className="size-2.5 rounded-full bg-blue-glow/60" />
+        <span className="size-2.5 rounded-full bg-violet-glow/60" />
+      </div>
+      <span className="ml-auto max-w-full break-words text-[0.65rem] font-medium text-text-soft sm:text-xs">
+        {label}
+      </span>
+      <PreviewLogo accentClass={accentClass} name={name} visual={visual} />
+    </div>
+  )
+}
+
+function KaolackKitchenPreview({ accentClass, name, visual }) {
+  return (
+    <>
+      <PreviewHeader
+        accentClass={accentClass}
+        label="Menu"
+        name={name}
+        visual={visual}
+      />
+
+      <div className="relative mt-2 flex min-w-0 flex-wrap gap-1">
+        {['Plats', 'Menus', 'Commander'].map((category, index) => (
+          <span
+            className={`rounded-full border px-2 py-0.5 text-[0.5rem] font-medium sm:text-[0.55rem] ${
+              index === 0
+                ? 'border-cyan-glow/30 bg-cyan-glow/10 text-cyan-glow'
+                : 'border-white/10 bg-white/[0.04] text-text-soft'
+            }`}
+            key={category}
+          >
+            {category}
+          </span>
+        ))}
+      </div>
+
+      <div className="relative mt-2 rounded-xl border border-white/10 bg-white/[0.045] p-2 sm:p-2.5">
+        <div className="flex min-w-0 flex-wrap items-center justify-between gap-1.5">
+          <span className="text-[0.6rem] font-semibold text-ice-100 sm:text-[0.65rem]">
+            Panier
+          </span>
+          <span className="rounded-full border border-cyan-glow/20 bg-cyan-glow/10 px-2 py-0.5 text-[0.52rem] font-semibold text-cyan-glow sm:text-[0.56rem]">
+            +1 article
+          </span>
+        </div>
+        <div className="mt-2 flex min-w-0 flex-wrap items-center justify-between gap-1.5 border-t border-white/10 pt-2">
+          <span className="text-[0.53rem] font-medium text-text-soft sm:text-[0.56rem]">
+            Total
+          </span>
+          <span className="whitespace-nowrap text-[0.6rem] font-bold text-ice-50 sm:text-[0.65rem]">
+            1 500 FCFA
+          </span>
+        </div>
+      </div>
+    </>
+  )
+}
+
+function SamaHorairePreview({ accentClass, name, visual }) {
+  return (
+    <>
+      <PreviewHeader
+        accentClass={accentClass}
+        label="Ticket"
+        name={name}
+        visual={visual}
+      />
+
+      <div className="relative mt-2.5 grid min-w-0 grid-cols-[minmax(0,1fr)_2.75rem] gap-2 rounded-xl border border-cyan-glow/15 bg-white/[0.045] p-2">
+        <div className="min-w-0">
+          <span className="inline-flex rounded-full border border-cyan-glow/25 bg-cyan-glow/10 px-2 py-0.5 text-[0.5rem] font-semibold uppercase text-cyan-glow sm:text-[0.55rem]">
+            Ticket
+          </span>
+          <div className="mt-2 flex min-w-0 items-center gap-1 text-[0.52rem] font-medium text-ice-100 sm:text-[0.58rem]">
+            <span>Dakar</span>
+            <span className="h-px min-w-2 flex-1 bg-cyan-glow/35" />
+            <span>Kaolack</span>
+          </div>
+          <div className="mt-2 flex min-w-0 items-center gap-2">
+            <span className="rounded-md bg-white/[0.06] px-1.5 py-1 text-[0.5rem] font-medium text-text-muted">
+              08:30
+            </span>
+            <span className="h-1.5 min-w-3 flex-1 rounded-full bg-white/10" />
+          </div>
+        </div>
+        <span className="grid size-11 shrink-0 grid-cols-5 gap-0.5 self-center rounded-lg border border-white/15 bg-navy-950/60 p-1">
+          {Array.from(ticketQrPattern).map((cell, cellIndex) => (
+            <span
+              className={`rounded-[1px] ${
+                cell === '1' ? 'bg-cyan-glow/65' : 'bg-white/[0.06]'
+              }`}
+              key={cellIndex}
+            />
+          ))}
+        </span>
+      </div>
+    </>
+  )
+}
+
+function GenericProjectPreview({ accentClass, name, visual }) {
+  return (
+    <>
+      <PreviewHeader
+        accentClass={accentClass}
+        label="Aperçu"
+        name={name}
+        visual={visual}
+      />
+      <div className="relative mt-3 grid min-w-0 gap-2.5">
+        <div className="h-2.5 w-2/3 rounded-full bg-ice-100/20 sm:h-3" />
+        <div className="min-w-0 space-y-2 rounded-2xl border border-white/10 bg-white/[0.04] p-2.5 sm:p-3">
+          <div className="h-2 rounded-full bg-cyan-glow/30" />
+          <div className="h-2 w-4/5 rounded-full bg-white/10" />
+          <div className="h-2 w-3/5 rounded-full bg-white/10" />
+        </div>
+      </div>
+    </>
+  )
+}
 
 function ProjectPreview({ index = 0, name }) {
   // Intentionally abstract preview: no fake screenshot or external image.
@@ -10,6 +180,9 @@ function ProjectPreview({ index = 0, name }) {
     index % 2 === 0
       ? 'bg-cyan-glow/15 text-cyan-glow'
       : 'bg-violet-glow/15 text-ice-300'
+  const previewVisual = projectPreviewVisuals[name]
+  const isKaolackKitchen = name === 'Kaolack Kitchen'
+  const isSamaHoraire = name === 'Sama Horaire'
 
   return (
     <div
@@ -19,34 +192,25 @@ function ProjectPreview({ index = 0, name }) {
       <div className="absolute -right-16 -top-16 size-32 rounded-full bg-cyan-glow/15 blur-3xl sm:size-40" />
       <div className="absolute bottom-0 left-0 size-28 rounded-full bg-violet-glow/10 blur-3xl sm:size-36" />
 
-      <div className="relative flex min-w-0 items-center justify-between border-b border-white/10 pb-2.5 sm:pb-3">
-        <div className="flex gap-1.5">
-          <span className="size-2.5 rounded-full bg-cyan-glow/70" />
-          <span className="size-2.5 rounded-full bg-blue-glow/60" />
-          <span className="size-2.5 rounded-full bg-violet-glow/60" />
-        </div>
-        <span className="max-w-full break-words text-xs font-medium text-text-soft">
-          Aperçu
-        </span>
-      </div>
-
-      <div className="relative mt-4 grid min-w-0 gap-2.5 sm:mt-5 sm:gap-3">
-        <div className="h-2.5 w-2/3 rounded-full bg-ice-100/20 sm:h-3" />
-        <div className="grid min-w-0 grid-cols-[1fr_0.65fr] gap-2.5 sm:gap-3">
-          <div className="min-w-0 space-y-2 rounded-2xl border border-white/10 bg-white/[0.04] p-2.5 sm:p-3">
-            <div className="h-2 rounded-full bg-cyan-glow/30" />
-            <div className="h-2 w-4/5 rounded-full bg-white/10" />
-            <div className="h-2 w-3/5 rounded-full bg-white/10" />
-          </div>
-          <div className="grid min-w-0 place-items-center rounded-2xl border border-white/10 bg-white/[0.04]">
-            <span
-              className={`grid size-10 max-w-full place-items-center rounded-2xl text-center text-xs font-bold leading-none break-words sm:size-12 sm:text-sm ${accentClass}`}
-            >
-              {name.slice(0, 2).toUpperCase()}
-            </span>
-          </div>
-        </div>
-      </div>
+      {isKaolackKitchen ? (
+        <KaolackKitchenPreview
+          accentClass={accentClass}
+          name={name}
+          visual={previewVisual}
+        />
+      ) : isSamaHoraire ? (
+        <SamaHorairePreview
+          accentClass={accentClass}
+          name={name}
+          visual={previewVisual}
+        />
+      ) : (
+        <GenericProjectPreview
+          accentClass={accentClass}
+          name={name}
+          visual={previewVisual}
+        />
+      )}
     </div>
   )
 }
