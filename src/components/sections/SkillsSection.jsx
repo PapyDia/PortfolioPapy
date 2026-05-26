@@ -1,18 +1,18 @@
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
 
 import {
   fadeUp,
   staggerContainer,
   staggerItem,
   viewportOnce,
-} from '../../constants/animations'
-import { portfolioData } from '../../data/portfolioData'
-import Container from '../ui/Container'
-import GlassCard from '../ui/GlassCard'
-import SectionHeader from '../ui/SectionHeader'
+} from "../../constants/animations";
+import { portfolioData } from "../../data/portfolioData";
+import Container from "../ui/Container";
+import GlassCard from "../ui/GlassCard";
+import SectionHeader from "../ui/SectionHeader";
 
 function SkillsSection() {
-  const { skills } = portfolioData
+  const { skills } = portfolioData;
 
   return (
     <section
@@ -44,45 +44,45 @@ function SkillsSection() {
           whileInView="visible"
         >
           {skills.groups.map((group, index) => {
-            const titleId = `skill-group-${index + 1}-title`
-            const isFeatured = group.featured === true
+            const titleId = `skill-group-${index + 1}-title`;
+            const isFeatured = group.featured === true;
             const heading = (
               <div className="min-w-0">
                 {isFeatured ? (
-                  <p className="max-w-full break-words text-xs font-semibold uppercase text-cyan-glow">
+                  <p className="max-w-full wrap-break-word text-xs font-semibold uppercase text-cyan-glow">
                     Humain + méthode
                   </p>
                 ) : null}
                 <h3
-                  className={`max-w-full break-words font-semibold leading-tight text-ice-50 ${
+                  className={`max-w-full wrap-break-word font-semibold leading-tight text-ice-50 ${
                     isFeatured
-                      ? 'mt-3 text-xl sm:text-2xl'
-                      : 'text-lg sm:text-xl'
+                      ? "mt-3 text-xl sm:text-2xl"
+                      : "text-lg sm:text-xl"
                   }`}
                   id={titleId}
                 >
                   {group.title}
                 </h3>
-                <p className="text-pretty-safe mt-2 max-w-full break-words leading-7 text-text-muted sm:mt-3">
+                <p className="text-pretty-safe mt-2 max-w-full wrap-break-word leading-7 text-text-muted sm:mt-3">
                   {group.description}
                 </p>
               </div>
-            )
+            );
             const itemList = (
               <ul
                 aria-label={`Compétences ${group.title}`}
                 className={`m-0 flex min-w-0 max-w-full list-none flex-wrap gap-2 p-0 ${
                   isFeatured
-                    ? 'justify-center lg:justify-start'
-                    : 'mt-5 justify-center sm:mt-6 sm:justify-start'
+                    ? "justify-center lg:justify-start"
+                    : "mt-5 justify-center sm:mt-6 sm:justify-start"
                 }`}
               >
                 {group.items.map((item) => (
                   <li
-                    className={`max-w-full rounded-button border px-2.5 py-1 text-center text-xs font-medium leading-snug break-words text-ice-100 sm:px-3 sm:py-1.5 sm:text-sm ${
+                    className={`max-w-full rounded-button border px-2.5 py-1 text-center text-xs font-medium leading-snug wrap-break-word text-ice-100 sm:px-3 sm:py-1.5 sm:text-sm ${
                       isFeatured
-                        ? 'border-cyan-glow/20 bg-white/[0.055]'
-                        : 'border-ice-300/15 bg-cyan-glow/5'
+                        ? "border-cyan-glow/20 bg-white/5.5"
+                        : "border-ice-300/15 bg-cyan-glow/5"
                     }`}
                     key={`${group.title}-${item}`}
                   >
@@ -90,12 +90,12 @@ function SkillsSection() {
                   </li>
                 ))}
               </ul>
-            )
+            );
 
             return (
               <motion.div
                 className={`min-w-0 ${
-                  isFeatured ? 'md:col-span-2 xl:col-span-4' : ''
+                  isFeatured ? "md:col-span-2 xl:col-span-4" : ""
                 }`}
                 key={group.title}
                 variants={staggerItem}
@@ -105,8 +105,8 @@ function SkillsSection() {
                   as="article"
                   className={`flex h-full min-w-0 flex-col ${
                     isFeatured
-                      ? 'relative overflow-hidden border-cyan-glow/25 bg-cyan-glow/[0.05] px-5 py-6 sm:px-7 sm:py-7'
-                      : ''
+                      ? "relative overflow-hidden border-cyan-glow/25 bg-cyan-glow/5 px-5 py-6 sm:px-7 sm:py-7"
+                      : ""
                   }`}
                 >
                   {isFeatured ? (
@@ -132,12 +132,12 @@ function SkillsSection() {
                   )}
                 </GlassCard>
               </motion.div>
-            )
+            );
           })}
         </motion.div>
       </Container>
     </section>
-  )
+  );
 }
 
-export default SkillsSection
+export default SkillsSection;

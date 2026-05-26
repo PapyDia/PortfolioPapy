@@ -1,7 +1,7 @@
-function ProfilePhoto({ src, alt, className = '' }) {
+function ProfilePhoto({ src, alt, className = "" }) {
   return (
     <figure
-      className={`relative mx-auto w-full max-w-[15.75rem] sm:max-w-[18.5rem] lg:max-w-[21rem] ${className}`}
+      className={`relative mx-auto w-full max-w-63 sm:max-w-74 lg:max-w-84 ${className}`}
     >
       <div
         aria-hidden="true"
@@ -12,7 +12,7 @@ function ProfilePhoto({ src, alt, className = '' }) {
         className="pointer-events-none absolute -bottom-3 left-1/2 size-32 -translate-x-1/2 rounded-full bg-violet-glow/20 blur-2xl sm:size-40"
       />
 
-      <div className="relative aspect-square overflow-hidden rounded-full border border-ice-300/25 bg-white/[0.06] p-1.5 shadow-glow-soft backdrop-blur-xl">
+      <div className="relative aspect-square overflow-hidden rounded-full border border-ice-300/25 bg-white/6 p-1.5 shadow-glow-soft backdrop-blur-xl">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 rounded-full bg-linear-to-br from-white/20 via-transparent to-cyan-glow/10"
@@ -32,7 +32,7 @@ function ProfilePhoto({ src, alt, className = '' }) {
         />
       </div>
     </figure>
-  )
+  );
 }
 
-export default ProfilePhoto
+export default ProfilePhoto;

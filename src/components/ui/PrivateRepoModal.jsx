@@ -1,18 +1,23 @@
-import { AnimatePresence, motion } from 'framer-motion'
-import { useId, useRef } from 'react'
+import { AnimatePresence, motion } from "framer-motion";
+import { useId, useRef } from "react";
 
-import useDialogLifecycle from '../../hooks/useDialogLifecycle'
-import { useReducedMotionPreference } from '../../hooks/useReducedMotionPreference'
-import Button from './Button'
-import CodingBearIllustration from './CodingBearIllustration'
+import {
+  modalContentItemVariants,
+  modalOverlayVariants,
+  modalPanelVariants,
+} from "../../constants/animations";
+import useDialogLifecycle from "../../hooks/useDialogLifecycle";
+import { useReducedMotionPreference } from "../../hooks/useReducedMotionPreference";
+import Button from "./Button";
+import CodingBearIllustration from "./CodingBearIllustration";
 
 function PrivateRepoModal({ isOpen, onClose, projectName }) {
-  const prefersReducedMotion = useReducedMotionPreference()
-  const titleId = useId()
-  const descriptionId = useId()
-  const understoodButtonRef = useRef(null)
-  const dialogRef = useRef(null)
-  const restoreFocusRef = useRef(true)
+  const prefersReducedMotion = useReducedMotionPreference();
+  const titleId = useId();
+  const descriptionId = useId();
+  const understoodButtonRef = useRef(null);
+  const dialogRef = useRef(null);
+  const restoreFocusRef = useRef(true);
 
   useDialogLifecycle(
     isOpen,
@@ -20,49 +25,49 @@ function PrivateRepoModal({ isOpen, onClose, projectName }) {
     understoodButtonRef,
     dialogRef,
     restoreFocusRef,
-  )
+  );
 
   function handleContactClick() {
-    restoreFocusRef.current = false
-    onClose()
+    restoreFocusRef.current = false;
+    onClose();
 
     window.setTimeout(() => {
-      const contactSection = document.getElementById('contact')
+      const contactSection = document.getElementById("contact");
 
       contactSection?.scrollIntoView({
-        behavior: prefersReducedMotion ? 'auto' : 'smooth',
-        block: 'start',
-      })
-      contactSection?.focus()
-      window.history.replaceState(null, '', '#contact')
-    }, 0)
+        behavior: prefersReducedMotion ? "auto" : "smooth",
+        block: "start",
+      });
+      contactSection?.focus();
+      window.history.replaceState(null, "", "#contact");
+    }, 0);
   }
 
-  const overlayAnimation = prefersReducedMotion
+  const overlayMotionProps = prefersReducedMotion
     ? {}
     : {
-        animate: { opacity: 1 },
-        exit: { opacity: 0 },
-        initial: { opacity: 0 },
-        transition: { duration: 0.2 },
-      }
+        initial: "hidden",
+        animate: "visible",
+        exit: "exit",
+        variants: modalOverlayVariants,
+      };
 
-  const modalAnimation = prefersReducedMotion
+  const panelMotionProps = prefersReducedMotion
     ? {}
     : {
-        animate: { opacity: 1, scale: 1, y: 0 },
-        exit: { opacity: 0, scale: 0.98, y: 12 },
-        initial: { opacity: 0, scale: 0.96, y: 16 },
-        transition: { duration: 0.24, ease: [0.22, 1, 0.36, 1] },
-      }
+        initial: "hidden",
+        animate: "visible",
+        exit: "exit",
+        variants: modalPanelVariants,
+      };
 
   return (
     <AnimatePresence>
       {isOpen ? (
         <motion.div
-          className="fixed inset-0 z-[100] grid min-w-0 place-items-center overflow-y-auto bg-navy-950/80 p-4 backdrop-blur-md sm:p-6"
+          className="fixed inset-0 z-100 grid min-w-0 place-items-center overflow-y-auto bg-navy-950/80 p-4 backdrop-blur-md sm:p-6"
           onClick={onClose}
-          {...overlayAnimation}
+          {...overlayMotionProps}
         >
           <motion.div
             aria-describedby={descriptionId}
@@ -73,7 +78,7 @@ function PrivateRepoModal({ isOpen, onClose, projectName }) {
             ref={dialogRef}
             role="dialog"
             tabIndex={-1}
-            {...modalAnimation}
+            {...panelMotionProps}
           >
             <div
               aria-hidden="true"
@@ -84,17 +89,23 @@ function PrivateRepoModal({ isOpen, onClose, projectName }) {
               className="pointer-events-none absolute -bottom-24 left-1/2 h-44 w-3/4 -translate-x-1/2 rounded-full bg-violet-glow/15 blur-3xl"
             />
 
-            <div className="relative">
+            <motion.div
+              className="relative"
+              variants={modalContentItemVariants}
+            >
               <CodingBearIllustration />
-            </div>
+            </motion.div>
 
-            <div className="relative mt-3 min-w-0">
-              <p className="max-w-full break-words text-xs font-semibold uppercase text-cyan-glow">
-                {projectName ?? 'Projet'}
+            <motion.div
+              className="relative mt-3 min-w-0"
+              variants={modalContentItemVariants}
+            >
+              <p className="max-w-full wrap-break-word text-xs font-semibold uppercase text-cyan-glow">
+                {projectName ?? "Projet"}
               </p>
 
               <h2
-                className="mt-2 max-w-full break-words text-2xl font-semibold leading-tight text-ice-50 sm:text-3xl"
+                className="mt-2 max-w-full wrap-break-word text-2xl font-semibold leading-tight text-ice-50 sm:text-3xl"
                 id={titleId}
               >
                 Oups ! Repo privé
@@ -104,20 +115,24 @@ function PrivateRepoModal({ isOpen, onClose, projectName }) {
                 className="mx-auto mt-3 max-w-lg space-y-2 text-sm leading-5 text-text-muted sm:text-base sm:leading-6"
                 id={descriptionId}
               >
-                <p className="max-w-full break-words">
+                <p className="max-w-full wrap-break-word">
                   Le code source de ce projet n’est pas public pour le moment.
                 </p>
-                <p className="max-w-full break-words text-text-soft">
-                  Je peux présenter l’architecture, les choix techniques et
-                  les fonctionnalités sur demande.
+                <p className="max-w-full wrap-break-word text-text-soft">
+                  Je peux présenter l’architecture, les choix techniques et les
+                  fonctionnalités sur demande.
                 </p>
-                <p className="max-w-full break-words text-ice-100">
-                  Nouni 🐻 garde le repo au chaud pendant que je peaufine encore le projet.
+                <p className="max-w-full wrap-break-word text-ice-100">
+                  Nouni 🐻 garde le repo au chaud pendant que je peaufine encore
+                  le projet.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="relative mt-5 flex min-w-0 flex-col gap-2.5 sm:flex-row sm:justify-center">
+            <motion.div
+              className="relative mt-5 flex min-w-0 flex-col gap-2.5 sm:flex-row sm:justify-center"
+              variants={modalContentItemVariants}
+            >
               <Button
                 className="w-full sm:w-auto"
                 onClick={onClose}
@@ -132,12 +147,12 @@ function PrivateRepoModal({ isOpen, onClose, projectName }) {
               >
                 Me contacter
               </Button>
-            </div>
+            </motion.div>
           </motion.div>
         </motion.div>
       ) : null}
     </AnimatePresence>
-  )
+  );
 }
 
-export default PrivateRepoModal
+export default PrivateRepoModal;

@@ -1,43 +1,43 @@
-import { stackIcons } from '../../constants/stackIcons'
+import { stackIcons } from "../../constants/stackIcons";
 
-function getInitials(name = '') {
-  const parts = name.match(/[A-Za-z0-9]+/g) ?? []
+function getInitials(name = "") {
+  const parts = name.match(/[A-Za-z0-9]+/g) ?? [];
 
   if (parts.length === 0) {
-    return '?'
+    return "?";
   }
 
   if (parts.length === 1) {
-    return parts[0].slice(0, 2).toUpperCase()
+    return parts[0].slice(0, 2).toUpperCase();
   }
 
   return parts
     .map((part) => part[0])
-    .join('')
+    .join("")
     .slice(0, 2)
-    .toUpperCase()
+    .toUpperCase();
 }
 
 function StackLogoBadge({
   name,
-  className = '',
-  sizeClassName = 'size-16 sm:size-20',
+  className = "",
+  sizeClassName = "size-16 sm:size-20",
 }) {
-  const iconConfig = stackIcons[name]
-  const Icon = iconConfig?.Icon
-  const iconClassName = iconConfig?.iconClassName ?? 'text-ice-100'
+  const iconConfig = stackIcons[name];
+  const Icon = iconConfig?.Icon;
+  const iconClassName = iconConfig?.iconClassName ?? "text-ice-100";
 
   return (
     <div
-      className={`group relative flex shrink-0 flex-col items-center justify-center gap-1 overflow-hidden rounded-full border border-ice-300/15 bg-white/[0.05] p-1.5 text-center text-ice-100 shadow-[0_0_28px_rgba(56,189,248,0.1),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:scale-[1.03] hover:border-cyan-glow/40 hover:bg-cyan-glow/10 hover:shadow-glow-soft sm:p-2 ${sizeClassName} ${className}`}
+      className={`group relative flex shrink-0 flex-col items-center justify-center gap-1 overflow-hidden rounded-full border border-ice-300/15 bg-white/5 p-1.5 text-center text-ice-100 shadow-[0_0_28px_rgba(56,189,248,0.1),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:scale-103 hover:border-cyan-glow/40 hover:bg-cyan-glow/10 hover:shadow-glow-soft sm:p-2 ${sizeClassName} ${className}`}
     >
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute inset-1 rounded-full border border-white/[0.06]"
+        className="pointer-events-none absolute inset-1 rounded-full border border-white/6"
       />
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute left-[18%] top-[10%] h-[28%] w-[56%] rounded-full bg-white/[0.08] blur-md"
+        className="pointer-events-none absolute left-[18%] top-[10%] h-[28%] w-[56%] rounded-full bg-white/8 blur-md"
       />
 
       <span className="relative grid size-6 shrink-0 place-items-center sm:size-8 lg:size-9">
@@ -61,11 +61,11 @@ function StackLogoBadge({
         )}
       </span>
 
-      <span className="relative z-10 max-w-full px-0.5 text-[0.52rem] font-medium leading-tight break-words text-ice-100 sm:text-[0.6rem] lg:text-[0.68rem]">
+      <span className="relative z-10 max-w-full px-0.5 text-[0.52rem] font-medium leading-tight wrap-break-word text-ice-100 sm:text-[0.6rem] lg:text-[0.68rem]">
         {name}
       </span>
     </div>
-  )
+  );
 }
 
-export default StackLogoBadge
+export default StackLogoBadge;

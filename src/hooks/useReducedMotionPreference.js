@@ -1,5 +1,5 @@
-import { useReducedMotion } from 'framer-motion'
+import { useReducedMotion } from "framer-motion";
 
 export function useReducedMotionPreference() {
-  return useReducedMotion()
+  return useReducedMotion();
 }

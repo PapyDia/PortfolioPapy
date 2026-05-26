@@ -1,21 +1,21 @@
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
 
-import { useReducedMotionPreference } from '../../hooks/useReducedMotionPreference'
+import { useReducedMotionPreference } from "../../hooks/useReducedMotionPreference";
 
 const gentleLoop = {
   duration: 3.2,
-  ease: 'easeInOut',
+  ease: "easeInOut",
   repeat: Infinity,
-}
+};
 
 function CodingBearIllustration() {
-  const prefersReducedMotion = useReducedMotionPreference()
-  const loop = prefersReducedMotion ? undefined : gentleLoop
+  const prefersReducedMotion = useReducedMotionPreference();
+  const loop = prefersReducedMotion ? undefined : gentleLoop;
 
   return (
     <div
       aria-hidden="true"
-      className="relative mx-auto w-full max-w-[11rem] sm:max-w-[13.5rem] lg:max-w-[14rem]"
+      className="relative mx-auto w-full max-w-44 sm:max-w-54 lg:max-w-56"
     >
       <div className="pointer-events-none absolute inset-6 rounded-full bg-cyan-glow/20 blur-3xl" />
       <div className="pointer-events-none absolute inset-x-10 bottom-6 h-20 rounded-full bg-violet-glow/20 blur-3xl" />
@@ -37,7 +37,13 @@ function CodingBearIllustration() {
             <stop stopColor="#0F172A" />
             <stop offset="1" stopColor="#1E3A5F" />
           </linearGradient>
-          <filter id="softCyanGlow" x="-35%" y="-35%" width="170%" height="170%">
+          <filter
+            id="softCyanGlow"
+            x="-35%"
+            y="-35%"
+            width="170%"
+            height="170%"
+          >
             <feGaussianBlur stdDeviation="4" result="blur" />
             <feMerge>
               <feMergeNode in="blur" />
@@ -56,7 +62,7 @@ function CodingBearIllustration() {
           cy="56"
           fill="#38BDF8"
           r="2"
-          style={{ transformBox: 'fill-box', transformOrigin: 'center' }}
+          style={{ transformBox: "fill-box", transformOrigin: "center" }}
           transition={{ ...gentleLoop, delay: 0.1 }}
         />
         <motion.circle
@@ -69,7 +75,7 @@ function CodingBearIllustration() {
           cy="78"
           fill="#8B5CF6"
           r="2.5"
-          style={{ transformBox: 'fill-box', transformOrigin: 'center' }}
+          style={{ transformBox: "fill-box", transformOrigin: "center" }}
           transition={{ ...gentleLoop, delay: 0.8 }}
         />
         <motion.circle
@@ -82,11 +88,18 @@ function CodingBearIllustration() {
           cy="134"
           fill="#60A5FA"
           r="2"
-          style={{ transformBox: 'fill-box', transformOrigin: 'center' }}
+          style={{ transformBox: "fill-box", transformOrigin: "center" }}
           transition={{ ...gentleLoop, delay: 1.3 }}
         />
 
-        <ellipse cx="130" cy="198" fill="#020617" opacity="0.45" rx="72" ry="11" />
+        <ellipse
+          cx="130"
+          cy="198"
+          fill="#020617"
+          opacity="0.45"
+          rx="72"
+          ry="11"
+        />
 
         <g>
           <circle cx="79" cy="67" fill="#8B5A35" r="28" />
@@ -94,7 +107,14 @@ function CodingBearIllustration() {
           <circle cx="79" cy="68" fill="#F2C18D" opacity="0.65" r="15" />
           <circle cx="181" cy="68" fill="#F2C18D" opacity="0.65" r="15" />
           <ellipse cx="130" cy="97" fill="#B7794A" rx="67" ry="61" />
-          <ellipse cx="130" cy="154" fill="#8B5A35" opacity="0.95" rx="58" ry="42" />
+          <ellipse
+            cx="130"
+            cy="154"
+            fill="#8B5A35"
+            opacity="0.95"
+            rx="58"
+            ry="42"
+          />
           <ellipse cx="130" cy="112" fill="#F8D7A8" rx="35" ry="25" />
           <ellipse cx="130" cy="105" fill="#8B5A35" rx="9" ry="6" />
 
@@ -104,10 +124,10 @@ function CodingBearIllustration() {
                 ? undefined
                 : { scaleY: [1, 1, 0.18, 1], y: [0, 0, 3, 0] }
             }
-            style={{ transformBox: 'fill-box', transformOrigin: 'center' }}
+            style={{ transformBox: "fill-box", transformOrigin: "center" }}
             transition={{
               duration: 4.8,
-              ease: 'easeInOut',
+              ease: "easeInOut",
               repeat: Infinity,
               times: [0, 0.86, 0.9, 1],
             }}
@@ -136,14 +156,14 @@ function CodingBearIllustration() {
 
         <motion.g
           animate={prefersReducedMotion ? undefined : { rotate: [-5, 4, -5] }}
-          style={{ transformBox: 'fill-box', transformOrigin: 'center' }}
+          style={{ transformBox: "fill-box", transformOrigin: "center" }}
           transition={{ ...gentleLoop, duration: 1.2 }}
         >
           <ellipse cx="83" cy="160" fill="#B7794A" rx="24" ry="15" />
         </motion.g>
         <motion.g
           animate={prefersReducedMotion ? undefined : { rotate: [5, -4, 5] }}
-          style={{ transformBox: 'fill-box', transformOrigin: 'center' }}
+          style={{ transformBox: "fill-box", transformOrigin: "center" }}
           transition={{ ...gentleLoop, delay: 0.35, duration: 1.2 }}
         >
           <ellipse cx="177" cy="160" fill="#B7794A" rx="24" ry="15" />
@@ -160,9 +180,33 @@ function CodingBearIllustration() {
             x="67"
             y="130"
           />
-          <rect fill="url(#bearScreen)" height="37" rx="7" width="94" x="83" y="140" />
-          <rect fill="#020617" height="9" opacity="0.8" rx="4.5" width="150" x="55" y="187" />
-          <rect fill="#38BDF8" filter="url(#softCyanGlow)" height="2" opacity="0.65" rx="1" width="42" x="109" y="191" />
+          <rect
+            fill="url(#bearScreen)"
+            height="37"
+            rx="7"
+            width="94"
+            x="83"
+            y="140"
+          />
+          <rect
+            fill="#020617"
+            height="9"
+            opacity="0.8"
+            rx="4.5"
+            width="150"
+            x="55"
+            y="187"
+          />
+          <rect
+            fill="#38BDF8"
+            filter="url(#softCyanGlow)"
+            height="2"
+            opacity="0.65"
+            rx="1"
+            width="42"
+            x="109"
+            y="191"
+          />
 
           {[0, 1, 2].map((line) => (
             <motion.rect
@@ -171,11 +215,14 @@ function CodingBearIllustration() {
                   ? undefined
                   : { opacity: [0.35, 1, 0.35], scaleX: [0.72, 1, 0.72] }
               }
-              fill={line === 1 ? '#60A5FA' : '#38BDF8'}
+              fill={line === 1 ? "#60A5FA" : "#38BDF8"}
               height="3"
               key={line}
               rx="1.5"
-              style={{ transformBox: 'fill-box', transformOrigin: 'left center' }}
+              style={{
+                transformBox: "fill-box",
+                transformOrigin: "left center",
+              }}
               transition={{ ...gentleLoop, delay: line * 0.35, duration: 1.9 }}
               width={28 + line * 7}
               x="98"
@@ -183,7 +230,9 @@ function CodingBearIllustration() {
             />
           ))}
           <motion.path
-            animate={prefersReducedMotion ? undefined : { opacity: [0.25, 0.85, 0.25] }}
+            animate={
+              prefersReducedMotion ? undefined : { opacity: [0.25, 0.85, 0.25] }
+            }
             d="M151 151 L160 157 L151 163"
             fill="none"
             stroke="#E0F2FE"
@@ -195,7 +244,7 @@ function CodingBearIllustration() {
         </g>
       </motion.svg>
     </div>
-  )
+  );
 }
 
-export default CodingBearIllustration
+export default CodingBearIllustration;

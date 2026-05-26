@@ -1,35 +1,35 @@
-import { useState } from 'react'
+import { useState } from "react";
 
-import kaolackKitchenIcon from '../../assets/icons/favicon.svg'
-import samaHoraireIcon from '../../assets/icons/sama-horaire-icon.svg'
-import BackendNoticeModal from './BackendNoticeModal'
-import GlassCard from './GlassCard'
-import PrivateRepoModal from './PrivateRepoModal'
+import kaolackKitchenIcon from "../../assets/icons/favicon.svg";
+import samaHoraireIcon from "../../assets/icons/sama-horaire-icon.svg";
+import BackendNoticeModal from "./BackendNoticeModal";
+import GlassCard from "./GlassCard";
+import PrivateRepoModal from "./PrivateRepoModal";
 
 const projectPreviewVisuals = {
-  'Kaolack Kitchen': {
-    imageClassName: 'size-10 rounded-xl object-contain sm:size-11',
+  "Kaolack Kitchen": {
+    imageClassName: "size-10 rounded-xl object-contain sm:size-11",
     src: kaolackKitchenIcon,
-    wrapperClassName: 'bg-white/95 p-0.5',
+    wrapperClassName: "bg-white/95 p-0.5",
   },
-  'Sama Horaire': {
-    imageClassName: 'size-8 rounded-xl object-contain sm:size-9',
+  "Sama Horaire": {
+    imageClassName: "size-8 rounded-xl object-contain sm:size-9",
     src: samaHoraireIcon,
-    wrapperClassName: 'bg-white/90 p-1.5',
+    wrapperClassName: "bg-white/90 p-1.5",
   },
-}
+};
 
-const ticketQrPattern = '1101110001011001011011011'
+const ticketQrPattern = "1101110001011001011011011";
 
 function PreviewLogo({ accentClass, name, visual }) {
   if (!visual) {
     return (
       <span
-        className={`grid size-11 max-w-full shrink-0 place-items-center rounded-2xl text-center text-sm font-bold leading-none break-words sm:size-12 ${accentClass}`}
+        className={`grid size-11 max-w-full shrink-0 place-items-center rounded-2xl text-center text-sm font-bold leading-none wrap-break-word sm:size-12 ${accentClass}`}
       >
         {name.slice(0, 2).toUpperCase()}
       </span>
-    )
+    );
   }
 
   return (
@@ -45,7 +45,7 @@ function PreviewLogo({ accentClass, name, visual }) {
         src={visual.src}
       />
     </span>
-  )
+  );
 }
 
 function PreviewHeader({ accentClass, label, name, visual }) {
@@ -56,12 +56,12 @@ function PreviewHeader({ accentClass, label, name, visual }) {
         <span className="size-2.5 rounded-full bg-blue-glow/60" />
         <span className="size-2.5 rounded-full bg-violet-glow/60" />
       </div>
-      <span className="ml-auto max-w-full break-words text-[0.65rem] font-medium text-text-soft sm:text-xs">
+      <span className="ml-auto max-w-full wrap-break-word text-[0.65rem] font-medium text-text-soft sm:text-xs">
         {label}
       </span>
       <PreviewLogo accentClass={accentClass} name={name} visual={visual} />
     </div>
-  )
+  );
 }
 
 function KaolackKitchenPreview({ accentClass, name, visual }) {
@@ -75,12 +75,12 @@ function KaolackKitchenPreview({ accentClass, name, visual }) {
       />
 
       <div className="relative mt-2 flex min-w-0 flex-wrap gap-1">
-        {['Plats', 'Menus', 'Commander'].map((category, index) => (
+        {["Plats", "Menus", "Commander"].map((category, index) => (
           <span
             className={`rounded-full border px-2 py-0.5 text-[0.5rem] font-medium sm:text-[0.55rem] ${
               index === 0
-                ? 'border-cyan-glow/30 bg-cyan-glow/10 text-cyan-glow'
-                : 'border-white/10 bg-white/[0.04] text-text-soft'
+                ? "border-cyan-glow/30 bg-cyan-glow/10 text-cyan-glow"
+                : "border-white/10 bg-white/4 text-text-soft"
             }`}
             key={category}
           >
@@ -89,7 +89,7 @@ function KaolackKitchenPreview({ accentClass, name, visual }) {
         ))}
       </div>
 
-      <div className="relative mt-2 rounded-xl border border-white/10 bg-white/[0.045] p-2 sm:p-2.5">
+      <div className="relative mt-2 rounded-xl border border-white/10 bg-white/4.5 p-2 sm:p-2.5">
         <div className="flex min-w-0 flex-wrap items-center justify-between gap-1.5">
           <span className="text-[0.6rem] font-semibold text-ice-100 sm:text-[0.65rem]">
             Panier
@@ -108,7 +108,7 @@ function KaolackKitchenPreview({ accentClass, name, visual }) {
         </div>
       </div>
     </>
-  )
+  );
 }
 
 function SamaHorairePreview({ accentClass, name, visual }) {
@@ -121,7 +121,7 @@ function SamaHorairePreview({ accentClass, name, visual }) {
         visual={visual}
       />
 
-      <div className="relative mt-2.5 grid min-w-0 grid-cols-[minmax(0,1fr)_2.75rem] gap-2 rounded-xl border border-cyan-glow/15 bg-white/[0.045] p-2">
+      <div className="relative mt-2.5 grid min-w-0 grid-cols-[minmax(0,1fr)_2.75rem] gap-2 rounded-xl border border-cyan-glow/15 bg-white/4.5 p-2">
         <div className="min-w-0">
           <span className="inline-flex rounded-full border border-cyan-glow/25 bg-cyan-glow/10 px-2 py-0.5 text-[0.5rem] font-semibold uppercase text-cyan-glow sm:text-[0.55rem]">
             Ticket
@@ -132,7 +132,7 @@ function SamaHorairePreview({ accentClass, name, visual }) {
             <span>Kaolack</span>
           </div>
           <div className="mt-2 flex min-w-0 items-center gap-2">
-            <span className="rounded-md bg-white/[0.06] px-1.5 py-1 text-[0.5rem] font-medium text-text-muted">
+            <span className="rounded-md bg-white/6 px-1.5 py-1 text-[0.5rem] font-medium text-text-muted">
               08:30
             </span>
             <span className="h-1.5 min-w-3 flex-1 rounded-full bg-white/10" />
@@ -142,7 +142,7 @@ function SamaHorairePreview({ accentClass, name, visual }) {
           {Array.from(ticketQrPattern).map((cell, cellIndex) => (
             <span
               className={`rounded-[1px] ${
-                cell === '1' ? 'bg-cyan-glow/65' : 'bg-white/[0.06]'
+                cell === "1" ? "bg-cyan-glow/65" : "bg-white/6"
               }`}
               key={cellIndex}
             />
@@ -150,7 +150,7 @@ function SamaHorairePreview({ accentClass, name, visual }) {
         </span>
       </div>
     </>
-  )
+  );
 }
 
 function GenericProjectPreview({ accentClass, name, visual }) {
@@ -164,25 +164,25 @@ function GenericProjectPreview({ accentClass, name, visual }) {
       />
       <div className="relative mt-3 grid min-w-0 gap-2.5">
         <div className="h-2.5 w-2/3 rounded-full bg-ice-100/20 sm:h-3" />
-        <div className="min-w-0 space-y-2 rounded-2xl border border-white/10 bg-white/[0.04] p-2.5 sm:p-3">
+        <div className="min-w-0 space-y-2 rounded-2xl border border-white/10 bg-white/4 p-2.5 sm:p-3">
           <div className="h-2 rounded-full bg-cyan-glow/30" />
           <div className="h-2 w-4/5 rounded-full bg-white/10" />
           <div className="h-2 w-3/5 rounded-full bg-white/10" />
         </div>
       </div>
     </>
-  )
+  );
 }
 
 function ProjectPreview({ index = 0, name }) {
   // Intentionally abstract preview: no fake screenshot or external image.
   const accentClass =
     index % 2 === 0
-      ? 'bg-cyan-glow/15 text-cyan-glow'
-      : 'bg-violet-glow/15 text-ice-300'
-  const previewVisual = projectPreviewVisuals[name]
-  const isKaolackKitchen = name === 'Kaolack Kitchen'
-  const isSamaHoraire = name === 'Sama Horaire'
+      ? "bg-cyan-glow/15 text-cyan-glow"
+      : "bg-violet-glow/15 text-ice-300";
+  const previewVisual = projectPreviewVisuals[name];
+  const isKaolackKitchen = name === "Kaolack Kitchen";
+  const isSamaHoraire = name === "Sama Horaire";
 
   return (
     <div
@@ -212,38 +212,38 @@ function ProjectPreview({ index = 0, name }) {
         />
       )}
     </div>
-  )
+  );
 }
 
 function ProjectCard({ index = 0, project }) {
-  const [isBackendNoticeOpen, setIsBackendNoticeOpen] = useState(false)
-  const [isPrivateRepoOpen, setIsPrivateRepoOpen] = useState(false)
+  const [isBackendNoticeOpen, setIsBackendNoticeOpen] = useState(false);
+  const [isPrivateRepoOpen, setIsPrivateRepoOpen] = useState(false);
   // Empty links stay hidden to avoid misleading CTAs.
-  const liveLink = project.links?.live?.trim() ?? ''
-  const codeLink = project.links?.code?.trim() ?? ''
-  const hasCodeAction = Boolean(codeLink || project.repoPrivate)
-  const hasProjectLinks = Boolean(liveLink || hasCodeAction)
-  const shouldShowBackendNotice = Boolean(liveLink && project.backendNotice)
+  const liveLink = project.links?.live?.trim() ?? "";
+  const codeLink = project.links?.code?.trim() ?? "";
+  const hasCodeAction = Boolean(codeLink || project.repoPrivate);
+  const hasProjectLinks = Boolean(liveLink || hasCodeAction);
+  const shouldShowBackendNotice = Boolean(liveLink && project.backendNotice);
 
-  const titleId = `project-${index + 1}-title`
+  const titleId = `project-${index + 1}-title`;
   const ctaClassName =
-    'inline-flex min-h-11 max-w-full touch-manipulation items-center justify-center rounded-button border border-ice-300/20 px-4 py-2 text-center text-sm font-semibold leading-snug break-words text-ice-50 transition hover:border-cyan-glow/50 hover:bg-cyan-glow/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow'
+    "inline-flex min-h-11 max-w-full touch-manipulation items-center justify-center rounded-button border border-ice-300/20 px-4 py-2 text-center text-sm font-semibold leading-snug wrap-break-word text-ice-50 transition hover:border-cyan-glow/50 hover:bg-cyan-glow/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow";
 
   function handleLiveClick() {
-    setIsBackendNoticeOpen(true)
+    setIsBackendNoticeOpen(true);
   }
 
   function handleContinueToLiveSite() {
     if (liveLink) {
-      window.open(liveLink, '_blank', 'noopener,noreferrer')
+      window.open(liveLink, "_blank", "noopener,noreferrer");
     }
 
-    setIsBackendNoticeOpen(false)
+    setIsBackendNoticeOpen(false);
   }
 
   function handlePrivateRepoClick() {
-    setIsBackendNoticeOpen(false)
-    setIsPrivateRepoOpen(true)
+    setIsBackendNoticeOpen(false);
+    setIsPrivateRepoOpen(true);
   }
 
   return (
@@ -258,28 +258,28 @@ function ProjectCard({ index = 0, project }) {
         <div className="flex min-w-0 flex-1 flex-col">
           <div className="min-w-0">
             <div className="flex min-w-0 flex-wrap items-center gap-2 sm:gap-3">
-              <span className="max-w-full rounded-button border border-cyan-glow/25 bg-cyan-glow/10 px-3 py-1 text-center text-xs font-semibold leading-snug break-words uppercase text-cyan-glow">
+              <span className="max-w-full rounded-button border border-cyan-glow/25 bg-cyan-glow/10 px-3 py-1 text-center text-xs font-semibold leading-snug wrap-break-word uppercase text-cyan-glow">
                 {project.status}
               </span>
-              <span className="max-w-full break-words text-sm font-medium leading-snug text-text-soft">
+              <span className="max-w-full wrap-break-word text-sm font-medium leading-snug text-text-soft">
                 {project.type}
               </span>
             </div>
 
             <h3
-              className="mt-3 max-w-full break-words text-xl font-semibold leading-tight text-ice-50 sm:mt-4 sm:text-2xl"
+              className="mt-3 max-w-full wrap-break-word text-xl font-semibold leading-tight text-ice-50 sm:mt-4 sm:text-2xl"
               id={titleId}
             >
               {project.name}
             </h3>
 
-            <p className="text-pretty-safe mt-3 max-w-full break-words leading-7 text-text-muted sm:mt-4">
+            <p className="text-pretty-safe mt-3 max-w-full wrap-break-word leading-7 text-text-muted sm:mt-4">
               {project.description}
             </p>
           </div>
 
           <div className="mt-5 min-w-0 sm:mt-6">
-            <p className="max-w-full break-words text-sm font-semibold uppercase text-cyan-glow">
+            <p className="max-w-full wrap-break-word text-sm font-semibold uppercase text-cyan-glow">
               Points clés
             </p>
             <ul className="mt-3 grid min-w-0 gap-1.5 text-sm leading-6 text-text-muted sm:grid-cols-2 sm:gap-2">
@@ -289,7 +289,7 @@ function ProjectCard({ index = 0, project }) {
                     aria-hidden="true"
                     className="mt-2 size-1.5 shrink-0 rounded-full bg-cyan-glow"
                   />
-                  <span className="min-w-0 max-w-full break-words">
+                  <span className="min-w-0 max-w-full wrap-break-word">
                     {highlight}
                   </span>
                 </li>
@@ -303,7 +303,7 @@ function ProjectCard({ index = 0, project }) {
           >
             {project.stack.map((tech) => (
               <li
-                className="max-w-full rounded-button border border-ice-300/15 bg-white/[0.04] px-2.5 py-1 text-center text-xs font-medium leading-snug break-words text-ice-100 sm:px-3 sm:py-1.5"
+                className="max-w-full rounded-button border border-ice-300/15 bg-white/4 px-2.5 py-1 text-center text-xs font-medium leading-snug wrap-break-word text-ice-100 sm:px-3 sm:py-1.5"
                 key={`${project.name}-${tech}`}
               >
                 {tech}
@@ -371,7 +371,7 @@ function ProjectCard({ index = 0, project }) {
 
               {project.note && (
                 <p
-                  className={`${hasProjectLinks ? 'mt-4 ' : ''}inline-flex max-w-full rounded-button border border-ice-300/15 bg-white/[0.03] px-3 py-1.5 text-xs font-medium leading-snug break-words text-text-soft`}
+                  className={`${hasProjectLinks ? "mt-4 " : ""}inline-flex max-w-full rounded-button border border-ice-300/15 bg-white/3 px-3 py-1.5 text-xs font-medium leading-snug wrap-break-word text-text-soft`}
                 >
                   {project.note}
                 </p>
@@ -393,7 +393,7 @@ function ProjectCard({ index = 0, project }) {
         projectName={project.name}
       />
     </>
-  )
+  );
 }
 
-export default ProjectCard
+export default ProjectCard;

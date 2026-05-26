@@ -1,11 +1,11 @@
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
 
-import { staggerItem } from '../../constants/animations'
-import GlassCard from './GlassCard'
+import { staggerItem } from "../../constants/animations";
+import GlassCard from "./GlassCard";
 
 function ProcessStep({ index = 0, step }) {
   // Subtle desktop offset suggests a timeline without animation.
-  const offsetClass = index % 2 === 0 ? '' : 'lg:translate-y-8'
+  const offsetClass = index % 2 === 0 ? "" : "lg:translate-y-8";
 
   return (
     <GlassCard
@@ -27,16 +27,16 @@ function ProcessStep({ index = 0, step }) {
         </span>
 
         <div className="min-w-0 flex-1">
-          <h3 className="max-w-full break-words text-lg font-semibold leading-tight text-ice-50 sm:text-xl">
+          <h3 className="max-w-full wrap-break-word text-lg font-semibold leading-tight text-ice-50 sm:text-xl">
             {step.title}
           </h3>
-          <p className="text-pretty-safe mt-2 max-w-full break-words leading-7 text-text-muted sm:mt-3">
+          <p className="text-pretty-safe mt-2 max-w-full wrap-break-word leading-7 text-text-muted sm:mt-3">
             {step.description}
           </p>
         </div>
       </div>
     </GlassCard>
-  )
+  );
 }
 
-export default ProcessStep
+export default ProcessStep;

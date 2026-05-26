@@ -51,7 +51,7 @@ function ContactSection() {
   return (
     <section
       aria-labelledby="contact-title"
-      className="section-padding section-divider relative overflow-hidden focus:outline-none"
+      className="section-padding section-divider relative overflow-hidden focus:outline-hidden"
       id="contact"
       tabIndex={-1}
     >
@@ -91,7 +91,7 @@ function ContactSection() {
             />
 
             <div className="mt-8 grid min-w-0 gap-4 text-left sm:mt-10 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] xl:items-start">
-              <div className="premium-border relative isolate min-w-0 overflow-hidden rounded-card bg-white/[0.04] p-4 sm:p-6">
+              <div className="premium-border relative isolate min-w-0 overflow-hidden rounded-card bg-white/4 p-4 sm:p-6">
                 <div
                   aria-hidden="true"
                   className="pointer-events-none absolute -right-16 -top-16 size-40 rounded-full bg-cyan-glow/10 blur-3xl"
@@ -101,16 +101,16 @@ function ContactSection() {
                 <div className="relative z-10 min-w-0">
                   <div className="flex min-w-0 items-start justify-between gap-3">
                     <div className="min-w-0">
-                      <p className="max-w-full break-words text-sm font-semibold uppercase text-cyan-glow">
+                      <p className="max-w-full wrap-break-word text-sm font-semibold uppercase text-cyan-glow">
                         Contact direct
                       </p>
-                      <h3 className="mt-3 max-w-full break-words text-xl font-semibold leading-tight text-ice-50">
+                      <h3 className="mt-3 max-w-full wrap-break-word text-xl font-semibold leading-tight text-ice-50">
                         Échanger avec moi.
                       </h3>
                     </div>
                     <span
                       aria-hidden="true"
-                      className="grid size-11 shrink-0 place-items-center rounded-2xl border border-ice-300/15 bg-white/[0.06] text-ice-50 shadow-[0_0_28px_rgba(234,67,53,0.12)] backdrop-blur-md sm:size-12"
+                      className="grid size-11 shrink-0 place-items-center rounded-2xl border border-ice-300/15 bg-white/6 text-ice-50 shadow-[0_0_28px_rgba(234,67,53,0.12)] backdrop-blur-md sm:size-12"
                     >
                       <MdOutlineMail
                         aria-hidden="true"
@@ -144,7 +144,7 @@ function ContactSection() {
                       </div>
                     </>
                   ) : (
-                    <p className="text-pretty-safe mt-4 max-w-full break-words rounded-2xl border border-ice-300/15 bg-white/[0.04] px-4 py-3 text-sm leading-6 text-text-muted">
+                    <p className="text-pretty-safe mt-4 max-w-full wrap-break-word rounded-2xl border border-ice-300/15 bg-white/4 px-4 py-3 text-sm leading-6 text-text-muted">
                       Adresse e-mail bientôt disponible. Vous pouvez déjà me
                       retrouver via mes liens professionnels.
                     </p>
@@ -179,17 +179,17 @@ function ContactSection() {
                 return (
                   <motion.article
                     aria-labelledby={titleId}
-                    className="premium-border min-w-0 rounded-card bg-white/[0.03] p-4 text-center sm:p-5 md:text-left"
+                    className="premium-border min-w-0 rounded-card bg-white/3 p-4 text-center sm:p-5 md:text-left"
                     key={card.title}
                     variants={staggerItem}
                   >
                     <h3
-                      className="max-w-full break-words text-lg font-semibold leading-tight text-ice-50"
+                      className="max-w-full wrap-break-word text-lg font-semibold leading-tight text-ice-50"
                       id={titleId}
                     >
                       {card.title}
                     </h3>
-                    <p className="text-pretty-safe mt-2 max-w-full break-words leading-7 text-text-muted sm:mt-3">
+                    <p className="text-pretty-safe mt-2 max-w-full wrap-break-word leading-7 text-text-muted sm:mt-3">
                       {card.description}
                     </p>
                   </motion.article>
@@ -197,7 +197,7 @@ function ContactSection() {
               })}
             </motion.div>
 
-            <p className="text-pretty-safe mx-auto mt-6 max-w-2xl break-words text-sm leading-6 text-text-soft sm:mt-8">
+            <p className="text-pretty-safe mx-auto mt-6 max-w-2xl wrap-break-word text-sm leading-6 text-text-soft sm:mt-8">
               Chaque échange est pour moi l’occasion de comprendre un contexte,
               analyser un besoin et construire une réponse utile, claire et
               durable.

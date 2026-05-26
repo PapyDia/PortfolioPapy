@@ -1,17 +1,17 @@
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
 
 import {
   fadeUp,
   staggerContainer,
   viewportOnce,
-} from '../../constants/animations'
-import { portfolioData } from '../../data/portfolioData'
-import Container from '../ui/Container'
-import ProcessStep from '../ui/ProcessStep'
-import SectionHeader from '../ui/SectionHeader'
+} from "../../constants/animations";
+import { portfolioData } from "../../data/portfolioData";
+import Container from "../ui/Container";
+import ProcessStep from "../ui/ProcessStep";
+import SectionHeader from "../ui/SectionHeader";
 
 function ProcessSection() {
-  const { process } = portfolioData
+  const { process } = portfolioData;
 
   return (
     <section
@@ -58,17 +58,13 @@ function ProcessSection() {
             whileInView="visible"
           >
             {process.steps.map((step, index) => (
-              <ProcessStep
-                index={index}
-                key={step.number}
-                step={step}
-              />
+              <ProcessStep index={index} key={step.number} step={step} />
             ))}
           </motion.ol>
         </div>
       </Container>
     </section>
-  )
+  );
 }
 
-export default ProcessSection
+export default ProcessSection;

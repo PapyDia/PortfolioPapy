@@ -1,12 +1,12 @@
-import { FaLinkedin } from 'react-icons/fa6'
-import { SiGithub } from 'react-icons/si'
+import { FaLinkedin } from "react-icons/fa6";
+import { SiGithub } from "react-icons/si";
 
 const githubCodeLines = [
   'const developer = "Cheikh Massamba Dia";',
   'const stack = ["React", "Tailwind", "Node.js", "MongoDB"];',
-  'const project = createFullStackApp();',
+  "const project = createFullStackApp();",
   'const deployTarget = { frontend: "Vercel", backend: "Render" };',
-]
+];
 
 function GitHubCodeDecor() {
   return (
@@ -18,7 +18,7 @@ function GitHubCodeDecor() {
         className="absolute inset-0"
         style={{
           background:
-            'radial-gradient(circle at 82% 18%, rgba(56, 189, 248, 0.14), transparent 34%), radial-gradient(circle at 14% 88%, rgba(139, 92, 246, 0.1), transparent 36%)',
+            "radial-gradient(circle at 82% 18%, rgba(56, 189, 248, 0.14), transparent 34%), radial-gradient(circle at 14% 88%, rgba(139, 92, 246, 0.1), transparent 36%)",
         }}
       />
       <div className="absolute inset-0 flex flex-col justify-between py-3 font-mono text-[0.48rem] leading-none text-cyan-glow/20 opacity-70 sm:py-4 sm:text-[0.58rem] lg:text-[0.64rem]">
@@ -26,12 +26,12 @@ function GitHubCodeDecor() {
           <p
             className={`w-[180%] max-w-none select-none whitespace-nowrap ${
               index % 4 === 0
-                ? '-translate-x-12'
+                ? "-translate-x-12"
                 : index % 4 === 1
-                  ? 'translate-x-3'
+                  ? "translate-x-3"
                   : index % 4 === 2
-                    ? '-translate-x-24'
-                    : 'translate-x-8'
+                    ? "-translate-x-24"
+                    : "translate-x-8"
             }`}
             key={`${line}-${index}`}
           >
@@ -43,7 +43,7 @@ function GitHubCodeDecor() {
       </div>
       <div className="absolute inset-0 bg-linear-to-br from-navy-950/35 via-navy-950/55 to-navy-950/82" />
     </div>
-  )
+  );
 }
 
 function LinkedInNetworkDecor() {
@@ -56,7 +56,7 @@ function LinkedInNetworkDecor() {
         className="absolute inset-0"
         style={{
           background:
-            'radial-gradient(circle at 76% 24%, rgba(10, 102, 194, 0.2), transparent 34%), radial-gradient(circle at 18% 86%, rgba(56, 189, 248, 0.12), transparent 36%)',
+            "radial-gradient(circle at 76% 24%, rgba(10, 102, 194, 0.2), transparent 34%), radial-gradient(circle at 18% 86%, rgba(56, 189, 248, 0.12), transparent 36%)",
         }}
       />
       <svg
@@ -95,38 +95,38 @@ function LinkedInNetworkDecor() {
       </svg>
       <span className="absolute inset-0 bg-linear-to-br from-transparent via-navy-950/10 to-navy-950/60" />
     </span>
-  )
+  );
 }
 
 function ContactLinkCard({ description, href, label }) {
-  const normalizedHref = typeof href === 'string' ? href.trim() : ''
-  const isExternal = /^https?:\/\//i.test(normalizedHref)
-  const normalizedLabel = label.toLowerCase()
-  const isGitHub = normalizedLabel === 'github'
-  const isLinkedIn = normalizedLabel === 'linkedin'
-  const Icon = isGitHub ? SiGithub : isLinkedIn ? FaLinkedin : null
+  const normalizedHref = typeof href === "string" ? href.trim() : "";
+  const isExternal = /^https?:\/\//i.test(normalizedHref);
+  const normalizedLabel = label.toLowerCase();
+  const isGitHub = normalizedLabel === "github";
+  const isLinkedIn = normalizedLabel === "linkedin";
+  const Icon = isGitHub ? SiGithub : isLinkedIn ? FaLinkedin : null;
 
   if (!normalizedHref) {
-    return null
+    return null;
   }
 
   return (
     <a
-      className="premium-border group relative flex w-full min-w-0 flex-col overflow-hidden rounded-3xl bg-white/[0.04] p-4 text-left transition duration-300 hover:-translate-y-0.5 hover:border-cyan-glow/45 hover:bg-cyan-glow/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow sm:p-5"
+      className="premium-border group relative flex w-full min-w-0 flex-col overflow-hidden rounded-3xl bg-white/4 p-4 text-left transition duration-300 hover:-translate-y-0.5 hover:border-cyan-glow/45 hover:bg-cyan-glow/10 focus-visible:outline focus-visible:outline-offset-4 focus-visible:outline-cyan-glow sm:p-5"
       href={normalizedHref}
-      rel={isExternal ? 'noopener noreferrer' : undefined}
-      target={isExternal ? '_blank' : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+      target={isExternal ? "_blank" : undefined}
     >
       {isGitHub && <GitHubCodeDecor />}
       {isLinkedIn && <LinkedInNetworkDecor />}
 
       <span className="relative z-10 flex min-w-0 items-center justify-between gap-3">
-        <span className="max-w-full break-words text-base font-semibold text-ice-50">
+        <span className="max-w-full wrap-break-word text-base font-semibold text-ice-50">
           {label}
         </span>
         <span
           aria-hidden="true"
-          className="grid size-11 shrink-0 place-items-center rounded-2xl border border-ice-300/20 bg-white/[0.06] text-sm font-semibold text-cyan-glow shadow-glow-soft transition duration-300 group-hover:border-cyan-glow/50 group-hover:bg-cyan-glow/10 sm:size-12"
+          className="grid size-11 shrink-0 place-items-center rounded-2xl border border-ice-300/20 bg-white/6 text-sm font-semibold text-cyan-glow shadow-glow-soft transition duration-300 group-hover:border-cyan-glow/50 group-hover:bg-cyan-glow/10 sm:size-12"
         >
           {Icon ? (
             <Icon
@@ -139,11 +139,11 @@ function ContactLinkCard({ description, href, label }) {
           )}
         </span>
       </span>
-      <span className="text-pretty-safe relative z-10 mt-3 max-w-full break-words text-sm leading-6 text-text-muted">
+      <span className="text-pretty-safe relative z-10 mt-3 max-w-full wrap-break-word text-sm leading-6 text-text-muted">
         {description}
       </span>
     </a>
-  )
+  );
 }
 
-export default ContactLinkCard
+export default ContactLinkCard;

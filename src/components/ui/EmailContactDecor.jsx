@@ -8,11 +8,11 @@ function EmailContactDecor() {
         className="absolute inset-0"
         style={{
           background:
-            'radial-gradient(circle at 84% 20%, rgba(234, 67, 53, 0.14), transparent 34%), radial-gradient(circle at 22% 94%, rgba(251, 188, 5, 0.1), transparent 36%), radial-gradient(circle at 86% 88%, rgba(66, 133, 244, 0.1), transparent 32%)',
+            "radial-gradient(circle at 84% 20%, rgba(234, 67, 53, 0.14), transparent 34%), radial-gradient(circle at 22% 94%, rgba(251, 188, 5, 0.1), transparent 36%), radial-gradient(circle at 86% 88%, rgba(66, 133, 244, 0.1), transparent 32%)",
         }}
       />
 
-      <span className="absolute right-3 top-3 flex items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.04] px-2.5 py-2 opacity-[0.34] shadow-[0_12px_34px_rgba(234,67,53,0.12)] sm:right-5 sm:top-5 sm:px-3 sm:opacity-[0.56]">
+      <span className="absolute right-3 top-3 flex items-center gap-2 rounded-2xl border border-white/10 bg-white/4 px-2.5 py-2 opacity-34 shadow-[0_12px_34px_rgba(234,67,53,0.12)] sm:right-5 sm:top-5 sm:px-3 sm:opacity-56">
         <svg
           aria-hidden="true"
           className="size-5 shrink-0 text-[#ea4335]/60"
@@ -34,7 +34,7 @@ function EmailContactDecor() {
         </span>
       </span>
 
-      <span className="absolute -bottom-2 left-4 hidden items-center gap-2.5 rounded-2xl border border-white/10 bg-white/[0.035] px-3 py-2.5 opacity-[0.44] shadow-[0_10px_30px_rgba(66,133,244,0.08)] sm:flex">
+      <span className="absolute -bottom-2 left-4 hidden items-center gap-2.5 rounded-2xl border border-white/10 bg-white/3.5 px-3 py-2.5 opacity-44 shadow-[0_10px_30px_rgba(66,133,244,0.08)] sm:flex">
         <span className="grid size-7 place-items-center rounded-xl bg-[#4285f4]/10">
           <svg
             aria-hidden="true"
@@ -58,7 +58,7 @@ function EmailContactDecor() {
         </span>
       </span>
 
-      <span className="absolute bottom-6 right-5 hidden items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 opacity-[0.42] md:flex">
+      <span className="absolute bottom-6 right-5 hidden items-center gap-2 rounded-full border border-white/10 bg-white/4 px-3 py-2 opacity-42 md:flex">
         <span className="size-2 rounded-full bg-[#34a853]/60 shadow-[0_0_10px_rgba(52,168,83,0.38)]" />
         <span className="block h-1 w-12 rounded-full bg-ice-100/15" />
         <span className="block h-1 w-6 rounded-full bg-[#ea4335]/20" />
@@ -66,7 +66,7 @@ function EmailContactDecor() {
 
       <span className="absolute inset-0 bg-linear-to-br from-navy-950/5 via-navy-950/20 to-navy-950/65" />
     </div>
-  )
+  );
 }
 
-export default EmailContactDecor
+export default EmailContactDecor;

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
 
 import {
   createPebbleFloat,
@@ -6,42 +6,42 @@ import {
   staggerContainer,
   staggerItem,
   viewportOnce,
-} from '../../constants/animations'
-import { techStack } from '../../constants/techStack'
-import { portfolioData } from '../../data/portfolioData'
-import { useReducedMotionPreference } from '../../hooks/useReducedMotionPreference'
-import Container from '../ui/Container'
-import SectionTransition from '../ui/SectionTransition'
-import StackLogoBadge from '../ui/StackLogoBadge'
+} from "../../constants/animations";
+import { techStack } from "../../constants/techStack";
+import { portfolioData } from "../../data/portfolioData";
+import { useReducedMotionPreference } from "../../hooks/useReducedMotionPreference";
+import Container from "../ui/Container";
+import SectionTransition from "../ui/SectionTransition";
+import StackLogoBadge from "../ui/StackLogoBadge";
 
 const gravelSizes = [
-  'size-[3.75rem] sm:size-[4.5rem] lg:size-20',
-  'size-[4.5rem] sm:size-20',
-  'size-16 sm:size-[4.75rem] lg:size-20',
-  'size-[4.75rem] sm:size-20',
-  'size-[4.25rem] sm:size-[4.75rem]',
-]
+  "size-15 sm:size-18 lg:size-20",
+  "size-18 sm:size-20",
+  "size-16 sm:size-19 lg:size-20",
+  "size-19 sm:size-20",
+  "size-17 sm:size-19",
+];
 
 const gravelOffsets = [
-  '-translate-x-2 -translate-y-1 sm:-translate-x-1 sm:-translate-y-2 lg:-translate-y-3',
-  'translate-x-1 translate-y-2 sm:translate-y-2',
-  'translate-x-2 -translate-y-1 sm:translate-x-0.5 sm:-translate-y-1 lg:translate-y-2',
-  '-translate-x-2 translate-y-2 sm:translate-x-1 sm:translate-y-3',
-  'translate-x-2 -translate-y-2 sm:-translate-x-1 sm:-translate-y-1 lg:-translate-y-2',
-  '-translate-x-0.5 translate-y-1 sm:translate-y-2 lg:translate-y-3',
-  'translate-x-2 -translate-y-1 sm:translate-x-1 sm:-translate-y-3',
-  '-translate-x-2 translate-y-2 sm:-translate-x-1 sm:translate-y-1 lg:-translate-y-1',
-  'translate-x-1 -translate-y-2 sm:-translate-x-1 sm:-translate-y-2 lg:translate-y-1',
-]
+  "-translate-x-2 -translate-y-1 sm:-translate-x-1 sm:-translate-y-2 lg:-translate-y-3",
+  "translate-x-1 translate-y-2 sm:translate-y-2",
+  "translate-x-2 -translate-y-1 sm:translate-x-0.5 sm:-translate-y-1 lg:translate-y-2",
+  "-translate-x-2 translate-y-2 sm:translate-x-1 sm:translate-y-3",
+  "translate-x-2 -translate-y-2 sm:-translate-x-1 sm:-translate-y-1 lg:-translate-y-2",
+  "-translate-x-0.5 translate-y-1 sm:translate-y-2 lg:translate-y-3",
+  "translate-x-2 -translate-y-1 sm:translate-x-1 sm:-translate-y-3",
+  "-translate-x-2 translate-y-2 sm:-translate-x-1 sm:translate-y-1 lg:-translate-y-1",
+  "translate-x-1 -translate-y-2 sm:-translate-x-1 sm:-translate-y-2 lg:translate-y-1",
+];
 
 const featuredGravelSizes = {
-  Cloudinary: 'size-[4.75rem] sm:size-20 lg:size-24',
-  JavaScript: 'size-20 sm:size-20 lg:size-24',
-  'Tailwind CSS': 'size-20 sm:size-20 lg:size-24',
-}
+  Cloudinary: "size-19 sm:size-20 lg:size-24",
+  JavaScript: "size-20 sm:size-20 lg:size-24",
+  "Tailwind CSS": "size-20 sm:size-20 lg:size-24",
+};
 
 function StackNebulaSection() {
-  const prefersReducedMotion = useReducedMotionPreference()
+  const prefersReducedMotion = useReducedMotionPreference();
 
   return (
     <section
@@ -63,16 +63,16 @@ function StackNebulaSection() {
           />
           <div className="relative grid min-w-0 gap-8 sm:gap-10 xl:grid-cols-[0.72fr_1.28fr] xl:items-center">
             <div className="min-w-0 text-center xl:text-left">
-              <p className="max-w-full break-words text-sm font-semibold uppercase text-cyan-glow">
+              <p className="max-w-full wrap-break-word text-sm font-semibold uppercase text-cyan-glow">
                 Stack
               </p>
               <h2
-                className="text-balance-safe mt-2 max-w-full break-words text-2xl font-semibold leading-tight text-ice-50 sm:mt-3 sm:text-4xl"
+                className="text-balance-safe mt-2 max-w-full wrap-break-word text-2xl font-semibold leading-tight text-ice-50 sm:mt-3 sm:text-4xl"
                 id="stack-title"
               >
                 {portfolioData.stack.title}
               </h2>
-              <p className="text-pretty-safe mx-auto mt-4 max-w-xl break-words leading-7 text-text-muted xl:mx-0">
+              <p className="text-pretty-safe mx-auto mt-4 max-w-xl wrap-break-word leading-7 text-text-muted xl:mx-0">
                 {portfolioData.stack.description}
               </p>
             </div>
@@ -80,7 +80,7 @@ function StackNebulaSection() {
             <div className="relative mx-auto w-full min-w-0 max-w-2xl py-4 sm:px-3 sm:py-6">
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-x-[12%] inset-y-[12%] rounded-full bg-cyan-glow/[0.08] blur-3xl"
+                className="pointer-events-none absolute inset-x-[12%] inset-y-[12%] rounded-full bg-cyan-glow/8 blur-3xl"
               />
               <div
                 aria-hidden="true"
@@ -101,7 +101,7 @@ function StackNebulaSection() {
 
               <motion.ul
                 aria-label="Stack technique"
-                className="relative mx-auto my-0 flex w-full max-w-[19rem] min-w-0 list-none flex-wrap items-center justify-center gap-x-2.5 gap-y-4 px-2 py-1 sm:max-w-xl sm:gap-x-2 sm:gap-y-4 sm:px-3 lg:max-w-2xl lg:gap-x-2.5 lg:gap-y-5"
+                className="relative mx-auto my-0 flex w-full max-w-76 min-w-0 list-none flex-wrap items-center justify-center gap-x-2.5 gap-y-4 px-2 py-1 sm:max-w-xl sm:gap-x-2 sm:gap-y-4 sm:px-3 lg:max-w-2xl lg:gap-x-2.5 lg:gap-y-5"
                 initial="hidden"
                 variants={staggerContainer}
                 viewport={viewportOnce}
@@ -110,9 +110,9 @@ function StackNebulaSection() {
                 {techStack.map((tech, index) => {
                   const sizeClassName =
                     featuredGravelSizes[tech] ??
-                    gravelSizes[index % gravelSizes.length]
+                    gravelSizes[index % gravelSizes.length];
                   const offsetClassName =
-                    gravelOffsets[index % gravelOffsets.length]
+                    gravelOffsets[index % gravelOffsets.length];
 
                   return (
                     <motion.li
@@ -136,7 +136,7 @@ function StackNebulaSection() {
                         </motion.div>
                       </div>
                     </motion.li>
-                  )
+                  );
                 })}
               </motion.ul>
             </div>
@@ -145,7 +145,7 @@ function StackNebulaSection() {
       </Container>
       <SectionTransition variant="violet" />
     </section>
-  )
+  );
 }
 
-export default StackNebulaSection
+export default StackNebulaSection;

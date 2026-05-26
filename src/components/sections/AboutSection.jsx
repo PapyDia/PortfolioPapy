@@ -1,21 +1,21 @@
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
 
 import {
   fadeUp,
   staggerContainer,
   staggerItem,
   viewportOnce,
-} from '../../constants/animations'
-import profilePhoto from '../../assets/images/profile.jpg'
-import { portfolioData } from '../../data/portfolioData'
-import Container from '../ui/Container'
-import GlassCard from '../ui/GlassCard'
-import ProfilePhoto from '../ui/ProfilePhoto'
-import SectionHeader from '../ui/SectionHeader'
-import SectionTransition from '../ui/SectionTransition'
+} from "../../constants/animations";
+import profilePhoto from "../../assets/images/profile.jpg";
+import { portfolioData } from "../../data/portfolioData";
+import Container from "../ui/Container";
+import GlassCard from "../ui/GlassCard";
+import ProfilePhoto from "../ui/ProfilePhoto";
+import SectionHeader from "../ui/SectionHeader";
+import SectionTransition from "../ui/SectionTransition";
 
 function AboutSection() {
-  const { about, identity } = portfolioData
+  const { about, identity } = portfolioData;
 
   return (
     <section
@@ -60,7 +60,7 @@ function AboutSection() {
               <div className="relative mx-auto min-w-0 max-w-2xl space-y-5 text-left text-base leading-7 text-text-muted sm:space-y-6 sm:leading-8">
                 {about.paragraphs.map((paragraph) => (
                   <p
-                    className="text-pretty-safe max-w-full break-words"
+                    className="text-pretty-safe max-w-full wrap-break-word"
                     key={paragraph}
                   >
                     {paragraph}
@@ -80,7 +80,7 @@ function AboutSection() {
           >
             <ProfilePhoto
               className="relative z-10"
-              alt={identity.imageAlt ?? 'Portrait de Cheikh Massamba Dia'}
+              alt={identity.imageAlt ?? "Portrait de Cheikh Massamba Dia"}
               src={profilePhoto}
             />
 
@@ -95,13 +95,13 @@ function AboutSection() {
               />
 
               <div className="relative min-w-0">
-                <p className="max-w-full break-words text-sm font-semibold uppercase text-cyan-glow">
+                <p className="max-w-full wrap-break-word text-sm font-semibold uppercase text-cyan-glow">
                   Profil
                 </p>
-                <h3 className="mt-3 max-w-full break-words text-xl font-semibold leading-tight text-ice-50 sm:mt-4 sm:text-2xl">
+                <h3 className="mt-3 max-w-full wrap-break-word text-xl font-semibold leading-tight text-ice-50 sm:mt-4 sm:text-2xl">
                   {identity.name}
                 </h3>
-                <p className="mt-2 max-w-full break-words text-text-muted">
+                <p className="mt-2 max-w-full wrap-break-word text-text-muted">
                   {identity.title}
                 </p>
 
@@ -111,7 +111,7 @@ function AboutSection() {
                 >
                   {about.highlights.map((highlight) => (
                     <li
-                      className="max-w-full rounded-2xl border border-ice-300/15 bg-white/[0.04] px-3 py-2.5 text-center text-sm font-medium leading-snug break-words text-ice-100 sm:px-4 sm:py-3"
+                      className="max-w-full rounded-2xl border border-ice-300/15 bg-white/4 px-3 py-2.5 text-center text-sm font-medium leading-snug wrap-break-word text-ice-100 sm:px-4 sm:py-3"
                       key={highlight}
                     >
                       {highlight}
@@ -125,7 +125,7 @@ function AboutSection() {
       </Container>
       <SectionTransition variant="mixed" />
     </section>
-  )
+  );
 }
 
-export default AboutSection
+export default AboutSection;

@@ -1,13 +1,13 @@
-import { useEffect } from 'react'
+import { useEffect } from "react";
 
 const focusableSelector = [
-  'a[href]',
-  'button:not([disabled])',
-  'input:not([disabled])',
-  'select:not([disabled])',
-  'textarea:not([disabled])',
+  "a[href]",
+  "button:not([disabled])",
+  "input:not([disabled])",
+  "select:not([disabled])",
+  "textarea:not([disabled])",
   '[tabindex]:not([tabindex="-1"])',
-].join(', ')
+].join(", ");
 
 function useDialogLifecycle(
   isOpen,
@@ -18,69 +18,69 @@ function useDialogLifecycle(
 ) {
   useEffect(() => {
     if (!isOpen) {
-      return undefined
+      return undefined;
     }
 
-    const previouslyFocusedElement = document.activeElement
-    const previousOverflow = document.body.style.overflow
+    const previouslyFocusedElement = document.activeElement;
+    const previousOverflow = document.body.style.overflow;
 
     function handleKeyDown(event) {
-      if (event.key === 'Escape') {
-        onClose()
-        return
+      if (event.key === "Escape") {
+        onClose();
+        return;
       }
 
-      if (event.key !== 'Tab' || !dialogRef.current) {
-        return
+      if (event.key !== "Tab" || !dialogRef.current) {
+        return;
       }
 
       const focusableElements = Array.from(
         dialogRef.current.querySelectorAll(focusableSelector),
-      )
+      );
 
       if (focusableElements.length === 0) {
-        event.preventDefault()
-        dialogRef.current.focus()
-        return
+        event.preventDefault();
+        dialogRef.current.focus();
+        return;
       }
 
-      const firstElement = focusableElements[0]
-      const lastElement = focusableElements[focusableElements.length - 1]
-      const activeElement = document.activeElement
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+      const activeElement = document.activeElement;
 
       if (!dialogRef.current.contains(activeElement)) {
-        event.preventDefault()
-        const nextElement = event.shiftKey ? lastElement : firstElement
-        nextElement.focus()
+        event.preventDefault();
+        const nextElement = event.shiftKey ? lastElement : firstElement;
+        nextElement.focus();
       } else if (event.shiftKey && activeElement === firstElement) {
-        event.preventDefault()
-        lastElement.focus()
+        event.preventDefault();
+        lastElement.focus();
       } else if (!event.shiftKey && activeElement === lastElement) {
-        event.preventDefault()
-        firstElement.focus()
+        event.preventDefault();
+        firstElement.focus();
       }
     }
 
-    document.body.style.overflow = 'hidden'
-    document.addEventListener('keydown', handleKeyDown)
-    initialFocusRef.current?.focus()
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", handleKeyDown);
+    initialFocusRef.current?.focus();
 
     return () => {
-      document.removeEventListener('keydown', handleKeyDown)
-      document.body.style.overflow = previousOverflow
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = previousOverflow;
 
       if (
         restoreFocusRef?.current !== false &&
         previouslyFocusedElement instanceof HTMLElement
       ) {
-        previouslyFocusedElement.focus()
+        previouslyFocusedElement.focus();
       }
 
       if (restoreFocusRef) {
-        restoreFocusRef.current = true
+        restoreFocusRef.current = true;
       }
-    }
-  }, [dialogRef, initialFocusRef, isOpen, onClose, restoreFocusRef])
+    };
+  }, [dialogRef, initialFocusRef, isOpen, onClose, restoreFocusRef]);
 }
 
-export default useDialogLifecycle
+export default useDialogLifecycle;

@@ -1,20 +1,20 @@
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
 
 import {
   fadeUp,
   staggerContainer,
   staggerItem,
   viewportOnce,
-} from '../../constants/animations'
-import { portfolioData } from '../../data/portfolioData'
-import Container from '../ui/Container'
-import GlassCard from '../ui/GlassCard'
-import LanguageCard from '../ui/LanguageCard'
-import SectionHeader from '../ui/SectionHeader'
+} from "../../constants/animations";
+import { portfolioData } from "../../data/portfolioData";
+import Container from "../ui/Container";
+import GlassCard from "../ui/GlassCard";
+import LanguageCard from "../ui/LanguageCard";
+import SectionHeader from "../ui/SectionHeader";
 
 function LearningLanguagesSection() {
-  const { learningLanguages } = portfolioData
-  const { academicJourney } = learningLanguages
+  const { learningLanguages } = portfolioData;
+  const { academicJourney } = learningLanguages;
 
   return (
     <section
@@ -39,7 +39,7 @@ function LearningLanguagesSection() {
         </motion.div>
 
         <motion.p
-          className="mx-auto mt-6 max-w-4xl rounded-2xl border border-cyan-glow/20 bg-cyan-glow/5 px-4 py-3 text-center text-sm font-medium leading-7 break-words text-ice-100 sm:mt-8 sm:px-5"
+          className="mx-auto mt-6 max-w-4xl rounded-2xl border border-cyan-glow/20 bg-cyan-glow/5 px-4 py-3 text-center text-sm font-medium leading-7 wrap-break-word text-ice-100 sm:mt-8 sm:px-5"
           initial="hidden"
           variants={fadeUp}
           viewport={viewportOnce}
@@ -56,7 +56,7 @@ function LearningLanguagesSection() {
           whileInView="visible"
         >
           {learningLanguages.items.map((language, index) => {
-            const titleId = `learning-language-${index + 1}-title`
+            const titleId = `learning-language-${index + 1}-title`;
 
             return (
               <motion.div
@@ -66,7 +66,7 @@ function LearningLanguagesSection() {
               >
                 <LanguageCard language={language} titleId={titleId} />
               </motion.div>
-            )
+            );
           })}
         </motion.div>
 
@@ -80,7 +80,7 @@ function LearningLanguagesSection() {
           <GlassCard
             aria-labelledby="academic-journey-title"
             as="article"
-            className="relative overflow-hidden border-cyan-glow/25 bg-cyan-glow/[0.04] p-5 sm:p-8 lg:p-10"
+            className="relative overflow-hidden border-cyan-glow/25 bg-cyan-glow/4 p-5 sm:p-8 lg:p-10"
           >
             <div
               aria-hidden="true"
@@ -92,24 +92,24 @@ function LearningLanguagesSection() {
             />
 
             <div className="relative mx-auto min-w-0 max-w-4xl">
-              <p className="max-w-full break-words text-sm font-semibold uppercase text-cyan-glow">
+              <p className="max-w-full wrap-break-word text-sm font-semibold uppercase text-cyan-glow">
                 {academicJourney.eyebrow}
               </p>
               <h3
-                className="text-balance-safe mt-3 max-w-full break-words text-2xl font-semibold leading-tight text-ice-50 sm:text-3xl"
+                className="text-balance-safe mt-3 max-w-full wrap-break-word text-2xl font-semibold leading-tight text-ice-50 sm:text-3xl"
                 id="academic-journey-title"
               >
                 {academicJourney.title}
               </h3>
 
-              <p className="text-pretty-safe mt-5 max-w-3xl break-words text-base leading-7 text-ice-100 sm:text-lg sm:leading-8">
+              <p className="text-pretty-safe mt-5 max-w-3xl wrap-break-word text-base leading-7 text-ice-100 sm:text-lg sm:leading-8">
                 {academicJourney.description}
               </p>
 
               <div className="mt-6 min-w-0 max-w-3xl space-y-5 text-left text-base leading-7 text-text-muted sm:mt-8 sm:space-y-6 sm:leading-8">
                 {academicJourney.paragraphs.map((paragraph) => (
                   <p
-                    className="text-pretty-safe max-w-full break-words"
+                    className="text-pretty-safe max-w-full wrap-break-word"
                     key={paragraph}
                   >
                     {paragraph}
@@ -123,7 +123,7 @@ function LearningLanguagesSection() {
               >
                 {academicJourney.skills.map((skill) => (
                   <li
-                    className="max-w-full rounded-button border border-cyan-glow/20 bg-white/[0.055] px-3 py-1.5 text-center text-xs font-medium leading-snug break-words text-ice-100 sm:text-sm"
+                    className="max-w-full rounded-button border border-cyan-glow/20 bg-white/5.5 px-3 py-1.5 text-center text-xs font-medium leading-snug wrap-break-word text-ice-100 sm:text-sm"
                     key={skill}
                   >
                     {skill}
@@ -135,7 +135,7 @@ function LearningLanguagesSection() {
         </motion.div>
       </Container>
     </section>
-  )
+  );
 }
 
-export default LearningLanguagesSection
+export default LearningLanguagesSection;

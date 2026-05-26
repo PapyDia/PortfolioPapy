@@ -1,20 +1,20 @@
-import { learningLanguageIcons } from '../../constants/learningLanguageIcons'
-import GlassCard from './GlassCard'
+import { learningLanguageIcons } from "../../constants/learningLanguageIcons";
+import GlassCard from "./GlassCard";
 
 function getInitials(label) {
   return label
     .split(/\s+/)
     .map((part) => part[0])
-    .join('')
+    .join("")
     .slice(0, 2)
-    .toUpperCase()
+    .toUpperCase();
 }
 
 function LanguageCard({ language, titleId }) {
-  const iconConfig = learningLanguageIcons[language.name]
-  const Icon = iconConfig?.Icon
-  const iconClassName = iconConfig?.iconClassName ?? 'text-ice-50'
-  const initials = getInitials(language.name)
+  const iconConfig = learningLanguageIcons[language.name];
+  const Icon = iconConfig?.Icon;
+  const iconClassName = iconConfig?.iconClassName ?? "text-ice-50";
+  const initials = getInitials(language.name);
 
   return (
     <GlassCard
@@ -32,10 +32,10 @@ function LanguageCard({ language, titleId }) {
       />
 
       <div className="relative flex min-w-0 items-start gap-4">
-        <div className="relative grid size-12 shrink-0 place-items-center rounded-2xl border border-ice-300/15 bg-white/[0.05] shadow-glow-soft backdrop-blur-xl sm:size-14">
+        <div className="relative grid size-12 shrink-0 place-items-center rounded-2xl border border-ice-300/15 bg-white/5 shadow-glow-soft backdrop-blur-xl sm:size-14">
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-1 rounded-[1rem] bg-cyan-glow/10 blur-md"
+            className="pointer-events-none absolute inset-1 rounded-2xl bg-cyan-glow/10 blur-md"
           />
           {Icon ? (
             <Icon
@@ -54,11 +54,11 @@ function LanguageCard({ language, titleId }) {
         </div>
 
         <div className="min-w-0">
-          <span className="inline-flex max-w-full rounded-button border border-cyan-glow/25 bg-cyan-glow/10 px-3 py-1 text-center text-xs font-semibold leading-snug break-words text-cyan-glow">
+          <span className="inline-flex max-w-full rounded-button border border-cyan-glow/25 bg-cyan-glow/10 px-3 py-1 text-center text-xs font-semibold leading-snug wrap-break-word text-cyan-glow">
             {language.category}
           </span>
           <h3
-            className="mt-3 max-w-full break-words text-xl font-semibold leading-tight text-ice-50 sm:text-2xl"
+            className="mt-3 max-w-full wrap-break-word text-xl font-semibold leading-tight text-ice-50 sm:text-2xl"
             id={titleId}
           >
             {language.name}
@@ -66,11 +66,11 @@ function LanguageCard({ language, titleId }) {
         </div>
       </div>
 
-      <p className="text-pretty-safe relative mt-4 max-w-full break-words leading-7 text-text-muted">
+      <p className="text-pretty-safe relative mt-4 max-w-full wrap-break-word leading-7 text-text-muted">
         {language.description}
       </p>
     </GlassCard>
-  )
+  );
 }
 
-export default LanguageCard
+export default LanguageCard;

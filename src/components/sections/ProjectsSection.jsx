@@ -1,19 +1,19 @@
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
 
 import {
   fadeUp,
   staggerContainer,
   staggerItem,
   viewportOnce,
-} from '../../constants/animations'
-import { portfolioData } from '../../data/portfolioData'
-import Container from '../ui/Container'
-import ProjectCard from '../ui/ProjectCard'
-import SectionHeader from '../ui/SectionHeader'
-import SectionTransition from '../ui/SectionTransition'
+} from "../../constants/animations";
+import { portfolioData } from "../../data/portfolioData";
+import Container from "../ui/Container";
+import ProjectCard from "../ui/ProjectCard";
+import SectionHeader from "../ui/SectionHeader";
+import SectionTransition from "../ui/SectionTransition";
 
 function ProjectsSection() {
-  const { projects } = portfolioData
+  const { projects } = portfolioData;
 
   return (
     <section
@@ -59,17 +59,14 @@ function ProjectsSection() {
               key={project.name}
               variants={staggerItem}
             >
-              <ProjectCard
-                index={index}
-                project={project}
-              />
+              <ProjectCard index={index} project={project} />
             </motion.div>
           ))}
         </motion.div>
       </Container>
       <SectionTransition variant="mixed" />
     </section>
-  )
+  );
 }
 
-export default ProjectsSection
+export default ProjectsSection;
