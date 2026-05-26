@@ -1,15 +1,28 @@
+import { lazy, Suspense } from "react";
 import { MotionConfig } from "framer-motion";
 
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import HeroSection from "./components/sections/HeroSection";
 import AboutSection from "./components/sections/AboutSection";
-import StackNebulaSection from "./components/sections/StackNebulaSection";
-import SkillsSection from "./components/sections/SkillsSection";
-import LearningLanguagesSection from "./components/sections/LearningLanguagesSection";
-import ProjectsSection from "./components/sections/ProjectsSection";
-import ProcessSection from "./components/sections/ProcessSection";
-import ContactSection from "./components/sections/ContactSection";
+import SectionFallback from "./components/ui/SectionFallback";
+
+const StackNebulaSection = lazy(
+  () => import("./components/sections/StackNebulaSection"),
+);
+const SkillsSection = lazy(() => import("./components/sections/SkillsSection"));
+const LearningLanguagesSection = lazy(
+  () => import("./components/sections/LearningLanguagesSection"),
+);
+const ProjectsSection = lazy(
+  () => import("./components/sections/ProjectsSection"),
+);
+const ProcessSection = lazy(
+  () => import("./components/sections/ProcessSection"),
+);
+const ContactSection = lazy(
+  () => import("./components/sections/ContactSection"),
+);
 
 function App() {
   return (
@@ -26,12 +39,14 @@ function App() {
         >
           <HeroSection />
           <AboutSection />
-          <StackNebulaSection />
-          <SkillsSection />
-          <LearningLanguagesSection />
-          <ProjectsSection />
-          <ProcessSection />
-          <ContactSection />
+          <Suspense fallback={<SectionFallback />}>
+            <StackNebulaSection />
+            <SkillsSection />
+            <LearningLanguagesSection />
+            <ProjectsSection />
+            <ProcessSection />
+            <ContactSection />
+          </Suspense>
         </main>
         <Footer />
       </div>

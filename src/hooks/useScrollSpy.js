@@ -20,15 +20,10 @@ function useScrollSpy(items, options = {}) {
       return undefined;
     }
 
-    const observedSections = sectionIdsKey
-      .split("|")
-      .filter(Boolean)
-      .map((id) => document.getElementById(id))
-      .filter(Boolean);
-
-    if (observedSections.length === 0) {
-      return undefined;
-    }
+    const ids = sectionIdsKey.split("|").filter(Boolean);
+    const observedSections = new Map();
+    let initialScanComplete = false;
+    let mutationObserver;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -60,9 +55,57 @@ function useScrollSpy(items, options = {}) {
       },
     );
 
-    observedSections.forEach((section) => observer.observe(section));
+    function observeAvailableSections() {
+      let requestedSection;
 
-    return () => observer.disconnect();
+      ids.forEach((id) => {
+        const section = document.getElementById(id);
+        const currentSection = observedSections.get(id);
+
+        if (section === currentSection) {
+          return;
+        }
+
+        if (currentSection) {
+          observer.unobserve(currentSection);
+          observedSections.delete(id);
+        }
+
+        if (section) {
+          observer.observe(section);
+          observedSections.set(id, section);
+
+          if (initialScanComplete && window.location.hash === `#${id}`) {
+            requestedSection = section;
+          }
+        }
+      });
+
+      requestedSection?.scrollIntoView({ block: "start" });
+
+      if (observedSections.size === ids.length) {
+        mutationObserver?.disconnect();
+      }
+    }
+
+    observeAvailableSections();
+    initialScanComplete = true;
+
+    if (
+      observedSections.size < ids.length &&
+      typeof MutationObserver !== "undefined"
+    ) {
+      mutationObserver = new MutationObserver(observeAvailableSections);
+      mutationObserver.observe(document.body, {
+        childList: true,
+        subtree: true,
+      });
+    }
+
+    return () => {
+      observer.disconnect();
+      mutationObserver?.disconnect();
+    };
   }, [rootMargin, sectionIdsKey, threshold]);
 
   return sectionIds.includes(activeId) ? activeId : fallbackId;

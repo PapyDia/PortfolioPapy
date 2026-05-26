@@ -62,6 +62,7 @@ export const portfolioData = {
           "CSS",
           "Tailwind CSS",
           "Framer Motion",
+          "Lazy loading",
           "Responsive Design",
           "Composants réutilisables",
         ],
