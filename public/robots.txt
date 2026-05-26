@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://portfolio-cheikh-ten.vercel.app/sitemap.xml

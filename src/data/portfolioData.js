@@ -360,5 +360,5 @@ export const portfolioData = {
       },
     ],
   },
-  footer: "© 2026 Cheikh Massamba. Portfolio. Tous droits réservés.",
+  footer: "© 2026 Cheikh Massamba Dia. Portfolio. Tous droits réservés.",
 };
