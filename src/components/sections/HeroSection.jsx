@@ -10,6 +10,7 @@ import {
 import { heroTechLogos } from "../../constants/techLogos";
 import { portfolioData } from "../../data/portfolioData";
 import { useReducedMotionPreference } from "../../hooks/useReducedMotionPreference";
+import { ANALYTICS_EVENTS, trackEvent } from "../../utils/analytics";
 import Button from "../ui/Button";
 import Container from "../ui/Container";
 import SectionTransition from "../ui/SectionTransition";
@@ -79,12 +80,29 @@ function HeroSection() {
               className="mt-8 flex min-w-0 flex-col justify-center gap-3 sm:flex-row xl:justify-start"
               variants={fadeUp}
             >
-              <Button className="w-full sm:w-auto" href={hero.primaryCta.href}>
+              <Button
+                className="w-full sm:w-auto"
+                href={hero.primaryCta.href}
+                onClick={() =>
+                  trackEvent(ANALYTICS_EVENTS.HERO_CTA_CLICK, {
+                    label: hero.primaryCta.label,
+                    href: hero.primaryCta.href,
+                    location: "hero",
+                  })
+                }
+              >
                 {hero.primaryCta.label}
               </Button>
               <Button
                 className="w-full sm:w-auto"
                 href={hero.secondaryCta.href}
+                onClick={() =>
+                  trackEvent(ANALYTICS_EVENTS.HERO_CTA_CLICK, {
+                    label: hero.secondaryCta.label,
+                    href: hero.secondaryCta.href,
+                    location: "hero",
+                  })
+                }
                 variant="secondary"
               >
                 {hero.secondaryCta.label}

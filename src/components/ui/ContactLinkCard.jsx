@@ -1,6 +1,8 @@
 import { FaLinkedin } from "react-icons/fa6";
 import { SiGithub } from "react-icons/si";
 
+import { ANALYTICS_EVENTS, trackEvent } from "../../utils/analytics";
+
 const githubCodeLines = [
   'const developer = "Cheikh Massamba Dia";',
   'const stack = ["React", "Tailwind", "Node.js", "MongoDB"];',
@@ -114,6 +116,13 @@ function ContactLinkCard({ description, href, label }) {
     <a
       className="premium-border group relative flex w-full min-w-0 flex-col overflow-hidden rounded-3xl bg-white/4 p-4 text-left transition duration-300 hover:-translate-y-0.5 hover:border-cyan-glow/45 hover:bg-cyan-glow/10 focus-visible:outline focus-visible:outline-offset-4 focus-visible:outline-cyan-glow sm:p-5"
       href={normalizedHref}
+      onClick={() =>
+        trackEvent(ANALYTICS_EVENTS.CONTACT_LINK_CLICK, {
+          label,
+          location: "contact",
+          hrefType: isExternal ? "external" : "internal",
+        })
+      }
       rel={isExternal ? "noopener noreferrer" : undefined}
       target={isExternal ? "_blank" : undefined}
     >

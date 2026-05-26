@@ -9,6 +9,7 @@ import {
   viewportOnce,
 } from "../../constants/animations";
 import { portfolioData } from "../../data/portfolioData";
+import { ANALYTICS_EVENTS, trackEvent } from "../../utils/analytics";
 import Button from "../ui/Button";
 import Container from "../ui/Container";
 import ContactLinkCard from "../ui/ContactLinkCard";
@@ -43,6 +44,9 @@ function ContactSection() {
     try {
       await navigator.clipboard.writeText(email);
       setCopied(true);
+      trackEvent(ANALYTICS_EVENTS.CONTACT_EMAIL_COPY, {
+        location: "contact",
+      });
     } catch {
       setCopied(false);
     }
@@ -130,6 +134,11 @@ function ContactSection() {
                           aria-label={`Envoyer un email à Cheikh Massamba Dia à l’adresse ${email}`}
                           className="w-full sm:w-auto"
                           href={`mailto:${email}`}
+                          onClick={() =>
+                            trackEvent(ANALYTICS_EVENTS.CONTACT_EMAIL_CLICK, {
+                              location: "contact",
+                            })
+                          }
                         >
                           M’envoyer un email
                         </Button>

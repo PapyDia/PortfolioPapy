@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import kaolackKitchenIcon from "../../assets/icons/favicon.svg";
 import samaHoraireIcon from "../../assets/icons/sama-horaire-icon.svg";
+import { ANALYTICS_EVENTS, trackEvent } from "../../utils/analytics";
 import BackendNoticeModal from "./BackendNoticeModal";
 import GlassCard from "./GlassCard";
 import PrivateRepoModal from "./PrivateRepoModal";
@@ -230,10 +231,20 @@ function ProjectCard({ index = 0, project }) {
     "inline-flex min-h-11 max-w-full touch-manipulation items-center justify-center rounded-button border border-ice-300/20 px-4 py-2 text-center text-sm font-semibold leading-snug wrap-break-word text-ice-50 transition hover:border-cyan-glow/50 hover:bg-cyan-glow/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow";
 
   function handleLiveClick() {
+    trackEvent(ANALYTICS_EVENTS.PROJECT_LIVE_CLICK, {
+      project: project.name,
+      location: "project_card",
+      hasBackendNotice: true,
+    });
     setIsBackendNoticeOpen(true);
   }
 
   function handleContinueToLiveSite() {
+    trackEvent(ANALYTICS_EVENTS.BACKEND_NOTICE_CONTINUE, {
+      project: project.name,
+      location: "backend_notice_modal",
+    });
+
     if (liveLink) {
       window.open(liveLink, "_blank", "noopener,noreferrer");
     }
@@ -242,6 +253,11 @@ function ProjectCard({ index = 0, project }) {
   }
 
   function handlePrivateRepoClick() {
+    trackEvent(ANALYTICS_EVENTS.PROJECT_PRIVATE_REPO_OPEN, {
+      project: project.name,
+      location: "project_card",
+    });
+
     setIsBackendNoticeOpen(false);
     setIsPrivateRepoOpen(true);
   }
@@ -332,6 +348,13 @@ function ProjectCard({ index = 0, project }) {
                           aria-label={`Voir le site du projet ${project.name} dans un nouvel onglet`}
                           className={ctaClassName}
                           href={liveLink}
+                          onClick={() =>
+                            trackEvent(ANALYTICS_EVENTS.PROJECT_LIVE_CLICK, {
+                              project: project.name,
+                              location: "project_card",
+                              hasBackendNotice: false,
+                            })
+                          }
                           rel="noopener noreferrer"
                           target="_blank"
                         >
@@ -358,6 +381,13 @@ function ProjectCard({ index = 0, project }) {
                           aria-label={`Voir le code du projet ${project.name} dans un nouvel onglet`}
                           className={ctaClassName}
                           href={codeLink}
+                          onClick={() =>
+                            trackEvent(ANALYTICS_EVENTS.PROJECT_CODE_CLICK, {
+                              project: project.name,
+                              location: "project_card",
+                              repoPrivate: false,
+                            })
+                          }
                           rel="noopener noreferrer"
                           target="_blank"
                         >

@@ -11,6 +11,7 @@ import {
 import { navigationItems } from "../../constants/navigation";
 import { portfolioData } from "../../data/portfolioData";
 import useScrollSpy from "../../hooks/useScrollSpy";
+import { ANALYTICS_EVENTS, trackEvent } from "../../utils/analytics";
 import Container from "../ui/Container";
 
 const navigationSectionIds = navigationItems.map((item) =>
@@ -106,7 +107,14 @@ function Navbar() {
             aria-label={`${portfolioData.identity.name}, retour à l'accueil`}
             className="group inline-flex min-w-0 shrink-0 items-center gap-3 rounded-button py-2 focus-visible:outline focus-visible:outline-offset-4 focus-visible:outline-cyan-glow"
             href="#home"
-            onClick={closeMenu}
+            onClick={() => {
+              trackEvent(ANALYTICS_EVENTS.NAVBAR_LINK_CLICK, {
+                label: "Logo",
+                href: "#home",
+                location: "navbar",
+              });
+              closeMenu();
+            }}
           >
             <NavbarAvatar
               className="size-9"
@@ -140,6 +148,13 @@ function Navbar() {
                   } focus-visible:outline focus-visible:outline-offset-4 focus-visible:outline-cyan-glow`}
                   href={item.href}
                   key={item.href}
+                  onClick={() =>
+                    trackEvent(ANALYTICS_EVENTS.NAVBAR_LINK_CLICK, {
+                      label: item.label,
+                      href: item.href,
+                      location: "navbar",
+                    })
+                  }
                 >
                   {item.label}
                 </a>
@@ -246,7 +261,14 @@ function Navbar() {
                         } focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-cyan-glow`}
                         href={item.href}
                         key={item.href}
-                        onClick={closeMenu}
+                        onClick={() => {
+                          trackEvent(ANALYTICS_EVENTS.NAVBAR_LINK_CLICK, {
+                            label: item.label,
+                            href: item.href,
+                            location: "mobile_drawer",
+                          });
+                          closeMenu();
+                        }}
                         ref={index === 0 ? firstMobileLinkRef : undefined}
                         variants={mobileDrawerItemVariants}
                       >
