@@ -42,7 +42,7 @@ export const stackIcons = {
   },
   "Tailwind CSS": {
     Icon: SiTailwindcss,
-    iconClassName: "text-cyan-glow",
+    iconClassName: "text-[color:var(--app-accent)]",
   },
   JavaScript: {
     Icon: SiJavascript,
@@ -54,7 +54,7 @@ export const stackIcons = {
   },
   Express: {
     Icon: SiExpress,
-    iconClassName: "text-ice-100",
+    iconClassName: "text-[color:var(--app-tech-badge-text)]",
   },
   MongoDB: {
     Icon: SiMongodb,
@@ -82,7 +82,7 @@ export const stackIcons = {
   },
   GitHub: {
     Icon: SiGithub,
-    iconClassName: "text-ice-50",
+    iconClassName: "text-[color:var(--app-tech-badge-text)]",
   },
   Docker: {
     Icon: SiDocker,
@@ -90,7 +90,7 @@ export const stackIcons = {
   },
   Vercel: {
     Icon: SiVercel,
-    iconClassName: "text-ice-50",
+    iconClassName: "text-[color:var(--app-tech-badge-text)]",
   },
   Render: {
     Icon: SiRender,
@@ -110,6 +110,6 @@ export const stackIcons = {
   },
   Notion: {
     Icon: SiNotion,
-    iconClassName: "text-ice-50",
+    iconClassName: "text-[color:var(--app-tech-badge-text)]",
   },
 };

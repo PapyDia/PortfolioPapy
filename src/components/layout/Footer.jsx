@@ -5,23 +5,23 @@ function Footer() {
   const { footer, identity } = portfolioData;
 
   return (
-    <footer className="border-t border-white/10 bg-navy-950/50 py-8">
+    <footer className="border-t border-[color:var(--app-footer-border)] bg-[var(--app-footer-bg)] py-8">
       <Container>
         <div className="flex min-w-0 flex-col items-center gap-4 text-center md:flex-row md:justify-between md:text-left">
           <div className="min-w-0">
-            <p className="max-w-full wrap-break-word text-sm font-semibold text-ice-50">
+            <p className="max-w-full wrap-break-word text-sm font-semibold text-[color:var(--app-text-main)]">
               {identity.name}
             </p>
-            <p className="mt-1 max-w-full wrap-break-word text-xs text-text-soft">
+            <p className="mt-1 max-w-full wrap-break-word text-xs text-[color:var(--app-text-soft)]">
               {identity.title}
             </p>
           </div>
 
-          <p className="max-w-xl wrap-break-word text-sm text-text-soft md:text-center">
+          <p className="max-w-xl wrap-break-word text-sm text-[color:var(--app-text-soft)] md:text-center">
             {footer}
           </p>
 
-          <p className="flex max-w-full flex-wrap items-center justify-center gap-x-1 gap-y-1 text-center text-xs font-medium uppercase text-cyan-glow md:justify-end">
+          <p className="flex max-w-full flex-wrap items-center justify-center gap-x-1 gap-y-1 text-center text-xs font-medium uppercase text-[color:var(--app-accent)] md:justify-end">
             <span>React</span>
             <span aria-hidden="true">·</span>
             <span>Tailwind CSS</span>

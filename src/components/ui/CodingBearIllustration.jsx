@@ -17,8 +17,8 @@ function CodingBearIllustration() {
       aria-hidden="true"
       className="relative mx-auto w-full max-w-44 sm:max-w-54 lg:max-w-56"
     >
-      <div className="pointer-events-none absolute inset-6 rounded-full bg-cyan-glow/20 blur-3xl" />
-      <div className="pointer-events-none absolute inset-x-10 bottom-6 h-20 rounded-full bg-violet-glow/20 blur-3xl" />
+      <div className="pointer-events-none absolute inset-6 rounded-full bg-[var(--app-glow-cyan)] blur-3xl" />
+      <div className="pointer-events-none absolute inset-x-10 bottom-6 h-20 rounded-full bg-[var(--app-glow-violet)] blur-3xl" />
 
       <motion.svg
         animate={prefersReducedMotion ? undefined : { y: [0, -5, 0] }}

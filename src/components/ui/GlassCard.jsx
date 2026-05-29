@@ -6,7 +6,7 @@ function GlassCard({
 }) {
   return (
     <Component
-      className={`glass-panel min-w-0 max-w-full wrap-break-word p-4 transition duration-300 hover:border-cyan-glow/30 hover:shadow-glow-soft sm:p-6 ${className}`}
+      className={`glass-panel min-w-0 max-w-full wrap-break-word p-4 transition duration-300 hover:border-[color:var(--app-accent-border)] hover:shadow-[var(--app-shadow-soft)] sm:p-6 ${className}`}
       {...props}
     >
       {children}

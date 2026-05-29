@@ -36,6 +36,20 @@
       name="twitter:description"
       content="Portfolio de Cheikh Massamba Dia, développeur Full-Stack JavaScript basé au Sénégal. Projets web, stack technique, apprentissage et profil hybride."
     />
+    <script>
+      try {
+        const theme = localStorage.getItem("portfolio-theme");
+
+        if (theme === "light" || theme === "dark") {
+          document.documentElement.dataset.theme = theme;
+          document
+            .querySelector('meta[name="theme-color"]')
+            ?.setAttribute("content", theme === "light" ? "#f8fafc" : "#020617");
+        }
+      } catch {
+        document.documentElement.dataset.theme = "dark";
+      }
+    </script>
     <title>Cheikh Massamba Dia — Développeur Full-Stack JavaScript</title>
     <script type="application/ld+json">
       {

@@ -23,11 +23,11 @@ function ProjectsSection() {
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute left-0 top-20 size-72 rounded-full bg-cyan-glow/10 blur-3xl"
+        className="pointer-events-none absolute left-0 top-20 size-72 rounded-full bg-[var(--app-glow-cyan)] blur-3xl"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-10 right-0 size-72 rounded-full bg-violet-glow/10 blur-3xl"
+        className="pointer-events-none absolute bottom-10 right-0 size-72 rounded-full bg-[var(--app-glow-violet)] blur-3xl"
       />
 
       <Container>

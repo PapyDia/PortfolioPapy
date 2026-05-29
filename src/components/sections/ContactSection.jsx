@@ -9,7 +9,6 @@ import {
   viewportOnce,
 } from "../../constants/animations";
 import { portfolioData } from "../../data/portfolioData";
-import { ANALYTICS_EVENTS, trackEvent } from "../../utils/analytics";
 import Button from "../ui/Button";
 import Container from "../ui/Container";
 import ContactLinkCard from "../ui/ContactLinkCard";
@@ -44,9 +43,6 @@ function ContactSection() {
     try {
       await navigator.clipboard.writeText(email);
       setCopied(true);
-      trackEvent(ANALYTICS_EVENTS.CONTACT_EMAIL_COPY, {
-        location: "contact",
-      });
     } catch {
       setCopied(false);
     }
@@ -61,11 +57,11 @@ function ContactSection() {
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-16 size-72 -translate-x-1/2 rounded-full bg-cyan-glow/10 blur-3xl"
+        className="pointer-events-none absolute left-1/2 top-16 size-72 -translate-x-1/2 rounded-full bg-[var(--app-glow-cyan)] blur-3xl"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 right-0 size-72 rounded-full bg-violet-glow/10 blur-3xl"
+        className="pointer-events-none absolute bottom-0 right-0 size-72 rounded-full bg-[var(--app-glow-violet)] blur-3xl"
       />
 
       <Container>
@@ -78,11 +74,11 @@ function ContactSection() {
         >
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -left-20 -top-20 size-56 rounded-full bg-blue-glow/10 blur-3xl"
+            className="pointer-events-none absolute -left-20 -top-20 size-56 rounded-full bg-[var(--app-glow-blue)] blur-3xl"
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -bottom-24 right-10 size-56 rounded-full bg-cyan-glow/10 blur-3xl"
+            className="pointer-events-none absolute -bottom-24 right-10 size-56 rounded-full bg-[var(--app-glow-cyan)] blur-3xl"
           />
 
           <div className="relative min-w-0">
@@ -95,26 +91,26 @@ function ContactSection() {
             />
 
             <div className="mt-8 grid min-w-0 gap-4 text-left sm:mt-10 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] xl:items-start">
-              <div className="premium-border relative isolate min-w-0 overflow-hidden rounded-card bg-white/4 p-4 sm:p-6">
+              <div className="premium-border relative isolate min-w-0 overflow-hidden rounded-card bg-[var(--app-contact-card-bg)] p-4 sm:p-6">
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute -right-16 -top-16 size-40 rounded-full bg-cyan-glow/10 blur-3xl"
+                  className="pointer-events-none absolute -right-16 -top-16 size-40 rounded-full bg-[var(--app-glow-cyan)] blur-3xl"
                 />
                 <EmailContactDecor />
 
                 <div className="relative z-10 min-w-0">
                   <div className="flex min-w-0 items-start justify-between gap-3">
                     <div className="min-w-0">
-                      <p className="max-w-full wrap-break-word text-sm font-semibold uppercase text-cyan-glow">
+                      <p className="max-w-full wrap-break-word text-sm font-semibold uppercase text-[color:var(--app-accent)]">
                         Contact direct
                       </p>
-                      <h3 className="mt-3 max-w-full wrap-break-word text-xl font-semibold leading-tight text-ice-50">
+                      <h3 className="mt-3 max-w-full wrap-break-word text-xl font-semibold leading-tight text-[color:var(--app-text-main)]">
                         Échanger avec moi.
                       </h3>
                     </div>
                     <span
                       aria-hidden="true"
-                      className="grid size-11 shrink-0 place-items-center rounded-2xl border border-ice-300/15 bg-white/6 text-ice-50 shadow-[0_0_28px_rgba(234,67,53,0.12)] backdrop-blur-md sm:size-12"
+                      className="grid size-11 shrink-0 place-items-center rounded-2xl border border-[color:var(--app-contact-card-border)] bg-[var(--app-surface)] text-[color:var(--app-text-main)] shadow-[var(--app-shadow-soft)] backdrop-blur-md sm:size-12"
                     >
                       <MdOutlineMail
                         aria-hidden="true"
@@ -126,7 +122,7 @@ function ContactSection() {
 
                   {email ? (
                     <>
-                      <p className="mt-3 max-w-full break-all text-sm leading-6 text-text-muted">
+                      <p className="mt-3 max-w-full break-all text-sm leading-6 text-[color:var(--app-text-muted)]">
                         {email}
                       </p>
                       <div className="mt-5 flex min-w-0 flex-col gap-3 sm:flex-row">
@@ -134,11 +130,6 @@ function ContactSection() {
                           aria-label={`Envoyer un email à Cheikh Massamba Dia à l’adresse ${email}`}
                           className="w-full sm:w-auto"
                           href={`mailto:${email}`}
-                          onClick={() =>
-                            trackEvent(ANALYTICS_EVENTS.CONTACT_EMAIL_CLICK, {
-                              location: "contact",
-                            })
-                          }
                         >
                           M’envoyer un email
                         </Button>
@@ -153,7 +144,7 @@ function ContactSection() {
                       </div>
                     </>
                   ) : (
-                    <p className="text-pretty-safe mt-4 max-w-full wrap-break-word rounded-2xl border border-ice-300/15 bg-white/4 px-4 py-3 text-sm leading-6 text-text-muted">
+                    <p className="text-pretty-safe mt-4 max-w-full wrap-break-word rounded-2xl border border-[color:var(--app-contact-card-border)] bg-[var(--app-contact-card-bg)] px-4 py-3 text-sm leading-6 text-[color:var(--app-text-muted)]">
                       Adresse e-mail bientôt disponible. Vous pouvez déjà me
                       retrouver via mes liens professionnels.
                     </p>
@@ -188,17 +179,17 @@ function ContactSection() {
                 return (
                   <motion.article
                     aria-labelledby={titleId}
-                    className="premium-border min-w-0 rounded-card bg-white/3 p-4 text-center sm:p-5 md:text-left"
+                    className="premium-border min-w-0 rounded-card bg-[var(--app-contact-card-bg)] p-4 text-center sm:p-5 md:text-left"
                     key={card.title}
                     variants={staggerItem}
                   >
                     <h3
-                      className="max-w-full wrap-break-word text-lg font-semibold leading-tight text-ice-50"
+                      className="max-w-full wrap-break-word text-lg font-semibold leading-tight text-[color:var(--app-text-main)]"
                       id={titleId}
                     >
                       {card.title}
                     </h3>
-                    <p className="text-pretty-safe mt-2 max-w-full wrap-break-word leading-7 text-text-muted sm:mt-3">
+                    <p className="text-pretty-safe mt-2 max-w-full wrap-break-word leading-7 text-[color:var(--app-text-muted)] sm:mt-3">
                       {card.description}
                     </p>
                   </motion.article>
@@ -206,7 +197,7 @@ function ContactSection() {
               })}
             </motion.div>
 
-            <p className="text-pretty-safe mx-auto mt-6 max-w-2xl wrap-break-word text-sm leading-6 text-text-soft sm:mt-8">
+            <p className="text-pretty-safe mx-auto mt-6 max-w-2xl wrap-break-word text-sm leading-6 text-[color:var(--app-text-soft)] sm:mt-8">
               Chaque échange est pour moi l’occasion de comprendre un contexte,
               analyser un besoin et construire une réponse utile, claire et
               durable.

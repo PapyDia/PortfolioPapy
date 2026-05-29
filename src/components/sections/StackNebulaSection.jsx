@@ -11,6 +11,7 @@ import { techStack } from "../../constants/techStack";
 import { portfolioData } from "../../data/portfolioData";
 import { useReducedMotionPreference } from "../../hooks/useReducedMotionPreference";
 import Container from "../ui/Container";
+import SectionHeader from "../ui/SectionHeader";
 import SectionTransition from "../ui/SectionTransition";
 import StackLogoBadge from "../ui/StackLogoBadge";
 
@@ -41,6 +42,7 @@ const featuredGravelSizes = {
 };
 
 function StackNebulaSection() {
+  const { stack } = portfolioData;
   const prefersReducedMotion = useReducedMotionPreference();
 
   return (
@@ -51,7 +53,20 @@ function StackNebulaSection() {
     >
       <Container>
         <motion.div
-          className="glass-panel relative min-w-0 max-w-full overflow-hidden px-4 py-6 sm:px-8 sm:py-8 lg:px-10"
+          initial="hidden"
+          variants={fadeUp}
+          viewport={viewportOnce}
+          whileInView="visible"
+        >
+          <SectionHeader
+            align="center"
+            eyebrow={stack.eyebrow}
+            id="stack-title"
+          />
+        </motion.div>
+
+        <motion.div
+          className="glass-panel relative mt-8 min-w-0 max-w-full overflow-hidden px-4 py-6 sm:mt-10 sm:px-8 sm:py-8 lg:px-10"
           initial="hidden"
           variants={fadeUp}
           viewport={viewportOnce}
@@ -59,44 +74,29 @@ function StackNebulaSection() {
         >
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute right-0 top-0 size-56 rounded-full bg-cyan-glow/10 blur-3xl"
+            className="pointer-events-none absolute right-0 top-0 size-56 rounded-full bg-[var(--app-glow-cyan)] blur-3xl"
           />
-          <div className="relative grid min-w-0 gap-8 sm:gap-10 xl:grid-cols-[0.72fr_1.28fr] xl:items-center">
-            <div className="min-w-0 text-center xl:text-left">
-              <p className="max-w-full wrap-break-word text-sm font-semibold uppercase text-cyan-glow">
-                Stack
-              </p>
-              <h2
-                className="text-balance-safe mt-2 max-w-full wrap-break-word text-2xl font-semibold leading-tight text-ice-50 sm:mt-3 sm:text-4xl"
-                id="stack-title"
-              >
-                {portfolioData.stack.title}
-              </h2>
-              <p className="text-pretty-safe mx-auto mt-4 max-w-xl wrap-break-word leading-7 text-text-muted xl:mx-0">
-                {portfolioData.stack.description}
-              </p>
-            </div>
-
+          <div className="relative min-w-0">
             <div className="relative mx-auto w-full min-w-0 max-w-2xl py-4 sm:px-3 sm:py-6">
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-x-[12%] inset-y-[12%] rounded-full bg-cyan-glow/8 blur-3xl"
+                className="pointer-events-none absolute inset-x-[12%] inset-y-[12%] rounded-full bg-[var(--app-glow-cyan-soft)] blur-3xl"
               />
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute bottom-[8%] right-[15%] size-32 rounded-full bg-violet-glow/10 blur-3xl sm:size-44"
+                className="pointer-events-none absolute bottom-[8%] right-[15%] size-32 rounded-full bg-[var(--app-glow-violet)] blur-3xl sm:size-44"
               />
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute left-[11%] top-[9%] size-2 rounded-full bg-cyan-glow/35 shadow-glow-soft"
+                className="pointer-events-none absolute left-[11%] top-[9%] size-2 rounded-full bg-[var(--app-accent)] shadow-[var(--app-shadow-soft)]"
               />
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute bottom-[13%] left-[22%] size-1.5 rounded-full bg-violet-glow/35"
+                className="pointer-events-none absolute bottom-[13%] left-[22%] size-1.5 rounded-full bg-[var(--app-glow-violet)]"
               />
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute right-[9%] top-[38%] size-2.5 rounded-full bg-ice-300/25 blur-[1px]"
+                className="pointer-events-none absolute right-[9%] top-[38%] size-2.5 rounded-full bg-[var(--app-border-strong)] blur-[1px]"
               />
 
               <motion.ul

@@ -15,22 +15,22 @@ function ProcessStep({ index = 0, step }) {
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute right-0 top-0 size-24 rounded-full bg-cyan-glow/10 blur-3xl sm:size-32"
+        className="pointer-events-none absolute right-0 top-0 size-24 rounded-full bg-[var(--app-glow-cyan)] blur-3xl sm:size-32"
       />
 
       <div className="relative flex min-w-0 gap-3 sm:gap-4">
         <span
           aria-hidden="true"
-          className="grid size-9 shrink-0 place-items-center rounded-2xl border border-cyan-glow/25 bg-cyan-glow/10 text-xs font-semibold text-cyan-glow shadow-glow-soft sm:size-12 sm:text-sm"
+          className="grid size-9 shrink-0 place-items-center rounded-2xl border border-[color:var(--app-accent-border)] bg-[var(--app-accent-soft)] text-xs font-semibold text-[color:var(--app-accent)] shadow-[var(--app-shadow-soft)] sm:size-12 sm:text-sm"
         >
           {step.number}
         </span>
 
         <div className="min-w-0 flex-1">
-          <h3 className="max-w-full wrap-break-word text-lg font-semibold leading-tight text-ice-50 sm:text-xl">
+          <h3 className="max-w-full wrap-break-word text-lg font-semibold leading-tight text-[color:var(--app-text-main)] sm:text-xl">
             {step.title}
           </h3>
-          <p className="text-pretty-safe mt-2 max-w-full wrap-break-word leading-7 text-text-muted sm:mt-3">
+          <p className="text-pretty-safe mt-2 max-w-full wrap-break-word leading-7 text-[color:var(--app-text-muted)] sm:mt-3">
             {step.description}
           </p>
         </div>

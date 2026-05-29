@@ -31,7 +31,7 @@ export const heroTechLogos = [
     orbitRadius: innerOrbitRadius,
     initialRotation: 72,
     iconClassName:
-      "text-cyan-glow drop-shadow-[0_0_12px_rgba(56,189,248,0.35)]",
+      "text-[color:var(--app-accent)] drop-shadow-[0_0_12px_rgba(56,189,248,0.35)]",
   },
   {
     label: "Node.js",

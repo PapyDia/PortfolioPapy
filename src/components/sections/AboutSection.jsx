@@ -50,14 +50,14 @@ function AboutSection() {
             <GlassCard className="relative overflow-hidden p-5 sm:p-7 lg:p-10">
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute -left-16 top-10 size-44 rounded-full bg-cyan-glow/10 blur-3xl"
+                className="pointer-events-none absolute -left-16 top-10 size-44 rounded-full bg-[var(--app-glow-cyan)] blur-3xl"
               />
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute -bottom-20 right-0 size-48 rounded-full bg-violet-glow/10 blur-3xl"
+                className="pointer-events-none absolute -bottom-20 right-0 size-48 rounded-full bg-[var(--app-glow-violet)] blur-3xl"
               />
 
-              <div className="relative mx-auto min-w-0 max-w-2xl space-y-5 text-left text-base leading-7 text-text-muted sm:space-y-6 sm:leading-8">
+              <div className="relative mx-auto min-w-0 max-w-2xl space-y-5 text-left text-base leading-7 text-[color:var(--app-text-muted)] sm:space-y-6 sm:leading-8">
                 {about.paragraphs.map((paragraph) => (
                   <p
                     className="text-pretty-safe max-w-full wrap-break-word"
@@ -87,21 +87,21 @@ function AboutSection() {
             <GlassCard className="relative -mt-8 w-full max-w-md overflow-hidden px-4 pb-5 pt-12 text-center sm:-mt-10 sm:px-6 sm:pb-6 sm:pt-14 lg:max-w-lg">
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute -right-16 -top-16 size-44 rounded-full bg-cyan-glow/15 blur-3xl"
+                className="pointer-events-none absolute -right-16 -top-16 size-44 rounded-full bg-[var(--app-glow-cyan)] blur-3xl"
               />
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute bottom-0 left-0 size-40 rounded-full bg-violet-glow/10 blur-3xl"
+                className="pointer-events-none absolute bottom-0 left-0 size-40 rounded-full bg-[var(--app-glow-violet)] blur-3xl"
               />
 
               <div className="relative min-w-0">
-                <p className="max-w-full wrap-break-word text-sm font-semibold uppercase text-cyan-glow">
+                <p className="max-w-full wrap-break-word text-sm font-semibold uppercase text-[color:var(--app-accent)]">
                   Profil
                 </p>
-                <h3 className="mt-3 max-w-full wrap-break-word text-xl font-semibold leading-tight text-ice-50 sm:mt-4 sm:text-2xl">
+                <h3 className="mt-3 max-w-full wrap-break-word text-xl font-semibold leading-tight text-[color:var(--app-text-main)] sm:mt-4 sm:text-2xl">
                   {identity.name}
                 </h3>
-                <p className="mt-2 max-w-full wrap-break-word text-text-muted">
+                <p className="mt-2 max-w-full wrap-break-word text-[color:var(--app-text-muted)]">
                   {identity.title}
                 </p>
 
@@ -111,7 +111,7 @@ function AboutSection() {
                 >
                   {about.highlights.map((highlight) => (
                     <li
-                      className="max-w-full rounded-2xl border border-ice-300/15 bg-white/4 px-3 py-2.5 text-center text-sm font-medium leading-snug wrap-break-word text-ice-100 sm:px-4 sm:py-3"
+                      className="max-w-full rounded-2xl border border-[color:var(--app-chip-border)] bg-[var(--app-chip-bg)] px-3 py-2.5 text-center text-sm font-medium leading-snug wrap-break-word text-[color:var(--app-chip-text)] sm:px-4 sm:py-3"
                       key={highlight}
                     >
                       {highlight}

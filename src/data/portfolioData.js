@@ -6,11 +6,10 @@ export const portfolioData = {
     title: "Développeur Full-Stack JavaScript",
     imageAlt: "Portrait de Cheikh Massamba Dia",
   },
+
   hero: {
     badge: "Développeur Full-Stack JavaScript",
     title: "Je crée des applications web modernes, rapides et élégantes.",
-    subtitle:
-      "Je développe des interfaces premium avec React et Tailwind CSS, ainsi que des API robustes avec Node.js, Express, MongoDB et MySQL. J'aime transformer des idées concrètes en applications web fiables, responsives et faciles à utiliser.",
     primaryCta: {
       label: "Voir mes projets",
       href: "#projects",
@@ -20,11 +19,11 @@ export const portfolioData = {
       href: "#contact",
     },
   },
+
   stack: {
-    title: "Un écosystème moderne pour construire des applications solides.",
-    description:
-      "Je construis mes projets avec un écosystème JavaScript moderne, léger et cohérent, pensé pour créer des interfaces rapides, des API structurées et des applications faciles à faire évoluer. Mon stack principal s’articule autour de React, Tailwind CSS, Node.js, Express, MongoDB et des outils qui renforcent la qualité, la sécurité, le déploiement et la maintenabilité des projets.",
+    eyebrow: "Stack",
   },
+
   about: {
     eyebrow: "À propos",
     title: "Je suis un développeur orienté projets réels.",
@@ -45,6 +44,7 @@ export const portfolioData = {
       "Ambition mobile",
     ],
   },
+
   skills: {
     eyebrow: "Compétences",
     title:
@@ -133,11 +133,9 @@ export const portfolioData = {
       },
     ],
   },
+
   learningLanguages: {
     eyebrow: "Apprentissage",
-    title: "Apprentissage continu",
-    description:
-      "Chaque langage rencontré pendant mon parcours m’a aidé à renforcer une base différente : la logique avec Scratch, la rigueur avec le C, la polyvalence avec Python, la manipulation de données avec MySQL et la compréhension du web côté serveur avec PHP. Même si mon stack principal est aujourd’hui centré sur JavaScript, React, Node.js et MongoDB, ces apprentissages m’ont permis de mieux comprendre les fondamentaux de la programmation, les structures de données, les requêtes, la logique serveur et l’importance d’apprendre rapidement de nouveaux outils.",
     note: "Mon stack principal reste JavaScript, React, Node.js et MongoDB. Ces langages représentent mon parcours d’apprentissage et les bases que j’ai rencontrées en progressant.",
     items: [
       {
@@ -193,12 +191,13 @@ export const portfolioData = {
       ],
     },
   },
+
   projects: {
     eyebrow: "Projets",
     title:
       "Des projets concrets, pensés minutieusement et qui répondent à des besoins réels.",
     description:
-      "Voici quelques projets que j'ai construits pour appliquer mes compétences full-stack et créer des solutions web concrètes. Chaque projet a été pensé pour répondre à un besoin réel, avec une attention particulière à l'expérience utilisateur, à la qualité du code et à la maintenabilité. Je suis fier de ces réalisations, même si certains reposent sur des repos privés pour le moment. N'hésitez pas à me contacter pour en discuter ou pour voir le code de ces projets.",
+      "Voici quelques projets que j'ai construits pour appliquer mes compétences full-stack et créer des solutions web concrètes. Chaque projet a été pensé pour répondre à un besoin réel, avec une attention particulière à l'expérience utilisateur, à la qualité du code et à la maintenabilité.",
     items: [
       {
         name: "Kaolack Kitchen",
@@ -230,7 +229,6 @@ export const portfolioData = {
         ],
         links: {
           live: "https://kaolack-kitchen-web.vercel.app/",
-          code: "",
         },
         backendNotice: true,
         repoPrivate: true,
@@ -266,7 +264,6 @@ export const portfolioData = {
         ],
         links: {
           live: "https://ama-horaire-frontend.vercel.app/",
-          code: "",
         },
         backendNotice: true,
         repoPrivate: true,
@@ -274,6 +271,7 @@ export const portfolioData = {
       },
     ],
   },
+
   process: {
     eyebrow: "Méthode",
     title: "Ma façon de construire une application.",
@@ -318,12 +316,13 @@ export const portfolioData = {
       },
     ],
   },
+
   contact: {
     eyebrow: "Contact",
     title:
       "Discutons d’un projet, d’une opportunité ou d’une idée à construire.",
     description:
-      "Vous avez un projet web, une mission, une opportunité professionnelle ou simplement une idée à clarifier ? Je suis ouvert aux échanges sérieux autour du développement web, de la création d’applications modernes et de solutions adaptées à des besoins réels.",
+      "Vous avez un projet web, une mission, une opportunité professionnelle ou simplement une idée à clarifier ?",
     email: "Cheikhmassamba53@gmail.com",
     links: [
       {
@@ -338,7 +337,6 @@ export const portfolioData = {
       },
       {
         label: "WhatsApp",
-        href: "",
         description: "Discuter rapidement d’un projet.",
       },
     ],

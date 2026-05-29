@@ -37,7 +37,7 @@ const TechLogo = forwardRef(function TechLogo(
     <span
       {...props}
       aria-label={label}
-      className={`inline-flex shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-ice-300/20 bg-white/4 text-ice-50 shadow-[0_0_24px_rgba(56,189,248,0.12),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl transition duration-300 hover:border-cyan-glow/40 hover:bg-cyan-glow/10 hover:shadow-[0_0_28px_rgba(56,189,248,0.2),inset_0_1px_0_rgba(255,255,255,0.12)] ${sizeClassName} ${className}`}
+      className={`inline-flex shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-[color:var(--app-hero-orb-border)] bg-[var(--app-surface)] text-[color:var(--app-text-main)] shadow-[var(--app-tech-badge-shadow)] backdrop-blur-xl transition duration-300 hover:border-[color:var(--app-accent-border)] hover:bg-[var(--app-accent-soft)] hover:shadow-[var(--app-shadow-soft)] ${sizeClassName} ${className}`}
       ref={ref}
       role="img"
     >
@@ -50,14 +50,14 @@ const TechLogo = forwardRef(function TechLogo(
       ) : (
         <span
           aria-hidden="true"
-          className="max-w-full truncate text-xs font-semibold leading-none text-ice-100 sm:text-sm"
+          className="max-w-full truncate text-xs font-semibold leading-none text-[color:var(--app-tech-badge-text)] sm:text-sm"
         >
           {getInitials(label)}
         </span>
       )}
 
       {showLabel ? (
-        <span className="min-w-0 max-w-28 truncate text-xs font-semibold leading-none text-ice-100 sm:max-w-36 sm:text-sm">
+        <span className="min-w-0 max-w-28 truncate text-xs font-semibold leading-none text-[color:var(--app-tech-badge-text)] sm:max-w-36 sm:text-sm">
           {label}
         </span>
       ) : null}

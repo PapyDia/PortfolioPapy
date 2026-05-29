@@ -1,8 +1,8 @@
 const variants = {
   primary:
-    "bg-ice-50 text-navy-950 shadow-glow-soft hover:-translate-y-0.5 hover:bg-ice-100",
+    "bg-[var(--app-button-primary-bg)] text-[color:var(--app-button-primary-text)] shadow-[var(--app-shadow-soft)] hover:-translate-y-0.5 hover:bg-[var(--app-button-primary-hover-bg)]",
   secondary:
-    "border border-ice-300/20 bg-white/5 text-ice-50 backdrop-blur-xl hover:-translate-y-0.5 hover:border-cyan-glow/50 hover:bg-cyan-glow/10",
+    "border border-[color:var(--app-button-secondary-border)] bg-[var(--app-button-secondary-bg)] text-[color:var(--app-button-secondary-text)] backdrop-blur-xl hover:-translate-y-0.5 hover:border-[color:var(--app-button-secondary-hover-border)] hover:bg-[var(--app-button-secondary-hover-bg)]",
 };
 
 function Button({
@@ -12,7 +12,7 @@ function Button({
   variant = "primary",
   ...props
 }) {
-  const classes = `inline-flex min-h-12 max-w-full touch-manipulation items-center justify-center rounded-button px-5 text-center text-sm font-semibold leading-snug break-words whitespace-normal transition duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-glow sm:px-6 ${variants[variant] ?? variants.primary} ${className}`;
+  const classes = `inline-flex min-h-12 max-w-full touch-manipulation items-center justify-center rounded-button px-5 text-center text-sm font-semibold leading-snug break-words whitespace-normal transition duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[color:var(--app-focus-ring)] sm:px-6 ${variants[variant] ?? variants.primary} ${className}`;
   const hasHref = typeof href === "string" && href.trim().length > 0;
   const normalizedHref = hasHref ? href.trim() : undefined;
 

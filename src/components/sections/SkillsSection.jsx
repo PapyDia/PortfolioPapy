@@ -49,12 +49,12 @@ function SkillsSection() {
             const heading = (
               <div className="min-w-0">
                 {isFeatured ? (
-                  <p className="max-w-full wrap-break-word text-xs font-semibold uppercase text-cyan-glow">
+                  <p className="max-w-full wrap-break-word text-xs font-semibold uppercase text-[color:var(--app-accent)]">
                     Humain + méthode
                   </p>
                 ) : null}
                 <h3
-                  className={`max-w-full wrap-break-word font-semibold leading-tight text-ice-50 ${
+                  className={`max-w-full wrap-break-word font-semibold leading-tight text-[color:var(--app-text-main)] ${
                     isFeatured
                       ? "mt-3 text-xl sm:text-2xl"
                       : "text-lg sm:text-xl"
@@ -63,7 +63,7 @@ function SkillsSection() {
                 >
                   {group.title}
                 </h3>
-                <p className="text-pretty-safe mt-2 max-w-full wrap-break-word leading-7 text-text-muted sm:mt-3">
+                <p className="text-pretty-safe mt-2 max-w-full wrap-break-word leading-7 text-[color:var(--app-text-muted)] sm:mt-3">
                   {group.description}
                 </p>
               </div>
@@ -79,10 +79,10 @@ function SkillsSection() {
               >
                 {group.items.map((item) => (
                   <li
-                    className={`max-w-full rounded-button border px-2.5 py-1 text-center text-xs font-medium leading-snug wrap-break-word text-ice-100 sm:px-3 sm:py-1.5 sm:text-sm ${
+                    className={`max-w-full rounded-button border px-2.5 py-1 text-center text-xs font-medium leading-snug wrap-break-word text-[color:var(--app-chip-text)] sm:px-3 sm:py-1.5 sm:text-sm ${
                       isFeatured
-                        ? "border-cyan-glow/20 bg-white/5.5"
-                        : "border-ice-300/15 bg-cyan-glow/5"
+                        ? "border-[color:var(--app-chip-border)] bg-[var(--app-chip-bg)]"
+                        : "border-[color:var(--app-chip-border)] bg-[var(--app-chip-bg)]"
                     }`}
                     key={`${group.title}-${item}`}
                   >
@@ -105,7 +105,7 @@ function SkillsSection() {
                   as="article"
                   className={`flex h-full min-w-0 flex-col ${
                     isFeatured
-                      ? "relative overflow-hidden border-cyan-glow/25 bg-cyan-glow/5 px-5 py-6 sm:px-7 sm:py-7"
+                      ? "relative overflow-hidden border-[color:var(--app-featured-border)] bg-[var(--app-featured-surface)] px-5 py-6 sm:px-7 sm:py-7"
                       : ""
                   }`}
                 >
@@ -113,11 +113,11 @@ function SkillsSection() {
                     <>
                       <div
                         aria-hidden="true"
-                        className="pointer-events-none absolute -right-16 -top-20 size-56 rounded-full bg-cyan-glow/12 blur-3xl"
+                        className="pointer-events-none absolute -right-16 -top-20 size-56 rounded-full bg-[var(--app-glow-cyan)] blur-3xl"
                       />
                       <div
                         aria-hidden="true"
-                        className="pointer-events-none absolute -bottom-20 left-1/4 size-44 rounded-full bg-violet-glow/10 blur-3xl"
+                        className="pointer-events-none absolute -bottom-20 left-1/4 size-44 rounded-full bg-[var(--app-glow-violet)] blur-3xl"
                       />
                       <div className="relative grid min-w-0 gap-6 lg:grid-cols-[minmax(15rem,0.8fr)_minmax(0,1.2fr)] lg:items-center lg:gap-10">
                         {heading}
