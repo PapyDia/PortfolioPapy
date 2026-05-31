@@ -12,7 +12,7 @@ function ProfilePhoto({ src, alt, className = "" }) {
         className="pointer-events-none absolute -bottom-3 left-1/2 size-32 -translate-x-1/2 rounded-full bg-[var(--app-glow-violet)] blur-2xl sm:size-40"
       />
 
-      <div className="relative aspect-square overflow-hidden rounded-full border border-[color:var(--app-accent-border)] bg-[var(--app-surface)] p-1.5 shadow-[var(--app-shadow-soft)] backdrop-blur-xl">
+      <div className="profile-photo-frame ios-safe-circle relative aspect-square overflow-hidden rounded-full border border-[color:var(--app-accent-border)] bg-[var(--app-surface)] p-1.5 shadow-[var(--app-shadow-soft)] backdrop-blur-xl">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 rounded-full bg-linear-to-br from-[var(--app-shine-strong)] via-transparent to-[var(--app-glow-cyan-soft)]"
@@ -23,7 +23,7 @@ function ProfilePhoto({ src, alt, className = "" }) {
         />
         <img
           alt={alt}
-          className="relative h-full w-full rounded-full object-cover object-top"
+          className="profile-photo-image ios-safe-media relative h-full w-full rounded-full object-cover object-top"
           decoding="async"
           height="900"
           loading="lazy"
