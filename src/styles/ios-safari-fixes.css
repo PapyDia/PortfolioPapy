@@ -1,0 +1,61 @@
+@layer utilities {
+  /*
+   * iOS/Safari can repaint blurred/backdrop-filtered rounded elements on a
+   * separate compositing layer. These utilities force a stable clipping layer
+   * only where the portfolio needs it: glass cards, circular media and nested
+   * preview surfaces.
+   */
+  .ios-safe-rounded,
+  .ios-safe-circle {
+    overflow: hidden;
+    background-clip: padding-box;
+  }
+
+  .ios-safe-media {
+    display: block;
+    -webkit-user-drag: none;
+  }
+
+  .glass-panel {
+    overflow: hidden;
+    background-clip: padding-box;
+    isolation: isolate;
+  }
+
+  @supports (-webkit-touch-callout: none) {
+    .glass-panel,
+    .ios-safe-rounded,
+    .ios-safe-circle {
+      isolation: isolate;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+
+    .ios-safe-circle {
+      clip-path: circle(50% at 50% 50%);
+    }
+
+    .ios-safe-media {
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+
+    .profile-photo-frame {
+      aspect-ratio: 1 / 1;
+    }
+
+    .profile-photo-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 0%;
+      -webkit-transform: translateZ(0) scale(1.01);
+      transform: translateZ(0) scale(1.01);
+      transform-origin: center center;
+    }
+  }
+}
