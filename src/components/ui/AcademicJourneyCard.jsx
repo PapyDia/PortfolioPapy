@@ -38,12 +38,12 @@ function AcademicJourneyCard({ journey }) {
       />
 
       <div className="relative mx-auto min-w-0 max-w-4xl">
-        <p className="inline-flex max-w-full rounded-full border border-amber-900/15 bg-white/45 px-3 py-1 text-xs font-semibold uppercase wrap-break-word text-slate-700 shadow-sm">
+        <p className="inline-flex max-w-full rounded-full border border-amber-900/15 bg-white/45 px-3 py-1 text-sm font-semibold uppercase leading-none wrap-break-word text-slate-700 shadow-sm">
           {journey.eyebrow}
         </p>
 
         <h3
-          className="academic-journey-title text-balance-safe mt-4 max-w-3xl font-serif text-3xl font-semibold leading-[1.18] tracking-normal wrap-break-word text-slate-950 sm:text-4xl sm:italic sm:leading-tight"
+          className="academic-journey-title text-balance-safe mt-4 max-w-3xl text-4xl font-semibold italic leading-[1.02] tracking-normal wrap-break-word text-slate-950 sm:text-5xl sm:leading-[1.02]"
           id="academic-journey-title"
         >
           {journey.title}
@@ -54,11 +54,11 @@ function AcademicJourneyCard({ journey }) {
             aria-hidden="true"
             className="absolute -left-[0.3125rem] top-2 size-2 rounded-full bg-amber-900/25 shadow-[0_0_0_4px_rgba(248,241,227,0.85)]"
           />
-          <div className="space-y-5 text-left text-[0.95rem] leading-8 text-slate-700 sm:text-base sm:leading-8">
+          <div className="academic-journey-copy space-y-5 text-left text-[1.14rem] leading-8 text-slate-700 sm:text-[1.22rem] sm:leading-9">
             {narrativeParagraphs.map((paragraph, index) => (
               <p
                 className={`text-pretty-safe max-w-full break-words ${
-                  index === 0 ? "font-medium text-slate-800" : ""
+                  index === 0 ? "font-semibold text-slate-800" : "font-medium"
                 }`}
                 key={paragraph}
               >
@@ -74,7 +74,7 @@ function AcademicJourneyCard({ journey }) {
         >
           {journey.skills.map((skill) => (
             <li
-              className="max-w-full rounded-full border border-amber-900/15 bg-white/45 px-3 py-1.5 text-center text-xs font-semibold leading-snug wrap-break-word text-slate-700 shadow-sm"
+              className="max-w-full rounded-full border border-amber-900/15 bg-white/45 px-3 py-1.5 text-center text-sm font-semibold leading-none wrap-break-word text-slate-700 shadow-sm"
               key={skill}
             >
               {skill}

@@ -70,6 +70,9 @@
 
   .academic-journey-card {
     --ios-safe-radius: 2rem;
+    font-family: var(--font-academic);
+    font-synthesis: none;
+    font-kerning: normal;
   }
 
   .project-preview-shell {
@@ -77,8 +80,14 @@
   }
 
   .academic-journey-title {
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: var(--font-academic);
     letter-spacing: 0;
+    text-rendering: geometricPrecision;
+  }
+
+  .academic-journey-copy {
+    font-family: var(--font-academic);
+    letter-spacing: 0.005em;
   }
 
   @supports (-webkit-backdrop-filter: blur(0)) {
@@ -129,7 +138,6 @@
     }
 
     .academic-journey-title {
-      font-style: normal;
       line-height: 1.18;
     }
   }
