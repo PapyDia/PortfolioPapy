@@ -42,7 +42,8 @@
   }
 
   .profile-photo-clip {
-    position: relative;
+    position: absolute;
+    inset: 0.375rem;
     overflow: hidden;
     background: var(--app-bg);
     line-height: 0;

@@ -5,18 +5,18 @@ function ProfilePhoto({ src, alt, className = "" }) {
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -inset-6 rounded-full bg-[var(--app-glow-cyan)] blur-3xl"
+        className="pointer-events-none absolute -inset-6 z-0 rounded-full bg-[var(--app-glow-cyan)] blur-3xl"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-3 left-1/2 size-32 -translate-x-1/2 rounded-full bg-[var(--app-glow-violet)] blur-2xl sm:size-40"
+        className="pointer-events-none absolute -bottom-3 left-1/2 z-0 size-32 -translate-x-1/2 rounded-full bg-[var(--app-glow-violet)] blur-2xl sm:size-40"
       />
 
-      <div className="profile-photo-frame ios-safe-circle relative aspect-square overflow-hidden rounded-full border border-[color:var(--app-accent-border)] bg-[var(--app-surface)] p-1.5 shadow-[var(--app-shadow-soft)] backdrop-blur-xl">
-        <div className="profile-photo-clip ios-safe-circle relative z-10 h-full w-full rounded-full">
+      <div className="profile-photo-frame relative z-10 aspect-square rounded-full border border-[color:var(--app-accent-border)] bg-[var(--app-surface)] p-1.5 shadow-[var(--app-shadow-soft)]">
+        <div className="profile-photo-clip ios-safe-circle absolute inset-1.5 rounded-full">
           <img
             alt={alt}
-            className="profile-photo-image ios-safe-media h-full w-full rounded-full object-cover object-top"
+            className="profile-photo-image ios-safe-media absolute inset-0 h-full w-full object-cover object-top"
             decoding="async"
             height="1368"
             loading="lazy"
@@ -27,11 +27,11 @@ function ProfilePhoto({ src, alt, className = "" }) {
 
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-20 rounded-full bg-linear-to-br from-[var(--app-shine-strong)] via-transparent to-[var(--app-glow-cyan-soft)]"
+          className="pointer-events-none absolute inset-0 rounded-full border border-[color:var(--app-accent-border)]"
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-2 z-30 rounded-full border border-[color:var(--app-border)]"
+          className="pointer-events-none absolute inset-2 rounded-full border border-[color:var(--app-border)]"
         />
       </div>
     </figure>
