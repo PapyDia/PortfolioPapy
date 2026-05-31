@@ -1,14 +1,23 @@
 @layer utilities {
   /*
-   * iOS/Safari can repaint blurred/backdrop-filtered rounded elements on a
-   * separate compositing layer. These utilities force a stable clipping layer
-   * only where the portfolio needs it: glass cards, circular media and nested
-   * preview surfaces.
+   * WebKit can repaint blurred/backdrop-filtered rounded elements on a
+   * separate compositing layer. These utilities keep clipping, masks and media
+   * sizing deterministic only where the portfolio needs them.
    */
+  .glass-panel {
+    position: relative;
+    overflow: hidden;
+    background-clip: padding-box;
+    isolation: isolate;
+    contain: paint;
+  }
+
   .ios-safe-rounded,
   .ios-safe-circle {
     overflow: hidden;
     background-clip: padding-box;
+    isolation: isolate;
+    contain: paint;
   }
 
   .ios-safe-media {
@@ -16,32 +25,78 @@
     -webkit-user-drag: none;
   }
 
-  .glass-panel {
+  .hero-visual-panel {
+    --ios-safe-radius: var(--radius-card);
+  }
+
+  .hero-center-orb {
+    width: clamp(9.5rem, 42vw, 13rem);
+    height: clamp(9.5rem, 42vw, 13rem);
+    padding: clamp(0.75rem, 3.25vw, 1.25rem);
+  }
+
+  .profile-photo-frame,
+  .profile-photo-clip {
+    --ios-safe-radius: 9999px;
+    border-radius: 9999px;
+  }
+
+  .profile-photo-clip {
+    position: relative;
     overflow: hidden;
-    background-clip: padding-box;
-    isolation: isolate;
+    background: var(--app-bg);
+    line-height: 0;
+  }
+
+  .profile-photo-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    object-position: 50% 0%;
+  }
+
+  .academic-journey-card {
+    --ios-safe-radius: 2rem;
+  }
+
+  .academic-journey-title {
+    font-family: Georgia, "Times New Roman", serif;
+    letter-spacing: 0;
+  }
+
+  @supports (-webkit-backdrop-filter: blur(0)) {
+    .glass-panel,
+    .ios-safe-rounded {
+      -webkit-mask-image: -webkit-radial-gradient(white, black);
+      clip-path: inset(0 round var(--ios-safe-radius, var(--radius-card)));
+    }
+
+    .ios-safe-circle {
+      -webkit-mask-image: -webkit-radial-gradient(white, black);
+      clip-path: circle(50% at 50% 50%);
+    }
   }
 
   @supports (-webkit-touch-callout: none) {
     .glass-panel,
     .ios-safe-rounded,
     .ios-safe-circle {
-      isolation: isolate;
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
-      -webkit-transform: translateZ(0);
-      transform: translateZ(0);
     }
 
-    .ios-safe-circle {
-      clip-path: circle(50% at 50% 50%);
+    .hero-center-orb {
+      width: clamp(10rem, 43vw, 13rem);
+      height: clamp(10rem, 43vw, 13rem);
+      min-width: 10rem;
+      min-height: 10rem;
     }
 
     .ios-safe-media {
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
-      -webkit-transform: translateZ(0);
-      transform: translateZ(0);
     }
 
     .profile-photo-frame {
@@ -49,13 +104,21 @@
     }
 
     .profile-photo-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: 50% 0%;
-      -webkit-transform: translateZ(0) scale(1.01);
-      transform: translateZ(0) scale(1.01);
       transform-origin: center center;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+
+    .academic-journey-title {
+      font-style: normal;
+      line-height: 1.18;
+    }
+  }
+
+  @media (min-width: 40rem) {
+    .hero-center-orb {
+      width: clamp(11rem, 28vw, 13rem);
+      height: clamp(11rem, 28vw, 13rem);
     }
   }
 }

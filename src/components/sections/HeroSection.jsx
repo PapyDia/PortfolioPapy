@@ -92,7 +92,7 @@ function HeroSection() {
             variants={heroVisual}
           >
             <div className="absolute inset-8 rounded-full bg-[var(--app-hero-visual-glow)] blur-3xl" />
-            <div className="glass-panel relative aspect-square min-w-0 max-w-full overflow-hidden p-4 sm:p-8">
+            <div className="hero-visual-panel glass-panel ios-safe-rounded relative aspect-square min-w-0 max-w-full overflow-hidden p-4 sm:p-8">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,var(--app-glow-cyan),transparent_35%),radial-gradient(circle_at_80%_75%,var(--app-glow-violet),transparent_32%)]" />
               <div className="absolute left-1/2 top-1/2 aspect-square w-[82%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[color:var(--app-hero-orb-border)] sm:w-[86%]" />
               <div className="absolute left-1/2 top-1/2 aspect-square w-[64%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[color:var(--app-hero-orb-dashed-border)] sm:w-[70%]" />
@@ -157,16 +157,16 @@ function HeroSection() {
                 })}
               </div>
 
-              <div className="relative z-30 grid h-full min-w-0 place-items-center">
-                <div className="grid aspect-square w-[48%] min-w-36 max-w-52 place-items-center rounded-full border border-[color:var(--app-hero-center-border)] bg-[var(--app-hero-center-bg)] px-3 text-center shadow-[var(--app-shadow-soft)] backdrop-blur-xl sm:px-5">
-                  <div className="min-w-0 max-w-full">
-                    <p className="max-w-full wrap-break-word text-[0.68rem] font-medium leading-snug text-[color:var(--app-text-soft)] min-[430px]:text-xs sm:text-sm">
+              <div className="absolute inset-0 z-30 grid min-w-0 place-items-center p-4 sm:p-8">
+                <div className="hero-center-orb ios-safe-circle grid place-items-center rounded-full border border-[color:var(--app-hero-center-border)] bg-[var(--app-hero-center-bg)] text-center shadow-[var(--app-shadow-soft)] backdrop-blur-xl">
+                  <div className="grid min-w-0 max-w-[86%] gap-1">
+                    <p className="max-w-full wrap-break-word text-[0.64rem] font-medium leading-[1.22] text-[color:var(--app-text-soft)] min-[430px]:text-[0.7rem] sm:text-sm">
                       {identity.title}
                     </p>
-                    <p className="mt-1 max-w-full wrap-break-word text-lg font-semibold leading-tight text-[color:var(--app-text-main)] min-[430px]:text-xl sm:mt-2 sm:text-2xl">
+                    <p className="max-w-full wrap-break-word text-lg font-semibold leading-tight text-[color:var(--app-text-main)] min-[430px]:text-xl sm:text-2xl">
                       Full-Stack JS
                     </p>
-                    <p className="mt-1 max-w-full wrap-break-word text-[0.68rem] font-medium leading-snug text-[color:var(--app-accent)] min-[430px]:mt-2 min-[430px]:text-xs">
+                    <p className="max-w-full wrap-break-word text-[0.64rem] font-medium leading-[1.22] text-[color:var(--app-accent)] min-[430px]:text-[0.7rem] sm:text-xs">
                       React · Node · MongoDB
                     </p>
                   </div>
