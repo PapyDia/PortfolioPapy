@@ -27,7 +27,7 @@
 
   .hero-visual-panel {
     --ios-safe-radius: var(--radius-card);
-    --hero-logo-orbit-radius: clamp(6.65rem, 30vw, 10.35rem);
+    --hero-logo-orbit-radius: clamp(6.65rem, 29vw, 10.15rem);
   }
 
   .hero-center-orb {
@@ -106,7 +106,7 @@
     }
 
     .hero-visual-panel {
-      --hero-logo-orbit-radius: clamp(6.9rem, 31vw, 10.25rem);
+      --hero-logo-orbit-radius: clamp(6.8rem, 29vw, 10.15rem);
     }
 
     .ios-safe-media {
@@ -132,7 +132,7 @@
 
   @media (min-width: 40rem) {
     .hero-visual-panel {
-      --hero-logo-orbit-radius: clamp(9.6rem, 21vw, 10.85rem);
+      --hero-logo-orbit-radius: clamp(9.25rem, 19.8vw, 10.15rem);
     }
 
     .hero-center-orb {
