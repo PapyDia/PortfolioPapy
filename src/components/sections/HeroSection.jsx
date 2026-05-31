@@ -95,19 +95,17 @@ function HeroSection() {
             <div className="hero-visual-panel glass-panel ios-safe-rounded relative aspect-square min-w-0 max-w-full overflow-hidden p-4 sm:p-8">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,var(--app-glow-cyan),transparent_35%),radial-gradient(circle_at_80%_75%,var(--app-glow-violet),transparent_32%)]" />
               <div className="absolute left-1/2 top-1/2 aspect-square w-[82%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[color:var(--app-hero-orb-border)] sm:w-[86%]" />
-              <div className="absolute left-1/2 top-1/2 aspect-square w-[64%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[color:var(--app-hero-orb-dashed-border)] sm:w-[70%]" />
+              <div className="hero-logo-orbit-ring absolute left-1/2 top-1/2 aspect-square -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[color:var(--app-hero-orb-dashed-border)]" />
 
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-0 z-20 overflow-hidden"
+                className="hero-logo-orbit-stage pointer-events-none absolute inset-0 z-20 overflow-hidden"
               >
                 {heroTechLogos.map((tech) => {
                   const direction = tech.orbitDirection ?? 1;
                   const duration = tech.orbitDuration ?? 34;
                   const delay = tech.orbitDelay ?? 0;
                   const initialRotation = tech.initialRotation ?? 0;
-                  const orbitRadius =
-                    tech.orbitRadius ?? "clamp(5.9rem, 30vw, 9.75rem)";
 
                   return (
                     <motion.div
@@ -128,7 +126,8 @@ function HeroSection() {
                       <div
                         className="absolute left-0 top-0"
                         style={{
-                          transform: `translateX(${orbitRadius}) translate(-50%, -50%)`,
+                          transform:
+                            "translateX(var(--hero-logo-orbit-radius)) translate(-50%, -50%)",
                         }}
                       >
                         <motion.div

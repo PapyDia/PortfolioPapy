@@ -27,12 +27,22 @@
 
   .hero-visual-panel {
     --ios-safe-radius: var(--radius-card);
+    --hero-logo-orbit-radius: clamp(6.65rem, 30vw, 10.35rem);
   }
 
   .hero-center-orb {
     width: clamp(9.5rem, 42vw, 13rem);
     height: clamp(9.5rem, 42vw, 13rem);
     padding: clamp(0.75rem, 3.25vw, 1.25rem);
+  }
+
+  .hero-logo-orbit-stage,
+  .hero-logo-orbit-ring {
+    --hero-logo-orbit-diameter: calc(var(--hero-logo-orbit-radius) * 2);
+  }
+
+  .hero-logo-orbit-ring {
+    width: var(--hero-logo-orbit-diameter);
   }
 
   .profile-photo-frame,
@@ -95,6 +105,10 @@
       min-height: 10rem;
     }
 
+    .hero-visual-panel {
+      --hero-logo-orbit-radius: clamp(6.9rem, 31vw, 10.25rem);
+    }
+
     .ios-safe-media {
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
@@ -117,6 +131,10 @@
   }
 
   @media (min-width: 40rem) {
+    .hero-visual-panel {
+      --hero-logo-orbit-radius: clamp(9.6rem, 21vw, 10.85rem);
+    }
+
     .hero-center-orb {
       width: clamp(11rem, 28vw, 13rem);
       height: clamp(11rem, 28vw, 13rem);
