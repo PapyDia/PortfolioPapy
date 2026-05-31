@@ -72,6 +72,10 @@
     --ios-safe-radius: 2rem;
   }
 
+  .project-preview-shell {
+    --ios-safe-radius: 1.25rem;
+  }
+
   .academic-journey-title {
     font-family: Georgia, "Times New Roman", serif;
     letter-spacing: 0;
@@ -127,6 +131,16 @@
     .academic-journey-title {
       font-style: normal;
       line-height: 1.18;
+    }
+  }
+
+  @media (max-width: 23.125rem) {
+    .hero-visual-panel {
+      --hero-logo-orbit-radius: clamp(
+        5.95rem,
+        calc(20.5vw + 1.965rem),
+        6.7rem
+      );
     }
   }
 

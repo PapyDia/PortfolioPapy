@@ -34,7 +34,8 @@ function PreviewLogo({ accentClass, name, visual }) {
 
   return (
     <span
-      className={`grid size-11 max-w-full shrink-0 place-items-center rounded-2xl border border-[color:var(--app-project-preview-border)] shadow-[var(--app-shadow-soft)] sm:size-12 ${visual.wrapperClassName}`}
+      className={`ios-safe-rounded grid size-11 max-w-full shrink-0 place-items-center overflow-hidden rounded-2xl border border-[color:var(--app-project-preview-border)] shadow-[var(--app-shadow-soft)] sm:size-12 ${visual.wrapperClassName}`}
+      style={{ "--ios-safe-radius": "1rem" }}
     >
       <img
         alt=""
@@ -189,7 +190,7 @@ function ProjectPreview({ index = 0, name }) {
   return (
     <div
       aria-hidden="true"
-      className="relative min-h-36 min-w-0 max-w-full overflow-hidden rounded-[1.25rem] border border-[color:var(--app-project-preview-border)] bg-[var(--app-project-preview-bg)] p-3 sm:min-h-44 sm:p-4"
+      className="project-preview-shell ios-safe-rounded relative min-h-36 min-w-0 max-w-full overflow-hidden rounded-[1.25rem] border border-[color:var(--app-project-preview-border)] bg-[var(--app-project-preview-bg)] p-3 sm:min-h-44 sm:p-4"
     >
       <div className="absolute -right-16 -top-16 size-32 rounded-full bg-[var(--app-glow-cyan)] blur-3xl sm:size-40" />
       <div className="absolute bottom-0 left-0 size-28 rounded-full bg-[var(--app-glow-violet)] blur-3xl sm:size-36" />
