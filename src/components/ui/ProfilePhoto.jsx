@@ -24,15 +24,6 @@ function ProfilePhoto({ src, alt, className = "" }) {
             width="1023"
           />
         </div>
-
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 rounded-full border border-[color:var(--app-accent-border)]"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-2 rounded-full border border-[color:var(--app-border)]"
-        />
       </div>
     </figure>
   );
