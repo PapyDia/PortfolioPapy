@@ -119,6 +119,10 @@ function ContactLinkCard({ description, href, label }) {
     >
       {isGitHub && <GitHubCodeDecor />}
       {isLinkedIn && <LinkedInNetworkDecor />}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-[1] bg-[var(--app-accent-soft)] opacity-0 transition duration-300 group-hover:opacity-100"
+      />
 
       <span className="relative z-10 flex min-w-0 items-center justify-between gap-3">
         <span className="max-w-full wrap-break-word text-base font-semibold text-[color:var(--app-text-main)]">

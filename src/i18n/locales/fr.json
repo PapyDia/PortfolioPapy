@@ -1,0 +1,19 @@
+{
+  "common": {
+    "language": "Langue",
+    "french": "Français",
+    "english": "Anglais",
+    "arabic": "Arabe"
+  },
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "projects": "Projets",
+    "skills": "Compétences",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Développeur Full Stack JavaScript",
+    "subtitle": "Je conçois des interfaces modernes, rapides, accessibles et maintenables."
+  }
+}
