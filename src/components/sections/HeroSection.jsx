@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 import {
   createCounterOrbitAnimation,
@@ -16,6 +17,7 @@ import SectionTransition from "../ui/SectionTransition";
 import TechLogo from "../ui/TechLogo";
 
 function HeroSection() {
+  const { t } = useTranslation();
   const { hero, identity } = portfolioData;
   const prefersReducedMotion = useReducedMotionPreference();
 
@@ -50,7 +52,7 @@ function HeroSection() {
                 aria-hidden="true"
                 className="size-2 shrink-0 rounded-full bg-[var(--app-accent)] shadow-[var(--app-shadow-soft)]"
               />
-              {hero.badge}
+              {t("hero.badge")}
             </motion.div>
 
             <motion.p
@@ -65,7 +67,7 @@ function HeroSection() {
               id="hero-title"
               variants={fadeUp}
             >
-              {hero.title}
+              {t("hero.title")}
             </motion.h1>
 
             <motion.div
@@ -73,14 +75,14 @@ function HeroSection() {
               variants={fadeUp}
             >
               <Button className="w-full sm:w-auto" href={hero.primaryCta.href}>
-                {hero.primaryCta.label}
+                {t("hero.primaryCta")}
               </Button>
               <Button
                 className="w-full sm:w-auto"
                 href={hero.secondaryCta.href}
                 variant="secondary"
               >
-                {hero.secondaryCta.label}
+                {t("hero.secondaryCta")}
               </Button>
             </motion.div>
           </motion.div>
@@ -160,10 +162,10 @@ function HeroSection() {
                 <div className="hero-center-orb ios-safe-circle grid place-items-center rounded-full border border-[color:var(--app-hero-center-border)] bg-[var(--app-hero-center-bg)] text-center shadow-[var(--app-shadow-soft)] backdrop-blur-xl">
                   <div className="grid min-w-0 max-w-[86%] gap-1">
                     <p className="max-w-full wrap-break-word text-[0.64rem] font-medium leading-[1.22] text-[color:var(--app-text-soft)] min-[430px]:text-[0.7rem] sm:text-sm">
-                      {identity.title}
+                      {t("hero.orbRole")}
                     </p>
                     <p className="max-w-full wrap-break-word text-lg font-semibold leading-tight text-[color:var(--app-text-main)] min-[430px]:text-xl sm:text-2xl">
-                      Full-Stack JS
+                      {t("hero.orbStackLabel")}
                     </p>
                     <p className="max-w-full wrap-break-word text-[0.64rem] font-medium leading-[1.22] text-[color:var(--app-accent)] min-[430px]:text-[0.7rem] sm:text-xs">
                       React · Node · MongoDB

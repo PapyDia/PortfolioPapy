@@ -24,7 +24,12 @@
     "role": "Développeur"
   },
   "hero": {
-    "title": "Développeur Full Stack JavaScript",
-    "subtitle": "Je conçois des interfaces modernes, rapides, accessibles et maintenables."
+    "badge": "Développeur Full-Stack JavaScript",
+    "title": "Je crée des applications web modernes, rapides et élégantes.",
+    "subtitle": "Je conçois des interfaces modernes, rapides, accessibles et maintenables.",
+    "primaryCta": "Voir mes projets",
+    "secondaryCta": "Me contacter",
+    "orbRole": "Développeur Full-Stack JavaScript",
+    "orbStackLabel": "Full-Stack JS"
   }
 }

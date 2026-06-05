@@ -75,18 +75,6 @@ i18n.use(initReactI18next).init({
   },
 });
 
-if (typeof window !== "undefined") {
-  window.__PORTFOLIO_I18N_DEBUG__ = {
-    version: "i18n-navbar-step-3",
-    currentLanguage: () => i18n.language,
-    resolvedLanguage: () => i18n.resolvedLanguage,
-    hasArabicNavHome: () => i18n.exists("nav.home", { lng: "ar" }),
-    arabicNavHome: () => i18n.t("nav.home", { lng: "ar" }),
-    englishNavHome: () => i18n.t("nav.home", { lng: "en" }),
-    frenchNavHome: () => i18n.t("nav.home", { lng: "fr" }),
-  };
-}
-
 i18n.on("languageChanged", (language) => {
   const safeLanguage = normalizeLanguage(language);
 
