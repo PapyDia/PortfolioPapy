@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { FiX } from "react-icons/fi";
 
 import profilePhoto from "../../assets/images/profile.jpg";
 import {
@@ -12,6 +13,7 @@ import { navigationItems } from "../../constants/navigation";
 import { portfolioData } from "../../data/portfolioData";
 import useScrollSpy from "../../hooks/useScrollSpy";
 import Container from "../ui/Container";
+import LanguageSwitcher from "../ui/LanguageSwitcher";
 import ThemeToggle from "../ui/ThemeToggle";
 
 const navigationSectionIds = navigationItems.map((item) =>
@@ -48,11 +50,17 @@ function Navbar() {
   const firstMobileLinkRef = useRef(null);
   const activeSectionId = useScrollSpy(navigationSectionIds);
 
+  const focusMenuButton = useCallback(() => {
+    window.requestAnimationFrame(() => {
+      menuButtonRef.current?.focus();
+    });
+  }, []);
+
   // Close the mobile menu after an anchor click to keep navigation smooth.
   const closeMenu = () => setIsOpen(false);
   const dismissMenu = () => {
     setIsOpen(false);
-    menuButtonRef.current?.focus();
+    focusMenuButton();
   };
 
   useEffect(() => {
@@ -63,14 +71,14 @@ function Navbar() {
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
         setIsOpen(false);
-        menuButtonRef.current?.focus();
+        focusMenuButton();
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
 
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen]);
+  }, [focusMenuButton, isOpen]);
 
   useEffect(() => {
     if (!isOpen) return undefined;
@@ -158,13 +166,16 @@ function Navbar() {
               })}
             </nav>
 
-            <ThemeToggle />
+            <LanguageSwitcher className="hidden min-[900px]:inline-flex" />
+            <ThemeToggle className={isOpen ? "max-[899px]:hidden" : ""} />
 
             <button
               aria-controls="mobile-navigation"
               aria-expanded={isOpen}
               aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
-              className="grid size-9 shrink-0 touch-manipulation place-items-center rounded-full border border-[color:var(--app-border)] bg-[var(--app-surface)] text-[color:var(--app-text-main)] backdrop-blur-md transition hover:border-[color:var(--app-accent-border)] focus-visible:outline focus-visible:outline-offset-4 focus-visible:outline-[color:var(--app-focus-ring)] min-[360px]:size-11 min-[900px]:hidden"
+              className={`grid size-9 shrink-0 touch-manipulation place-items-center rounded-full border border-[color:var(--app-border)] bg-[var(--app-surface)] text-[color:var(--app-text-main)] backdrop-blur-md transition hover:border-[color:var(--app-accent-border)] focus-visible:outline focus-visible:outline-offset-4 focus-visible:outline-[color:var(--app-focus-ring)] min-[360px]:size-11 min-[900px]:hidden ${
+                isOpen ? "max-[899px]:hidden" : ""
+              }`}
               onClick={() => setIsOpen((current) => !current)}
               ref={menuButtonRef}
               type="button"
@@ -202,7 +213,7 @@ function Navbar() {
         {isOpen && (
           <motion.div
             animate="open"
-            className="fixed inset-x-0 bottom-0 top-0 z-40 bg-[var(--app-navbar-mobile-overlay)] backdrop-blur-sm min-[900px]:hidden"
+            className="fixed inset-x-0 bottom-0 top-0 z-[60] bg-[var(--app-navbar-mobile-overlay)] backdrop-blur-sm min-[900px]:hidden"
             exit="exit"
             initial="closed"
             onPointerDown={dismissMenu}
@@ -230,21 +241,41 @@ function Navbar() {
                 transition={{ delay: 0.08, duration: 0.75, ease: "easeOut" }}
               />
 
-              <div className="relative flex h-full min-w-0 flex-col px-4 pb-5 pt-16">
-                <div className="mb-5 flex min-w-0 items-center gap-3 rounded-2xl border border-[color:var(--app-border)] bg-[var(--app-surface)] p-3">
-                  <NavbarAvatar
-                    className="size-10"
-                    hasImage={hasAvatarImage}
-                    onImageError={() => setHasAvatarImage(false)}
-                  />
-                  <span className="min-w-0">
-                    <span className="block max-w-full wrap-break-word text-sm font-semibold text-[color:var(--app-text-main)]">
-                      {portfolioData.identity.name}
+              <div className="relative flex h-full min-w-0 flex-col px-4 pb-5 pt-4">
+                <div className="mb-4 flex min-w-0 items-center justify-between gap-3">
+                  <div className="flex min-w-0 items-center gap-3">
+                    <NavbarAvatar
+                      className="size-9 min-[360px]:size-10"
+                      hasImage={hasAvatarImage}
+                      onImageError={() => setHasAvatarImage(false)}
+                    />
+                    <span className="min-w-0 leading-tight">
+                      <span className="block max-w-28 truncate text-sm font-semibold text-[color:var(--app-text-main)] min-[420px]:max-w-36">
+                        {portfolioData.identity.name}
+                      </span>
+                      <span className="block max-w-28 truncate text-xs text-[color:var(--app-text-soft)] min-[420px]:max-w-36">
+                        Développeur
+                      </span>
                     </span>
-                    <span className="block max-w-full wrap-break-word text-xs text-[color:var(--app-text-soft)]">
-                      Développeur
-                    </span>
-                  </span>
+                  </div>
+
+                  <div className="flex shrink-0 items-center gap-1.5 min-[360px]:gap-2">
+                    <LanguageSwitcher size="compact" />
+                    <ThemeToggle />
+                    <button
+                      aria-controls="mobile-navigation"
+                      aria-label="Fermer le menu"
+                      className="grid size-9 shrink-0 touch-manipulation place-items-center rounded-full border border-[color:var(--app-border)] bg-[var(--app-surface)] text-[color:var(--app-text-main)] backdrop-blur-md transition hover:border-[color:var(--app-accent-border)] hover:bg-[var(--app-accent-soft)] focus-visible:outline focus-visible:outline-offset-4 focus-visible:outline-[color:var(--app-focus-ring)] min-[360px]:size-11"
+                      onClick={dismissMenu}
+                      type="button"
+                    >
+                      <FiX
+                        aria-hidden="true"
+                        className="size-4 min-[360px]:size-5"
+                        focusable="false"
+                      />
+                    </button>
+                  </div>
                 </div>
 
                 <motion.nav
