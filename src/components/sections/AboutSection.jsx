@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 import {
   fadeUp,
@@ -15,7 +16,12 @@ import SectionHeader from "../ui/SectionHeader";
 import SectionTransition from "../ui/SectionTransition";
 
 function AboutSection() {
-  const { about, identity } = portfolioData;
+  const { t } = useTranslation();
+  const { identity } = portfolioData;
+  const paragraphs = t("about.paragraphs", { returnObjects: true });
+  const highlights = t("about.highlights", { returnObjects: true });
+  const aboutParagraphs = Array.isArray(paragraphs) ? paragraphs : [];
+  const aboutHighlights = Array.isArray(highlights) ? highlights : [];
 
   return (
     <section
@@ -32,10 +38,10 @@ function AboutSection() {
         >
           <SectionHeader
             align="center"
-            description={about.description}
-            eyebrow={about.eyebrow}
+            description={t("about.description")}
+            eyebrow={t("about.eyebrow")}
             id="about-title"
-            title={about.title}
+            title={t("about.title")}
           />
         </motion.div>
 
@@ -58,7 +64,7 @@ function AboutSection() {
               />
 
               <div className="relative mx-auto min-w-0 max-w-2xl space-y-5 text-left text-base leading-7 text-[color:var(--app-text-muted)] sm:space-y-6 sm:leading-8">
-                {about.paragraphs.map((paragraph) => (
+                {aboutParagraphs.map((paragraph) => (
                   <p
                     className="text-pretty-safe max-w-full wrap-break-word"
                     key={paragraph}
@@ -71,7 +77,7 @@ function AboutSection() {
           </motion.div>
 
           <motion.aside
-            aria-label={`Profil de ${identity.name}`}
+            aria-label={t("about.profileAriaLabel", { name: identity.name })}
             className="relative flex min-w-0 flex-col items-center"
             initial="hidden"
             variants={fadeUp}
@@ -80,7 +86,7 @@ function AboutSection() {
           >
             <ProfilePhoto
               className="relative z-10"
-              alt={identity.imageAlt ?? "Portrait de Cheikh Massamba Dia"}
+              alt={t("about.profileAlt")}
               src={profilePhoto}
             />
 
@@ -96,20 +102,20 @@ function AboutSection() {
 
               <div className="relative min-w-0">
                 <p className="max-w-full wrap-break-word text-sm font-semibold uppercase text-[color:var(--app-accent)]">
-                  Profil
+                  {t("about.profileLabel")}
                 </p>
                 <h3 className="mt-3 max-w-full wrap-break-word text-xl font-semibold leading-tight text-[color:var(--app-text-main)] sm:mt-4 sm:text-2xl">
                   {identity.name}
                 </h3>
                 <p className="mt-2 max-w-full wrap-break-word text-[color:var(--app-text-muted)]">
-                  {identity.title}
+                  {t("about.profileRole")}
                 </p>
 
                 <ul
-                  aria-label="Points forts"
+                  aria-label={t("about.highlightsAriaLabel")}
                   className="m-0 mt-6 grid min-w-0 list-none gap-2 p-0 sm:mt-8 sm:grid-cols-2 sm:gap-3"
                 >
-                  {about.highlights.map((highlight) => (
+                  {aboutHighlights.map((highlight) => (
                     <li
                       className="max-w-full rounded-2xl border border-[color:var(--app-chip-border)] bg-[var(--app-chip-bg)] px-3 py-2.5 text-center text-sm font-medium leading-snug wrap-break-word text-[color:var(--app-chip-text)] sm:px-4 sm:py-3"
                       key={highlight}

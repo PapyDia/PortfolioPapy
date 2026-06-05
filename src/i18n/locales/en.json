@@ -31,5 +31,165 @@
     "secondaryCta": "Contact me",
     "orbRole": "Full-Stack JavaScript Developer",
     "orbStackLabel": "Full-Stack JS"
+  },
+  "about": {
+    "eyebrow": "About",
+    "title": "I am a developer focused on real-world projects.",
+    "description": "A hybrid profile combining web development, analytical thinking, fast learning and a clear understanding of real needs.",
+    "paragraphs": [
+      "I am Cheikh Massamba Dia, a Full-Stack JavaScript developer with a hybrid profile at the intersection of web development, field analysis and research. My journey taught me to understand real needs before thinking about solutions, to observe how people use tools and to build with method.",
+      "Today I build modern web applications with React, Tailwind CSS, Node.js, Express and MongoDB, with close attention to code quality, user experience, performance, responsiveness and accessibility.",
+      "What sets me apart is my ability to adapt quickly to new technical or professional environments. I enjoy learning, exploring new languages, understanding new technologies and gradually integrating them into concrete projects.",
+      "My ambition is to keep moving toward applications that are more useful, reliable and close to users’ needs, with a strong openness to mobile development and cross-platform experiences."
+    ],
+    "profileAriaLabel": "{{name}} profile",
+    "profileAlt": "Portrait of Cheikh Massamba Dia",
+    "profileLabel": "Profile",
+    "profileRole": "Full-Stack JavaScript Developer",
+    "highlightsAriaLabel": "Strengths",
+    "highlights": [
+      "Hybrid profile",
+      "Full-Stack JavaScript",
+      "Fast adaptation",
+      "Research & fieldwork",
+      "Continuous learning",
+      "Mobile ambition"
+    ]
+  },
+  "skills": {
+    "stackEyebrow": "Stack",
+    "stackAriaLabel": "Technical stack",
+    "eyebrow": "Skills",
+    "title": "A modern JavaScript stack to build complete applications.",
+    "description": "I use modern tools to create smooth interfaces, clean APIs and reliable web experiences.",
+    "featuredLabel": "Human + method",
+    "groupAriaLabel": "{{title}} skills",
+    "groups": [
+      {
+        "title": "Frontend",
+        "description": "Building modern, responsive interfaces that feel good to use.",
+        "items": [
+          "React",
+          "Vite",
+          "CSS",
+          "Tailwind CSS",
+          "Framer Motion",
+          "Lazy loading",
+          "Responsive Design",
+          "Reusable components"
+        ]
+      },
+      {
+        "title": "Backend",
+        "description": "Developing clean, secure and maintainable REST APIs.",
+        "items": [
+          "Node.js",
+          "Express.js",
+          "MongoDB",
+          "MySQL",
+          "Mongoose",
+          "JWT",
+          "Zod",
+          "Helmet",
+          "CORS"
+        ]
+      },
+      {
+        "title": "Architecture",
+        "description": "Clear code organization to make projects easier to evolve.",
+        "items": [
+          "Modular architecture",
+          "Validation",
+          "Features",
+          "Error handling",
+          "S.O.L.I.D",
+          "Payment system"
+        ]
+      },
+      {
+        "title": "Deployment",
+        "description": "Clean deployment of frontend and backend applications.",
+        "items": [
+          "Vercel",
+          "Render",
+          "Docker",
+          "Git",
+          "GitHub",
+          "CI/CD",
+          "Environment variables",
+          "Production configuration"
+        ]
+      },
+      {
+        "title": "Soft skills",
+        "description": "Beyond code, I develop a work method based on listening, analysis and continuous improvement. My background taught me to understand a need before proposing a solution, stay rigorous when facing technical problems and adapt quickly to new contexts.",
+        "items": [
+          "Clear communication",
+          "Flexibility",
+          "Teamwork",
+          "Autonomy",
+          "Curiosity",
+          "Problem solving",
+          "Analytical thinking",
+          "Rigor",
+          "Adaptability",
+          "Patience in debugging",
+          "Continuous learning",
+          "Field awareness"
+        ]
+      }
+    ]
+  },
+  "learning": {
+    "eyebrow": "Learning",
+    "note": "My main stack remains JavaScript, React, Node.js and MongoDB. These languages represent my learning journey and the foundations I encountered as I progressed.",
+    "items": [
+      {
+        "name": "Scratch",
+        "category": "Visual logic",
+        "description": "Discovering the basics of programming: events, conditions, loops, variables and algorithmic logic."
+      },
+      {
+        "name": "C",
+        "category": "Fundamentals",
+        "description": "A deeper understanding of memory, types, pointers, compilation and the basics of algorithms."
+      },
+      {
+        "name": "Python",
+        "category": "General programming",
+        "description": "Practicing a clear language to manipulate data, write scripts and understand programming logic."
+      },
+      {
+        "name": "MySQL",
+        "category": "SQL / Databases",
+        "description": "Learning SQL queries, tables, relationships, filters and how to manipulate structured data with MySQL."
+      },
+      {
+        "name": "PHP",
+        "category": "Web backend",
+        "description": "Discovering the basics of server-side web development and dynamic page generation."
+      }
+    ],
+    "academicJourney": {
+      "eyebrow": "Academic journey",
+      "title": "I had not told you this, but...",
+      "description": "Before seriously focusing on web development, I followed an academic path in rural geography up to Master 2 level. This training taught me to observe territories, analyze social and economic dynamics, conduct field research and write structured scientific work.",
+      "paragraphs": [
+        "I notably took part in research in Poste Keur Ayib, on the border between Senegal and The Gambia, around formal and informal trade. This experience brought me directly into field realities: cross-border exchanges, local economic practices, actors, constraints and forms of organization.",
+        "I also worked in Kaolack on research related to animal health and zoonoses present in the area. This work led me to collect information, analyze field data and write a scientific report that helped validate my Master 1.",
+        "This journey gave me solid skills in investigation, observation, analysis, synthesis and scientific writing. Today, I see them as a real advantage in the way I design web applications: I do not only think about code, but also about real usage, user needs and the context in which a solution must work."
+      ],
+      "skillsAriaLabel": "Skills from the academic journey",
+      "skills": [
+        "Rural geography",
+        "Field research",
+        "Territorial analysis",
+        "Qualitative research",
+        "Scientific writing",
+        "Field observation",
+        "Synthesis",
+        "Understanding real usage"
+      ]
+    }
   }
 }

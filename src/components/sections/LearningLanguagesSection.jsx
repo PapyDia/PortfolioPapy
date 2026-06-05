@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 import {
   fadeUp,
@@ -13,8 +14,24 @@ import LanguageCard from "../ui/LanguageCard";
 import SectionHeader from "../ui/SectionHeader";
 
 function LearningLanguagesSection() {
+  const { t } = useTranslation();
   const { learningLanguages } = portfolioData;
   const { academicJourney } = learningLanguages;
+  const items = t("learning.items", { returnObjects: true });
+  const translatedItems = Array.isArray(items) ? items : [];
+  const translatedAcademicJourney = t("learning.academicJourney", {
+    returnObjects: true,
+  });
+  const safeAcademicJourney =
+    translatedAcademicJourney &&
+    typeof translatedAcademicJourney === "object" &&
+    !Array.isArray(translatedAcademicJourney)
+      ? translatedAcademicJourney
+      : {};
+  const localizedAcademicJourney = {
+    ...academicJourney,
+    ...safeAcademicJourney,
+  };
 
   return (
     <section
@@ -31,7 +48,7 @@ function LearningLanguagesSection() {
         >
           <SectionHeader
             align="center"
-            eyebrow={learningLanguages.eyebrow}
+            eyebrow={t("learning.eyebrow")}
             id="learning-title"
           />
         </motion.div>
@@ -43,7 +60,7 @@ function LearningLanguagesSection() {
           viewport={viewportOnce}
           whileInView="visible"
         >
-          {learningLanguages.note}
+          {t("learning.note")}
         </motion.p>
 
         <motion.div
@@ -54,6 +71,11 @@ function LearningLanguagesSection() {
           whileInView="visible"
         >
           {learningLanguages.items.map((language, index) => {
+            const translatedLanguage = translatedItems[index] ?? {};
+            const localizedLanguage = {
+              ...language,
+              ...translatedLanguage,
+            };
             const titleId = `learning-language-${index + 1}-title`;
 
             return (
@@ -62,7 +84,7 @@ function LearningLanguagesSection() {
                 key={language.name}
                 variants={staggerItem}
               >
-                <LanguageCard language={language} titleId={titleId} />
+                <LanguageCard language={localizedLanguage} titleId={titleId} />
               </motion.div>
             );
           })}
@@ -75,7 +97,7 @@ function LearningLanguagesSection() {
           viewport={viewportOnce}
           whileInView="visible"
         >
-          <AcademicJourneyCard journey={academicJourney} />
+          <AcademicJourneyCard journey={localizedAcademicJourney} />
         </motion.div>
       </Container>
     </section>

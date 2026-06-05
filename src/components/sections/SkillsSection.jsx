@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 import {
   fadeUp,
@@ -12,7 +13,10 @@ import GlassCard from "../ui/GlassCard";
 import SectionHeader from "../ui/SectionHeader";
 
 function SkillsSection() {
+  const { t } = useTranslation();
   const { skills } = portfolioData;
+  const groups = t("skills.groups", { returnObjects: true });
+  const skillGroups = Array.isArray(groups) ? groups : [];
 
   return (
     <section
@@ -29,10 +33,10 @@ function SkillsSection() {
         >
           <SectionHeader
             align="center"
-            description={skills.description}
-            eyebrow={skills.eyebrow}
+            description={t("skills.description")}
+            eyebrow={t("skills.eyebrow")}
             id="skills-title"
-            title={skills.title}
+            title={t("skills.title")}
           />
         </motion.div>
 
@@ -44,13 +48,17 @@ function SkillsSection() {
           whileInView="visible"
         >
           {skills.groups.map((group, index) => {
+            const translatedGroup = skillGroups[index] ?? group;
+            const groupItems = Array.isArray(translatedGroup.items)
+              ? translatedGroup.items
+              : group.items;
             const titleId = `skill-group-${index + 1}-title`;
             const isFeatured = group.featured === true;
             const heading = (
               <div className="min-w-0">
                 {isFeatured ? (
                   <p className="max-w-full wrap-break-word text-xs font-semibold uppercase text-[color:var(--app-accent)]">
-                    Humain + méthode
+                    {t("skills.featuredLabel")}
                   </p>
                 ) : null}
                 <h3
@@ -61,23 +69,25 @@ function SkillsSection() {
                   }`}
                   id={titleId}
                 >
-                  {group.title}
+                  {translatedGroup.title}
                 </h3>
                 <p className="text-pretty-safe mt-2 max-w-full wrap-break-word leading-7 text-[color:var(--app-text-muted)] sm:mt-3">
-                  {group.description}
+                  {translatedGroup.description}
                 </p>
               </div>
             );
             const itemList = (
               <ul
-                aria-label={`Compétences ${group.title}`}
+                aria-label={t("skills.groupAriaLabel", {
+                  title: translatedGroup.title,
+                })}
                 className={`m-0 flex min-w-0 max-w-full list-none flex-wrap gap-2 p-0 ${
                   isFeatured
                     ? "justify-center lg:justify-start"
                     : "mt-5 justify-center sm:mt-6 sm:justify-start"
                 }`}
               >
-                {group.items.map((item) => (
+                {groupItems.map((item) => (
                   <li
                     className={`max-w-full rounded-button border px-2.5 py-1 text-center text-xs font-medium leading-snug wrap-break-word text-[color:var(--app-chip-text)] sm:px-3 sm:py-1.5 sm:text-sm ${
                       isFeatured

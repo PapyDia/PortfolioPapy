@@ -31,5 +31,165 @@
     "secondaryCta": "Me contacter",
     "orbRole": "Développeur Full-Stack JavaScript",
     "orbStackLabel": "Full-Stack JS"
+  },
+  "about": {
+    "eyebrow": "À propos",
+    "title": "Je suis un développeur orienté projets réels.",
+    "description": "Un profil hybride qui combine développement web, esprit d’analyse, apprentissage rapide et compréhension des besoins réels.",
+    "paragraphs": [
+      "Je suis Cheikh Massamba Dia, développeur Full-Stack JavaScript avec un profil hybride, à la croisée du développement web, de l’analyse de terrain et de la recherche. Mon parcours m’a appris à comprendre les besoins réels avant de penser solution, à observer les usages et à construire avec méthode.",
+      "Je développe aujourd’hui des applications web modernes avec React, Tailwind CSS, Node.js, Express et MongoDB, en accordant une attention particulière à la qualité du code, à l’expérience utilisateur, à la performance, au responsive et à l’accessibilité.",
+      "Ce qui me distingue, c’est ma capacité à m’adapter rapidement à de nouveaux environnements techniques ou professionnels. J’aime apprendre, explorer de nouveaux langages, comprendre de nouvelles technologies et les intégrer progressivement dans des projets concrets.",
+      "Mon ambition est de continuer à évoluer vers des applications toujours plus utiles, fiables et proches des besoins des utilisateurs, avec une ouverture forte vers le développement mobile et les expériences multiplateformes."
+    ],
+    "profileAriaLabel": "Profil de {{name}}",
+    "profileAlt": "Portrait de Cheikh Massamba Dia",
+    "profileLabel": "Profil",
+    "profileRole": "Développeur Full-Stack JavaScript",
+    "highlightsAriaLabel": "Points forts",
+    "highlights": [
+      "Profil hybride",
+      "Full-Stack JavaScript",
+      "Adaptation rapide",
+      "Recherche & terrain",
+      "Apprentissage continu",
+      "Ambition mobile"
+    ]
+  },
+  "skills": {
+    "stackEyebrow": "Stack",
+    "stackAriaLabel": "Stack technique",
+    "eyebrow": "Compétences",
+    "title": "Un stack JavaScript moderne pour construire des applications complètes.",
+    "description": "J'utilise des outils modernes pour créer des interfaces fluides, des API propres et des expériences web fiables.",
+    "featuredLabel": "Humain + méthode",
+    "groupAriaLabel": "Compétences {{title}}",
+    "groups": [
+      {
+        "title": "Frontend",
+        "description": "Création d’interfaces modernes, responsives et agréables à utiliser.",
+        "items": [
+          "React",
+          "Vite",
+          "CSS",
+          "Tailwind CSS",
+          "Framer Motion",
+          "Lazy loading",
+          "Responsive Design",
+          "Composants réutilisables"
+        ]
+      },
+      {
+        "title": "Backend",
+        "description": "Développement d’API REST propres, sécurisées et maintenables.",
+        "items": [
+          "Node.js",
+          "Express.js",
+          "MongoDB",
+          "MySQL",
+          "Mongoose",
+          "JWT",
+          "Zod",
+          "Helmet",
+          "CORS"
+        ]
+      },
+      {
+        "title": "Architecture",
+        "description": "Organisation claire du code pour faciliter l’évolution des projets.",
+        "items": [
+          "Architecture modulaire",
+          "Validation",
+          "Features",
+          "Gestion des erreurs",
+          "S.O.L.I.D",
+          "Système de paiements"
+        ]
+      },
+      {
+        "title": "Déploiement",
+        "description": "Mise en ligne propre des applications frontend et backend.",
+        "items": [
+          "Vercel",
+          "Render",
+          "Docker",
+          "Git",
+          "GitHub",
+          "CI/CD",
+          "Variables d’environnement",
+          "Configuration production"
+        ]
+      },
+      {
+        "title": "Soft skills",
+        "description": "Au-delà du code, je développe une méthode de travail basée sur l’écoute, l’analyse et l’amélioration continue. Mon parcours m’a appris à comprendre un besoin avant de proposer une solution, à rester rigoureux face aux problèmes techniques et à m’adapter rapidement à de nouveaux contextes.",
+        "items": [
+          "Communication claire",
+          "Flexibilité",
+          "Esprit d’équipe",
+          "Autonomie",
+          "Curiosité",
+          "Résolution de problèmes",
+          "Esprit d’analyse",
+          "Rigueur",
+          "Adaptabilité",
+          "Patience dans le debugging",
+          "Apprentissage continu",
+          "Sens du terrain"
+        ]
+      }
+    ]
+  },
+  "learning": {
+    "eyebrow": "Apprentissage",
+    "note": "Mon stack principal reste JavaScript, React, Node.js et MongoDB. Ces langages représentent mon parcours d’apprentissage et les bases que j’ai rencontrées en progressant.",
+    "items": [
+      {
+        "name": "Scratch",
+        "category": "Logique visuelle",
+        "description": "Découverte des bases de la programmation: événements, conditions, boucles, variables et logique algorithmique."
+      },
+      {
+        "name": "C",
+        "category": "Fondamentaux",
+        "description": "Compréhension plus profonde de la mémoire, des types, des pointeurs, de la compilation et des bases de l’algorithmique."
+      },
+      {
+        "name": "Python",
+        "category": "Programmation générale",
+        "description": "Pratique d’un langage clair pour manipuler des données, écrire des scripts et comprendre la logique de programmation."
+      },
+      {
+        "name": "MySQL",
+        "category": "SQL / Bases de données",
+        "description": "Apprentissage des requêtes SQL, des tables, des relations, des filtres et de la manipulation de données structurées avec MySQL."
+      },
+      {
+        "name": "PHP",
+        "category": "Web backend",
+        "description": "Découverte des bases du développement web côté serveur et de la génération de pages dynamiques."
+      }
+    ],
+    "academicJourney": {
+      "eyebrow": "Parcours universitaire",
+      "title": "Je ne vous l’avais pas dit, mais...",
+      "description": "Avant de me consacrer sérieusement au développement web, j’ai suivi un parcours universitaire en géographie rurale jusqu’au niveau Master 2. Cette formation m’a appris à observer les territoires, analyser les dynamiques sociales et économiques, mener des enquêtes de terrain et rédiger des travaux scientifiques structurés.",
+      "paragraphs": [
+        "J’ai notamment participé à une recherche à Poste Keur Ayib, à la frontière entre le Sénégal et la Gambie, autour du commerce formel et non formel. Cette expérience m’a confronté directement à la réalité du terrain : les échanges transfrontaliers, les pratiques économiques locales, les acteurs, les contraintes et les logiques d’organisation.",
+        "J’ai également travaillé à Kaolack sur une recherche liée à la santé animale et aux zoonoses présentes dans la zone. Ce travail m’a amené à collecter des informations, analyser des données de terrain et rédiger un rapport scientifique qui a contribué à valider mon Master 1.",
+        "Ce parcours m’a donné des compétences solides en enquête, observation, analyse, synthèse et rédaction scientifique. Aujourd’hui, je les considère comme un vrai avantage dans ma manière de concevoir des applications web : je ne pense pas seulement au code, mais aussi aux usages réels, aux besoins des utilisateurs et au contexte dans lequel une solution doit fonctionner."
+      ],
+      "skillsAriaLabel": "Compétences issues du parcours universitaire",
+      "skills": [
+        "Géographie rurale",
+        "Enquête de terrain",
+        "Analyse territoriale",
+        "Recherche qualitative",
+        "Rédaction scientifique",
+        "Observation du terrain",
+        "Synthèse",
+        "Compréhension des usages réels"
+      ]
+    }
   }
 }

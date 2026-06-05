@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 import {
   createPebbleFloat,
@@ -8,7 +9,6 @@ import {
   viewportOnce,
 } from "../../constants/animations";
 import { techStack } from "../../constants/techStack";
-import { portfolioData } from "../../data/portfolioData";
 import { useReducedMotionPreference } from "../../hooks/useReducedMotionPreference";
 import Container from "../ui/Container";
 import SectionHeader from "../ui/SectionHeader";
@@ -42,7 +42,7 @@ const featuredGravelSizes = {
 };
 
 function StackNebulaSection() {
-  const { stack } = portfolioData;
+  const { t } = useTranslation();
   const prefersReducedMotion = useReducedMotionPreference();
 
   return (
@@ -60,7 +60,7 @@ function StackNebulaSection() {
         >
           <SectionHeader
             align="center"
-            eyebrow={stack.eyebrow}
+            eyebrow={t("skills.stackEyebrow")}
             id="stack-title"
           />
         </motion.div>
@@ -100,7 +100,7 @@ function StackNebulaSection() {
               />
 
               <motion.ul
-                aria-label="Stack technique"
+                aria-label={t("skills.stackAriaLabel")}
                 className="relative mx-auto my-0 flex w-full max-w-76 min-w-0 list-none flex-wrap items-center justify-center gap-x-2.5 gap-y-4 px-2 py-1 sm:max-w-xl sm:gap-x-2 sm:gap-y-4 sm:px-3 lg:max-w-2xl lg:gap-x-2.5 lg:gap-y-5"
                 initial="hidden"
                 variants={staggerContainer}

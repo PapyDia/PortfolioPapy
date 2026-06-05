@@ -4,7 +4,13 @@ const paperTexture = {
 };
 
 function AcademicJourneyCard({ journey }) {
-  const narrativeParagraphs = [journey.description, ...journey.paragraphs];
+  const journeyParagraphs = Array.isArray(journey.paragraphs)
+    ? journey.paragraphs
+    : [];
+  const journeySkills = Array.isArray(journey.skills) ? journey.skills : [];
+  const narrativeParagraphs = [journey.description, ...journeyParagraphs].filter(
+    Boolean,
+  );
   const cardStyle = {
     ...paperTexture,
     "--ios-safe-radius": "2rem",
@@ -69,10 +75,10 @@ function AcademicJourneyCard({ journey }) {
         </div>
 
         <ul
-          aria-label="Compétences issues du parcours universitaire"
+          aria-label={journey.skillsAriaLabel}
           className="m-0 mt-7 flex min-w-0 max-w-full list-none flex-wrap gap-2 p-0 sm:mt-9"
         >
-          {journey.skills.map((skill) => (
+          {journeySkills.map((skill) => (
             <li
               className="max-w-full rounded-full border border-amber-900/15 bg-white/45 px-3 py-1.5 text-center text-sm font-semibold leading-none wrap-break-word text-slate-700 shadow-sm"
               key={skill}
