@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { FiX } from "react-icons/fi";
 
 import profilePhoto from "../../assets/images/profile.jpg";
@@ -44,6 +45,7 @@ function NavbarAvatar({ className = "", hasImage, onImageError }) {
 }
 
 function Navbar() {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [hasAvatarImage, setHasAvatarImage] = useState(true);
   const menuButtonRef = useRef(null);
@@ -118,7 +120,9 @@ function Navbar() {
       >
         <Container className="flex min-h-16 items-center justify-between gap-2 max-[359px]:px-3">
           <a
-            aria-label={`${portfolioData.identity.name}, retour à l'accueil`}
+            aria-label={t("navbar.brandHomeLabel", {
+              name: portfolioData.identity.name,
+            })}
             className={`group inline-flex min-w-0 shrink-0 items-center gap-2 rounded-button py-2 focus-visible:outline focus-visible:outline-offset-4 focus-visible:outline-[color:var(--app-focus-ring)] min-[360px]:gap-3 ${
               isOpen ? "max-[899px]:hidden" : ""
             }`}
@@ -143,7 +147,7 @@ function Navbar() {
 
           <div className="ml-auto flex shrink-0 items-center gap-1 min-[360px]:gap-2">
             <nav
-              aria-label="Navigation principale"
+              aria-label={t("navbar.mainNavigation")}
               className="hidden items-center gap-0.5 min-[900px]:flex min-[1100px]:gap-1"
             >
               {navigationItems.map((item) => {
@@ -160,7 +164,7 @@ function Navbar() {
                     href={item.href}
                     key={item.href}
                   >
-                    {item.label}
+                    {t(item.labelKey, item.label)}
                   </a>
                 );
               })}
@@ -172,7 +176,9 @@ function Navbar() {
             <button
               aria-controls="mobile-navigation"
               aria-expanded={isOpen}
-              aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
+              aria-label={
+                isOpen ? t("navbar.closeMenu") : t("navbar.openMenu")
+              }
               className={`grid size-9 shrink-0 touch-manipulation place-items-center rounded-full border border-[color:var(--app-border)] bg-[var(--app-surface)] text-[color:var(--app-text-main)] backdrop-blur-md transition hover:border-[color:var(--app-accent-border)] focus-visible:outline focus-visible:outline-offset-4 focus-visible:outline-[color:var(--app-focus-ring)] min-[360px]:size-11 min-[900px]:hidden ${
                 isOpen ? "max-[899px]:hidden" : ""
               }`}
@@ -220,7 +226,7 @@ function Navbar() {
             variants={mobileMenuVariants}
           >
             <motion.aside
-              aria-label="Menu mobile"
+              aria-label={t("navbar.mobileMenu")}
               className="relative ml-auto h-full w-[min(21rem,calc(100vw-1rem))] overflow-hidden border-l border-[color:var(--app-navbar-mobile-panel-border)] bg-[var(--app-navbar-mobile-panel)] shadow-[var(--app-navbar-mobile-panel-shadow)] backdrop-blur-2xl min-[360px]:w-[min(24rem,calc(100vw-0.5rem))]"
               onPointerDown={(event) => event.stopPropagation()}
               variants={mobileDrawerVariants}
@@ -254,7 +260,7 @@ function Navbar() {
                         {portfolioData.identity.name}
                       </span>
                       <span className="block max-w-full truncate whitespace-nowrap break-normal text-xs text-[color:var(--app-text-soft)]">
-                        Développeur
+                        {t("navbar.role")}
                       </span>
                     </span>
                   </div>
@@ -263,7 +269,7 @@ function Navbar() {
                     <LanguageSwitcher size="compact" />
                     <button
                       aria-controls="mobile-navigation"
-                      aria-label="Fermer le menu"
+                      aria-label={t("navbar.closeMenu")}
                       className="grid size-9 shrink-0 touch-manipulation place-items-center rounded-full border border-[color:var(--app-border)] bg-[var(--app-surface)] text-[color:var(--app-text-main)] backdrop-blur-md transition hover:border-[color:var(--app-accent-border)] hover:bg-[var(--app-accent-soft)] focus-visible:outline focus-visible:outline-offset-4 focus-visible:outline-[color:var(--app-focus-ring)] min-[360px]:size-11"
                       onClick={dismissMenu}
                       type="button"
@@ -278,7 +284,7 @@ function Navbar() {
                 </div>
 
                 <motion.nav
-                  aria-label="Navigation mobile"
+                  aria-label={t("navbar.mobileNavigation")}
                   className="flex min-w-0 flex-1 flex-col gap-1 overflow-y-auto rounded-2xl border border-[color:var(--app-border)] bg-[var(--app-surface)] p-2 shadow-[inset_0_1px_0_var(--app-shine-soft)]"
                   id="mobile-navigation"
                   variants={mobileDrawerListVariants}
@@ -301,7 +307,7 @@ function Navbar() {
                         ref={index === 0 ? firstMobileLinkRef : undefined}
                         variants={mobileDrawerItemVariants}
                       >
-                        <span>{item.label}</span>
+                        <span>{t(item.labelKey, item.label)}</span>
                         <span
                           aria-hidden="true"
                           className={`size-1.5 rounded-full transition ${

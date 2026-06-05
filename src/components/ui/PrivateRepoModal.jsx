@@ -108,7 +108,7 @@ function PrivateRepoModal({ isOpen, onClose, projectName }) {
                 className="mt-2 max-w-full wrap-break-word text-2xl font-semibold leading-tight text-[color:var(--app-text-main)] sm:text-3xl"
                 id={titleId}
               >
-                Oups ! Repo privé
+                Oups! Repo privé
               </h2>
 
               <div
@@ -119,7 +119,7 @@ function PrivateRepoModal({ isOpen, onClose, projectName }) {
                   Le code source de ce projet n’est pas public pour le moment.
                 </p>
                 <p className="max-w-full wrap-break-word text-[color:var(--app-text-soft)]">
-                  Je peux présenter l’architecture, les choix techniques et les
+                  Je peux tout de même présenter l’architecture, les choix techniques et les
                   fonctionnalités sur demande.
                 </p>
                 <p className="max-w-full wrap-break-word text-[color:var(--app-text-main)]">

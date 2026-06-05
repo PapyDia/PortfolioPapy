@@ -8,9 +8,20 @@
   "nav": {
     "home": "Accueil",
     "about": "À propos",
-    "projects": "Projets",
     "skills": "Compétences",
+    "learning": "Parcours",
+    "projects": "Projets",
+    "process": "Méthode",
     "contact": "Contact"
+  },
+  "navbar": {
+    "brandHomeLabel": "{{name}}, retour à l'accueil",
+    "mainNavigation": "Navigation principale",
+    "mobileNavigation": "Navigation mobile",
+    "mobileMenu": "Menu mobile",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "role": "Développeur"
   },
   "hero": {
     "title": "Développeur Full Stack JavaScript",

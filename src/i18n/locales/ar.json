@@ -8,9 +8,20 @@
   "nav": {
     "home": "الرئيسية",
     "about": "من أنا",
-    "projects": "المشاريع",
     "skills": "المهارات",
+    "learning": "المسار",
+    "projects": "المشاريع",
+    "process": "المنهجية",
     "contact": "تواصل"
+  },
+  "navbar": {
+    "brandHomeLabel": "{{name}}، العودة إلى الصفحة الرئيسية",
+    "mainNavigation": "التنقل الرئيسي",
+    "mobileNavigation": "التنقل المحمول",
+    "mobileMenu": "القائمة المحمولة",
+    "openMenu": "فتح القائمة",
+    "closeMenu": "إغلاق القائمة",
+    "role": "مطور"
   },
   "hero": {
     "title": "مطور جافاسكريبت شامل",
