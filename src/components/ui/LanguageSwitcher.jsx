@@ -32,7 +32,7 @@ function persistLanguage(languageCode) {
 }
 
 function LanguageSwitcher({ className = "inline-flex", size = "default" }) {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const isCompact = size === "compact";
   const activeLanguage = i18n.resolvedLanguage || i18n.language || "fr";
   const selectedLanguage =
@@ -42,11 +42,11 @@ function LanguageSwitcher({ className = "inline-flex", size = "default" }) {
     ? "h-9 min-[360px]:h-10"
     : "h-9 min-[360px]:h-11";
   const selectSizeClasses = isCompact
-    ? "pl-3 pr-7 text-[0.7rem]"
-    : "pl-3 pr-7 text-xs min-[360px]:pl-3.5 min-[360px]:pr-8";
+    ? "ps-3 pe-7 text-[0.7rem]"
+    : "ps-3 pe-7 text-xs min-[360px]:ps-3.5 min-[360px]:pe-8";
   const arrowPositionClasses = isCompact
-    ? "right-2.5"
-    : "right-2.5 min-[360px]:right-3";
+    ? "end-2.5"
+    : "end-2.5 min-[360px]:end-3";
 
   const handleLanguageChange = async (languageCode) => {
     if (selectedLanguage === languageCode) {
@@ -62,9 +62,9 @@ function LanguageSwitcher({ className = "inline-flex", size = "default" }) {
     <label
       className={`relative shrink-0 items-center rounded-full border border-[color:var(--app-border)] bg-[var(--app-surface)] text-[color:var(--app-text-main)] shadow-[var(--app-shadow-soft)] backdrop-blur-md transition hover:border-[color:var(--app-accent-border)] hover:bg-[var(--app-accent-soft)] focus-within:outline focus-within:outline-offset-4 focus-within:outline-[color:var(--app-focus-ring)] ${wrapperSizeClasses} ${className}`}
     >
-      <span className="sr-only">Sélecteur de langue</span>
+      <span className="sr-only">{t("common.languageSwitcher")}</span>
       <select
-        aria-label="Changer la langue"
+        aria-label={t("common.changeLanguage")}
         className={`h-full cursor-pointer appearance-none rounded-full bg-transparent py-0 font-semibold tracking-[0.08em] text-current outline-none ${selectSizeClasses}`}
         onChange={(event) => handleLanguageChange(event.target.value)}
         value={selectedLanguage}
@@ -77,7 +77,7 @@ function LanguageSwitcher({ className = "inline-flex", size = "default" }) {
       </select>
       <span
         aria-hidden="true"
-        className={`pointer-events-none absolute top-1/2 size-1.5 -translate-y-1/2 rotate-45 border-b border-r border-current opacity-70 ${arrowPositionClasses}`}
+        className={`pointer-events-none absolute top-1/2 size-1.5 -translate-y-1/2 rotate-45 border-b border-e border-current opacity-70 ${arrowPositionClasses}`}
       />
     </label>
   );

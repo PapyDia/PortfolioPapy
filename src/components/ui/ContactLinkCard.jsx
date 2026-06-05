@@ -113,7 +113,7 @@ function ContactLinkCard({ ariaLabel, description, href, label }) {
   return (
     <a
       aria-label={ariaLabel}
-      className="premium-border group relative flex w-full min-w-0 flex-col overflow-hidden rounded-3xl bg-[var(--app-contact-card-bg)] p-4 text-left transition duration-300 hover:-translate-y-0.5 hover:border-[color:var(--app-accent-border)] hover:bg-[var(--app-accent-soft)] focus-visible:outline focus-visible:outline-offset-4 focus-visible:outline-[var(--app-focus-ring)] sm:p-5"
+      className="premium-border group relative flex w-full min-w-0 flex-col overflow-hidden rounded-3xl bg-[var(--app-contact-card-bg)] p-4 text-start transition duration-300 hover:-translate-y-0.5 hover:border-[color:var(--app-accent-border)] hover:bg-[var(--app-accent-soft)] focus-visible:outline focus-visible:outline-offset-4 focus-visible:outline-[var(--app-focus-ring)] sm:p-5"
       href={normalizedHref}
       rel={isExternal ? "noopener noreferrer" : undefined}
       target={isExternal ? "_blank" : undefined}

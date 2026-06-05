@@ -1,9 +1,13 @@
+import { useTranslation } from "react-i18next";
+
 import Container from "./Container";
 
 function SectionFallback() {
+  const { t } = useTranslation();
+
   return (
     <div
-      aria-label="Chargement de la section"
+      aria-label={t("accessibility.sectionLoading")}
       className="section-padding"
       role="status"
     >

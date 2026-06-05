@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { MotionConfig } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
@@ -25,11 +26,13 @@ const ContactSection = lazy(
 );
 
 function App() {
+  const { t } = useTranslation();
+
   return (
     <MotionConfig reducedMotion="user">
       <div className="page-shell">
         <a className="skip-link" href="#main-content">
-          Aller au contenu principal
+          {t("accessibility.skipToContent")}
         </a>
         <Navbar />
         <main

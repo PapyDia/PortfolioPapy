@@ -58,7 +58,7 @@ function PreviewHeader({ accentClass, label, name, visual }) {
         <span className="size-2.5 rounded-full bg-[var(--app-project-dot-blue)]" />
         <span className="size-2.5 rounded-full bg-[var(--app-project-dot-violet)]" />
       </div>
-      <span className="ml-auto max-w-full wrap-break-word text-[0.65rem] font-medium text-[color:var(--app-text-soft)] sm:text-xs">
+      <span className="ms-auto max-w-full wrap-break-word text-[0.65rem] font-medium text-[color:var(--app-text-soft)] sm:text-xs">
         {label}
       </span>
       <PreviewLogo accentClass={accentClass} name={name} visual={visual} />

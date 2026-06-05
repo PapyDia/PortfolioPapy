@@ -10,7 +10,7 @@ function Footer() {
   return (
     <footer className="border-t border-[color:var(--app-footer-border)] bg-[var(--app-footer-bg)] py-8">
       <Container>
-        <div className="flex min-w-0 flex-col items-center gap-4 text-center md:flex-row md:justify-between md:text-left">
+        <div className="flex min-w-0 flex-col items-center gap-4 text-center md:flex-row md:justify-between md:text-start">
           <div className="min-w-0">
             <p className="max-w-full wrap-break-word text-sm font-semibold text-[color:var(--app-text-main)]">
               {identity.name}

@@ -183,20 +183,20 @@ export const mobileMenuVariants = {
 };
 
 export const mobileDrawerVariants = {
-  closed: {
+  closed: (isRtl = false) => ({
     opacity: 0,
     scale: 0.985,
-    x: "100%",
-  },
-  exit: {
+    x: isRtl ? "-100%" : "100%",
+  }),
+  exit: (isRtl = false) => ({
     opacity: 0,
     scale: 0.985,
     transition: {
       duration: 0.24,
       ease: [0.4, 0, 0.2, 1],
     },
-    x: "100%",
-  },
+    x: isRtl ? "-100%" : "100%",
+  }),
   open: {
     opacity: 1,
     scale: 1,
@@ -221,10 +221,10 @@ export const mobileDrawerListVariants = {
 };
 
 export const mobileDrawerItemVariants = {
-  closed: {
+  closed: (isRtl = false) => ({
     opacity: 0,
-    x: 14,
-  },
+    x: isRtl ? -14 : 14,
+  }),
   open: {
     opacity: 1,
     transition: {

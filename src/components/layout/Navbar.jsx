@@ -45,12 +45,14 @@ function NavbarAvatar({ className = "", hasImage, onImageError }) {
 }
 
 function Navbar() {
-  const { t } = useTranslation();
+  const { i18n, t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [hasAvatarImage, setHasAvatarImage] = useState(true);
   const menuButtonRef = useRef(null);
   const firstMobileLinkRef = useRef(null);
   const activeSectionId = useScrollSpy(navigationSectionIds);
+  const activeLanguage = i18n.resolvedLanguage || i18n.language || "fr";
+  const isRtl = activeLanguage.startsWith("ar");
 
   const focusMenuButton = useCallback(() => {
     window.requestAnimationFrame(() => {
@@ -145,7 +147,7 @@ function Navbar() {
             </span>
           </a>
 
-          <div className="ml-auto flex shrink-0 items-center gap-1 min-[360px]:gap-2">
+          <div className="ms-auto flex shrink-0 items-center gap-1 min-[360px]:gap-2">
             <nav
               aria-label={t("navbar.mainNavigation")}
               className="hidden items-center gap-0.5 min-[900px]:flex min-[1100px]:gap-1"
@@ -227,7 +229,8 @@ function Navbar() {
           >
             <motion.aside
               aria-label={t("navbar.mobileMenu")}
-              className="relative ml-auto h-full w-[min(21rem,calc(100vw-1rem))] overflow-hidden border-l border-[color:var(--app-navbar-mobile-panel-border)] bg-[var(--app-navbar-mobile-panel)] shadow-[var(--app-navbar-mobile-panel-shadow)] backdrop-blur-2xl min-[360px]:w-[min(24rem,calc(100vw-0.5rem))]"
+              className="relative ms-auto h-full w-[min(21rem,calc(100vw-1rem))] overflow-hidden border-s border-[color:var(--app-navbar-mobile-panel-border)] bg-[var(--app-navbar-mobile-panel)] shadow-[var(--app-navbar-mobile-panel-shadow)] backdrop-blur-2xl min-[360px]:w-[min(24rem,calc(100vw-0.5rem))]"
+              custom={isRtl}
               onPointerDown={(event) => event.stopPropagation()}
               variants={mobileDrawerVariants}
             >
@@ -303,6 +306,7 @@ function Navbar() {
                         } focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-[color:var(--app-focus-ring)]`}
                         href={item.href}
                         key={item.href}
+                        custom={isRtl}
                         onClick={closeMenu}
                         ref={index === 0 ? firstMobileLinkRef : undefined}
                         variants={mobileDrawerItemVariants}

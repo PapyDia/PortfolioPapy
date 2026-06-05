@@ -100,7 +100,7 @@ function ContactSection() {
               title={t("contact.title")}
             />
 
-            <div className="mt-8 grid min-w-0 gap-4 text-left sm:mt-10 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] xl:items-start">
+            <div className="mt-8 grid min-w-0 gap-4 text-start sm:mt-10 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] xl:items-start">
               <div className="premium-border relative isolate min-w-0 overflow-hidden rounded-card bg-[var(--app-contact-card-bg)] p-4 sm:p-6">
                 <div
                   aria-hidden="true"
@@ -205,7 +205,7 @@ function ContactSection() {
                 return (
                   <motion.article
                     aria-labelledby={titleId}
-                    className="premium-border min-w-0 rounded-card bg-[var(--app-contact-card-bg)] p-4 text-center sm:p-5 md:text-left"
+                    className="premium-border min-w-0 rounded-card bg-[var(--app-contact-card-bg)] p-4 text-center sm:p-5 md:text-start"
                     key={card.title}
                     variants={staggerItem}
                   >

@@ -3,7 +3,13 @@
     "language": "Language",
     "french": "French",
     "english": "English",
-    "arabic": "Arabic"
+    "arabic": "Arabic",
+    "languageSwitcher": "Language selector",
+    "changeLanguage": "Change language"
+  },
+  "accessibility": {
+    "skipToContent": "Skip to main content",
+    "sectionLoading": "Section loading"
   },
   "nav": {
     "home": "Home",

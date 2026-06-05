@@ -55,12 +55,12 @@ function AcademicJourneyCard({ journey }) {
           {journey.title}
         </h3>
 
-        <div className="relative mx-auto mt-6 max-w-3xl border-l border-amber-900/15 pl-4 sm:mt-7 sm:pl-6">
+        <div className="relative mx-auto mt-6 max-w-3xl border-s border-amber-900/15 ps-4 sm:mt-7 sm:ps-6">
           <span
             aria-hidden="true"
-            className="absolute -left-[0.3125rem] top-2 size-2 rounded-full bg-amber-900/25 shadow-[0_0_0_4px_rgba(248,241,227,0.85)]"
+            className="absolute -start-[0.3125rem] top-2 size-2 rounded-full bg-amber-900/25 shadow-[0_0_0_4px_rgba(248,241,227,0.85)]"
           />
-          <div className="academic-journey-copy space-y-5 text-left text-[1.14rem] leading-8 text-slate-700 sm:text-[1.22rem] sm:leading-9">
+          <div className="academic-journey-copy space-y-5 text-start text-[1.14rem] leading-8 text-slate-700 sm:text-[1.22rem] sm:leading-9">
             {narrativeParagraphs.map((paragraph, index) => (
               <p
                 className={`text-pretty-safe max-w-full break-words ${

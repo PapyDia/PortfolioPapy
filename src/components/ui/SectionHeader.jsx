@@ -9,7 +9,7 @@ function SectionHeader({
   const alignment =
     align === "center"
       ? "mx-auto text-center"
-      : "mx-auto text-center lg:mx-0 lg:text-left";
+      : "mx-auto text-center lg:mx-0 lg:text-start";
   const descriptionAlignment =
     align === "center" ? "mx-auto" : "mx-auto lg:mx-0";
   const eyebrowId = title ? undefined : id;

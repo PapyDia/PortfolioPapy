@@ -3,7 +3,13 @@
     "language": "Langue",
     "french": "Français",
     "english": "Anglais",
-    "arabic": "Arabe"
+    "arabic": "Arabe",
+    "languageSwitcher": "Sélecteur de langue",
+    "changeLanguage": "Changer la langue"
+  },
+  "accessibility": {
+    "skipToContent": "Aller au contenu principal",
+    "sectionLoading": "Chargement de la section"
   },
   "nav": {
     "home": "Accueil",

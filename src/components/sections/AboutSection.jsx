@@ -63,7 +63,7 @@ function AboutSection() {
                 className="pointer-events-none absolute -bottom-20 right-0 size-48 rounded-full bg-[var(--app-glow-violet)] blur-3xl"
               />
 
-              <div className="relative mx-auto min-w-0 max-w-2xl space-y-5 text-left text-base leading-7 text-[color:var(--app-text-muted)] sm:space-y-6 sm:leading-8">
+              <div className="relative mx-auto min-w-0 max-w-2xl space-y-5 text-start text-base leading-7 text-[color:var(--app-text-muted)] sm:space-y-6 sm:leading-8">
                 {aboutParagraphs.map((paragraph) => (
                   <p
                     className="text-pretty-safe max-w-full wrap-break-word"

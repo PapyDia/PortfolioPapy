@@ -40,7 +40,7 @@ function HeroSection() {
         <div className="grid min-w-0 items-center gap-10 sm:gap-12 xl:grid-cols-[1.05fr_0.95fr]">
           <motion.div
             animate="visible"
-            className="mx-auto max-w-3xl min-w-0 text-center xl:mx-0 xl:text-left"
+            className="mx-auto max-w-3xl min-w-0 text-center xl:mx-0 xl:text-start"
             initial="hidden"
             variants={staggerContainer}
           >
