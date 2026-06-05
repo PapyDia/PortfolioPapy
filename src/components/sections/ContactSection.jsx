@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { MdOutlineMail } from "react-icons/md";
+import { useTranslation } from "react-i18next";
 
 import {
   scaleIn,
@@ -16,10 +17,19 @@ import EmailContactDecor from "../ui/EmailContactDecor";
 import SectionHeader from "../ui/SectionHeader";
 
 function ContactSection() {
-  const { contact } = portfolioData;
+  const { t } = useTranslation();
+  const { contact, identity } = portfolioData;
   const [copied, setCopied] = useState(false);
   const email = contact.email?.trim() ?? "";
   const activeLinks = (contact.links ?? []).filter((link) => link.href?.trim());
+  const linkTranslations = t("contact.links", { returnObjects: true });
+  const cardTranslations = t("contact.cards", { returnObjects: true });
+  const translatedLinks = Array.isArray(linkTranslations)
+    ? linkTranslations
+    : [];
+  const translatedCards = Array.isArray(cardTranslations)
+    ? cardTranslations
+    : [];
 
   useEffect(() => {
     if (!copied) {
@@ -84,10 +94,10 @@ function ContactSection() {
           <div className="relative min-w-0">
             <SectionHeader
               align="center"
-              description={contact.description}
-              eyebrow={contact.eyebrow}
+              description={t("contact.description")}
+              eyebrow={t("contact.eyebrow")}
               id="contact-title"
-              title={contact.title}
+              title={t("contact.title")}
             />
 
             <div className="mt-8 grid min-w-0 gap-4 text-left sm:mt-10 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] xl:items-start">
@@ -102,10 +112,10 @@ function ContactSection() {
                   <div className="flex min-w-0 items-start justify-between gap-3">
                     <div className="min-w-0">
                       <p className="max-w-full wrap-break-word text-sm font-semibold uppercase text-[color:var(--app-accent)]">
-                        Contact direct
+                        {t("contact.direct.eyebrow")}
                       </p>
                       <h3 className="mt-3 max-w-full wrap-break-word text-xl font-semibold leading-tight text-[color:var(--app-text-main)]">
-                        Échanger avec moi.
+                        {t("contact.direct.title")}
                       </h3>
                     </div>
                     <span
@@ -127,11 +137,14 @@ function ContactSection() {
                       </p>
                       <div className="mt-5 flex min-w-0 flex-col gap-3 sm:flex-row">
                         <Button
-                          aria-label={`Envoyer un email à Cheikh Massamba Dia à l’adresse ${email}`}
+                          aria-label={t("contact.aria.sendEmail", {
+                            email,
+                            name: identity.name,
+                          })}
                           className="w-full sm:w-auto"
                           href={`mailto:${email}`}
                         >
-                          M’envoyer un email
+                          {t("contact.actions.email")}
                         </Button>
                         <Button
                           aria-live="polite"
@@ -139,14 +152,15 @@ function ContactSection() {
                           onClick={handleCopyEmail}
                           variant="secondary"
                         >
-                          {copied ? "Email copié !" : "Copier l’email"}
+                          {copied
+                            ? t("contact.actions.copiedEmail")
+                            : t("contact.actions.copyEmail")}
                         </Button>
                       </div>
                     </>
                   ) : (
                     <p className="text-pretty-safe mt-4 max-w-full wrap-break-word rounded-2xl border border-[color:var(--app-contact-card-border)] bg-[var(--app-contact-card-bg)] px-4 py-3 text-sm leading-6 text-[color:var(--app-text-muted)]">
-                      Adresse e-mail bientôt disponible. Vous pouvez déjà me
-                      retrouver via mes liens professionnels.
+                      {t("contact.direct.emailUnavailable")}
                     </p>
                   )}
                 </div>
@@ -154,14 +168,25 @@ function ContactSection() {
 
               {activeLinks.length > 0 && (
                 <div className="grid w-full min-w-0 gap-3 sm:grid-cols-2 xl:grid-cols-1">
-                  {activeLinks.map((link) => (
-                    <ContactLinkCard
-                      description={link.description}
-                      href={link.href}
-                      key={link.label}
-                      label={link.label}
-                    />
-                  ))}
+                  {activeLinks.map((link) => {
+                    const translatedLink =
+                      translatedLinks.find(
+                        (item) => item.key?.toLowerCase() === link.label.toLowerCase(),
+                      ) ?? {};
+
+                    return (
+                      <ContactLinkCard
+                        ariaLabel={t("contact.aria.openLink", {
+                          label: translatedLink.label ?? link.label,
+                          name: identity.name,
+                        })}
+                        description={translatedLink.description ?? link.description}
+                        href={link.href}
+                        key={link.label}
+                        label={translatedLink.label ?? link.label}
+                      />
+                    );
+                  })}
                 </div>
               )}
             </div>
@@ -174,6 +199,7 @@ function ContactSection() {
               whileInView="visible"
             >
               {contact.cards.map((card, index) => {
+                const translatedCard = translatedCards[index] ?? {};
                 const titleId = `contact-card-${index + 1}-title`;
 
                 return (
@@ -187,10 +213,10 @@ function ContactSection() {
                       className="max-w-full wrap-break-word text-lg font-semibold leading-tight text-[color:var(--app-text-main)]"
                       id={titleId}
                     >
-                      {card.title}
+                      {translatedCard.title ?? card.title}
                     </h3>
                     <p className="text-pretty-safe mt-2 max-w-full wrap-break-word leading-7 text-[color:var(--app-text-muted)] sm:mt-3">
-                      {card.description}
+                      {translatedCard.description ?? card.description}
                     </p>
                   </motion.article>
                 );
@@ -198,9 +224,7 @@ function ContactSection() {
             </motion.div>
 
             <p className="text-pretty-safe mx-auto mt-6 max-w-2xl wrap-break-word text-sm leading-6 text-[color:var(--app-text-soft)] sm:mt-8">
-              Chaque échange est pour moi l’occasion de comprendre un contexte,
-              analyser un besoin et construire une réponse utile, claire et
-              durable.
+              {t("contact.closing")}
             </p>
           </div>
         </motion.div>

@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useId, useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 import {
   modalContentItemVariants,
@@ -12,6 +13,7 @@ import Button from "./Button";
 import CodingBearIllustration from "./CodingBearIllustration";
 
 function PrivateRepoModal({ isOpen, onClose, projectName }) {
+  const { t } = useTranslation();
   const prefersReducedMotion = useReducedMotionPreference();
   const titleId = useId();
   const descriptionId = useId();
@@ -101,14 +103,14 @@ function PrivateRepoModal({ isOpen, onClose, projectName }) {
               variants={modalContentItemVariants}
             >
               <p className="max-w-full wrap-break-word text-xs font-semibold uppercase text-[color:var(--app-accent)]">
-                {projectName ?? "Projet"}
+                {projectName ?? t("projects.fallbackProject")}
               </p>
 
               <h2
                 className="mt-2 max-w-full wrap-break-word text-2xl font-semibold leading-tight text-[color:var(--app-text-main)] sm:text-3xl"
                 id={titleId}
               >
-                Oups! Repo privé
+                {t("projects.privateRepoModal.title")}
               </h2>
 
               <div
@@ -116,15 +118,13 @@ function PrivateRepoModal({ isOpen, onClose, projectName }) {
                 id={descriptionId}
               >
                 <p className="max-w-full wrap-break-word">
-                  Le code source de ce projet n’est pas public pour le moment.
+                  {t("projects.privateRepoModal.description")}
                 </p>
                 <p className="max-w-full wrap-break-word text-[color:var(--app-text-soft)]">
-                  Je peux tout de même présenter l’architecture, les choix techniques et les
-                  fonctionnalités sur demande.
+                  {t("projects.privateRepoModal.note")}
                 </p>
                 <p className="max-w-full wrap-break-word text-[color:var(--app-text-main)]">
-                  Nouni 🐻 garde le repo au chaud pendant que je peaufine encore
-                  le projet.
+                  {t("projects.privateRepoModal.extra")}
                 </p>
               </div>
             </motion.div>
@@ -138,14 +138,14 @@ function PrivateRepoModal({ isOpen, onClose, projectName }) {
                 onClick={onClose}
                 ref={understoodButtonRef}
               >
-                Compris
+                {t("projects.actions.understood")}
               </Button>
               <Button
                 className="w-full sm:w-auto"
                 onClick={handleContactClick}
                 variant="secondary"
               >
-                Me contacter
+                {t("projects.actions.contact")}
               </Button>
             </motion.div>
           </motion.div>

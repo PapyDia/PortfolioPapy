@@ -191,5 +191,165 @@
         "Compréhension des usages réels"
       ]
     }
+  },
+  "projects": {
+    "eyebrow": "Projets",
+    "title": "Des projets concrets, pensés minutieusement et qui répondent à des besoins réels.",
+    "description": "Voici quelques projets que j'ai construits pour appliquer mes compétences full-stack et créer des solutions web concrètes. Chaque projet a été pensé pour répondre à un besoin réel, avec une attention particulière à l'expérience utilisateur, à la qualité du code et à la maintenabilité.",
+    "highlightsLabel": "Points clés",
+    "privateRepoNote": "Repo privé, disponible sur demande.",
+    "fallbackProject": "Projet",
+    "modalFallbackProject": "Projet full-stack",
+    "actions": {
+      "viewProject": "Voir le site",
+      "viewCode": "Voir le code",
+      "close": "Fermer",
+      "understood": "Compris",
+      "contact": "Me contacter"
+    },
+    "preview": {
+      "menu": "Menu",
+      "dishes": "Plats",
+      "menus": "Menus",
+      "order": "Commander",
+      "cart": "Panier",
+      "itemAdded": "+1 article",
+      "total": "Total",
+      "ticket": "Ticket",
+      "preview": "Aperçu"
+    },
+    "items": {
+      "kaolackKitchen": {
+        "name": "Kaolack Kitchen",
+        "type": "Plateforme de commande de fast-food",
+        "status": "Projet full-stack",
+        "description": "Application web de commande en ligne conçue pour un service de fast-food local. Les clients peuvent consulter le menu, ajouter des produits au panier, passer une commande et suivre son statut.",
+        "highlights": [
+          "Menu dynamique avec catégories",
+          "Panier responsive mobile et desktop",
+          "Passage de commande en ligne",
+          "Suivi de commande par téléphone",
+          "Dashboard admin",
+          "Gestion produits/catégories",
+          "Upload d’images avec Cloudinary",
+          "API REST sécurisée"
+        ]
+      },
+      "samaHoraire": {
+        "name": "Sama Horaire",
+        "type": "Plateforme de réservation de tickets de transport",
+        "status": "Projet full-stack",
+        "description": "Application web de réservation de tickets de transport. Elle permet aux utilisateurs de consulter des trajets, réserver des places, recevoir un ticket avec QR code et suivre leur réservation.",
+        "highlights": [
+          "Liste des trajets disponibles",
+          "Réservation de plusieurs places",
+          "Génération de ticket QR code",
+          "Suivi de réservation",
+          "Interface admin protégée",
+          "Gestion des trajets",
+          "Page contrôleur",
+          "Scan QR code"
+        ]
+      }
+    },
+    "privateRepoModal": {
+      "title": "Oups! Repo privé",
+      "description": "Le code source de ce projet n’est pas public pour le moment.",
+      "note": "Je peux tout de même présenter l’architecture, les choix techniques et les fonctionnalités sur demande.",
+      "extra": "Nouni 🐻 garde le repo au chaud pendant que je peaufine encore le projet."
+    },
+    "deploymentModal": {
+      "title": "Un petit instant avant le chargement",
+      "description": "Ce projet utilise un backend hébergé sur le plan gratuit de Render. Après une période d’inactivité, le service peut se mettre en veille et prendre quelques secondes à se relancer.",
+      "note": "Si les données ne s’affichent pas immédiatement, patientez un instant puis actualisez la page.",
+      "cta": "Continuer vers le site"
+    },
+    "aria": {
+      "projectStack": "Stack du projet {{title}}",
+      "openProject": "Voir le site du projet {{title}}",
+      "openProjectNewTab": "Voir le site du projet {{title}} dans un nouvel onglet",
+      "openPrivateRepoInfo": "Voir le code du projet {{title}}"
+    }
+  },
+  "process": {
+    "eyebrow": "Méthode",
+    "title": "Ma façon de construire une application.",
+    "description": "J’avance étape par étape pour transformer une idée en application claire, fonctionnelle et maintenable.",
+    "steps": [
+      {
+        "title": "Comprendre le besoin",
+        "description": "Je commence par clarifier l’objectif du projet, les utilisateurs concernés et les fonctionnalités importantes."
+      },
+      {
+        "title": "Structurer la solution",
+        "description": "Je prépare une architecture simple, lisible et évolutive avant de développer les fonctionnalités."
+      },
+      {
+        "title": "Créer une interface responsive",
+        "description": "Je construis une interface propre, mobile-first, agréable à utiliser et cohérente avec l’identité du projet."
+      },
+      {
+        "title": "Développer une API propre",
+        "description": "Je mets en place une API structurée avec validation, gestion des erreurs, sécurité et séparation des responsabilités."
+      },
+      {
+        "title": "Tester et améliorer",
+        "description": "Je vérifie les comportements importants, les erreurs possibles, le responsive et l’expérience utilisateur."
+      },
+      {
+        "title": "Déployer proprement",
+        "description": "Je prépare la mise en ligne avec une configuration claire, des variables d’environnement et un déploiement stable."
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Discutons d’un projet, d’une opportunité ou d’une idée à construire.",
+    "description": "Vous avez un projet web, une mission, une opportunité professionnelle ou simplement une idée à clarifier ?",
+    "direct": {
+      "eyebrow": "Contact direct",
+      "title": "Échanger avec moi.",
+      "emailUnavailable": "Adresse e-mail bientôt disponible. Vous pouvez déjà me retrouver via mes liens professionnels."
+    },
+    "actions": {
+      "email": "M’envoyer un email",
+      "copyEmail": "Copier l’email",
+      "copiedEmail": "Email copié !"
+    },
+    "links": [
+      {
+        "key": "GitHub",
+        "label": "GitHub",
+        "description": "Voir mes projets et mon code public."
+      },
+      {
+        "key": "LinkedIn",
+        "label": "LinkedIn",
+        "description": "Découvrir mon profil professionnel."
+      }
+    ],
+    "cards": [
+      {
+        "title": "Projet web",
+        "description": "Création ou amélioration d’une application web moderne, responsive, accessible et maintenable."
+      },
+      {
+        "title": "Collaboration",
+        "description": "Échange autour d’une mission, d’un stage, d’un poste junior ou d’une collaboration technique."
+      },
+      {
+        "title": "Conseil technique",
+        "description": "Discussion autour d’une idée, d’une architecture, d’un prototype ou d’une solution à construire."
+      }
+    ],
+    "closing": "Chaque échange est pour moi l’occasion de comprendre un contexte, analyser un besoin et construire une réponse utile, claire et durable.",
+    "aria": {
+      "sendEmail": "Envoyer un email à {{name}} à l’adresse {{email}}",
+      "openLink": "Ouvrir {{label}} de {{name}}"
+    }
+  },
+  "footer": {
+    "role": "Développeur Full-Stack JavaScript",
+    "copyright": "© {{year}} {{name}}. Portfolio. Tous droits réservés."
   }
 }

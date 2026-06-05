@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 import {
   fadeUp,
@@ -11,7 +12,10 @@ import ProcessStep from "../ui/ProcessStep";
 import SectionHeader from "../ui/SectionHeader";
 
 function ProcessSection() {
+  const { t } = useTranslation();
   const { process } = portfolioData;
+  const steps = t("process.steps", { returnObjects: true });
+  const translatedSteps = Array.isArray(steps) ? steps : [];
 
   return (
     <section
@@ -37,10 +41,10 @@ function ProcessSection() {
         >
           <SectionHeader
             align="center"
-            description={process.description}
-            eyebrow={process.eyebrow}
+            description={t("process.description")}
+            eyebrow={t("process.eyebrow")}
             id="process-title"
-            title={process.title}
+            title={t("process.title")}
           />
         </motion.div>
 
@@ -57,9 +61,20 @@ function ProcessSection() {
             viewport={viewportOnce}
             whileInView="visible"
           >
-            {process.steps.map((step, index) => (
-              <ProcessStep index={index} key={step.number} step={step} />
-            ))}
+            {process.steps.map((step, index) => {
+              const localizedStep = {
+                ...step,
+                ...(translatedSteps[index] ?? {}),
+              };
+
+              return (
+                <ProcessStep
+                  index={index}
+                  key={step.number}
+                  step={localizedStep}
+                />
+              );
+            })}
           </motion.ol>
         </div>
       </Container>

@@ -191,5 +191,165 @@
         "Understanding real usage"
       ]
     }
+  },
+  "projects": {
+    "eyebrow": "Projects",
+    "title": "Concrete projects, carefully designed to answer real needs.",
+    "description": "Here are a few projects I built to apply my full-stack skills and create concrete web solutions. Each project was designed around a real need, with close attention to user experience, code quality and maintainability.",
+    "highlightsLabel": "Key points",
+    "privateRepoNote": "Private repo, available on request.",
+    "fallbackProject": "Project",
+    "modalFallbackProject": "Full-stack project",
+    "actions": {
+      "viewProject": "View site",
+      "viewCode": "View code",
+      "close": "Close",
+      "understood": "Got it",
+      "contact": "Contact me"
+    },
+    "preview": {
+      "menu": "Menu",
+      "dishes": "Dishes",
+      "menus": "Menus",
+      "order": "Order",
+      "cart": "Cart",
+      "itemAdded": "+1 item",
+      "total": "Total",
+      "ticket": "Ticket",
+      "preview": "Preview"
+    },
+    "items": {
+      "kaolackKitchen": {
+        "name": "Kaolack Kitchen",
+        "type": "Fast-food ordering platform",
+        "status": "Full-stack project",
+        "description": "An online ordering web app designed for a local fast-food service. Customers can browse the menu, add products to their cart, place an order and track its status.",
+        "highlights": [
+          "Dynamic menu with categories",
+          "Responsive cart on mobile and desktop",
+          "Online order placement",
+          "Order tracking by phone",
+          "Admin dashboard",
+          "Product/category management",
+          "Image upload with Cloudinary",
+          "Secure REST API"
+        ]
+      },
+      "samaHoraire": {
+        "name": "Sama Horaire",
+        "type": "Transport ticket booking platform",
+        "status": "Full-stack project",
+        "description": "A transport ticket booking web app. Users can browse trips, reserve seats, receive a ticket with a QR code and track their booking.",
+        "highlights": [
+          "Available trip list",
+          "Multiple-seat booking",
+          "QR code ticket generation",
+          "Booking tracking",
+          "Protected admin interface",
+          "Trip management",
+          "Controller page",
+          "QR code scanning"
+        ]
+      }
+    },
+    "privateRepoModal": {
+      "title": "Oops! Private repo",
+      "description": "The source code for this project is not public at the moment.",
+      "note": "I can still present the architecture, technical choices and features on request.",
+      "extra": "Nouni 🐻 is keeping the repo warm while I keep polishing the project."
+    },
+    "deploymentModal": {
+      "title": "A short moment before loading",
+      "description": "This project uses a backend hosted on Render’s free plan. After a period of inactivity, the service may go to sleep and take a few seconds to start again.",
+      "note": "If the data does not appear immediately, wait a moment and then refresh the page.",
+      "cta": "Continue to the site"
+    },
+    "aria": {
+      "projectStack": "{{title}} project stack",
+      "openProject": "View the {{title}} project site",
+      "openProjectNewTab": "View the {{title}} project site in a new tab",
+      "openPrivateRepoInfo": "View code information for {{title}}"
+    }
+  },
+  "process": {
+    "eyebrow": "Process",
+    "title": "How I build an application.",
+    "description": "I move step by step to turn an idea into a clear, functional and maintainable application.",
+    "steps": [
+      {
+        "title": "Understand the need",
+        "description": "I start by clarifying the project goal, the users involved and the important features."
+      },
+      {
+        "title": "Structure the solution",
+        "description": "I prepare a simple, readable and scalable architecture before developing the features."
+      },
+      {
+        "title": "Create a responsive interface",
+        "description": "I build a clean, mobile-first interface that feels good to use and stays consistent with the project identity."
+      },
+      {
+        "title": "Develop a clean API",
+        "description": "I set up a structured API with validation, error handling, security and clear separation of responsibilities."
+      },
+      {
+        "title": "Test and improve",
+        "description": "I check important behaviors, possible errors, responsiveness and the user experience."
+      },
+      {
+        "title": "Deploy cleanly",
+        "description": "I prepare deployment with clear configuration, environment variables and a stable release."
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Let’s discuss a project, an opportunity or an idea to build.",
+    "description": "Do you have a web project, a mission, a professional opportunity or simply an idea to clarify?",
+    "direct": {
+      "eyebrow": "Direct contact",
+      "title": "Let’s talk.",
+      "emailUnavailable": "Email address coming soon. You can already find me through my professional links."
+    },
+    "actions": {
+      "email": "Send me an email",
+      "copyEmail": "Copy email",
+      "copiedEmail": "Email copied!"
+    },
+    "links": [
+      {
+        "key": "GitHub",
+        "label": "GitHub",
+        "description": "View my projects and public code."
+      },
+      {
+        "key": "LinkedIn",
+        "label": "LinkedIn",
+        "description": "Discover my professional profile."
+      }
+    ],
+    "cards": [
+      {
+        "title": "Web project",
+        "description": "Creating or improving a modern, responsive, accessible and maintainable web application."
+      },
+      {
+        "title": "Collaboration",
+        "description": "Discussing a mission, internship, junior role or technical collaboration."
+      },
+      {
+        "title": "Technical advice",
+        "description": "A conversation around an idea, architecture, prototype or solution to build."
+      }
+    ],
+    "closing": "Every conversation is an opportunity for me to understand a context, analyze a need and build a useful, clear and lasting answer.",
+    "aria": {
+      "sendEmail": "Send an email to {{name}} at {{email}}",
+      "openLink": "Open {{name}}’s {{label}}"
+    }
+  },
+  "footer": {
+    "role": "Full-Stack JavaScript Developer",
+    "copyright": "© {{year}} {{name}}. Portfolio. All rights reserved."
   }
 }

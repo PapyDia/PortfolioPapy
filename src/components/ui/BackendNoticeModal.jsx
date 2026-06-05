@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useId, useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 import {
   modalContentItemVariants,
@@ -11,6 +12,7 @@ import { useReducedMotionPreference } from "../../hooks/useReducedMotionPreferen
 import Button from "./Button";
 
 function BackendNoticeModal({ isOpen, onClose, onContinue, projectName }) {
+  const { t } = useTranslation();
   const prefersReducedMotion = useReducedMotionPreference();
   const titleId = useId();
   const descriptionId = useId();
@@ -74,14 +76,14 @@ function BackendNoticeModal({ isOpen, onClose, onContinue, projectName }) {
               variants={modalContentItemVariants}
             >
               <p className="max-w-full wrap-break-word text-xs font-semibold uppercase text-[color:var(--app-accent)]">
-                {projectName ?? "Projet full-stack"}
+                {projectName ?? t("projects.modalFallbackProject")}
               </p>
 
               <h2
                 className="mt-2 max-w-full wrap-break-word text-xl font-semibold leading-tight text-[color:var(--app-text-main)] sm:text-2xl"
                 id={titleId}
               >
-                Un petit instant avant le chargement
+                {t("projects.deploymentModal.title")}
               </h2>
 
               <div
@@ -89,13 +91,10 @@ function BackendNoticeModal({ isOpen, onClose, onContinue, projectName }) {
                 id={descriptionId}
               >
                 <p className="max-w-full wrap-break-word">
-                  Ce projet utilise un backend hébergé sur le plan gratuit de
-                  Render. Après une période d’inactivité, le service peut se
-                  mettre en veille et prendre quelques secondes à se relancer.
+                  {t("projects.deploymentModal.description")}
                 </p>
                 <p className="max-w-full wrap-break-word text-[color:var(--app-text-soft)]">
-                  Si les données ne s’affichent pas immédiatement, patientez un
-                  instant puis actualisez la page.
+                  {t("projects.deploymentModal.note")}
                 </p>
               </div>
             </motion.div>
@@ -109,14 +108,14 @@ function BackendNoticeModal({ isOpen, onClose, onContinue, projectName }) {
                 onClick={onContinue}
                 ref={continueButtonRef}
               >
-                Continuer vers le site
+                {t("projects.deploymentModal.cta")}
               </Button>
               <Button
                 className="w-full sm:w-auto"
                 onClick={onClose}
                 variant="secondary"
               >
-                Fermer
+                {t("projects.actions.close")}
               </Button>
             </motion.div>
           </motion.div>

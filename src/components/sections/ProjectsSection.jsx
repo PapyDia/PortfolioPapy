@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 import {
   fadeUp,
@@ -13,7 +14,9 @@ import SectionHeader from "../ui/SectionHeader";
 import SectionTransition from "../ui/SectionTransition";
 
 function ProjectsSection() {
+  const { t } = useTranslation();
   const { projects } = portfolioData;
+  const projectTranslationKeys = ["kaolackKitchen", "samaHoraire"];
 
   return (
     <section
@@ -39,10 +42,10 @@ function ProjectsSection() {
         >
           <SectionHeader
             align="center"
-            description={projects.description}
-            eyebrow={projects.eyebrow}
+            description={t("projects.description")}
+            eyebrow={t("projects.eyebrow")}
             id="projects-title"
-            title={projects.title}
+            title={t("projects.title")}
           />
         </motion.div>
 
@@ -53,15 +56,23 @@ function ProjectsSection() {
           viewport={viewportOnce}
           whileInView="visible"
         >
-          {projects.items.map((project, index) => (
-            <motion.div
-              className="min-w-0"
-              key={project.name}
-              variants={staggerItem}
-            >
-              <ProjectCard index={index} project={project} />
-            </motion.div>
-          ))}
+          {projects.items.map((project, index) => {
+            const translationKey = projectTranslationKeys[index];
+
+            return (
+              <motion.div
+                className="min-w-0"
+                key={project.name}
+                variants={staggerItem}
+              >
+                <ProjectCard
+                  index={index}
+                  project={project}
+                  translationKey={translationKey}
+                />
+              </motion.div>
+            );
+          })}
         </motion.div>
       </Container>
       <SectionTransition variant="mixed" />

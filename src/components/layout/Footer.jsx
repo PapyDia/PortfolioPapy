@@ -1,8 +1,11 @@
+import { useTranslation } from "react-i18next";
+
 import { portfolioData } from "../../data/portfolioData";
 import Container from "../ui/Container";
 
 function Footer() {
-  const { footer, identity } = portfolioData;
+  const { t } = useTranslation();
+  const { identity } = portfolioData;
 
   return (
     <footer className="border-t border-[color:var(--app-footer-border)] bg-[var(--app-footer-bg)] py-8">
@@ -13,12 +16,15 @@ function Footer() {
               {identity.name}
             </p>
             <p className="mt-1 max-w-full wrap-break-word text-xs text-[color:var(--app-text-soft)]">
-              {identity.title}
+              {t("footer.role")}
             </p>
           </div>
 
           <p className="max-w-xl wrap-break-word text-sm text-[color:var(--app-text-soft)] md:text-center">
-            {footer}
+            {t("footer.copyright", {
+              name: identity.name,
+              year: new Date().getFullYear(),
+            })}
           </p>
 
           <p className="flex max-w-full flex-wrap items-center justify-center gap-x-1 gap-y-1 text-center text-xs font-medium uppercase text-[color:var(--app-accent)] md:justify-end">

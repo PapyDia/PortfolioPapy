@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import kaolackKitchenIcon from "../../assets/icons/favicon.svg";
 import samaHoraireIcon from "../../assets/icons/sama-horaire-icon.svg";
@@ -65,18 +66,22 @@ function PreviewHeader({ accentClass, label, name, visual }) {
   );
 }
 
-function KaolackKitchenPreview({ accentClass, name, visual }) {
+function KaolackKitchenPreview({ accentClass, name, t, visual }) {
   return (
     <>
       <PreviewHeader
         accentClass={accentClass}
-        label="Menu"
+        label={t("projects.preview.menu")}
         name={name}
         visual={visual}
       />
 
       <div className="relative mt-2 flex min-w-0 flex-wrap gap-1">
-        {["Plats", "Menus", "Commander"].map((category, index) => (
+        {[
+          t("projects.preview.dishes"),
+          t("projects.preview.menus"),
+          t("projects.preview.order"),
+        ].map((category, index) => (
           <span
             className={`rounded-full border px-2 py-0.5 text-[0.5rem] font-medium sm:text-[0.55rem] ${
               index === 0
@@ -93,15 +98,15 @@ function KaolackKitchenPreview({ accentClass, name, visual }) {
       <div className="relative mt-2 rounded-xl border border-[color:var(--app-border)] bg-[var(--app-project-preview-surface)] p-2 sm:p-2.5">
         <div className="flex min-w-0 flex-wrap items-center justify-between gap-1.5">
           <span className="text-[0.6rem] font-semibold text-[color:var(--app-text-main)] sm:text-[0.65rem]">
-            Panier
+            {t("projects.preview.cart")}
           </span>
           <span className="rounded-full border border-[color:var(--app-accent-border)] bg-[var(--app-accent-soft)] px-2 py-0.5 text-[0.52rem] font-semibold text-[color:var(--app-accent)] sm:text-[0.56rem]">
-            +1 article
+            {t("projects.preview.itemAdded")}
           </span>
         </div>
         <div className="mt-2 flex min-w-0 flex-wrap items-center justify-between gap-1.5 border-t border-[color:var(--app-border)] pt-2">
           <span className="text-[0.53rem] font-medium text-[color:var(--app-text-soft)] sm:text-[0.56rem]">
-            Total
+            {t("projects.preview.total")}
           </span>
           <span className="whitespace-nowrap text-[0.6rem] font-bold text-[color:var(--app-text-main)] sm:text-[0.65rem]">
             1 500 FCFA
@@ -112,12 +117,12 @@ function KaolackKitchenPreview({ accentClass, name, visual }) {
   );
 }
 
-function SamaHorairePreview({ accentClass, name, visual }) {
+function SamaHorairePreview({ accentClass, name, t, visual }) {
   return (
     <>
       <PreviewHeader
         accentClass={accentClass}
-        label="Ticket"
+        label={t("projects.preview.ticket")}
         name={name}
         visual={visual}
       />
@@ -156,12 +161,12 @@ function SamaHorairePreview({ accentClass, name, visual }) {
   );
 }
 
-function GenericProjectPreview({ accentClass, name, visual }) {
+function GenericProjectPreview({ accentClass, name, t, visual }) {
   return (
     <>
       <PreviewHeader
         accentClass={accentClass}
-        label="Aperçu"
+        label={t("projects.preview.preview")}
         name={name}
         visual={visual}
       />
@@ -177,7 +182,7 @@ function GenericProjectPreview({ accentClass, name, visual }) {
   );
 }
 
-function ProjectPreview({ index = 0, name }) {
+function ProjectPreview({ index = 0, name, t }) {
   // Intentionally abstract preview: no fake screenshot or external image.
   const accentClass =
     index % 2 === 0
@@ -199,18 +204,21 @@ function ProjectPreview({ index = 0, name }) {
         <KaolackKitchenPreview
           accentClass={accentClass}
           name={name}
+          t={t}
           visual={previewVisual}
         />
       ) : isSamaHoraire ? (
         <SamaHorairePreview
           accentClass={accentClass}
           name={name}
+          t={t}
           visual={previewVisual}
         />
       ) : (
         <GenericProjectPreview
           accentClass={accentClass}
           name={name}
+          t={t}
           visual={previewVisual}
         />
       )}
@@ -218,7 +226,8 @@ function ProjectPreview({ index = 0, name }) {
   );
 }
 
-function ProjectCard({ index = 0, project }) {
+function ProjectCard({ index = 0, project, translationKey }) {
+  const { t } = useTranslation();
   const [isBackendNoticeOpen, setIsBackendNoticeOpen] = useState(false);
   const [isPrivateRepoOpen, setIsPrivateRepoOpen] = useState(false);
   const liveLink = project.links?.live?.trim() ?? "";
@@ -227,6 +236,22 @@ function ProjectCard({ index = 0, project }) {
   const shouldShowBackendNotice = Boolean(liveLink && project.backendNotice);
 
   const titleId = `project-${index + 1}-title`;
+  const projectI18nBase = `projects.items.${translationKey}`;
+  const projectName = translationKey ? t(`${projectI18nBase}.name`) : project.name;
+  const projectType = translationKey ? t(`${projectI18nBase}.type`) : project.type;
+  const projectStatus = translationKey
+    ? t(`${projectI18nBase}.status`)
+    : project.status;
+  const projectDescription = translationKey
+    ? t(`${projectI18nBase}.description`)
+    : project.description;
+  const translatedHighlights = translationKey
+    ? t(`${projectI18nBase}.highlights`, { returnObjects: true })
+    : project.highlights;
+  const projectHighlights = Array.isArray(translatedHighlights)
+    ? translatedHighlights
+    : project.highlights;
+  const projectNote = project.note ? t("projects.privateRepoNote") : "";
   const ctaClassName =
     "inline-flex min-h-11 max-w-full touch-manipulation items-center justify-center rounded-button border border-[color:var(--app-border)] px-4 py-2 text-center text-sm font-semibold leading-snug wrap-break-word text-[color:var(--app-text-main)] transition hover:border-[color:var(--app-accent-border)] hover:bg-[var(--app-accent-soft)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--app-focus-ring)]";
 
@@ -254,16 +279,16 @@ function ProjectCard({ index = 0, project }) {
         as="article"
         className="flex h-full min-w-0 flex-col gap-5 overflow-hidden sm:gap-6"
       >
-        <ProjectPreview index={index} name={project.name} />
+        <ProjectPreview index={index} name={project.name} t={t} />
 
         <div className="flex min-w-0 flex-1 flex-col">
           <div className="min-w-0">
             <div className="flex min-w-0 flex-wrap items-center gap-2 sm:gap-3">
               <span className="max-w-full rounded-button border border-[color:var(--app-accent-border)] bg-[var(--app-accent-soft)] px-3 py-1 text-center text-xs font-semibold leading-snug wrap-break-word uppercase text-[color:var(--app-accent)]">
-                {project.status}
+                {projectStatus}
               </span>
               <span className="max-w-full wrap-break-word text-sm font-medium leading-snug text-[color:var(--app-text-soft)]">
-                {project.type}
+                {projectType}
               </span>
             </div>
 
@@ -271,20 +296,20 @@ function ProjectCard({ index = 0, project }) {
               className="mt-3 max-w-full wrap-break-word text-xl font-semibold leading-tight text-[color:var(--app-text-main)] sm:mt-4 sm:text-2xl"
               id={titleId}
             >
-              {project.name}
+              {projectName}
             </h3>
 
             <p className="text-pretty-safe mt-3 max-w-full wrap-break-word leading-7 text-[color:var(--app-text-muted)] sm:mt-4">
-              {project.description}
+              {projectDescription}
             </p>
           </div>
 
           <div className="mt-5 min-w-0 sm:mt-6">
             <p className="max-w-full wrap-break-word text-sm font-semibold uppercase text-[color:var(--app-accent)]">
-              Points clés
+              {t("projects.highlightsLabel")}
             </p>
             <ul className="mt-3 grid min-w-0 gap-1.5 text-sm leading-6 text-[color:var(--app-text-muted)] sm:grid-cols-2 sm:gap-2">
-              {project.highlights.map((highlight) => (
+              {projectHighlights.map((highlight) => (
                 <li className="flex min-w-0 gap-2" key={highlight}>
                   <span
                     aria-hidden="true"
@@ -299,7 +324,9 @@ function ProjectCard({ index = 0, project }) {
           </div>
 
           <ul
-            aria-label={`Stack du projet ${project.name}`}
+            aria-label={t("projects.aria.projectStack", {
+              title: projectName,
+            })}
             className="m-0 mt-5 flex min-w-0 max-w-full list-none flex-wrap gap-1.5 p-0 sm:mt-6 sm:gap-2"
           >
             {project.stack.map((tech) => (
@@ -321,22 +348,26 @@ function ProjectCard({ index = 0, project }) {
                       {shouldShowBackendNotice ? (
                         <button
                           aria-haspopup="dialog"
-                          aria-label={`Voir le site du projet ${project.name}`}
+                          aria-label={t("projects.aria.openProject", {
+                            title: projectName,
+                          })}
                           className={ctaClassName}
                           onClick={handleLiveClick}
                           type="button"
                         >
-                          Voir le site
+                          {t("projects.actions.viewProject")}
                         </button>
                       ) : (
                         <a
-                          aria-label={`Voir le site du projet ${project.name} dans un nouvel onglet`}
+                          aria-label={t("projects.aria.openProjectNewTab", {
+                            title: projectName,
+                          })}
                           className={ctaClassName}
                           href={liveLink}
                           rel="noopener noreferrer"
                           target="_blank"
                         >
-                          Voir le site
+                          {t("projects.actions.viewProject")}
                         </a>
                       )}
                     </>
@@ -345,12 +376,14 @@ function ProjectCard({ index = 0, project }) {
                   {project.repoPrivate && (
                     <button
                       aria-haspopup="dialog"
-                      aria-label={`Voir le code du projet ${project.name}`}
+                      aria-label={t("projects.aria.openPrivateRepoInfo", {
+                        title: projectName,
+                      })}
                       className={ctaClassName}
                       onClick={handlePrivateRepoClick}
                       type="button"
                     >
-                      Voir le code
+                      {t("projects.actions.viewCode")}
                     </button>
                   )}
                 </div>
@@ -360,7 +393,7 @@ function ProjectCard({ index = 0, project }) {
                 <p
                   className={`${hasProjectLinks ? "mt-4 " : ""}inline-flex max-w-full rounded-button border border-[color:var(--app-chip-border)] bg-[var(--app-chip-bg)] px-3 py-1.5 text-xs font-medium leading-snug wrap-break-word text-[color:var(--app-text-soft)]`}
                 >
-                  {project.note}
+                  {projectNote}
                 </p>
               )}
             </div>
@@ -372,12 +405,12 @@ function ProjectCard({ index = 0, project }) {
         isOpen={isBackendNoticeOpen}
         onClose={() => setIsBackendNoticeOpen(false)}
         onContinue={handleContinueToLiveSite}
-        projectName={project.name}
+        projectName={projectName}
       />
       <PrivateRepoModal
         isOpen={isPrivateRepoOpen}
         onClose={() => setIsPrivateRepoOpen(false)}
-        projectName={project.name}
+        projectName={projectName}
       />
     </>
   );
