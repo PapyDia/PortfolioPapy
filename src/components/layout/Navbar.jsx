@@ -221,7 +221,7 @@ function Navbar() {
           >
             <motion.aside
               aria-label="Menu mobile"
-              className="relative ml-auto h-full w-[min(21rem,calc(100vw-1rem))] overflow-hidden border-l border-[color:var(--app-navbar-mobile-panel-border)] bg-[var(--app-navbar-mobile-panel)] shadow-[var(--app-navbar-mobile-panel-shadow)] backdrop-blur-2xl"
+              className="relative ml-auto h-full w-[min(21rem,calc(100vw-1rem))] overflow-hidden border-l border-[color:var(--app-navbar-mobile-panel-border)] bg-[var(--app-navbar-mobile-panel)] shadow-[var(--app-navbar-mobile-panel-shadow)] backdrop-blur-2xl min-[360px]:w-[min(24rem,calc(100vw-0.5rem))]"
               onPointerDown={(event) => event.stopPropagation()}
               variants={mobileDrawerVariants}
             >
@@ -242,18 +242,18 @@ function Navbar() {
               />
 
               <div className="relative flex h-full min-w-0 flex-col px-4 pb-5 pt-4">
-                <div className="mb-4 flex min-w-0 items-center justify-between gap-3">
-                  <div className="flex min-w-0 items-center gap-3">
+                <div className="mb-4 flex items-start justify-between gap-2 min-[360px]:items-center min-[360px]:gap-3">
+                  <div className="flex min-w-0 flex-1 items-start gap-2 min-[360px]:items-center min-[360px]:gap-3">
                     <NavbarAvatar
-                      className="size-9 min-[360px]:size-10"
+                      className="size-9 shrink-0 min-[360px]:size-10"
                       hasImage={hasAvatarImage}
                       onImageError={() => setHasAvatarImage(false)}
                     />
-                    <span className="min-w-0 leading-tight">
-                      <span className="block max-w-28 truncate text-sm font-semibold text-[color:var(--app-text-main)] min-[420px]:max-w-36">
+                    <span className="min-w-0 flex-1 leading-tight">
+                      <span className="block max-w-full overflow-hidden whitespace-normal break-normal text-sm font-semibold leading-snug text-[color:var(--app-text-main)] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2] min-[360px]:block min-[360px]:truncate min-[360px]:whitespace-nowrap">
                         {portfolioData.identity.name}
                       </span>
-                      <span className="block max-w-28 truncate text-xs text-[color:var(--app-text-soft)] min-[420px]:max-w-36">
+                      <span className="block max-w-full truncate whitespace-nowrap break-normal text-xs text-[color:var(--app-text-soft)]">
                         Développeur
                       </span>
                     </span>
@@ -261,7 +261,6 @@ function Navbar() {
 
                   <div className="flex shrink-0 items-center gap-1.5 min-[360px]:gap-2">
                     <LanguageSwitcher size="compact" />
-                    <ThemeToggle />
                     <button
                       aria-controls="mobile-navigation"
                       aria-label="Fermer le menu"
