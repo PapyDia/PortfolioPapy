@@ -108,7 +108,10 @@ function KaolackKitchenPreview({ accentClass, name, t, visual }) {
           <span className="text-[0.53rem] font-medium text-[color:var(--app-text-soft)] sm:text-[0.56rem]">
             {t("projects.preview.total")}
           </span>
-          <span className="whitespace-nowrap text-[0.6rem] font-bold text-[color:var(--app-text-main)] sm:text-[0.65rem]">
+          <span
+            className="whitespace-nowrap text-[0.6rem] font-bold text-[color:var(--app-text-main)] sm:text-[0.65rem]"
+            dir="ltr"
+          >
             1 500 FCFA
           </span>
         </div>
@@ -127,24 +130,27 @@ function SamaHorairePreview({ accentClass, name, t, visual }) {
         visual={visual}
       />
 
-      <div className="relative mt-2.5 grid min-w-0 grid-cols-[minmax(0,1fr)_2.75rem] gap-2 rounded-xl border border-[color:var(--app-accent-border)] bg-[var(--app-project-preview-surface)] p-2">
+      <div
+        className="relative mt-2 grid min-w-0 grid-cols-[minmax(0,1fr)_2.5rem] items-center gap-2 rounded-xl border border-[color:var(--app-border)] bg-[var(--app-project-preview-surface)] p-2.5 sm:mt-2.5 sm:grid-cols-[minmax(0,1fr)_2.75rem] sm:gap-2.5"
+        dir="ltr"
+      >
         <div className="min-w-0">
           <span className="inline-flex rounded-full border border-[color:var(--app-accent-border)] bg-[var(--app-accent-soft)] px-2 py-0.5 text-[0.5rem] font-semibold uppercase text-[color:var(--app-accent)] sm:text-[0.55rem]">
-            Ticket
+            {t("projects.preview.ticket")}
           </span>
-          <div className="mt-2 flex min-w-0 items-center gap-1 text-[0.52rem] font-medium text-[color:var(--app-text-main)] sm:text-[0.58rem]">
+          <div className="mt-2.5 flex min-w-0 items-center gap-1.5 text-[0.52rem] font-medium text-[color:var(--app-text-main)] sm:text-[0.58rem]">
             <span>Dakar</span>
             <span className="h-px min-w-2 flex-1 bg-[var(--app-accent-border)]" />
             <span>Kaolack</span>
           </div>
-          <div className="mt-2 flex min-w-0 items-center gap-2">
-            <span className="rounded-md bg-[var(--app-project-preview-surface)] px-1.5 py-1 text-[0.5rem] font-medium text-[color:var(--app-text-muted)]">
+          <div className="mt-2.5 flex min-w-0 items-center gap-2">
+            <span className="rounded-md border border-[color:var(--app-border)] bg-[var(--app-project-preview-surface)] px-1.5 py-1 text-[0.5rem] font-medium text-[color:var(--app-text-muted)]">
               08:30
             </span>
             <span className="h-1.5 min-w-3 flex-1 rounded-full bg-[var(--app-border)]" />
           </div>
         </div>
-        <span className="grid size-11 shrink-0 grid-cols-5 gap-0.5 self-center rounded-lg border border-[color:var(--app-border)] bg-[var(--app-qr-bg)] p-1">
+        <span className="grid size-10 shrink-0 grid-cols-5 gap-0.5 self-center justify-self-end rounded-lg border border-[color:var(--app-border)] bg-[var(--app-qr-bg)] p-1 sm:size-11">
           {Array.from(ticketQrPattern).map((cell, cellIndex) => (
             <span
               className={`rounded-[1px] ${
@@ -342,7 +348,7 @@ function ProjectCard({ index = 0, project, translationKey }) {
           {(hasProjectLinks || project.note) && (
             <div className="mt-5 min-w-0 border-t border-[color:var(--app-border)] pt-4 sm:mt-6 sm:pt-5">
               {hasProjectLinks && (
-                <div className="flex min-w-0 flex-wrap gap-3">
+                <div className="flex min-w-0 flex-col gap-3 sm:flex-row sm:flex-wrap">
                   {liveLink && (
                     <>
                       {shouldShowBackendNotice ? (

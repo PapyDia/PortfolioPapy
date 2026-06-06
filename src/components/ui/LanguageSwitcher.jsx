@@ -65,7 +65,7 @@ function LanguageSwitcher({ className = "inline-flex", size = "default" }) {
       <span className="sr-only">{t("common.languageSwitcher")}</span>
       <select
         aria-label={t("common.changeLanguage")}
-        className={`h-full cursor-pointer appearance-none rounded-full bg-transparent py-0 font-semibold tracking-[0.08em] text-current outline-none ${selectSizeClasses}`}
+        className={`language-select h-full cursor-pointer appearance-none rounded-full bg-transparent py-0 font-semibold tracking-[0.08em] text-current outline-none ${selectSizeClasses}`}
         onChange={(event) => handleLanguageChange(event.target.value)}
         value={selectedLanguage}
       >
