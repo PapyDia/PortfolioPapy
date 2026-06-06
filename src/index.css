@@ -278,6 +278,7 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overscroll-behavior-x: none;
     overflow-x: hidden;
   }
 
@@ -324,6 +325,10 @@
     color: var(--app-text-main);
   }
 
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+
   .language-select {
     background-color: transparent;
     color: var(--app-text-main);
@@ -356,7 +361,46 @@
     min-height: 100vh;
   }
 
+  @media (min-width: 900px) {
+    section[id] {
+      scroll-margin-top: 5.5rem;
+    }
+  }
+
+  @media (pointer: fine) {
+    * {
+      scrollbar-color: var(--app-accent-border) transparent;
+      scrollbar-width: thin;
+    }
+
+    *::-webkit-scrollbar {
+      width: 0.65rem;
+      height: 0.65rem;
+    }
+
+    *::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    *::-webkit-scrollbar-thumb {
+      border: 0.18rem solid transparent;
+      border-radius: 999px;
+      background:
+        linear-gradient(var(--app-accent), var(--app-accent)) padding-box;
+    }
+
+    *::-webkit-scrollbar-thumb:hover {
+      background:
+        linear-gradient(var(--app-text-soft), var(--app-text-soft))
+          padding-box;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
     *,
     *::before,
     *::after {
@@ -370,6 +414,11 @@
 
 @layer utilities {
   /* Portfolio visual primitives: they avoid repeating glass styles in each component. */
+  .smooth-scroll-area {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
   .glass-panel {
     background: var(--app-surface);
     border: 1px solid var(--app-border);

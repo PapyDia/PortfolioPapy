@@ -11,6 +11,10 @@
     "skipToContent": "الانتقال إلى المحتوى الرئيسي",
     "sectionLoading": "جاري تحميل القسم"
   },
+  "scrollToTop": {
+    "label": "العودة إلى أعلى الصفحة",
+    "progress": "تقدم القراءة: {{progress}}%"
+  },
   "nav": {
     "home": "الرئيسية",
     "about": "من أنا",

@@ -269,7 +269,10 @@ function Navbar() {
                   </div>
 
                   <div className="flex shrink-0 items-center gap-1.5 min-[360px]:gap-2">
-                    <LanguageSwitcher size="compact" />
+                    <LanguageSwitcher
+                      onLanguageChangeComplete={closeMenu}
+                      size="compact"
+                    />
                     <button
                       aria-controls="mobile-navigation"
                       aria-label={t("navbar.closeMenu")}
@@ -288,7 +291,7 @@ function Navbar() {
 
                 <motion.nav
                   aria-label={t("navbar.mobileNavigation")}
-                  className="flex min-w-0 flex-1 flex-col gap-1 overflow-y-auto rounded-2xl border border-[color:var(--app-border)] bg-[var(--app-surface)] p-2 shadow-[inset_0_1px_0_var(--app-shine-soft)]"
+                  className="smooth-scroll-area flex min-w-0 flex-1 flex-col gap-1 overflow-y-auto rounded-2xl border border-[color:var(--app-border)] bg-[var(--app-surface)] p-2 shadow-[inset_0_1px_0_var(--app-shine-soft)]"
                   id="mobile-navigation"
                   variants={mobileDrawerListVariants}
                 >

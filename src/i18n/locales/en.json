@@ -11,6 +11,10 @@
     "skipToContent": "Skip to main content",
     "sectionLoading": "Section loading"
   },
+  "scrollToTop": {
+    "label": "Back to top",
+    "progress": "Reading progress: {{progress}}%"
+  },
   "nav": {
     "home": "Home",
     "about": "About",

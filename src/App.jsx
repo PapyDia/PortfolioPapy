@@ -6,6 +6,7 @@ import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import HeroSection from "./components/sections/HeroSection";
 import AboutSection from "./components/sections/AboutSection";
+import ScrollToTopButton from "./components/ui/ScrollToTopButton";
 import SectionFallback from "./components/ui/SectionFallback";
 
 const StackNebulaSection = lazy(
@@ -52,6 +53,7 @@ function App() {
           </Suspense>
         </main>
         <Footer />
+        <ScrollToTopButton />
       </div>
     </MotionConfig>
   );

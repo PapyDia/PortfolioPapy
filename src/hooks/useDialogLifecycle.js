@@ -9,6 +9,85 @@ const focusableSelector = [
   '[tabindex]:not([tabindex="-1"])',
 ].join(", ");
 
+let scrollLockCount = 0;
+let scrollRestoreState = null;
+
+function focusWithoutScroll(element) {
+  if (!element) {
+    return;
+  }
+
+  try {
+    element.focus({ preventScroll: true });
+  } catch {
+    element.focus();
+  }
+}
+
+function lockBodyScroll() {
+  if (typeof window === "undefined" || typeof document === "undefined") {
+    return;
+  }
+
+  scrollLockCount += 1;
+
+  if (scrollLockCount > 1) {
+    return;
+  }
+
+  const scrollY = window.scrollY;
+  const scrollbarWidth =
+    window.innerWidth - document.documentElement.clientWidth;
+
+  scrollRestoreState = {
+    left: document.body.style.left,
+    overflow: document.body.style.overflow,
+    paddingRight: document.body.style.paddingRight,
+    position: document.body.style.position,
+    right: document.body.style.right,
+    scrollY,
+    top: document.body.style.top,
+    width: document.body.style.width,
+  };
+
+  document.body.style.position = "fixed";
+  document.body.style.top = `-${scrollY}px`;
+  document.body.style.left = "0";
+  document.body.style.right = "0";
+  document.body.style.width = "100%";
+  document.body.style.overflow = "hidden";
+
+  if (scrollbarWidth > 0) {
+    document.body.style.paddingRight = `${scrollbarWidth}px`;
+  }
+}
+
+function unlockBodyScroll() {
+  if (typeof window === "undefined" || typeof document === "undefined") {
+    return;
+  }
+
+  scrollLockCount = Math.max(0, scrollLockCount - 1);
+
+  if (scrollLockCount > 0 || !scrollRestoreState) {
+    return;
+  }
+
+  const { left, overflow, paddingRight, position, right, scrollY, top, width } =
+    scrollRestoreState;
+
+  document.body.style.position = position;
+  document.body.style.top = top;
+  document.body.style.left = left;
+  document.body.style.right = right;
+  document.body.style.width = width;
+  document.body.style.overflow = overflow;
+  document.body.style.paddingRight = paddingRight;
+
+  scrollRestoreState = null;
+  window.scrollTo(0, scrollY);
+}
+
 function useDialogLifecycle(
   isOpen,
   onClose,
@@ -22,7 +101,6 @@ function useDialogLifecycle(
     }
 
     const previouslyFocusedElement = document.activeElement;
-    const previousOverflow = document.body.style.overflow;
 
     function handleKeyDown(event) {
       if (event.key === "Escape") {
@@ -40,7 +118,7 @@ function useDialogLifecycle(
 
       if (focusableElements.length === 0) {
         event.preventDefault();
-        dialogRef.current.focus();
+        focusWithoutScroll(dialogRef.current);
         return;
       }
 
@@ -51,29 +129,29 @@ function useDialogLifecycle(
       if (!dialogRef.current.contains(activeElement)) {
         event.preventDefault();
         const nextElement = event.shiftKey ? lastElement : firstElement;
-        nextElement.focus();
+        focusWithoutScroll(nextElement);
       } else if (event.shiftKey && activeElement === firstElement) {
         event.preventDefault();
-        lastElement.focus();
+        focusWithoutScroll(lastElement);
       } else if (!event.shiftKey && activeElement === lastElement) {
         event.preventDefault();
-        firstElement.focus();
+        focusWithoutScroll(firstElement);
       }
     }
 
-    document.body.style.overflow = "hidden";
+    lockBodyScroll();
     document.addEventListener("keydown", handleKeyDown);
-    initialFocusRef.current?.focus();
+    focusWithoutScroll(initialFocusRef.current);
 
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = previousOverflow;
+      unlockBodyScroll();
 
       if (
         restoreFocusRef?.current !== false &&
         previouslyFocusedElement instanceof HTMLElement
       ) {
-        previouslyFocusedElement.focus();
+        focusWithoutScroll(previouslyFocusedElement);
       }
 
       if (restoreFocusRef) {

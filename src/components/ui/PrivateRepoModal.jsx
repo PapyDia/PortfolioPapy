@@ -67,7 +67,7 @@ function PrivateRepoModal({ isOpen, onClose, projectName }) {
     <AnimatePresence>
       {isOpen ? (
         <motion.div
-          className="fixed inset-0 z-100 grid min-w-0 place-items-center overflow-y-auto bg-[var(--app-modal-overlay)] p-4 backdrop-blur-md sm:p-6"
+          className="smooth-scroll-area fixed inset-0 z-100 grid min-w-0 place-items-center overflow-y-auto bg-[var(--app-modal-overlay)] p-4 backdrop-blur-md sm:p-6"
           onClick={onClose}
           {...overlayMotionProps}
         >

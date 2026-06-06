@@ -43,7 +43,7 @@ function BackendNoticeModal({ isOpen, onClose, onContinue, projectName }) {
     <AnimatePresence>
       {isOpen ? (
         <motion.div
-          className="fixed inset-0 z-100 grid min-w-0 place-items-center overflow-y-auto bg-[var(--app-modal-overlay)] p-4 backdrop-blur-md sm:p-6"
+          className="smooth-scroll-area fixed inset-0 z-100 grid min-w-0 place-items-center overflow-y-auto bg-[var(--app-modal-overlay)] p-4 backdrop-blur-md sm:p-6"
           onClick={onClose}
           {...overlayMotionProps}
         >
@@ -51,7 +51,7 @@ function BackendNoticeModal({ isOpen, onClose, onContinue, projectName }) {
             aria-describedby={descriptionId}
             aria-labelledby={titleId}
             aria-modal="true"
-            className="glass-panel relative max-h-[calc(100dvh-2rem)] w-full max-w-lg overflow-x-hidden overflow-y-auto border-[color:var(--app-modal-border)] bg-[var(--app-modal-bg)] p-5 text-center shadow-[var(--app-modal-shadow)] sm:max-h-[calc(100dvh-3rem)] sm:p-7"
+            className="glass-panel smooth-scroll-area relative max-h-[calc(100dvh-2rem)] w-full max-w-lg overflow-x-hidden overflow-y-auto border-[color:var(--app-modal-border)] bg-[var(--app-modal-bg)] p-5 text-center shadow-[var(--app-modal-shadow)] sm:max-h-[calc(100dvh-3rem)] sm:p-7"
             onClick={(event) => event.stopPropagation()}
             ref={dialogRef}
             role="dialog"

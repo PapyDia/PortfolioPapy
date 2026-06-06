@@ -31,7 +31,11 @@ function persistLanguage(languageCode) {
   }
 }
 
-function LanguageSwitcher({ className = "inline-flex", size = "default" }) {
+function LanguageSwitcher({
+  className = "inline-flex",
+  size = "default",
+  onLanguageChangeComplete,
+}) {
   const { i18n, t } = useTranslation();
   const isCompact = size === "compact";
   const activeLanguage = i18n.resolvedLanguage || i18n.language || "fr";
@@ -56,6 +60,10 @@ function LanguageSwitcher({ className = "inline-flex", size = "default" }) {
     await i18n.changeLanguage(languageCode);
     persistLanguage(languageCode);
     syncDocumentLanguage(languageCode);
+
+    if (typeof onLanguageChangeComplete === "function") {
+      onLanguageChangeComplete(languageCode);
+    }
   };
 
   return (

@@ -11,6 +11,10 @@
     "skipToContent": "Aller au contenu principal",
     "sectionLoading": "Chargement de la section"
   },
+  "scrollToTop": {
+    "label": "Retour en haut de page",
+    "progress": "Progression de lecture : {{progress}}%"
+  },
   "nav": {
     "home": "Accueil",
     "about": "À propos",
