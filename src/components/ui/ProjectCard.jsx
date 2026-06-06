@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import kaolackKitchenIcon from "../../assets/icons/favicon.svg";
-import samaHoraireIcon from "../../assets/icons/sama-horaire-icon.svg";
+import samaHoraireIcon from "../../assets/icons/sama-horaire-icon-preview.png";
 import BackendNoticeModal from "./BackendNoticeModal";
 import GlassCard from "./GlassCard";
 import PrivateRepoModal from "./PrivateRepoModal";

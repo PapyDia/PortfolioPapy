@@ -5,7 +5,9 @@
     "english": "English",
     "arabic": "Arabic",
     "languageSwitcher": "Language selector",
-    "changeLanguage": "Change language"
+    "changeLanguage": "Change language",
+    "activateDarkMode": "Activate dark mode",
+    "activateLightMode": "Activate light mode"
   },
   "accessibility": {
     "skipToContent": "Skip to main content",

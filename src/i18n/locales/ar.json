@@ -5,7 +5,9 @@
     "english": "الإنجليزية",
     "arabic": "العربية",
     "languageSwitcher": "محدد اللغة",
-    "changeLanguage": "تغيير اللغة"
+    "changeLanguage": "تغيير اللغة",
+    "activateDarkMode": "تفعيل الوضع الداكن",
+    "activateLightMode": "تفعيل الوضع الفاتح"
   },
   "accessibility": {
     "skipToContent": "الانتقال إلى المحتوى الرئيسي",

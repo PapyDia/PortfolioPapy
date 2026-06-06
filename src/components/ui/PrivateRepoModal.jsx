@@ -7,6 +7,7 @@ import {
   modalOverlayVariants,
   modalPanelVariants,
 } from "../../constants/animations";
+import { portfolioData } from "../../data/portfolioData";
 import useDialogLifecycle from "../../hooks/useDialogLifecycle";
 import { useReducedMotionPreference } from "../../hooks/useReducedMotionPreference";
 import Button from "./Button";
@@ -15,35 +16,13 @@ import CodingBearIllustration from "./CodingBearIllustration";
 function PrivateRepoModal({ isOpen, onClose, projectName }) {
   const { t } = useTranslation();
   const prefersReducedMotion = useReducedMotionPreference();
+  const email = portfolioData.contact.email?.trim() ?? "";
   const titleId = useId();
   const descriptionId = useId();
   const understoodButtonRef = useRef(null);
   const dialogRef = useRef(null);
-  const restoreFocusRef = useRef(true);
 
-  useDialogLifecycle(
-    isOpen,
-    onClose,
-    understoodButtonRef,
-    dialogRef,
-    restoreFocusRef,
-  );
-
-  function handleContactClick() {
-    restoreFocusRef.current = false;
-    onClose();
-
-    window.setTimeout(() => {
-      const contactSection = document.getElementById("contact");
-
-      contactSection?.scrollIntoView({
-        behavior: prefersReducedMotion ? "auto" : "smooth",
-        block: "start",
-      });
-      contactSection?.focus();
-      window.history.replaceState(null, "", "#contact");
-    }, 0);
-  }
+  useDialogLifecycle(isOpen, onClose, understoodButtonRef, dialogRef);
 
   const overlayMotionProps = prefersReducedMotion
     ? {}
@@ -75,7 +54,7 @@ function PrivateRepoModal({ isOpen, onClose, projectName }) {
             aria-describedby={descriptionId}
             aria-labelledby={titleId}
             aria-modal="true"
-            className="glass-panel relative w-full max-w-xl overflow-hidden border-[color:var(--app-modal-border)] bg-[var(--app-modal-bg)] p-4 text-center shadow-[var(--app-modal-shadow)] sm:p-7"
+            className="glass-panel smooth-scroll-area relative max-h-[calc(100dvh-2rem)] w-full max-w-xl overflow-x-hidden overflow-y-auto border-[color:var(--app-modal-border)] bg-[var(--app-modal-bg)] p-4 text-center shadow-[var(--app-modal-shadow)] sm:max-h-[calc(100dvh-3rem)] sm:p-7"
             onClick={(event) => event.stopPropagation()}
             ref={dialogRef}
             role="dialog"
@@ -141,8 +120,13 @@ function PrivateRepoModal({ isOpen, onClose, projectName }) {
                 {t("projects.actions.understood")}
               </Button>
               <Button
+                aria-label={t("contact.aria.sendEmail", {
+                  email,
+                  name: portfolioData.identity.name,
+                })}
                 className="w-full sm:w-auto"
-                onClick={handleContactClick}
+                href={`mailto:${email}`}
+                onClick={onClose}
                 variant="secondary"
               >
                 {t("projects.actions.contact")}

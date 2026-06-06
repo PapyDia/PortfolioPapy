@@ -12,6 +12,25 @@ const focusableSelector = [
 let scrollLockCount = 0;
 let scrollRestoreState = null;
 
+function restoreWindowScroll(scrollY) {
+  const documentElement = document.documentElement;
+  const previousHtmlScrollBehavior = documentElement.style.scrollBehavior;
+  const previousBodyScrollBehavior = document.body.style.scrollBehavior;
+
+  documentElement.style.scrollBehavior = "auto";
+  document.body.style.scrollBehavior = "auto";
+  window.scrollTo({
+    behavior: "auto",
+    left: 0,
+    top: scrollY,
+  });
+
+  window.requestAnimationFrame(() => {
+    documentElement.style.scrollBehavior = previousHtmlScrollBehavior;
+    document.body.style.scrollBehavior = previousBodyScrollBehavior;
+  });
+}
+
 function focusWithoutScroll(element) {
   if (!element) {
     return;
@@ -85,7 +104,7 @@ function unlockBodyScroll() {
   document.body.style.paddingRight = paddingRight;
 
   scrollRestoreState = null;
-  window.scrollTo(0, scrollY);
+  restoreWindowScroll(scrollY);
 }
 
 function useDialogLifecycle(

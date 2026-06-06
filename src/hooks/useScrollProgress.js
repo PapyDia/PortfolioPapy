@@ -15,10 +15,12 @@ function getScrollState() {
   const clientHeight = window.innerHeight;
   const maxScroll = scrollHeight - clientHeight;
   const progress = maxScroll > 0 ? scrollY / maxScroll : 0;
+  const safeProgress = Math.min(Math.max(progress, 0), 1);
+  const roundedProgress = Math.round(safeProgress * 1000) / 1000;
 
   return {
     isVisible: scrollY > visibilityThreshold,
-    progress: Math.min(Math.max(progress, 0), 1),
+    progress: roundedProgress,
   };
 }
 
@@ -30,7 +32,19 @@ function useScrollProgress() {
 
     function updateScrollState() {
       frameId = null;
-      setScrollState(getScrollState());
+      const nextScrollState = getScrollState();
+
+      setScrollState((currentScrollState) => {
+        if (
+          currentScrollState.isVisible === nextScrollState.isVisible &&
+          Math.abs(currentScrollState.progress - nextScrollState.progress) <
+            0.001
+        ) {
+          return currentScrollState;
+        }
+
+        return nextScrollState;
+      });
     }
 
     function scheduleUpdate() {

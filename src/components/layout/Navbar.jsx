@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { FiX } from "react-icons/fi";
 
-import profilePhoto from "../../assets/images/profile.jpg";
+import profileAvatar from "../../assets/images/profile-avatar.jpg";
 import {
   mobileDrawerItemVariants,
   mobileDrawerListVariants,
@@ -35,7 +35,7 @@ function NavbarAvatar({ className = "", hasImage, onImageError }) {
           decoding="async"
           loading="eager"
           onError={onImageError}
-          src={profilePhoto}
+          src={profileAvatar}
         />
       ) : (
         "CM"

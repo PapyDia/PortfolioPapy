@@ -1,11 +1,15 @@
 import { FiMoon, FiSun } from "react-icons/fi";
+import { useTranslation } from "react-i18next";
 
 import useTheme from "../../hooks/useTheme";
 
 function ThemeToggle({ className = "" }) {
+  const { t } = useTranslation();
   const { isLight, toggleTheme } = useTheme();
   const Icon = isLight ? FiMoon : FiSun;
-  const label = isLight ? "Activer le mode sombre" : "Activer le mode clair";
+  const label = isLight
+    ? t("common.activateDarkMode")
+    : t("common.activateLightMode");
 
   return (
     <button
